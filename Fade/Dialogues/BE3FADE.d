@@ -1,9 +1,6 @@
 BEGIN BE3FADE
 
-IF ~GlobalGT("E3LOVETALK","GLOBAL",30)
-!GlobalTimerExpired("E3TREATMENTTIMER","GLOBAL")
-Global("E3DIDTREATMENTTALK","GLOBAL",1)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN BEGIN treatment_start
+IF ~Global("E3DIDTREATMENTTALK","GLOBAL",1)~ THEN BEGIN treatment_start
 SAY @1750
 IF ~~ THEN REPLY @1751 DO ~SetGlobal("E3DIDTREATMENTTALK","GLOBAL",2)~ EXIT
 IF ~~ THEN REPLY @1752 DO ~SetGlobal("E3DIDTREATMENTTALK","GLOBAL",2)~ GOTO treatment_help
@@ -137,19 +134,7 @@ SAY @1812
 IF ~~ THEN DO ~RestParty()~ EXIT
 END
 
-IF ~GlobalGT("E3LOVETALK","GLOBAL",60)
-Global("E3DIDDRUNKTALK","GLOBAL",1)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)
-OR(9)
-AreaCheck("AR0313")
-AreaCheck("AR0406")
-AreaCheck("AR0509")
-AreaCheck("AR0513")
-AreaCheck("AR0522")
-AreaCheck("AR0704")
-AreaCheck("AR0709")
-AreaCheck("AR1105")
-AreaCheck("AR2010")~ THEN BEGIN drunk_start
+IF ~Global("E3DIDDRUNKTALK","GLOBAL",1)~ THEN BEGIN drunk_start
 SAY @1813 = @1814 = @1815
 IF ~~ THEN REPLY @1816 DO ~SetGlobal("E3DIDDRUNKTALK","GLOBAL",2)~ GOTO drunk_enough
 IF ~~ THEN REPLY @1817 DO ~SetGlobal("E3DIDDRUNKTALK","GLOBAL",2)~ GOTO drunk_fun
@@ -271,19 +256,7 @@ SAY @1877 = @1876
 IF ~~ THEN DO ~RestParty()~ EXIT
 END
 
-IF ~GlobalGT("E3LOVETALK","GLOBAL",60)
-Global("E3DIDDRUNKTALK","GLOBAL",3)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)
-OR(9)
-AreaCheck("AR0313")
-AreaCheck("AR0406")
-AreaCheck("AR0509")
-AreaCheck("AR0513")
-AreaCheck("AR0522")
-AreaCheck("AR0704")
-AreaCheck("AR0709")
-AreaCheck("AR1105")
-AreaCheck("AR2010")~ THEN BEGIN hangover_start
+IF ~Global("E3DIDDRUNKTALK","GLOBAL",3)~ THEN BEGIN hangover_start
 SAY @1878
 IF ~~ THEN REPLY @1879 DO ~SetGlobal("E3DIDDRUNKTALK","GLOBAL",4)~ GOTO hangover_right
 IF ~~ THEN REPLY @1880 DO ~SetGlobal("E3DIDDRUNKTALK","GLOBAL",4)~ GOTO hangover_alright
@@ -571,11 +544,7 @@ SAY @2000 = @2001
 IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
 END
 
-IF ~Global("E3DIDSVIRFTALK","LOCALS",1)
-Global("Chapter","GLOBAL",%bg2_chapter_5%)
-AreaCheck("AR2100")
-Range("udsvir04",15)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN BEGIN svirf_start
+IF ~Global("E3DIDSVIRFTALK","LOCALS",1)~ THEN BEGIN svirf_start
 SAY @2002
 IF ~~ THEN REPLY @2003 DO ~SetGlobal("E3DIDSVIRFTALK","LOCALS",2)~ GOTO svirf_understatement
 IF ~~ THEN REPLY @2004 DO ~SetGlobal("E3DIDSVIRFTALK","LOCALS",2)~ GOTO svirf_know
@@ -699,13 +668,12 @@ SAY @2045 = @2044
 IF ~~ THEN EXIT
 END
 
-IF ~Global("E3LOVETALK","GLOBAL",2)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN BEGIN lt2_1
+IF ~Global("E3LOVETALK","GLOBAL",2)~ THEN BEGIN lt2_1
 SAY @522
-IF ~~ THEN REPLY @523 GOTO lt2_info
-IF ~~ THEN REPLY @524 GOTO lt2_later
-IF ~~ THEN REPLY @525 GOTO lt2_insult
-IF ~~ THEN REPLY @526 GOTO lt2_annoyance
+IF ~~ THEN REPLY @523 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt2_info
+IF ~~ THEN REPLY @524 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt2_later
+IF ~~ THEN REPLY @525 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt2_insult
+IF ~~ THEN REPLY @526 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt2_annoyance
 END
 
 IF ~~ THEN BEGIN lt2_info
@@ -814,12 +782,11 @@ IF ~~ THEN REPLY @568 GOTO lt2_allofthis
 IF ~~ THEN REPLY @569 DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
 END
 
-IF ~Global("E3LOVETALK","GLOBAL",4)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN BEGIN lt4_start
+IF ~Global("E3LOVETALK","GLOBAL",4)~ THEN BEGIN lt4_start
 SAY @2046
-IF ~~ THEN REPLY @2047 GOTO lt4_1a
-IF ~~ THEN REPLY @2048 GOTO lt4_2a
-IF ~~ THEN REPLY @2049 GOTO lt4_3c
+IF ~~ THEN REPLY @2047 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt4_1a
+IF ~~ THEN REPLY @2048 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt4_2a
+IF ~~ THEN REPLY @2049 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt4_3c
 END
 
 IF ~~ THEN BEGIN lt4_1a
@@ -985,12 +952,11 @@ SAY @2097
 IF ~~ THEN EXIT
 END
 
-IF ~Global("E3LOVETALK","GLOBAL",6)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN BEGIN lt6_start
+IF ~Global("E3LOVETALK","GLOBAL",6)~ THEN BEGIN lt6_start
 SAY @2098
-IF ~~ THEN REPLY @633 GOTO lt6_worry
-IF ~~ THEN REPLY @2099 GOTO lt6_feyri
-IF ~~ THEN REPLY @2100 GOTO lt6_elves
+IF ~~ THEN REPLY @633 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt6_worry
+IF ~~ THEN REPLY @2099 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt6_feyri
+IF ~~ THEN REPLY @2100 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt6_elves
 END
 
 IF ~~ THEN BEGIN lt6_worry
@@ -1211,12 +1177,11 @@ SAY @722
 IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
 END
 
-IF ~Global("E3LOVETALK","GLOBAL",8)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN BEGIN lt8_start
+IF ~Global("E3LOVETALK","GLOBAL",8)~ THEN BEGIN lt8_start
 SAY @2165
-IF ~~ THEN REPLY @2166 GOTO lt8_childhood
-IF ~~ THEN REPLY @2167 GOTO lt8_delayed
-IF ~~ THEN REPLY @2168 GOTO lt8_nerves
+IF ~~ THEN REPLY @2166 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt8_childhood
+IF ~~ THEN REPLY @2167 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt8_delayed
+IF ~~ THEN REPLY @2168 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt8_nerves
 END
 
 IF ~~ THEN BEGIN lt8_childhood
@@ -1440,11 +1405,10 @@ SAY @2265
 IF ~~ THEN EXIT
 END
 
-IF ~Global("E3LOVETALK","GLOBAL",10)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN BEGIN lt10_start
+IF ~Global("E3LOVETALK","GLOBAL",10)~ THEN BEGIN lt10_start
 SAY @2266 = @2267
-IF ~~ THEN REPLY @2268 GOTO lt10_waned
-IF ~~ THEN REPLY @2269 GOTO lt10_childhood
+IF ~~ THEN REPLY @2268 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt10_waned
+IF ~~ THEN REPLY @2269 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt10_childhood
 END
 
 IF ~~ THEN BEGIN lt10_waned
@@ -1560,12 +1524,11 @@ SAY @2321 = @2322
 IF ~~ THEN EXIT
 END
 
-IF ~Global("E3LOVETALK","GLOBAL",12)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN BEGIN lt12_start
+IF ~Global("E3LOVETALK","GLOBAL",12)~ THEN BEGIN lt12_start
 SAY @2323
-IF ~~ THEN REPLY @2324 GOTO lt12_what
-IF ~~ THEN REPLY @2325 GOTO lt12_tiresome
-IF ~~ THEN REPLY @2326 GOTO lt12_amusing
+IF ~~ THEN REPLY @2324 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt12_what
+IF ~~ THEN REPLY @2325 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt12_tiresome
+IF ~~ THEN REPLY @2326 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt12_amusing
 END
 
 IF ~~ THEN BEGIN lt12_what
@@ -1641,13 +1604,12 @@ SAY @2357
 IF ~~ THEN EXIT
 END
 
-IF ~Global("E3LOVETALK","GLOBAL",14)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN BEGIN lt14_start
+IF ~Global("E3LOVETALK","GLOBAL",14)~ THEN BEGIN lt14_start
 SAY @2358
-IF ~~ THEN REPLY @2359 GOTO lt14_recently
-IF ~~ THEN REPLY @2360 GOTO lt14_surprise
-IF ~~ THEN REPLY @2361 GOTO lt14_sarcasm
-IF ~~ THEN REPLY @2362 GOTO lt14_alone
+IF ~~ THEN REPLY @2359 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt14_recently
+IF ~~ THEN REPLY @2360 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt14_surprise
+IF ~~ THEN REPLY @2361 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt14_sarcasm
+IF ~~ THEN REPLY @2362 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt14_alone
 END
 
 IF ~~ THEN BEGIN lt14_recently
@@ -1748,11 +1710,10 @@ SAY @2400
 IF ~~ THEN EXIT
 END
 
-IF ~Global("E3LOVETALK","GLOBAL",16)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN BEGIN lt16_start
+IF ~Global("E3LOVETALK","GLOBAL",16)~ THEN BEGIN lt16_start
 SAY @2401
-IF ~~ THEN REPLY @2402 GOTO lt16_1a
-IF ~~ THEN REPLY @2403 GOTO lt16_2a
+IF ~~ THEN REPLY @2402 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt16_1a
+IF ~~ THEN REPLY @2403 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt16_2a
 END
 
 IF ~~ THEN BEGIN lt16_1a
@@ -2005,12 +1966,11 @@ SAY @2496
 IF ~~ THEN DO ~RestParty()~ EXIT
 END
 
-IF ~Global("E3LOVETALK","GLOBAL",18)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN BEGIN lt18_start
+IF ~Global("E3LOVETALK","GLOBAL",18)~ THEN BEGIN lt18_start
 SAY @2497
-IF ~~ THEN REPLY @2498 GOTO lt18_no
-IF ~~ THEN REPLY @2499 GOTO lt18_thief
-IF ~~ THEN REPLY @2500 GOTO lt18_possessed
+IF ~~ THEN REPLY @2498 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt18_no
+IF ~~ THEN REPLY @2499 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt18_thief
+IF ~~ THEN REPLY @2500 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt18_possessed
 END
 
 IF ~~ THEN BEGIN lt18_no
@@ -2120,12 +2080,11 @@ SAY @2548 = @2544
 IF ~~ THEN EXIT
 END
 
-IF ~Global("E3LOVETALK","GLOBAL",20)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN BEGIN lt20_start
+IF ~Global("E3LOVETALK","GLOBAL",20)~ THEN BEGIN lt20_start
 SAY @2549
-IF ~~ THEN REPLY @2550 GOTO lt20_reasons
-IF ~~ THEN REPLY @2551 GOTO lt20_enough
-IF ~~ THEN REPLY @2552 GOTO lt20_angry
+IF ~~ THEN REPLY @2550 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt20_reasons
+IF ~~ THEN REPLY @2551 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt20_enough
+IF ~~ THEN REPLY @2552 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt20_angry
 END
 
 IF ~~ THEN BEGIN lt20_reasons
@@ -2239,12 +2198,11 @@ SAY @2600 = @2594
 IF ~~ THEN EXIT
 END
 
-IF ~Global("E3LOVETALK","GLOBAL",22)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN BEGIN lt22_start
+IF ~Global("E3LOVETALK","GLOBAL",22)~ THEN BEGIN lt22_start
 SAY @2601
-IF ~~ THEN REPLY @1925 EXIT
-IF ~~ THEN REPLY @2602 GOTO lt22_thoughts
-IF ~~ THEN REPLY @2603 GOTO lt22_attention
+IF ~~ THEN REPLY @1925 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ EXIT
+IF ~~ THEN REPLY @2602 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt22_thoughts
+IF ~~ THEN REPLY @2603 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt22_attention
 END
 
 IF ~~ THEN BEGIN lt22_thoughts
@@ -2433,12 +2391,11 @@ IF ~~ THEN REPLY @2627 GOTO lt22_door
 IF ~~ THEN REPLY @2628 GOTO lt22_sea
 END
 
-IF ~Global("E3LOVETALK","GLOBAL",26)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN BEGIN lt26_start
+IF ~Global("E3LOVETALK","GLOBAL",26)~ THEN BEGIN lt26_start
 SAY @2671
-IF ~~ THEN REPLY @2672 GOTO lt26_awake
-IF ~~ THEN REPLY @2673 GOTO lt26_stick
-IF ~~ THEN REPLY @2674 GOTO lt26_wait
+IF ~~ THEN REPLY @2672 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt26_awake
+IF ~~ THEN REPLY @2673 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt26_stick
+IF ~~ THEN REPLY @2674 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt26_wait
 END
 
 IF ~~ THEN BEGIN lt26_awake
@@ -2548,12 +2505,11 @@ IF ~~ THEN REPLY @2728 GOTO lt26_sleep
 IF ~~ THEN REPLY @2729 GOTO lt26_callous
 END
 
-IF ~Global("E3LOVETALK","GLOBAL",28)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN BEGIN lt28_start
+IF ~Global("E3LOVETALK","GLOBAL",28)~ THEN BEGIN lt28_start
 SAY @2730
-IF ~~ THEN REPLY @2731 GOTO lt28_curious
-IF ~~ THEN REPLY @2732 GOTO lt28_nasty
-IF ~~ THEN REPLY @2733 GOTO lt28_discouraged
+IF ~~ THEN REPLY @2731 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt28_curious
+IF ~~ THEN REPLY @2732 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt28_nasty
+IF ~~ THEN REPLY @2733 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt28_discouraged
 END
 
 IF ~~ THEN BEGIN lt28_curious
@@ -2693,12 +2649,11 @@ IF ~~ THEN REPLY @2761 GOTO lt28_close
 IF ~~ THEN REPLY @2762 GOTO lt28_priority
 END
 
-IF ~Global("E3LOVETALK","GLOBAL",30)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN BEGIN lt30_start
+IF ~Global("E3LOVETALK","GLOBAL",30)~ THEN BEGIN lt30_start
 SAY @2803
-IF ~~ THEN REPLY @2804 GOTO lt30_better
-IF ~~ THEN REPLY @2805 GOTO lt30_grateful
-IF ~~ THEN REPLY @2806 GOTO lt30_her
+IF ~~ THEN REPLY @2804 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt30_better
+IF ~~ THEN REPLY @2805 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt30_grateful
+IF ~~ THEN REPLY @2806 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt30_her
 END
 
 IF ~~ THEN BEGIN lt30_better
@@ -2740,12 +2695,11 @@ SAY @2819 = @2820
 IF ~~ THEN EXIT
 END
 
-IF ~Global("E3LOVETALK","GLOBAL",32)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN BEGIN lt32_start
+IF ~Global("E3LOVETALK","GLOBAL",32)~ THEN BEGIN lt32_start
 SAY @2821
-IF ~~ THEN REPLY @1863 GOTO lt32_okay
-IF ~~ THEN REPLY @2822 GOTO lt32_sorry
-IF ~~ THEN REPLY @2823 GOTO lt32_maybe
+IF ~~ THEN REPLY @1863 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt32_okay
+IF ~~ THEN REPLY @2822 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt32_sorry
+IF ~~ THEN REPLY @2823 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt32_maybe
 END
 
 IF ~~ THEN BEGIN lt32_okay
@@ -3068,12 +3022,11 @@ SAY @2952
 IF ~~ THEN EXIT
 END
 
-IF ~Global("E3LOVETALK","GLOBAL",34)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN BEGIN lt34_start
+IF ~Global("E3LOVETALK","GLOBAL",34)~ THEN BEGIN lt34_start
 SAY @2953
-IF ~~ THEN REPLY @2954 GOTO lt34_sing
-IF ~~ THEN REPLY @2955 GOTO lt34_what
-IF ~~ THEN REPLY @2956 GOTO lt34_shutup
+IF ~~ THEN REPLY @2954 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt34_sing
+IF ~~ THEN REPLY @2955 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt34_what
+IF ~~ THEN REPLY @2956 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt34_shutup
 END
 
 IF ~~ THEN BEGIN lt34_sing
@@ -3198,12 +3151,11 @@ SAY @3004 = @3005 = @3006 = @3007 = @3008 = @3009
 IF ~~ THEN GOTO lt34_song
 END
 
-IF ~Global("E3LOVETALK","GLOBAL",36)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN BEGIN lt36_start
+IF ~Global("E3LOVETALK","GLOBAL",36)~ THEN BEGIN lt36_start
 SAY @3010 = @3011
-IF ~~ THEN REPLY @3012 GOTO lt36_journal
-IF ~~ THEN REPLY @3013 GOTO lt36_read
-IF ~~ THEN REPLY @3014 GOTO lt36_reason
+IF ~~ THEN REPLY @3012 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt36_journal
+IF ~~ THEN REPLY @3013 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt36_read
+IF ~~ THEN REPLY @3014 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt36_reason
 END
 
 IF ~~ THEN BEGIN lt36_journal
@@ -3297,12 +3249,11 @@ IF ~~ THEN REPLY @3056 GOTO lt36_mplayful
 IF ~~ THEN REPLY @3057 GOTO lt36_mplayful
 END
 
-IF ~Global("E3LOVETALK","GLOBAL",38)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN BEGIN lt38_start
+IF ~Global("E3LOVETALK","GLOBAL",38)~ THEN BEGIN lt38_start
 SAY @3058
-IF ~~ THEN REPLY @3059 GOTO lt38_water
-IF ~~ THEN REPLY @3060 GOTO lt38_smile
-IF ~~ THEN REPLY @3061 GOTO lt38_ashamed
+IF ~~ THEN REPLY @3059 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt38_water
+IF ~~ THEN REPLY @3060 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt38_smile
+IF ~~ THEN REPLY @3061 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt38_ashamed
 END
 
 IF ~~ THEN BEGIN lt38_water
@@ -3441,12 +3392,11 @@ SAY @3114
 IF ~~ THEN EXIT
 END
 
-IF ~Global("E3LOVETALK","GLOBAL",42)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN BEGIN lt42_start
+IF ~Global("E3LOVETALK","GLOBAL",42)~ THEN BEGIN lt42_start
 SAY @3115
-IF ~~ THEN REPLY @3116 GOTO lt42_depends
-IF ~~ THEN REPLY @3117 GOTO lt42_yes
-IF ~~ THEN REPLY @3118 GOTO lt42_no
+IF ~~ THEN REPLY @3116 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt42_depends
+IF ~~ THEN REPLY @3117 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt42_yes
+IF ~~ THEN REPLY @3118 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt42_no
 END
 
 IF ~~ THEN BEGIN lt42_depends
@@ -3892,11 +3842,10 @@ SAY @3288
 IF ~~ THEN EXIT
 END
 
-IF ~Global("E3LOVETALK","GLOBAL",44)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN BEGIN lt44_start
+IF ~Global("E3LOVETALK","GLOBAL",44)~ THEN BEGIN lt44_start
 SAY @3289
-IF ~~ THEN REPLY @3290 GOTO lt44_follow
-IF ~~ THEN REPLY @3291 GOTO lt44_talk
+IF ~~ THEN REPLY @3290 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt44_follow
+IF ~~ THEN REPLY @3291 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt44_talk
 END
 
 IF ~~ THEN BEGIN lt44_follow
@@ -4102,12 +4051,11 @@ SAY @3373 = @3364 = @3365
 IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",2)~ EXIT
 END
 
-IF ~Global("E3LOVETALK","GLOBAL",46)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN BEGIN lt46_start
+IF ~Global("E3LOVETALK","GLOBAL",46)~ THEN BEGIN lt46_start
 SAY @3374
-IF ~~ THEN REPLY @3375 GOTO lt46_run
-IF ~~ THEN REPLY @3376 GOTO lt46_ear
-IF ~~ THEN REPLY @3377 GOTO lt46_mood
+IF ~~ THEN REPLY @3375 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt46_run
+IF ~~ THEN REPLY @3376 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt46_ear
+IF ~~ THEN REPLY @3377 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt46_mood
 END
 
 IF ~~ THEN BEGIN lt46_run
@@ -4288,12 +4236,11 @@ SAY @3446
 IF ~~ THEN EXIT
 END
 
-IF ~Global("E3LOVETALK","GLOBAL",48)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN BEGIN lt48_start
+IF ~Global("E3LOVETALK","GLOBAL",48)~ THEN BEGIN lt48_start
 SAY @3447
-IF ~~ THEN REPLY @3448 GOTO lt48_yes
-IF ~~ THEN REPLY @3449 GOTO lt48_laugh
-IF ~~ THEN REPLY @3450 GOTO lt48_analyse
+IF ~~ THEN REPLY @3448 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt48_yes
+IF ~~ THEN REPLY @3449 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt48_laugh
+IF ~~ THEN REPLY @3450 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt48_analyse
 END
 
 IF ~~ THEN BEGIN lt48_yes
@@ -4495,12 +4442,11 @@ SAY @3530
 IF ~~ THEN EXIT
 END
 
-IF ~Global("E3LOVETALK","GLOBAL",50)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN BEGIN lt50_start
+IF ~Global("E3LOVETALK","GLOBAL",50)~ THEN BEGIN lt50_start
 SAY @3531
-IF ~~ THEN REPLY @3532 GOTO lt50_why
-IF ~~ THEN REPLY @1863 GOTO lt50_okay
-IF ~~ THEN REPLY @3533 GOTO lt50_here
+IF ~~ THEN REPLY @3532 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt50_why
+IF ~~ THEN REPLY @1863 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt50_okay
+IF ~~ THEN REPLY @3533 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt50_here
 END
 
 IF ~~ THEN BEGIN lt50_why
@@ -4567,13 +4513,11 @@ IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)
 RestParty()~ EXIT
 END
 
-IF ~Global("E3LOVETALK","GLOBAL",52)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)
-Global("E3FADENOOKIE","GLOBAL",1)~ THEN BEGIN lt52_start
+IF ~Global("E3LOVETALK","GLOBAL",52)~ THEN BEGIN lt52_start
 SAY @3562
-IF ~~ THEN REPLY @3563 GOTO lt52_moment
-IF ~~ THEN REPLY @3564 GOTO lt52_feel
-IF ~~ THEN REPLY @3565 GOTO lt52_awake
+IF ~~ THEN REPLY @3563 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt52_moment
+IF ~~ THEN REPLY @3564 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt52_feel
+IF ~~ THEN REPLY @3565 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt52_awake
 END
 
 IF ~~ THEN BEGIN lt52_moment
@@ -4636,12 +4580,11 @@ SAY @3585
 IF ~~ THEN DO ~RestParty()~ EXIT
 END
 
-IF ~Global("E3LOVETALK","GLOBAL",54)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN BEGIN lt54_start
+IF ~Global("E3LOVETALK","GLOBAL",54)~ THEN BEGIN lt54_start
 SAY @3586
-IF ~~ THEN REPLY @3587 GOTO lt54_yes
-IF ~~ THEN REPLY @3588 GOTO lt54_silly
-IF ~~ THEN REPLY @3589 GOTO lt54_things
+IF ~~ THEN REPLY @3587 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt54_yes
+IF ~~ THEN REPLY @3588 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt54_silly
+IF ~~ THEN REPLY @3589 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt54_things
 END
 
 IF ~~ THEN BEGIN lt54_yes
@@ -4817,12 +4760,11 @@ SAY @3658 = @3654
 IF ~~ THEN EXIT
 END
 
-IF ~Global("E3LOVETALK","GLOBAL",56)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN BEGIN lt56_start
+IF ~Global("E3LOVETALK","GLOBAL",56)~ THEN BEGIN lt56_start
 SAY @3659 = @3660
-IF ~~ THEN REPLY @3661 GOTO lt56_troubled
-IF ~~ THEN REPLY @3662 GOTO lt56_safe
-IF ~~ THEN REPLY @3663 GOTO lt56_that
+IF ~~ THEN REPLY @3661 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt56_troubled
+IF ~~ THEN REPLY @3662 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt56_safe
+IF ~~ THEN REPLY @3663 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt56_that
 END
 
 IF ~~ THEN BEGIN lt56_troubled
@@ -4979,12 +4921,11 @@ SAY @3717
 IF ~~ THEN EXIT
 END
 
-IF ~Global("E3LOVETALK","GLOBAL",58)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN BEGIN lt58_start
+IF ~Global("E3LOVETALK","GLOBAL",58)~ THEN BEGIN lt58_start
 SAY @3718
-IF ~~ THEN REPLY @3719 GOTO lt58_miss
-IF ~~ THEN REPLY @3720 GOTO lt58_torturing
-IF ~~ THEN REPLY @3721 GOTO lt58_wondered
+IF ~~ THEN REPLY @3719 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt58_miss
+IF ~~ THEN REPLY @3720 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt58_torturing
+IF ~~ THEN REPLY @3721 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt58_wondered
 END
 
 IF ~~ THEN BEGIN lt58_miss
@@ -5075,12 +5016,11 @@ SAY @3751
 IF ~~ THEN EXIT
 END
 
-IF ~Global("E3LOVETALK","GLOBAL",60)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN BEGIN lt60_start
+IF ~Global("E3LOVETALK","GLOBAL",60)~ THEN BEGIN lt60_start
 SAY @3752
-IF ~~ THEN REPLY @3753 GOTO lt60_calm
-IF ~~ THEN REPLY @3754 GOTO lt60_upset
-IF ~~ THEN REPLY @3755 GOTO lt60_want
+IF ~~ THEN REPLY @3753 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt60_calm
+IF ~~ THEN REPLY @3754 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt60_upset
+IF ~~ THEN REPLY @3755 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt60_want
 END
 
 IF ~~ THEN BEGIN lt60_calm
@@ -5153,12 +5093,11 @@ SAY @3780
 IF ~~ THEN EXIT
 END
 
-IF ~Global("E3LOVETALK","GLOBAL",62)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN BEGIN lt62_start
+IF ~Global("E3LOVETALK","GLOBAL",62)~ THEN BEGIN lt62_start
 SAY @3781
-IF ~~ THEN REPLY @3669 GOTO lt62_mean
-IF ~~ THEN REPLY @3782 GOTO lt62_next
-IF ~~ THEN REPLY @3783 GOTO lt62_thought
+IF ~~ THEN REPLY @3669 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt62_mean
+IF ~~ THEN REPLY @3782 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt62_next
+IF ~~ THEN REPLY @3783 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt62_thought
 END
 
 IF ~~ THEN BEGIN lt62_mean
@@ -5257,14 +5196,12 @@ SAY @3827 = @3828
 IF ~~ THEN EXIT
 END
 
-IF ~Global("E3LOVETALK","GLOBAL",64)
-Global("E3FADENOOKIE","GLOBAL",1)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN BEGIN lt64_start
+IF ~Global("E3LOVETALK","GLOBAL",64)~ THEN BEGIN lt64_start
 SAY @3829
-IF ~~ THEN REPLY @3830 GOTO lt64_there
-IF ~~ THEN REPLY @3831 GOTO lt64_minx
-IF ~~ THEN REPLY @3832 GOTO lt64_doing
-IF ~~ THEN REPLY @3833 GOTO lt64_stop
+IF ~~ THEN REPLY @3830 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt64_there
+IF ~~ THEN REPLY @3831 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt64_minx
+IF ~~ THEN REPLY @3832 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt64_doing
+IF ~~ THEN REPLY @3833 DO ~IncrementGlobal("E3LOVETALK","GLOBAL",1)~ GOTO lt64_stop
 END
 
 IF ~~ THEN BEGIN lt64_there
@@ -5337,8 +5274,7 @@ SAY @3857
 IF ~~ THEN EXIT
 END
 
-IF ~Global("E3LOVETALK","GLOBAL",66)
-!StateCheck(Player1,CD_STATE_NOTVALID) !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN BEGIN lt66_start
+IF ~Global("E3LOVETALK","GLOBAL",66)~ THEN BEGIN lt66_start
 SAY @3858
 IF ~~ THEN REPLY @3859 DO ~SetGlobal("E3LOVETALK","GLOBAL",67)~ GOTO lt66_close
 IF ~~ THEN REPLY @3860 DO ~SetGlobal("E3LOVETALK","GLOBAL",67)~ GOTO lt66_blush
@@ -5522,13 +5458,7 @@ IF ~~ THEN EXIT
 END
 
 CHAIN
-IF ~InParty("E3Fade")
-!StateCheck("E3Fade",CD_STATE_NOTVALID)
-Global("VICONIAROMANCEACTIVE","GLOBAL",1)
-Global("E3FADEROMANCEACTIVE","GLOBAL",1)
-Global("E3FADEVSVICONIA2","GLOBAL",1)
-GlobalGT("E3LOVETALK","GLOBAL",10)
-GlobalLT("E3LOVETALK","GLOBAL",20)~ THEN VICONIJ fadevsviconia
+IF ~Global("E3FADEVSVICONIA2","GLOBAL",1)~ THEN VICONIJ fadevsviconia
 @3923 DO ~SetGlobal("E3FADEVSVICONIA2","GLOBAL",2)~
 == BE3FADE @3924 == BVICONI @3925 == BE3FADE @3926 == BVICONI @3927 == BE3FADE @3928 == BVICONI @3929 == BE3FADE @3930 == BVICONI @3931 == BE3FADE @3932 == BVICONI @3933 == BE3FADE @3934 = @3935 == BVICONI @3936 == BE3FADE @3937 == BVICONI @3938 == BE3FADE @3939 = @3940
 END
@@ -5584,7 +5514,10 @@ IF ~~ THEN REPLY @2361 EXTERN BE3FADE lt14_sarcasm
 IF ~~ THEN REPLY @2362 EXTERN BE3FADE lt14_alone
 
 CHAIN
-IF ~InParty("Anomen")
+IF ~InParty(Myself) 
+!StateCheck(Myself,CD_STATE_NOTVALID) 
+CombatCounter(0) !See([ENEMY])
+InParty("Anomen")
 See("Anomen")
 !StateCheck("Anomen",CD_STATE_NOTVALID)
 AreaCheck("AR0903")
@@ -5600,7 +5533,10 @@ IF ~~ THEN REPLY @3981 EXTERN BANOMEN placate
 IF ~~ THEN REPLY @3982 EXIT
 
 CHAIN
-IF ~InParty("Aerie")
+IF ~InParty(Myself) 
+!StateCheck(Myself,CD_STATE_NOTVALID) 
+CombatCounter(0) !See([ENEMY])
+InParty("Aerie")
 See("Aerie")
 !StateCheck("Aerie",CD_STATE_NOTVALID)
 Global("E3FADEAERIETALK","LOCALS",0)~ THEN BE3FADE fadeaerieid
@@ -5609,7 +5545,10 @@ Global("E3FADEAERIETALK","LOCALS",0)~ THEN BE3FADE fadeaerieid
 EXIT
 
 CHAIN
-IF ~InParty("Aerie")
+IF ~InParty(Myself) 
+!StateCheck(Myself,CD_STATE_NOTVALID) 
+CombatCounter(0) !See([ENEMY])
+InParty("Aerie")
 See("Aerie")
 !StateCheck("Aerie",CD_STATE_NOTVALID)
 Global("E3FADEAERIETALK2","LOCALS",0)~ THEN BE3FADE fadeaerietalk
@@ -5618,7 +5557,10 @@ Global("E3FADEAERIETALK2","LOCALS",0)~ THEN BE3FADE fadeaerietalk
 EXIT
 
 CHAIN
-IF ~InParty("E3Fade")
+IF ~InParty(Myself) 
+!StateCheck(Myself,CD_STATE_NOTVALID) 
+CombatCounter(0) !See([ENEMY])
+InParty("E3Fade")
 See("E3Fade")
 !StateCheck("E3Fade",CD_STATE_NOTVALID)
 Global("E3FADEANOMENTALK1","LOCALS",0)~ THEN BANOMEN fadeanomen1
@@ -5629,7 +5571,10 @@ Global("E3FADEANOMENTALK1","LOCALS",0)~ THEN BANOMEN fadeanomen1
 EXIT
 
 CHAIN
-IF ~InParty("Anomen")
+IF ~InParty(Myself) 
+!StateCheck(Myself,CD_STATE_NOTVALID) 
+CombatCounter(0) !See([ENEMY])
+InParty("Anomen")
 See("Anomen")
 !StateCheck("Anomen",CD_STATE_NOTVALID)
 Global("E3FADEANOMENTALK2","LOCALS",0)~ THEN BE3FADE fadeanomen2
@@ -5638,7 +5583,10 @@ Global("E3FADEANOMENTALK2","LOCALS",0)~ THEN BE3FADE fadeanomen2
 EXIT
 
 CHAIN
-IF ~InParty("Cernd")
+IF ~InParty(Myself) 
+!StateCheck(Myself,CD_STATE_NOTVALID) 
+CombatCounter(0) !See([ENEMY])
+InParty("Cernd")
 See("Cernd")
 !StateCheck("Cernd",CD_STATE_NOTVALID)
 Global("E3FADECERNDTALK1","LOCALS",0)~ THEN BE3FADE fadecernd1
@@ -5647,7 +5595,10 @@ Global("E3FADECERNDTALK1","LOCALS",0)~ THEN BE3FADE fadecernd1
 EXIT
 
 CHAIN
-IF ~InParty("E3Fade")
+IF ~InParty(Myself) 
+!StateCheck(Myself,CD_STATE_NOTVALID) 
+CombatCounter(0) !See([ENEMY])
+InParty("E3Fade")
 See("E3Fade")
 !StateCheck("E3Fade",CD_STATE_NOTVALID)
 Global("E3FADECERNDTALK2","LOCALS",0)~ THEN BCERND fadecernd2
@@ -5656,7 +5607,10 @@ Global("E3FADECERNDTALK2","LOCALS",0)~ THEN BCERND fadecernd2
 EXIT
 
 CHAIN
-IF ~InParty("Edwin")
+IF ~InParty(Myself) 
+!StateCheck(Myself,CD_STATE_NOTVALID) 
+CombatCounter(0) !See([ENEMY])
+InParty("Edwin")
 See("Edwin")
 !StateCheck("Edwin",CD_STATE_NOTVALID)
 Global("E3FADEEDWINTALK","LOCALS",0)~ THEN BE3FADE fadeedwinhowmany
@@ -5665,7 +5619,10 @@ Global("E3FADEEDWINTALK","LOCALS",0)~ THEN BE3FADE fadeedwinhowmany
 EXIT
 
 CHAIN
-IF ~InParty("E3Fade")
+IF ~InParty(Myself) 
+!StateCheck(Myself,CD_STATE_NOTVALID) 
+CombatCounter(0) !See([ENEMY])
+InParty("E3Fade")
 See("E3Fade")
 !StateCheck("E3Fade",CD_STATE_NOTVALID)
 Global("E3FADEEDWINTALK2","LOCALS",0)~ THEN BEDWIN fadeedwinfeet
@@ -5674,7 +5631,10 @@ Global("E3FADEEDWINTALK2","LOCALS",0)~ THEN BEDWIN fadeedwinfeet
 EXIT
 
 CHAIN
-IF ~InParty("Edwin")
+IF ~InParty(Myself) 
+!StateCheck(Myself,CD_STATE_NOTVALID) 
+CombatCounter(0) !See([ENEMY])
+InParty("Edwin")
 See("Edwin")
 Gender("Edwin",FEMALE)
 !StateCheck("Edwin",CD_STATE_NOTVALID)
@@ -5684,7 +5644,10 @@ Global("E3FADEEDWINA","LOCALS",0)~ THEN BE3FADE fadeedwina
 EXIT
 
 CHAIN
-IF ~InParty("HaerDalis")
+IF ~InParty(Myself) 
+!StateCheck(Myself,CD_STATE_NOTVALID) 
+CombatCounter(0) !See([ENEMY])
+InParty("HaerDalis")
 See("HaerDalis")
 !StateCheck("HaerDalis",CD_STATE_NOTVALID)
 Global("E3FADEHAERTALK","LOCALS",0)~ THEN BE3FADE fadehaerwonder
@@ -5693,7 +5656,10 @@ Global("E3FADEHAERTALK","LOCALS",0)~ THEN BE3FADE fadehaerwonder
 EXIT
 
 CHAIN
-IF ~InParty("E3Fade")
+IF ~InParty(Myself) 
+!StateCheck(Myself,CD_STATE_NOTVALID) 
+CombatCounter(0) !See([ENEMY])
+InParty("E3Fade")
 See("E3Fade")
 !StateCheck("E3Fade",CD_STATE_NOTVALID)
 Global("E3FADEHAERTALK2","LOCALS",0)~ THEN BHAERDA fadehaersigil
@@ -5702,7 +5668,10 @@ Global("E3FADEHAERTALK2","LOCALS",0)~ THEN BHAERDA fadehaersigil
 EXIT
 
 CHAIN
-IF ~InParty("Imoen2")
+IF ~InParty(Myself) 
+!StateCheck(Myself,CD_STATE_NOTVALID) 
+CombatCounter(0) !See([ENEMY])
+InParty("Imoen2")
 See("Imoen2")
 !StateCheck("Imoen2",CD_STATE_NOTVALID)
 Global("E3FADEIMOENTALK1","LOCALS",0)
@@ -5712,7 +5681,10 @@ GlobalGT("E3LOVETALK","GLOBAL",15)~ THEN BE3FADE fadeimoenmagic
 EXIT
 
 CHAIN
-IF ~InParty("Imoen2")
+IF ~InParty(Myself) 
+!StateCheck(Myself,CD_STATE_NOTVALID) 
+CombatCounter(0) !See([ENEMY])
+InParty("Imoen2")
 See("Imoen2")
 !StateCheck("Imoen2",CD_STATE_NOTVALID)
 Global("E3FADEIMOENTALK2","LOCALS",0)~ THEN BE3FADE fadeimoencookies
@@ -5721,7 +5693,10 @@ Global("E3FADEIMOENTALK2","LOCALS",0)~ THEN BE3FADE fadeimoencookies
 EXIT
 
 CHAIN
-IF ~InParty("Jaheira")
+IF ~InParty(Myself) 
+!StateCheck(Myself,CD_STATE_NOTVALID) 
+CombatCounter(0) !See([ENEMY])
+InParty("Jaheira")
 See("Jaheira")
 !StateCheck("Jaheira",CD_STATE_NOTVALID)
 Global("E3FADEJAHEIRATALK1","LOCALS",0)~ THEN BE3FADE fadejaheira1
@@ -5730,7 +5705,10 @@ Global("E3FADEJAHEIRATALK1","LOCALS",0)~ THEN BE3FADE fadejaheira1
 EXIT
 
 CHAIN
-IF ~InParty("Jaheira")
+IF ~InParty(Myself) 
+!StateCheck(Myself,CD_STATE_NOTVALID) 
+CombatCounter(0) !See([ENEMY])
+InParty("Jaheira")
 See("Jaheira")
 !StateCheck("Jaheira",CD_STATE_NOTVALID)
 Global("E3FADEJAHEIRATALK2","LOCALS",0)~ THEN BE3FADE fadejaheira2
@@ -5739,7 +5717,10 @@ Global("E3FADEJAHEIRATALK2","LOCALS",0)~ THEN BE3FADE fadejaheira2
 EXIT
 
 CHAIN
-IF ~InParty("Jan")
+IF ~InParty(Myself) 
+!StateCheck(Myself,CD_STATE_NOTVALID) 
+CombatCounter(0) !See([ENEMY])
+InParty("Jan")
 See("Jan")
 !StateCheck("Jan",CD_STATE_NOTVALID)
 Global("E3FADEJANTALK1","LOCALS",0)~ THEN BE3FADE fadejanstuff
@@ -5749,7 +5730,10 @@ SetGlobal("E3FADEJANTALK1","GLOBAL",1)~
 EXIT
 
 CHAIN
-IF ~InParty("E3Fade")
+IF ~InParty(Myself) 
+!StateCheck(Myself,CD_STATE_NOTVALID) 
+CombatCounter(0) !See([ENEMY])
+InParty("E3Fade")
 See("E3Fade")
 !StateCheck("E3Fade",CD_STATE_NOTVALID)
 Global("E3FADEJANTALK1","GLOBAL",1)
@@ -5759,7 +5743,10 @@ Global("E3FADEJANTALK2","LOCALS",0)~ THEN BJAN fadejanturnips
 EXIT
 
 CHAIN
-IF ~InParty("Keldorn")
+IF ~InParty(Myself) 
+!StateCheck(Myself,CD_STATE_NOTVALID) 
+CombatCounter(0) !See([ENEMY])
+InParty("Keldorn")
 See("Keldorn")
 !StateCheck("Keldorn",CD_STATE_NOTVALID)
 Global("E3FADEKELDORNTALK1","LOCALS",0)~ THEN BE3FADE fadekeldorn
@@ -5768,7 +5755,10 @@ Global("E3FADEKELDORNTALK1","LOCALS",0)~ THEN BE3FADE fadekeldorn
 EXIT
 
 CHAIN
-IF ~InParty("E3Fade")
+IF ~InParty(Myself) 
+!StateCheck(Myself,CD_STATE_NOTVALID) 
+CombatCounter(0) !See([ENEMY])
+InParty("E3Fade")
 See("E3Fade")
 !StateCheck("E3Fade",CD_STATE_NOTVALID)
 Global("E3FADEKORGANTALK1","LOCALS",0)~ THEN BKORGAN fadekorgantails
@@ -5778,7 +5768,10 @@ SetGlobal("E3FADEKORGANTALK1","GLOBAL",1)~
 EXIT
 
 CHAIN
-IF ~InParty("Korgan")
+IF ~InParty(Myself) 
+!StateCheck(Myself,CD_STATE_NOTVALID) 
+CombatCounter(0) !See([ENEMY])
+InParty("Korgan")
 See("Korgan")
 !StateCheck("Korgan",CD_STATE_NOTVALID)
 Global("E3FADEKORGANTALK1","GLOBAL",1)
@@ -5788,7 +5781,10 @@ Global("E3FADEKORGANTALK2","LOCALS",0)~ THEN BE3FADE fadekorganthreat
 EXIT
 
 CHAIN
-IF ~InParty("E3Fade")
+IF ~InParty(Myself) 
+!StateCheck(Myself,CD_STATE_NOTVALID) 
+CombatCounter(0) !See([ENEMY])
+InParty("E3Fade")
 See("E3Fade")
 !StateCheck("E3Fade",CD_STATE_NOTVALID)
 Global("E3FADEMAZZYTALK1","LOCALS",0)~ THEN BMAZZY fademazzyreligion
@@ -5800,7 +5796,10 @@ Global("E3FADEMAZZYTALK1","LOCALS",0)~ THEN BMAZZY fademazzyreligion
 EXIT
 
 CHAIN
-IF ~InParty("Mazzy")
+IF ~InParty(Myself) 
+!StateCheck(Myself,CD_STATE_NOTVALID) 
+CombatCounter(0) !See([ENEMY])
+InParty("Mazzy")
 See("Mazzy")
 !StateCheck("Mazzy",CD_STATE_NOTVALID)
 Global("E3FADEMAZZYTALK2","LOCALS",0)~ THEN BE3FADE fademazzyfamily
@@ -5809,7 +5808,10 @@ Global("E3FADEMAZZYTALK2","LOCALS",0)~ THEN BE3FADE fademazzyfamily
 EXIT
 
 CHAIN
-IF ~InParty("Minsc")
+IF ~InParty(Myself) 
+!StateCheck(Myself,CD_STATE_NOTVALID) 
+CombatCounter(0) !See([ENEMY])
+InParty("Minsc")
 See("Minsc")
 !StateCheck("Minsc",CD_STATE_NOTVALID)
 Global("E3FADEMINSCTALK","LOCALS",0)
@@ -5827,7 +5829,10 @@ IF ~~ THEN REPLY @4165 GOTO fademinscrat3
 IF ~~ THEN REPLY @4166 GOTO fademinscrat4
 
 CHAIN
-IF ~InParty("E3Fade")
+IF ~InParty(Myself) 
+!StateCheck(Myself,CD_STATE_NOTVALID) 
+CombatCounter(0) !See([ENEMY])
+InParty("E3Fade")
 See("E3Fade")
 !StateCheck("E3Fade",CD_STATE_NOTVALID)
 Global("E3FADEMINSCTALK2","LOCALS",0)~ THEN BMINSC fademinsc2
@@ -5836,7 +5841,10 @@ Global("E3FADEMINSCTALK2","LOCALS",0)~ THEN BMINSC fademinsc2
 EXIT
 
 CHAIN
-IF ~InParty("Minsc")
+IF ~InParty(Myself) 
+!StateCheck(Myself,CD_STATE_NOTVALID) 
+CombatCounter(0) !See([ENEMY])
+InParty("Minsc")
 See("Minsc")
 !StateCheck("Minsc",CD_STATE_NOTVALID)
 Global("E3FADEMINSCTALK3","LOCALS",0)~ THEN BE3FADE fademinsc3
@@ -5845,7 +5853,10 @@ Global("E3FADEMINSCTALK3","LOCALS",0)~ THEN BE3FADE fademinsc3
 EXIT
 
 CHAIN
-IF ~InParty("Nalia")
+IF ~InParty(Myself) 
+!StateCheck(Myself,CD_STATE_NOTVALID) 
+CombatCounter(0) !See([ENEMY])
+InParty("Nalia")
 See("Nalia")
 !StateCheck("Nalia",CD_STATE_NOTVALID)
 Global("E3FADENALIATALK1","GLOBAL",0)~ THEN BE3FADE fadenalia1
@@ -5854,7 +5865,10 @@ Global("E3FADENALIATALK1","GLOBAL",0)~ THEN BE3FADE fadenalia1
 EXIT
 
 CHAIN
-IF ~InParty("E3Fade")
+IF ~InParty(Myself) 
+!StateCheck(Myself,CD_STATE_NOTVALID) 
+CombatCounter(0) !See([ENEMY])
+InParty("E3Fade")
 See("E3Fade")
 !StateCheck("E3Fade",CD_STATE_NOTVALID)
 Global("E3FADENALIATALK1","GLOBAL",1)~ THEN BNALIA fadenalia2
@@ -5863,7 +5877,10 @@ Global("E3FADENALIATALK1","GLOBAL",1)~ THEN BNALIA fadenalia2
 EXIT
 
 CHAIN
-IF ~InParty("Valygar")
+IF ~InParty(Myself) 
+!StateCheck(Myself,CD_STATE_NOTVALID) 
+CombatCounter(0) !See([ENEMY])
+InParty("Valygar")
 See("Valygar")
 !StateCheck("Valygar",CD_STATE_NOTVALID)
 AreaType(FOREST)
@@ -5873,7 +5890,10 @@ Global("E3FADEVALYGARTALK","LOCALS",0)~ THEN BE3FADE fadevalygarbear
 EXIT
 
 CHAIN
-IF ~InParty("Valygar")
+IF ~InParty(Myself) 
+!StateCheck(Myself,CD_STATE_NOTVALID) 
+CombatCounter(0) !See([ENEMY])
+InParty("Valygar")
 See("Valygar")
 !StateCheck("Valygar",CD_STATE_NOTVALID)
 Global("E3FADEVALYGARTALK2","LOCALS",0)~ THEN BE3FADE fadevalygarsmile
@@ -5882,7 +5902,10 @@ Global("E3FADEVALYGARTALK2","LOCALS",0)~ THEN BE3FADE fadevalygarsmile
 EXIT
 
 CHAIN
-IF ~InParty("Viconia")
+IF ~InParty(Myself) 
+!StateCheck(Myself,CD_STATE_NOTVALID) 
+CombatCounter(0) !See([ENEMY])
+InParty("Viconia")
 See("Viconia")
 !StateCheck("Viconia",CD_STATE_NOTVALID)
 Global("E3FADEVICONIATALK1","LOCALS",0)~ THEN BE3FADE fadeviconia1
@@ -5891,7 +5914,10 @@ Global("E3FADEVICONIATALK1","LOCALS",0)~ THEN BE3FADE fadeviconia1
 EXIT
 
 CHAIN
-IF ~InParty("E3Fade")
+IF ~InParty(Myself) 
+!StateCheck(Myself,CD_STATE_NOTVALID) 
+CombatCounter(0) !See([ENEMY])
+InParty("E3Fade")
 See("E3Fade")
 !StateCheck("E3Fade",CD_STATE_NOTVALID)
 Global("E3FADEVICONIATALK2","LOCALS",0)~ THEN BVICONI fadeviconia2
@@ -5900,7 +5926,10 @@ Global("E3FADEVICONIATALK2","LOCALS",0)~ THEN BVICONI fadeviconia2
 EXIT
 
 CHAIN
-IF ~InParty("E3Fade")
+IF ~InParty(Myself) 
+!StateCheck(Myself,CD_STATE_NOTVALID) 
+CombatCounter(0) !See([ENEMY])
+InParty("E3Fade")
 See("E3Fade")
 !StateCheck("E3Fade",CD_STATE_NOTVALID)
 Global("E3FADEYOSHIMOTALK","LOCALS",0)~ THEN BYOSHIM fadeyoshimo
@@ -5957,31 +5986,31 @@ END
 END
 
 INTERJECT BE3FADE lt4_start e3fadevsaerie
-== BAERIE IF ~InParty("Aerie")
+== BAERIE IF ~InParty("Aerie") InMyArea("Aerie")
 !StateCheck("Aerie",CD_STATE_NOTVALID)
 Global("AERIEROMANCEACTIVE","GLOBAL",1)~ THEN @4229
-== BE3FADE IF ~InParty("Aerie")
+== BE3FADE IF ~InParty("Aerie") InMyArea("Aerie")
 !StateCheck("Aerie",CD_STATE_NOTVALID)
 Global("AERIEROMANCEACTIVE","GLOBAL",1)~ THEN @4205
-== BAERIE IF ~InParty("Aerie")
+== BAERIE IF ~InParty("Aerie") InMyArea("Aerie")
 !StateCheck("Aerie",CD_STATE_NOTVALID)
 Global("AERIEROMANCEACTIVE","GLOBAL",1)~ THEN @4230
-== BE3FADE IF ~InParty("Aerie")
+== BE3FADE IF ~InParty("Aerie") InMyArea("Aerie")
 !StateCheck("Aerie",CD_STATE_NOTVALID)
 Global("AERIEROMANCEACTIVE","GLOBAL",1)~ THEN @4231
-== BAERIE IF ~InParty("Aerie")
+== BAERIE IF ~InParty("Aerie") InMyArea("Aerie")
 !StateCheck("Aerie",CD_STATE_NOTVALID)
 Global("AERIEROMANCEACTIVE","GLOBAL",1)~ THEN @4232
-== BE3FADE IF ~InParty("Aerie")
+== BE3FADE IF ~InParty("Aerie") InMyArea("Aerie")
 !StateCheck("Aerie",CD_STATE_NOTVALID)
 Global("AERIEROMANCEACTIVE","GLOBAL",1)~ THEN @4233
-== BAERIE IF ~InParty("Aerie")
+== BAERIE IF ~InParty("Aerie") InMyArea("Aerie")
 !StateCheck("Aerie",CD_STATE_NOTVALID)
 Global("AERIEROMANCEACTIVE","GLOBAL",1)~ THEN @4234
-== BE3FADE IF ~InParty("Aerie")
+== BE3FADE IF ~InParty("Aerie") InMyArea("Aerie")
 !StateCheck("Aerie",CD_STATE_NOTVALID)
 Global("AERIEROMANCEACTIVE","GLOBAL",1)~ THEN @4235
-== BAERIE IF ~InParty("Aerie")
+== BAERIE IF ~InParty("Aerie") InMyArea("Aerie")
 !StateCheck("Aerie",CD_STATE_NOTVALID)
 Global("AERIEROMANCEACTIVE","GLOBAL",1)~ THEN @4236
 END
@@ -5989,19 +6018,19 @@ IF ~~ THEN REPLY @4237 GOTO fadevsaerie_me
 IF ~~ THEN REPLY @4238 EXTERN BAERIE fadevsaerie_like
 
 INTERJECT BE3FADE lt10_start e3fadevsviconia1
-== BVICONI IF ~InParty("Viconia")
+== BVICONI IF ~InParty("Viconia") InMyArea("Viconia")
 !StateCheck("Viconia",CD_STATE_NOTVALID)
 Global("VICONIAROMANCEACTIVE","GLOBAL",1)~ THEN @4239
-== BE3FADE IF ~InParty("Viconia")
+== BE3FADE IF ~InParty("Viconia") InMyArea("Viconia")
 !StateCheck("Viconia",CD_STATE_NOTVALID)
 Global("VICONIAROMANCEACTIVE","GLOBAL",1)~ THEN @4240
-== BVICONI IF ~InParty("Viconia")
+== BVICONI IF ~InParty("Viconia") InMyArea("Viconia")
 !StateCheck("Viconia",CD_STATE_NOTVALID)
 Global("VICONIAROMANCEACTIVE","GLOBAL",1)~ THEN @4241
-== BE3FADE IF ~InParty("Viconia")
+== BE3FADE IF ~InParty("Viconia") InMyArea("Viconia")
 !StateCheck("Viconia",CD_STATE_NOTVALID)
 Global("VICONIAROMANCEACTIVE","GLOBAL",1)~ THEN @4242
-== BVICONI IF ~InParty("Viconia")
+== BVICONI IF ~InParty("Viconia") InMyArea("Viconia")
 !StateCheck("Viconia",CD_STATE_NOTVALID)
 Global("VICONIAROMANCEACTIVE","GLOBAL",1)~ THEN @4243
 END
@@ -6009,25 +6038,25 @@ IF ~~ THEN REPLY @4244 GOTO lt10_childhood
 IF ~~ THEN REPLY @4245 GOTO lt10_waned
 
 INTERJECT BE3FADE lt20_start e3fadevsviconia3
-== BVICONI IF ~InParty("Viconia")
+== BVICONI IF ~InParty("Viconia") InMyArea("Viconia")
 !StateCheck("Viconia",CD_STATE_NOTVALID)
 Global("VICONIAROMANCEACTIVE","GLOBAL",1)~ THEN @4246
-== BE3FADE IF ~InParty("Viconia")
+== BE3FADE IF ~InParty("Viconia") InMyArea("Viconia")
 !StateCheck("Viconia",CD_STATE_NOTVALID)
 Global("VICONIAROMANCEACTIVE","GLOBAL",1)~ THEN @4247
-== BVICONI IF ~InParty("Viconia")
+== BVICONI IF ~InParty("Viconia") InMyArea("Viconia")
 !StateCheck("Viconia",CD_STATE_NOTVALID)
 Global("VICONIAROMANCEACTIVE","GLOBAL",1)~ THEN @4248
-== BE3FADE IF ~InParty("Viconia")
+== BE3FADE IF ~InParty("Viconia") InMyArea("Viconia")
 !StateCheck("Viconia",CD_STATE_NOTVALID)
 Global("VICONIAROMANCEACTIVE","GLOBAL",1)~ THEN @4249
-== BVICONI IF ~InParty("Viconia")
+== BVICONI IF ~InParty("Viconia") InMyArea("Viconia")
 !StateCheck("Viconia",CD_STATE_NOTVALID)
 Global("VICONIAROMANCEACTIVE","GLOBAL",1)~ THEN @4250
-== BE3FADE IF ~InParty("Viconia")
+== BE3FADE IF ~InParty("Viconia") InMyArea("Viconia")
 !StateCheck("Viconia",CD_STATE_NOTVALID)
 Global("VICONIAROMANCEACTIVE","GLOBAL",1)~ THEN @4251
-== BVICONI IF ~InParty("Viconia")
+== BVICONI IF ~InParty("Viconia") InMyArea("Viconia")
 !StateCheck("Viconia",CD_STATE_NOTVALID)
 Global("VICONIAROMANCEACTIVE","GLOBAL",1)~ THEN @4252
 END
@@ -6036,22 +6065,22 @@ IF ~~ THEN REPLY @4254 EXTERN BVICONI fadevsviconia3_saying
 IF ~~ THEN REPLY @4255 GOTO fadevsviconia3_interest
 
 INTERJECT BE3FADE lt14_start e3fadevsjaheira
-== BJAHEIR IF ~InParty("Jaheira")
+== BJAHEIR IF ~InParty("Jaheira") InMyArea("Jaheira")
 !StateCheck("Jaheira",CD_STATE_NOTVALID)
 Global("JAHEIRAROMANCEACTIVE","GLOBAL",1)~ THEN @4256
-== BE3FADE IF ~InParty("Jaheira")
+== BE3FADE IF ~InParty("Jaheira") InMyArea("Jaheira")
 !StateCheck("Jaheira",CD_STATE_NOTVALID)
 Global("JAHEIRAROMANCEACTIVE","GLOBAL",1)~ THEN @4257
-== BJAHEIR IF ~InParty("Jaheira")
+== BJAHEIR IF ~InParty("Jaheira") InMyArea("Jaheira")
 !StateCheck("Jaheira",CD_STATE_NOTVALID)
 Global("JAHEIRAROMANCEACTIVE","GLOBAL",1)~ THEN @4258
-== BE3FADE IF ~InParty("Jaheira")
+== BE3FADE IF ~InParty("Jaheira") InMyArea("Jaheira")
 !StateCheck("Jaheira",CD_STATE_NOTVALID)
 Global("JAHEIRAROMANCEACTIVE","GLOBAL",1)~ THEN @4259
-== BJAHEIR IF ~InParty("Jaheira")
+== BJAHEIR IF ~InParty("Jaheira") InMyArea("Jaheira")
 !StateCheck("Jaheira",CD_STATE_NOTVALID)
 Global("JAHEIRAROMANCEACTIVE","GLOBAL",1)~ THEN @4260
-== BE3FADE IF ~InParty("Jaheira")
+== BE3FADE IF ~InParty("Jaheira") InMyArea("Jaheira")
 !StateCheck("Jaheira",CD_STATE_NOTVALID)
 Global("JAHEIRAROMANCEACTIVE","GLOBAL",1)~ THEN @4261
 END

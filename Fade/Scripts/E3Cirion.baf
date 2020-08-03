@@ -1,7 +1,7 @@
 IF
    InParty("E3Fade")
    See("E3Fade")
-   !StateCheck("E3Fade",STATE_SLEEPING)
+   !StateCheck("E3Fade",CD_STATE_NOTVALID)
    Range([PC],10)
    Global("E3CIRIONTALKS","LOCALS",0)
    GlobalGT("E3FINALQUEST","GLOBAL",3)

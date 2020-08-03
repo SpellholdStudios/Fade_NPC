@@ -313,7 +313,7 @@
         <p class="about">
           <a href="http://www.spellholdstudios.net/ie/fade">Mod Website</a> &#8226;
           <a href="http://www.shsforums.net/forum/322-fade/">Mod Forum</a> &#8226;
-          Version: 5.1
+          Version: 5.2
         </p>
         <hr />
         <p class="menu">
@@ -344,7 +344,7 @@
           <h5>PC (BGII)</h5>
           <p>ToB is required. Extract the contents of the .rar file into your BGII main directory, which is normally: C:\Program Files\Black Isle\BGII - SoA - and run Setup-Fade.exe to install.</p>
           <h5>PC (BGII:EE)</h5>
-          <p>Extract the contents of the .rar file into your BGII:EE main directory, which is normally: C:\Program Files\Beamdog\ - and run Setup-Fade.exe to install.</p>
+          <p>Extract the contents of the .rar file into your BGII:EE (or EET) main directory, which is normally: C:\Program Files\Beamdog\ - and run Setup-Fade.exe to install.</p>
           <h5>Compatibility</h5>
           <p>Most mods should be compatible, but if you do encounter issues, please report it at the Fade Romance forum.</p>
           <p>Although it is not required for the Fade NPC to function properly, it is always a good idea install the latest version of the <a href="http://www.gibberlings3.net/bg2fixpack/">BG2 Fixpack</a>.</p>
@@ -447,10 +447,10 @@
 <br /><br />
           <ul>
             <li><a href="http://www.weidu.org">WeiDU</a>, by Westley Weimer/Valerio Bigiani (the bigg)</li>
-            <li><a href="http://www.idi.ntnu.no/~joh/ni/">Near Infinity</a>, by Jon Olav Hauglid</li>
-            <li><a href="http://forums.gibberlings3.net/index.php?showforum=137">DLTCEP</a>, by Avenger</li>
+            <li><a href="http://www.idi.ntnu.no/~joh/ni/">Near Infinity</a>, by Jon Olav Hauglid (current version is <a href="https://forums.beamdog.com/discussion/30593/new-versions-of-nearinfinity-available/p1">here</a>)</li> 
+            <li><a href="https://www.gibberlings3.net/forums/forum/137-dltcep/">DLTCEP</a>, by Avenger</li>
             <li><a href="http://www.rarlab.com/">WinRAR</a>, by Eugene Roshal/Alexander Roshal</li>
-            <li><a href="http://iesdp.gibberlings3.net">IESDP</a>, maintained by igi</li>
+            <li><a href="https://gibberlings3.github.io/iesdp/main.htm">IESDP</a>, maintained by igi</li>
           </ul>
           <h5>Copyright Notice:</h5>
           <div class="important">
@@ -497,6 +497,20 @@
             <li>Replaced STATE_SLEEPING check for dialogues with CD_STATE_NOTVALID</li>
             <li>Added CD_STATE_NOTVALID check for both Player1 and Fade for some dialogues</li>
             <li>More EET-friendly code by Jastey (v5.1)</li>
+            <li>Even more EET-friendly code by Jastey (v5.2)</li>
+            <li>Fade should interject in Watcher's Keep in SoA, interjections at Watcher's Keep should not end the dialogues in ToB (v5.2)</li>
+			<li>Slaver quest should not start if Fade is not romanced (v5.2)</li>
+            <li>Change to HANDLE_AUDIO (v5.2)</li>
+            <li>Replaced STATE_SLEEPING check for scripts with CD_STATE_NOTVALID (v5.2)</li>
+            <li>Added InMyArea("E3Fade") to interjections in ToB (v5.2)</li>
+            <li>Added See("E3Fade") !StateCheck("E3FADE",CD_STATE_NOTVALID) to interjections in SoA (v5.2)</li>
+            <li>Changing instances of "…" to "..." and "`" to "'" in fade.tra (v5.2)</li>
+            <li>Adding map note text of E3AR0500.baf to fade-setup.tra (v5.2)</li>
+            <li>First call of setup-fade.tra goes to "Fade/Tra/classic/english/setup-fade.tra" so doubled setup.tra in the "autotra" folder is not needed. (v5.2)</li>
+            <li>Added InParty(Myself) !StateCheck(Myself,CD_STATE_NOTVALID) CombatCounter(0) !See([ENEMY]) to banter. (v5.2)</li>
+            <li>Dialogues trigger more stable, no more skipped dialogues, no more "empty" start of romance music. (v5.2)</li>
+			<li>Viconia's romance conflict dialogue should always trigger. (v5.2)</li>
+			<li>Improved compatibility: Using COPY_TRANS after first INTERJECT into ARAN.dlg. (v5.2)</li>
           </ul>
           
           <address>

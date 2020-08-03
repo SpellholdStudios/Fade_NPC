@@ -1,8 +1,11 @@
 IF
+  !StateCheck(Player1,CD_STATE_NOTVALID) 
+  !StateCheck("E3FADE",CD_STATE_NOTVALID)
   !Global("E3FADEROMANCEACTIVE","GLOBAL",0)
   !Global("E3FADEROMANCEACTIVE","GLOBAL",3)
   Global("E3FADEMATCH","GLOBAL",1)
   Global("E3SLAVERKIDNAP","GLOBAL",3)
+  GlobalGT("E3LOVETALK","GLOBAL",30)
   !GlobalTimerExpired("E3TREATMENTTIMER","GLOBAL")
   See(Player1)
   CombatCounter(0)
@@ -27,6 +30,8 @@ THEN
 END
 
 IF
+  !StateCheck(Player1,CD_STATE_NOTVALID) 
+  !StateCheck("E3FADE",CD_STATE_NOTVALID)
   !Global("E3FADEROMANCEACTIVE","GLOBAL",0)
   !Global("E3FADEROMANCEACTIVE","GLOBAL",3)
   Global("E3FADEMATCH","GLOBAL",1)
@@ -52,6 +57,8 @@ THEN
 END
 
 IF
+  !StateCheck(Player1,CD_STATE_NOTVALID) 
+  !StateCheck("E3FADE",CD_STATE_NOTVALID)
    !Global("E3FADEROMANCEACTIVE","GLOBAL",0)
    !Global("E3FADEROMANCEACTIVE","GLOBAL",3)
    Global("E3DIDSVIRFTALK","LOCALS",0)
@@ -68,6 +75,8 @@ THEN
 END
 
 IF
+  !StateCheck(Player1,CD_STATE_NOTVALID) 
+  !StateCheck("E3FADE",CD_STATE_NOTVALID)
   !Global("E3FADEROMANCEACTIVE","GLOBAL",0)
   !Global("E3FADEROMANCEACTIVE","GLOBAL",3)
   Global("E3FADEMATCH","GLOBAL",1)
@@ -83,6 +92,7 @@ THEN
     RESPONSE #100
         PlaySong(0)
         MoveViewObject("E3Fade",INSTANT)
+        RealSetGlobalTimer("E3FADEROMANCE","GLOBAL",2600)
         IncrementGlobal("E3LOVETALK","GLOBAL",1)
         RealSetGlobalTimer("E3FADEROMANCE","GLOBAL",1)
         PlaySound("E3THEME")

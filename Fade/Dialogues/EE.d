@@ -6,7 +6,10 @@
 
 //SoA
 
-CHAIN IF WEIGHT #-1 ~InParty("E3Fade")
+CHAIN IF WEIGHT #-1 ~InParty(Myself)
+!StateCheck(Myself,CD_STATE_NOTVALID)
+CombatCounter(0) !See([ENEMY])
+InParty("E3Fade")
 See("E3Fade")
 !StateCheck("E3Fade",CD_STATE_NOTVALID)
 Global("E3FADENEERATALK","GLOBAL",0)~THEN BNEERA FadeNeeraSoA01
@@ -25,7 +28,10 @@ DO ~SetGlobal("E3FADENEERATALK","GLOBAL",1)~
 EXIT
 
 
-CHAIN IF WEIGHT #-1 ~InParty("NEERA")
+CHAIN IF WEIGHT #-1 ~InParty(Myself)
+!StateCheck(Myself,CD_STATE_NOTVALID)
+CombatCounter(0) !See([ENEMY])
+InParty("NEERA")
 See("NEERA")
 !StateCheck("NEERA",CD_STATE_NOTVALID)
 Global("E3FADENEERATALK","GLOBAL",1)~THEN BE3FADE FadeNeeraSoA02
@@ -157,7 +163,10 @@ END
 
 //ToB
 
-CHAIN IF WEIGHT #-1 ~InParty("NEERA")
+CHAIN IF WEIGHT #-1 ~InParty(Myself)
+!StateCheck(Myself,CD_STATE_NOTVALID)
+CombatCounter(0) !See([ENEMY])
+InParty("NEERA")
 See("NEERA")
 !StateCheck("NEERA",CD_STATE_NOTVALID)
 Global("E3FADENEERA25TALK1","LOCALS",0)~THEN BE3FAD25 FadeNeeraToB01
@@ -191,7 +200,10 @@ EXIT
 ////////////////////////
 
 
-CHAIN IF WEIGHT #-1 ~InParty("HEXXAT")
+CHAIN IF WEIGHT #-1 ~InParty(Myself)
+!StateCheck(Myself,CD_STATE_NOTVALID)
+CombatCounter(0) !See([ENEMY])
+InParty("HEXXAT")
 See("HEXXAT")
 !StateCheck("HEXXAT",CD_STATE_NOTVALID)
 Global("E3FADEHEXXATTALK","GLOBAL",0)~THEN BE3FADE FadeHexxatSoA01
@@ -205,7 +217,10 @@ DO ~SetGlobal("E3FADEHEXXATTALK","GLOBAL",1)~
 ==BE3FADE @6793
 EXIT
 
-CHAIN IF WEIGHT #-1 ~InParty("HEXXAT")
+CHAIN IF WEIGHT #-1 ~InParty(Myself)
+!StateCheck(Myself,CD_STATE_NOTVALID)
+CombatCounter(0) !See([ENEMY])
+InParty("HEXXAT")
 See("HEXXAT")
 !StateCheck("HEXXAT",CD_STATE_NOTVALID)
 Global("E3FADEHEXXATTALK","GLOBAL",1)~THEN BE3FADE FadeHexxatSoA02
@@ -278,7 +293,10 @@ EXIT
 ///////////////////////////
 
 
-CHAIN IF WEIGHT #-1 ~InParty("RASAAD")
+CHAIN IF WEIGHT #-1 ~InParty(Myself)
+!StateCheck(Myself,CD_STATE_NOTVALID)
+CombatCounter(0) !See([ENEMY])
+InParty("RASAAD")
 See("RASAAD")
 !StateCheck("RASAAD",CD_STATE_NOTVALID)
 Global("E3FADERASAADTALK","GLOBAL",0)~THEN BE3FADE FadeRasaadSoA01
@@ -298,7 +316,10 @@ DO ~SetGlobal("E3FADERASAADTALK","GLOBAL",1)~
   ==BRASAAD @6832
   EXIT
  
-CHAIN IF WEIGHT #-1 ~InParty("RASAAD")
+CHAIN IF WEIGHT #-1 ~InParty(Myself)
+!StateCheck(Myself,CD_STATE_NOTVALID)
+CombatCounter(0) !See([ENEMY])
+InParty("RASAAD")
 See("RASAAD")
 !StateCheck("RASAAD",CD_STATE_NOTVALID)
 Global("E3FADERASAADTALK","GLOBAL",1)~THEN BE3FADE FadeRasaadSoA02
@@ -317,7 +338,10 @@ DO ~SetGlobal("E3FADERASAADTALK","GLOBAL",2)~
   ==BRASAAD @6844
   EXIT
  
-CHAIN IF WEIGHT #-1 ~InParty("RASAAD")
+CHAIN IF WEIGHT #-1 ~InParty(Myself)
+!StateCheck(Myself,CD_STATE_NOTVALID)
+CombatCounter(0) !See([ENEMY])
+InParty("RASAAD")
 See("RASAAD")
 !StateCheck("RASAAD",CD_STATE_NOTVALID)
 Global("E3FADERASAADTALK","GLOBAL",2)~THEN BRASAAD FadeRasaadSoA03
@@ -400,7 +424,10 @@ END
 
 //tob
 
-CHAIN IF WEIGHT #-1 ~InParty("RASAAD")
+CHAIN IF WEIGHT #-1 ~InParty(Myself)
+!StateCheck(Myself,CD_STATE_NOTVALID)
+CombatCounter(0) !See([ENEMY])
+InParty("RASAAD")
 See("RASAAD")
 !StateCheck("RASAAD",CD_STATE_NOTVALID)
 Global("E3FADERASAADTALKTOB","GLOBAL",0)~THEN BE3FAD25 FadeRasaadToB01
@@ -424,11 +451,14 @@ DO ~SetGlobal("E3FADERASAADTALKTOB","GLOBAL",1)~
 // Rasaad's personal quest, Alorgoth's dragon is dead and the cave is collapsing
 
 INTERJECT_COPY_TRANS RASAA25J 133 RASAA25J /* ~Let it! Alorgoth and I both will be buried here!~ */
-== E3FAD25J IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== E3FAD25J IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @6900
 END
 
-CHAIN IF WEIGHT #-1 ~InParty("RASAAD")
+CHAIN IF WEIGHT #-1 ~InParty(Myself)
+!StateCheck(Myself,CD_STATE_NOTVALID)
+CombatCounter(0) !See([ENEMY])
+InParty("RASAAD")
 See("RASAAD")
 !StateCheck("RASAAD",CD_STATE_NOTVALID)
 Global("E3FADERASAADTALKTOBQ1","GLOBAL",0)
@@ -454,7 +484,10 @@ DO ~SetGlobal("E3FADERASAADTALKTOBQ1","GLOBAL",1)~
 /////// DORN ////////
 /////////////////////
 
-CHAIN IF WEIGHT #-1 ~InParty("DORN")
+CHAIN IF WEIGHT #-1 ~InParty(Myself)
+!StateCheck(Myself,CD_STATE_NOTVALID)
+CombatCounter(0) !See([ENEMY])
+InParty("DORN")
 See("DORN")
 !StateCheck("DORN",CD_STATE_NOTVALID)
 Global("E3FADEDORNTALK","GLOBAL",0)~THEN BDORN FadeDornSoA01
@@ -476,7 +509,10 @@ DO ~SetGlobal("E3FADEDORNTALK","GLOBAL",1)~
   EXIT
 
    
-CHAIN IF WEIGHT #-1 ~InParty("DORN")
+CHAIN IF WEIGHT #-1 ~InParty(Myself)
+!StateCheck(Myself,CD_STATE_NOTVALID)
+CombatCounter(0) !See([ENEMY])
+InParty("DORN")
 See("DORN")
 !StateCheck("DORN",CD_STATE_NOTVALID)
 Global("E3FADEDORNTALK","GLOBAL",1)~THEN BDORN FadeDornSoA02
@@ -505,7 +541,7 @@ DO ~SetGlobal("E3FADEDORNTALK","GLOBAL",2)~
 
 // Interjection, Dorn's personal quest, Radiant Heart
 INTERJECT_COPY_TRANS DORNJ 1 E3FadeRHDorn01 /*~Kill them all! None must live to tell of our deeds.~*/
-== E3FADEJ IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== E3FADEJ IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @6948
 END
 
@@ -560,7 +596,10 @@ END
 
 /* This first banter MUST occur AFTER Gormnir's death */
 
-CHAIN IF WEIGHT #-1 ~Dead("GROMNIR")
+CHAIN IF WEIGHT #-1 ~InParty(Myself)
+!StateCheck(Myself,CD_STATE_NOTVALID)
+CombatCounter(0) !See([ENEMY])
+Dead("GROMNIR")
 InParty("DORN")
 See("DORN")
 !StateCheck("DORN",CD_STATE_NOTVALID)
@@ -582,7 +621,10 @@ DO ~SetGlobal("E3FADEDORNTALKTOB","GLOBAL",1)~
   
 /* This second banter is conditional, it must occur after Dorn completed his ToB quest to kill the tree */
 
-CHAIN IF WEIGHT #-1 ~InParty("DORN")
+CHAIN IF WEIGHT #-1 ~InParty(Myself)
+!StateCheck(Myself,CD_STATE_NOTVALID)
+CombatCounter(0) !See([ENEMY])
+InParty("DORN")
 See("DORN")
 !StateCheck("DORN",CD_STATE_NOTVALID)
 Global("E3FADEDORNTALKTOB","GLOBAL",1)

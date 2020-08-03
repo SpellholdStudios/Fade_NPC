@@ -1,6 +1,6 @@
 BACKUP ~Fade/Backup~
 AUTHOR ~Mistress Elysia, Silmarien, Lava Del'Vortel, Kai of Candlekeep~
-VERSION ~5.1~
+VERSION ~5.2~
 
 README ~Fade/Fade_readme.html~
 
@@ -68,7 +68,7 @@ END// End of ALWAYS text file copying
 
 LANGUAGE ~English~
          ~english~   
-         ~Fade\Tra\autotra/english\setup-fade.tra~
+         ~Fade/Tra/classic/english/setup-fade.tra~
 
 
 
@@ -258,9 +258,13 @@ ACTION_IF FILE_EXISTS_IN_GAME ~neera10.cre~ THEN BEGIN
     COPY ~Fade/Portraits/L&LEE~ ~override~
 END
      
-//Sounds
+//Sounds 
+/*
 COPY ~Fade/fadeaudio.bat~ ~fadeaudio.bat~
      ~Fade/audio~ ~override~
+*/
+
+LAF HANDLE_AUDIO STR_VAR audio_path = ~Fade/audio~ oggdec_path = ~Fade/audio~ sox_path = ~Fade/audio~ END
 
 //Items
 COPY ~Fade/Items/E3Letter.itm~ ~override/E3Letter.itm~
@@ -401,6 +405,7 @@ USING ~fade\tra\autotra/%s\fade.tra~
 COMPILE ~Fade/Dialogues/E3Fade25.d~ EVALUATE_BUFFER
 USING ~fade\tra\autotra/%s\fade.tra~
 
+/*
 /* fate spirit summoning: make EET consistent */
 ACTION_IF GAME_IS ~eet~ BEGIN
   COMPILE ~Fade/Dialogues/Fade_Fatesp_eet.d~ EVALUATE_BUFFER
@@ -409,6 +414,88 @@ END ELSE BEGIN
     COMPILE ~Fade/Dialogues/Fade_Fatesp_bg2.d~ EVALUATE_BUFFER
 USING ~fade\tra\autotra/%s\fade.tra~
 END
+*/
+
+
+//TOB TRANSITION
+
+
+ACTION_IF GAME_IS ~eet~ BEGIN
+INCLUDE ~EET/other/EET_functions.tph~
+/* summon romanced Fade */
+
+  LAF ~EET_NPC_TRANSITION~
+    INT_VAR
+      type = 2
+      default_ToB = 1
+      clean_ToB = 1
+    STR_VAR
+      dv = "E3Fade_c#temp"
+      override_SoA = "E3Fade"
+      override_ToB = "E3Fade25"
+      dialog_ToB = "BE3Fad25"
+      cre_ToB = "e3fade25"
+      traFile = EVAL "fade\tra\autotra/%s\fade.tra"
+      string = "@4805"
+      stringPosDV = "Eldoth"
+      SummonedVar = "E3FadeSummonedToB_c#temp"
+  END
+
+
+  LAF ~EET_NPC_TRANSITION~
+    INT_VAR
+      type = 2
+      default_ToB = 1
+      clean_ToB = 1
+    STR_VAR
+      dv = "E3Fade"
+      override_SoA = "E3Fade"
+      override_ToB = "E3Fade25"
+      dialog_ToB = "BE3Fad25"
+      cre_ToB = "e3fade25"
+      traFile = EVAL "fade\tra\autotra/%s\fade.tra"
+      string = "@4804"
+      stringPosDV = "Eldoth"
+      SummonedVar = "E3FadeSummonedToB"
+  END
+
+/* adjust and clean up romance case */
+	COPY_EXISTING ~fatesp.dlg~ ~override~ 
+	  DECOMPILE_AND_PATCH BEGIN
+	    REPLACE_TEXTUALLY ~Dead("E3Fade_c#temp")~ ~Dead("E3Fade")
+   Global("E3FADEROMANCEACTIVE","GLOBAL",0)
+   Gender(Player1,MALE)~
+	    REPLACE_TEXTUALLY ~SetGlobal("E3FadeSummonedToB_c#temp","GLOBAL",1)~ ~SetGlobal("E3FadeSummonedToB","GLOBAL",1) SetGlobal("E3FADEMATCH","GLOBAL",1)
+SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",2)~
+	    REPLACE_TEXTUALLY ~E3Fade_c#temp~ ~E3Fade~ 
+	  END
+	  BUT_ONLY
+	  
+	COPY_EXISTING ~ar4000.bcs~ ~override~ 
+	              ~ar4500.bcs~ ~override~
+	  DECOMPILE_AND_PATCH BEGIN
+/*
+	    REPLACE_TEXTUALLY ~[ %TAB%]Global("E3FadeSummonedToB_c#temp","GLOBAL",[01])~ ~False()~
+	    REPLACE_TEXTUALLY ~E3Fade_c#temp~ ~E3Fade~ 
+*/
+	    REPLACE_TEXTUALLY ~_c#temp~ ~~
+	  END
+	  BUT_ONLY
+
+	COPY_EXISTING ~E3FADE.bcs~ ~override~ 
+	  DECOMPILE_AND_PATCH BEGIN
+	    REPLACE_TEXTUALLY ~E3Fade_c#temp~ ~E3Fade~ 
+	  END
+	  BUT_ONLY
+
+
+END ELSE BEGIN
+COMPILE ~Fade/Dialogues/Fade_Fatesp_bg2.d~ EVALUATE_BUFFER
+USING ~fade\tra\autotra/%s\fade.tra~
+END
+
+
+
 
 // 2da appending
 APPEND ~pdialog.2da~
@@ -475,10 +562,12 @@ EXTEND_TOP ~ar6200.bcs~ ~Fade/Scripts/E3AR6200.baf~ EVALUATE_BUFFER
 EXTEND_BOTTOM ~ar0900.bcs~ ~Fade/Scripts/E3AR0900.baf~ EVALUATE_BUFFER
 EXTEND_TOP ~ar5000.bcs~ ~Fade/Scripts/AR5000.baf~ EVALUATE_BUFFER
 
+/*
 /* eet: switch to ToB script if Fade is in party */
 ACTION_IF GAME_IS ~eet~ BEGIN
   EXTEND_BOTTOM ~ar4000.bcs~ ~Fade/Scripts/ar4000.baf~ EVALUATE_BUFFER
 END
+*/
 
 COPY_EXISTING ~ar0527.are~ ~override/ar0527.are~
 WRITE_ASCII ~0x94~ ~AR0527~
@@ -493,9 +582,10 @@ COPY_EXISTING ~amcler02.sto~ ~override/amcler02.sto~
 ADD_STORE_ITEM ~E3RING01~ #1 #0 #0 ~IDENTIFIED~ #1
 ADD_STORE_ITEM ~scrl5f~ #1 #0 #0 ~IDENTIFIED~ #5
 
+/*
 AT_INTERACTIVE_EXIT ~fadeaudio.bat~
 AT_INTERACTIVE_UNINSTALL ~Fade/fadeaudiouninstall.bat~
-
+*/
 
 
 //////////////////////////////////////////////////

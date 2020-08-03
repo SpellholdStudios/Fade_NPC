@@ -12,7 +12,7 @@ END
 IF
   InParty(Myself)
   InParty("E3Fade")
-  !StateCheck("E3Fade",STATE_SLEEPING)
+  !StateCheck("E3Fade",CD_STATE_NOTVALID)
   GlobalGT("LOVETALK","LOCALS",6)
   GlobalGT("E3LOVETALK","GLOBAL",10)
   GlobalLT("E3LOVETALK","GLOBAL",20)
@@ -26,6 +26,12 @@ THEN
 END
 
 IF
+  InParty(Myself)
+  !StateCheck(Myself,CD_STATE_NOTVALID)
+  CombatCounter(0) !See([ENEMY])
+  InParty("E3Fade")
+  InMyArea("E3Fade")
+  !StateCheck("E3Fade",CD_STATE_NOTVALID)
   RealGlobalTimerExpired("E3FADEVSVICONIATIMER","GLOBAL")
   Global("E3FADEVSVICONIA2","GLOBAL",0)
   GlobalGT("E3LOVETALK","GLOBAL",10)
@@ -35,5 +41,17 @@ IF
 THEN
     RESPONSE #100
         SetGlobal("E3FADEVSVICONIA2","GLOBAL",1)
+END
+
+IF
+  InParty(Myself)
+  !StateCheck(Myself,CD_STATE_NOTVALID)
+  CombatCounter(0) !See([ENEMY])
+  InParty("E3Fade")
+  InMyArea("E3Fade")
+  !StateCheck("E3Fade",CD_STATE_NOTVALID)
+  Global("E3FADEVSVICONIA2","GLOBAL",1)
+THEN
+    RESPONSE #100
         StartDialogueNoSet("E3Fade")
 END

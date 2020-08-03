@@ -4,5 +4,5 @@ IF
 THEN
    RESPONSE #100
       SetGlobal("E3ARANSMUMMAP","AR0500",1)
-      AddMapNote([2962.597],~Mrs. Linvail's Home~)
+      AddMapNote([2962.597],@94)
 END

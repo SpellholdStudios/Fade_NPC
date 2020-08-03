@@ -9,7 +9,7 @@ END
 IF
    Detect("E3Fade")
    InParty("E3Fade")
-   !StateCheck("E3Fade",STATE_SLEEPING)
+   !StateCheck("E3Fade",CD_STATE_NOTVALID)
    Global("E3MESSENGERTALKS","LOCALS",0)
 THEN
    RESPONSE #100

@@ -8,22 +8,22 @@ BEGIN E3FAD25J
 // Illasera
 
 INTERJECT_COPY_TRANS ILLASERA 1 E3FadeIlla /*~So I have found you at last!  It was an effort to track you down, <CHARNAME>, in these woods.  Too many old wards for my liking...but here you are.~*/
-== E3FAD25J IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== E3FAD25J IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4835
-== ILLASERA IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== ILLASERA IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4836
 END
 
 
 // Sarevok (In Pocket Plane)
 INTERJECT_COPY_TRANS SAREV25A 1 E3FadePPSarevok01 /*~So.  You have finally arrived.  I have been waiting for you.~*/
-== E3FAD25J IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== E3FAD25J IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4837
 END
 
 // Il-Khan Bullies (Saradush)
 INTERJECT_COPY_TRANS SARBUL05 1 E3FadeBully /* ~Figures... you find elves, you find elf lovers!  Mind your own business and you won't get hurt.~ */
-== E3FAD25J IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== E3FAD25J IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4838
 END
 
@@ -31,14 +31,14 @@ END
 //Kiser Jhaeri
 
 INTERJECT_COPY_TRANS SARKIS01 9 E3FadeKiser /*~A sorrowing circumstance, to be sure.  Who could have conjectured that Mateo was a traitor?~*/
-== E3FAD25J IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== E3FAD25J IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4839
 END
 
 //Ardic Santele
 
 INTERJECT_COPY_TRANS SARSON01 2 E3FadeArdic /*~Yes, I am Ardic Santele.  I never thought I would see the light of day again!~*/
-== E3FAD25J IF ~Dead("sarkis01") InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== E3FAD25J IF ~Dead("sarkis01") InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4840
 END
 
@@ -46,12 +46,12 @@ END
 //Volo (Tankard Tree Inn)
 
 INTERJECT_COPY_TRANS SARVOLO 15 E3FadeVolo  
-== SARVOLO IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== SARVOLO IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 ~The indomitable Fade, with a fiery temper to match her fiery hair, continues to be one of <CHARNAME>'s most loyal and stalwart companions.~
 END
 
 INTERJECT_COPY_TRANS SARVOLO 15 E3FadeVolo  
-== SARVOLO IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== SARVOLO IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 ~The lovely Fade, with a fiery temper to match her fiery hair, stands by her beloved <CHARNAME>'s side throughout his journeys.~
 END
 */
@@ -59,36 +59,36 @@ END
 // Hectan (Lazarus Stolen Spellbook Quest)
 
 INTERJECT_COPY_TRANS SARTHF1 2 E3FadeBookThief /*~I see where this is going!  Well, Lazarus is barking up the wrong tree!  I was at the Tankard Tree all night long... and I have witnesses to prove it!~*/
-== E3FAD25J IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== E3FAD25J IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4841
-== SARTHF1 IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== SARTHF1 IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4842
 END
 
 // Tazit (Orphan in Saradush)
 
 INTERJECT_COPY_TRANS ORPHAN1 1 E3FadeOrphan1 /*~Is you a Bhaalspawn?!  Please don't eat me!  Daddy said Bhaalspawns eat little boys!  *sob*~ */
-== E3FAD25J IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== E3FAD25J IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4843
 END
 
 INTERJECT_COPY_TRANS ORPHAN1 4 E3FadeOrphan2 /*~Daddy got hit by the fire and fell down.  I can't wake him up, no matter what.  Please help my daddy.~*/
-== E3FAD25J IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== E3FAD25J IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4844
 END
 
 // Phlydian (Vampire in Saradush Prison)
 INTERJECT_COPY_TRANS SARVAM01 2 E3FadeVamp01 /* ~You... you are a powerful one of your kind.  I can smell the murder in your heart.  You shall never let us live, I would think.~ */
-== E3FAD25J IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== E3FAD25J IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4845
 END
 
 //Melissan (after Gromnir's death)
 
 INTERJECT_COPY_TRANS SARMEL01 34 E3FadeMel /*~Gromnir!  <CHARNAME>!  Lay aside your weapons!  We must work together to...  No!  I... I see I am too late to stop the bloodshed.  You have slain Gromnir and many other Bhaalspawn, as well.~*/
-== E3FAD25J IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== E3FAD25J IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4846
-== SARMEL01 IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== SARMEL01 IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4847
 END
 
@@ -96,12 +96,12 @@ END
 //Nyalee
 
 INTERJECT_COPY_TRANS HGNYA01 9 E3FadeNya1 /*~It is the boy...that traitorous fool of a half-giant boy of mine.  You come because of Yaga-Shura!  My boy has been a pain for you and I both, and you wish his blood, yes?~*/
-== E3FAD25J IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== E3FAD25J IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4848
 END
 
 INTERJECT_COPY_TRANS HGNYA01 14 E3FadeNya2 /*~The boy has removed his heart, and he will keep it afired and bathed in magical flames.  While his heart burns, no harm may come to Yaga-Shura.  No death may come until his heart is quenched!~*/
-== E3FAD25J IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== E3FAD25J IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4849
 END
 
@@ -109,17 +109,17 @@ END
 //Yaga's concubine
 
 INTERJECT_COPY_TRANS YAGCON 0 E3FadeConc1 /*~You there, <RACE>!  Release me from these chains!~*/
-== E3FAD25J IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== E3FAD25J IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4850
 END
 
 INTERJECT_COPY_TRANS YAGCON 5 E3FadeConc2 /*~Wait!  Wait.  I have information.  Release me and I will tell you what I know about the master of this place - the fire giant Yaga Shura.~*/
-== E3FAD25J IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== E3FAD25J IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4851
 END
 
 EXTEND_BOTTOM YAGCON 6
-IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID) Global("E3FadeAndConcubine","GLOBAL",0)~ THEN EXTERN E3FAD25J E3FadeConc3
+IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID) Global("E3FadeAndConcubine","GLOBAL",0)~ THEN EXTERN E3FAD25J E3FadeConc3
 END
 
 CHAIN E3FAD25J E3FadeConc3
@@ -159,29 +159,29 @@ DO ~SetGlobal("E3FadeAndConcubine","GLOBAL",1)~ EXIT
 // Yaga-Shura
 
 INTERJECT_COPY_TRANS YAGA01 4 E3FadeYaga01 /*~What...?!  No!  No, this cannot be!  I...I am wounded!!~*/
-== E3FAD25J IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== E3FAD25J IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4872
-== YAGA01 IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== YAGA01 IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4873
-== E3FAD25J IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== E3FAD25J IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4874
 END
 
 
 // Balthazar (Amkethran)
 INTERJECT_COPY_TRANS BALTH 3 E3FadeBalth01 /*~Melissan has already left the village, and did not say where she was going.  She has left with me directions for you to reach these...enclaves...she mentioned.  Is this what you expected?~*/
-== E3FAD25J IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== E3FAD25J IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4875
 END
 
 // Marlowe (Amkethran)
 INTERJECT_COPY_TRANS MARLOWE 1 E3FadeMarlowe1 /*~Excuse me, I... I do not mean to be rude... but you *are* one of the strangers that all the locals have been talking about, aren't you?  An adventurer from the north?~*/
-== E3FAD25J IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== E3FAD25J IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4876
 END
 
 INTERJECT_COPY_TRANS MARLOWE 18 E3FadeMarlowe2 /*~A lich, my <LADYLORD>.  A powerful one.  In Calimshan, there are many strange wonders of magic, and Vongoethe is not out of place.  It is he who has chased us here, hunting us mercilessly.~*/
-== E3FAD25J IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== E3FAD25J IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4877
 END
 
@@ -189,7 +189,7 @@ END
 //Elminster (Balthazar Plot)
 
 INTERJECT_COPY_TRANS AMELM01 13 E3FadeElmToB1 /*~As I understand it, Havarian has been into the monastery several times up until now.  He may be able to help you once again, if you're willing to look for his aid.~*/
-== E3FAD25J IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== E3FAD25J IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4878
 END
 
@@ -197,7 +197,7 @@ END
 //Saemon Havarian (Balthazar Plot)
 
 INTERJECT_COPY_TRANS AMSAEMON 13 E3FadeSaemon1 /*~I've done only what I've had to, in the past.  I may owe you for my unfortunate rudeness, perhaps, but overall you and I are pretty even, <CHARNAME>.~*/
-== E3FAD25J IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== E3FAD25J IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4879
 END
 
@@ -205,7 +205,7 @@ END
 //Draconis (Abazigal Plot)
 
 INTERJECT_COPY_TRANS BAZDRA01 2 E3FadeDraconis1 /*~No... I see I am wrong.  You are not brothers of the tattooed one.  *sniff*  I smell the taint of Bhaal on you.~*/
-== E3FAD25J IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== E3FAD25J IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4880
 END
 
@@ -213,7 +213,7 @@ END
 //Dying Monk (Abazigal Plot)
 
 INTERJECT_COPY_TRANS BAZMONK 1 E3FadeMonk1 /*~Don't touch me with your scaly claws! *cough* ... no more torture... I beg you.~*/
-== E3FAD25J IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== E3FAD25J IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4881
 END
 
@@ -221,7 +221,7 @@ END
 //Iycanth the Mad (Abazigal Plot)
 
 INTERJECT_COPY_TRANS BAZEYE01 2 E3FadeEyes1 /*~Well, I am Iycanth the Enlightened, most favored wizard of Lord Abazigal, ruler of Toril! These lovely creatures are my latest experiment and most trusted friends.~*/
-== E3FAD25J IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== E3FAD25J IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4882
 END
 
@@ -229,7 +229,7 @@ END
 //Captain Egeissag (Sendai Plot)
 
 INTERJECT_COPY_TRANS SENGUA03 1 E3FadeBeh1 /*~So you are the one who has caused so much trouble...  I must admit, I am not impressed.~*/
-== E3FAD25J IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== E3FAD25J IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4883
 END
 
@@ -237,62 +237,86 @@ END
 //Beholder (Sendai Plot)
 
 INTERJECT_COPY_TRANS SENBEH01 4 E3FadeBeh1 /*~Ahhh...and so it ends.  And so does my service with this particular drow dolt.  I mean, what's with these drow?  Have they nothing better to do than summon me for their stupid tasks?~*/
-== E3FAD25J IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== E3FAD25J IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4884
-== SENBEH01 IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== SENBEH01 IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4885
 END
 
 
 //Odren (Watcher's Keep)
 
-INTERJECT_COPY_TRANS GORODR1 11 E3FadeOdren1 /* ~That day has come, <CHARNAME>.  The great evil struggles within, and has infected the Watcher's Keep to the point where we cannot bypass the creatures and foul magic that blocks our path.~ */
-== E3FAD25J IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+I_C_T3 GORODR1 11 E3FadeOdren1 /* ~That day has come, <CHARNAME>.  The great evil struggles within, and has infected the Watcher's Keep to the point where we cannot bypass the creatures and foul magic that blocks our path.~ */
+== E3FADEJ IF ~GlobalLT("Chapter","GLOBAL",%bg2_chapter_8%)
+InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+@4886
+== E3FAD25J IF ~GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)
+InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4886
 END
 
 
 //Chromatic Demon (Watcher's Keep)
 
-INTERJECT_COPY_TRANS GORCHR 1 E3FadeChrDemon1 /*~Hmmm... sounds like you have been tricked into doing Helm's dirty work.  Looks like we are both unwilling participants in this little drama.~*/
-== E3FAD25J IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+I_C_T3 GORCHR 1 E3FadeChrDemon1 /*~Hmmm... sounds like you have been tricked into doing Helm's dirty work.  Looks like we are both unwilling participants in this little drama.~*/
+== E3FADEJ IF ~GlobalLT("Chapter","GLOBAL",%bg2_chapter_8%)
+InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4887
-== GORCHR IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== E3FAD25J IF ~GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)
+InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+@4887
+== GORCHR IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4888
 END
 
 
 //Yakman (Watcher's Keep)
 
-INTERJECT_COPY_TRANS GORMAD1 0 E3FadeYakman1 /*~Wh-what?!  Yakman... Yakman sees people before him... but they must be illusions!  Yes, Yakman is seeing illusions!  Delusionary Yakman!~*/
-== E3FAD25J IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+I_C_T3 GORMAD1 0 E3FadeYakman1 /*~Wh-what?!  Yakman... Yakman sees people before him... but they must be illusions!  Yes, Yakman is seeing illusions!  Delusionary Yakman!~*/
+== E3FAD25J IF ~GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)
+InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN 
+@4889
+== E3FADEJ IF ~GlobalLT("Chapter","GLOBAL",%bg2_chapter_8%)
+InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN 
 @4889
 END
 
 
 //Succubus (Watcher's Keep)
 
-INTERJECT_COPY_TRANS GORSUC01 0 E3FadeSucc01 /*~Ahhh, look here, dear ladies.  Yet another hapless wanderer, drifting through these endless portals.  Is it lost, do you think?  Shall we ask it?~*/
-== E3FAD25J IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+I_C_T3 GORSUC01 0 E3FadeSucc01 /*~Ahhh, look here, dear ladies.  Yet another hapless wanderer, drifting through these endless portals.  Is it lost, do you think?  Shall we ask it?~*/
+== E3FAD25J IF ~GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)
+InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4890
-== GORSUC01 IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== E3FADEJ IF ~GlobalLT("Chapter","GLOBAL",%bg2_chapter_8%)
+InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+@4890
+== GORSUC01 IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4891
 END
 
 //Carsten's Apprentice (Watcher's Keep)
 
-INTERJECT_COPY_TRANS GORAPR 16 E3FadeCar1 /*~I am beyond your power to either help or harm.  (cough)  The tortures of the illithid cannot be undone.  I... embrace the darkness.~*/
-== E3FAD25J IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+I_C_T3 GORAPR 16 E3FadeCar1 /*~I am beyond your power to either help or harm.  (cough)  The tortures of the illithid cannot be undone.  I... embrace the darkness.~*/
+== E3FAD25J IF ~GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)
+InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4892
-== GORAPR IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+== E3FADEJ IF ~GlobalLT("Chapter","GLOBAL",%bg2_chapter_8%)
+InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+@4892
+== GORAPR IF ~InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @879
 END
 
 
 //Demogorgon (Watcher's Keep)
 
-INTERJECT_COPY_TRANS GORDEMO 1 E3FadeDemo1 /* ~You do not see anything physical within the chamber...but you feel its presence all around you.  A phantasmal hand brushes your cheek, a curious gesture that startles you and is gone just as quickly.~ */
-== E3FAD25J IF ~InParty("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+I_C_T3 GORDEMO 1 E3FadeDemo1 /* ~You do not see anything physical within the chamber...but you feel its presence all around you.  A phantasmal hand brushes your cheek, a curious gesture that startles you and is gone just as quickly.~ */
+== E3FAD25J IF ~GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)
+InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
+@4893
+== E3FADEJ IF ~GlobalLT("Chapter","GLOBAL",%bg2_chapter_8%)
+InParty("E3FADE") InMyArea("E3FADE") !StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN
 @4893
 END
 

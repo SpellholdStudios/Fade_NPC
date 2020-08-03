@@ -137,7 +137,7 @@ END
 IF 
    InParty(Myself) 
    See(Player1) 
-   !StateCheck(Player1,STATE_SLEEPING) 
+   !StateCheck(Player1,CD_STATE_NOTVALID) 
    GlobalTimerExpired("E3FADEREMINDSARAN","GLOBAL") 
    Global("E3FINALQUEST","GLOBAL",0) 
    OR(2) 
@@ -152,7 +152,7 @@ END
 IF
    InParty(Myself)
    See(Player1)
-   !StateCheck(Player1,STATE_SLEEPING)
+   !StateCheck(Player1,CD_STATE_NOTVALID)
    AreaCheck("AR0500")
    Global("E3FINALQUEST","GLOBAL",3)
    Global("E3POSTFLAGONS","LOCALS",0)
@@ -164,7 +164,7 @@ END
 IF
    InParty(Myself)
    See(Player1)
-   !StateCheck(Player1,STATE_SLEEPING)
+   !StateCheck(Player1,CD_STATE_NOTVALID)
    AreaCheck("AR0318")
    Dead("E3Xekral")
    Global("E3FINALQUEST","GLOBAL",4)
@@ -177,7 +177,7 @@ END
 IF
    InParty(Myself)
    See(Player1)
-   !StateCheck(Player1,STATE_SLEEPING)
+   !StateCheck(Player1,CD_STATE_NOTVALID)
    AreaCheck("AR0202")
    Dead("UnseeingEye")
    GlobalGT("E3FINALQUEST","GLOBAL",3)
@@ -191,7 +191,7 @@ END
 IF
    InParty(Myself)
    See(Player1)
-   !StateCheck(Player1,STATE_SLEEPING)
+   !StateCheck(Player1,CD_STATE_NOTVALID)
    AreaCheck("AR0204")
    Dead("E3Cirion")
    Dead("E3Savanya")
@@ -209,16 +209,25 @@ END
 IF
    InParty(Myself)
    See(Player1)
-   !StateCheck(Player1,STATE_SLEEPING)
+   !StateCheck(Player1,CD_STATE_NOTVALID)
    AreaCheck("AR0300")
    Global("E3FADEROMANCEACTIVE","GLOBAL",2)
    Global("E3FINALQUEST","GLOBAL",9)
    Global("E3DIDFINALLOVETALK","LOCALS",0)
 THEN
    RESPONSE #100
-      PlaySong(0)
       SetGlobal("E3LOVETALK","GLOBAL",66)
       SetGlobal("E3DIDFINALLOVETALK","LOCALS",1)
+END
+
+IF
+   InParty(Myself)
+   See(Player1)
+   !StateCheck(Player1,CD_STATE_NOTVALID)
+   Global("E3DIDFINALLOVETALK","LOCALS",1)
+THEN
+   RESPONSE #100
+      PlaySong(0)
       PlaySound("E3THEME")
       Interact(Player1)
 END
@@ -226,7 +235,7 @@ END
 IF
    InParty(Myself)
    See(Player1)
-   !StateCheck(Player1,STATE_SLEEPING)
+   !StateCheck(Player1,CD_STATE_NOTVALID)
    AreaCheck("AR2600")
    Global("ElvenCityTree","GLOBAL",2)
    Global("E3DIDSULTALK1","LOCALS",0)
@@ -248,7 +257,8 @@ END
 IF
    InParty(Myself)
    See(Player1)
-   !StateCheck(Player1,STATE_SLEEPING)
+   !StateCheck(Myself,CD_STATE_NOTVALID)
+   !StateCheck(Player1,CD_STATE_NOTVALID)
    CombatCounter(0)
    AreaCheck("AR2800")
    RealGlobalTimerExpired("E3SULTALK2TIMER","GLOBAL")
@@ -256,12 +266,27 @@ IF
 THEN
    RESPONSE #100
       SetGlobal("E3DIDSULTALK2","LOCALS",2)
+END
+
+IF
+   InParty(Myself)
+   See(Player1)
+   !StateCheck(Player1,CD_STATE_NOTVALID)
+   CombatCounter(0)
+   Global("E3DIDSULTALK2","LOCALS",2)
+THEN
+   RESPONSE #100
       StartDialogueNoSet(Player1)
 END
 
 IF
    InParty(Myself)
+   !StateCheck(Myself,CD_STATE_NOTVALID)
+   !StateCheck(Player1,CD_STATE_NOTVALID)
    GlobalTimerExpired("E3SLAVERTIMER","GLOBAL")
+  OR(2)
+      Global("E3FADEROMANCEACTIVE","GLOBAL",1)
+      Global("E3FADEROMANCEACTIVE","GLOBAL",2)
    Global("E3SLAVERKIDNAP","GLOBAL",0)
    !Exists("E3Mallon")
    !Global("Chapter","GLOBAL",%bg2_chapter_4%)
@@ -291,7 +316,9 @@ END
 IF
    InParty(Myself)
    See(Player1)
-   !StateCheck(Player1,STATE_SLEEPING)
+   !StateCheck(Myself,CD_STATE_NOTVALID)
+   !StateCheck(Player1,CD_STATE_NOTVALID)
+   CombatCounter(0)
    AreaCheck("AR0300")
    Global("E3FADEDOCKSTALK","LOCALS",0)
 THEN
@@ -302,7 +329,9 @@ END
 IF 
    InParty(Myself)
    See(Player1)
-   !StateCheck(Player1,STATE_SLEEPING)
+   !StateCheck(Myself,CD_STATE_NOTVALID)
+   !StateCheck(Player1,CD_STATE_NOTVALID)
+   CombatCounter(0)
    AreaCheck("AR2013")
    PartyHasItem("misc8l")
    Global("E3FADETOMBTALK","LOCALS",0)
@@ -314,7 +343,9 @@ END
 IF
    InParty(Myself)
    See(Player1)
-   !StateCheck(Player1,STATE_SLEEPING)
+   !StateCheck(Myself,CD_STATE_NOTVALID)
+   !StateCheck(Player1,CD_STATE_NOTVALID)
+   CombatCounter(0)
    AreaCheck("AR0902")
    Global("E3FADELATHTALK","LOCALS",0)
 THEN
@@ -325,7 +356,9 @@ END
 IF 
    InParty(Myself)
    See(Player1)
-   !StateCheck(Player1,STATE_SLEEPING)
+   !StateCheck(Myself,CD_STATE_NOTVALID)
+   !StateCheck(Player1,CD_STATE_NOTVALID)
+   CombatCounter(0)
    Global("E3FADERENAL","LOCALS",1)
    OR(2)
    AreaCheck("AR0305")
@@ -338,7 +371,9 @@ END
 IF
    InParty(Myself)
    See(Player1)
-   !StateCheck(Player1,STATE_SLEEPING)
+   !StateCheck(Myself,CD_STATE_NOTVALID)
+   !StateCheck(Player1,CD_STATE_NOTVALID)
+   CombatCounter(0)
    AreaCheck("AR1900")
    Global("E3FADEGROVE","LOCALS",0)
 THEN
@@ -349,7 +384,9 @@ END
 IF
    InParty(Myself)
    See(Player1)
-   !StateCheck(Player1,STATE_SLEEPING)
+   !StateCheck(Myself,CD_STATE_NOTVALID)
+   !StateCheck(Player1,CD_STATE_NOTVALID)
+   CombatCounter(0)
    AreaCheck("AR0301")
    Global("E3FADEMAEVAR","LOCALS",0)
    Global("MaeVarWork","GLOBAL",0)
@@ -361,7 +398,9 @@ END
 IF
    InParty(Myself)
    See(Player1)
-   !StateCheck(Player1,STATE_SLEEPING)
+   !StateCheck(Myself,CD_STATE_NOTVALID)
+   !StateCheck(Player1,CD_STATE_NOTVALID)
+   CombatCounter(0)
    AreaCheck("AR1002")
    Global("E3FADECOUNCILBUILDING","LOCALS",0)
 THEN
@@ -372,7 +411,9 @@ END
 IF
    InParty(Myself)
    See(Player1)
-   !StateCheck(Player1,STATE_SLEEPING)
+   !StateCheck(Myself,CD_STATE_NOTVALID)
+   !StateCheck(Player1,CD_STATE_NOTVALID)
+   CombatCounter(0)
    AreaCheck("AR0314")
    Dead("Embarl")
    Global("E3DIDEMBARLDEADTALK","LOCALS",0)
@@ -384,7 +425,9 @@ END
 IF
    InParty(Myself)
    See(Player1)
-   !StateCheck(Player1,STATE_SLEEPING)
+   !StateCheck(Myself,CD_STATE_NOTVALID)
+   !StateCheck(Player1,CD_STATE_NOTVALID)
+   CombatCounter(0)
    AreaCheck("AR0800")
    OR(2)
       Global("E3FADEROMANCEACTIVE","GLOBAL",1)
@@ -401,7 +444,9 @@ END
 IF
    InParty(Myself)
    See(Player1)
-   !StateCheck(Player1,STATE_SLEEPING)
+   !StateCheck(Myself,CD_STATE_NOTVALID)
+   !StateCheck(Player1,CD_STATE_NOTVALID)
+   CombatCounter(0)
    AreaCheck("AR0801")
    Global("E3BODHILEAVE","GLOBAL",1)
    Global("E3FADEFIRSTBODHIPOST","LOCALS",0)
@@ -413,7 +458,9 @@ END
 IF
    InParty(Myself)
    See(Player1)
-   !StateCheck(Player1,STATE_SLEEPING)
+   !StateCheck(Myself,CD_STATE_NOTVALID)
+   !StateCheck(Player1,CD_STATE_NOTVALID)
+   CombatCounter(0)
    AreaCheck("AR0202")
    !InParty("Minsc")
    Global("BeholderPlot","GLOBAL",1)
@@ -426,7 +473,9 @@ END
 IF
    InParty(Myself)
    See(Player1)
-   !StateCheck(Player1,STATE_SLEEPING)
+   !StateCheck(Myself,CD_STATE_NOTVALID)
+   !StateCheck(Player1,CD_STATE_NOTVALID)
+   CombatCounter(0)
    AreaCheck("AR1602")
    GlobalLT("AsylumPlot","GLOBAL",20)
    Global("E3FADEBRYNNTALK","LOCALS",0)
@@ -438,7 +487,9 @@ END
 IF 
    InParty(Myself)
    See(Player1)
-   !StateCheck(Player1,STATE_SLEEPING)
+   !StateCheck(Myself,CD_STATE_NOTVALID)
+   !StateCheck(Player1,CD_STATE_NOTVALID)
+   CombatCounter(0)
    AreaCheck("AR1515")
    Global("E3FADESPELLHOLD","LOCALS",0)
    Global("HasAsylumWardstone","GLOBAL",1)
@@ -453,7 +504,9 @@ END
 IF
    InParty(Myself)
    See(Player1)
-   !StateCheck(Player1,STATE_SLEEPING)
+   !StateCheck(Myself,CD_STATE_NOTVALID)
+   !StateCheck(Player1,CD_STATE_NOTVALID)
+   CombatCounter(0)
    AreaCheck("AR2202")
    Global("Chapter","GLOBAL",%bg2_chapter_5%)
    Global("PhaereJob","GLOBAL",1)
@@ -469,7 +522,9 @@ END
 IF
    InParty(Myself)
    See(Player1)
-   !StateCheck(Player1,STATE_SLEEPING)
+  !StateCheck("E3FADE",CD_STATE_NOTVALID)
+   !StateCheck(Player1,CD_STATE_NOTVALID)
+   CombatCounter(0)
    AreaCheck("AR2400")
    Global("udDoneDuty","AR2400",1)
    Global("E3DIDMINDFLAYERTALK","LOCALS",0)
@@ -483,9 +538,11 @@ END
 
 IF
    InParty(Myself)
+  !StateCheck("E3FADE",CD_STATE_NOTVALID)
    InParty("Anomen")
    See("Anomen")
-   !StateCheck("Anomen",STATE_SLEEPING)
+   !StateCheck("Anomen",CD_STATE_NOTVALID)
+   CombatCounter(0)
    AreaCheck("AR0903")
    Global("E3FADEANOMENORDERTALK","LOCALS",0)
    OR(2)
@@ -498,8 +555,10 @@ END
 
 IF
   InParty(Myself)
+  !StateCheck("E3FADE",CD_STATE_NOTVALID)
   See(Player1)
-  !StateCheck(Player1,STATE_SLEEPING)
+  !StateCheck(Player1,CD_STATE_NOTVALID)
+   CombatCounter(0)
   AreaCheck("AR0500")
   Global("E3ARANSMUM","GLOBAL",2)
   Global("E3FADEARANSMUM","LOCALS",0)
@@ -510,8 +569,10 @@ END
 
 IF
   InParty(Myself)
+  !StateCheck("E3FADE",CD_STATE_NOTVALID)
   See(Player1)
-  !StateCheck(Player1,STATE_SLEEPING)
+  !StateCheck(Player1,CD_STATE_NOTVALID)
+   CombatCounter(0)
   AreaCheck("AR0500")
   Global("E3ARANSMUM","GLOBAL",4)
   Global("E3FADEARANSMUM2","LOCALS",0)
@@ -526,6 +587,7 @@ IF
    AreaCheck("AR0307")
    Global("E3FADEMATCH","GLOBAL",1)
    GlobalLT("Chapter","GLOBAL",%bg2_chapter_4%)
+   CombatCounter(0)
 THEN
     RESPONSE #100
         RealSetGlobalTimer("E3FADEROMANCE","GLOBAL",3800)
@@ -533,8 +595,11 @@ THEN
         SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",1)
 END
 
+/* lovetalk after night, trigger after wakeup. Global("E3FADENOOKIE","GLOBAL",1) */
 IF
   InParty(Myself)
+  !StateCheck("E3FADE",CD_STATE_NOTVALID)
+  !StateCheck(Player1,CD_STATE_NOTVALID)
   !Global("E3FADEROMANCEACTIVE","GLOBAL",0)
   !Global("E3FADEROMANCEACTIVE","GLOBAL",3)
   Global("E3FADEMATCH","GLOBAL",1)
@@ -543,24 +608,52 @@ IF
   Global("E3LOVETALK","GLOBAL",51)
 THEN
     RESPONSE #100
-        PlaySong(0)
-        MoveViewObject("E3Fade",INSTANT)
         IncrementGlobal("E3LOVETALK","GLOBAL",1)
-        PlaySound("E3THEME")
-        Interact(Player1)
 END
+
 
 IF
    InParty(Myself)
+  !StateCheck("E3FADE",CD_STATE_NOTVALID)
+  !StateCheck(Player1,CD_STATE_NOTVALID)
    Global("E3DIDDRUNKTALK","GLOBAL",2)
    See(Player1)
    CombatCounter(0)
 THEN
    RESPONSE #100
-      MoveViewObject("E3Fade",INSTANT)
       IncrementGlobal("E3DIDDRUNKTALK","GLOBAL",1)
+END
+
+IF
+   InParty(Myself)
+  !StateCheck("E3FADE",CD_STATE_NOTVALID)
+  !StateCheck(Player1,CD_STATE_NOTVALID)
+   Global("E3DIDDRUNKTALK","GLOBAL",3)
+   See(Player1)
+   CombatCounter(0)
+THEN
+   RESPONSE #100
+      MoveViewObject("E3Fade",INSTANT)
       Interact(Player1)
 END
+
+/* no dialogue for Global("E3LOVETALK","GLOBAL",24) and "40" so we jump up 2 */
+IF
+  InParty(Myself)
+  !Global("E3FADEROMANCEACTIVE","GLOBAL",0)
+  !Global("E3FADEROMANCEACTIVE","GLOBAL",3)
+  Global("E3FADEMATCH","GLOBAL",1)
+  !See([ENEMY])
+  !Range([NEUTRAL],10)
+  CombatCounter(0)
+  OR(2)
+       Global("E3LOVETALK","GLOBAL",23) 
+       Global("E3LOVETALK","GLOBAL",39) 
+THEN
+    RESPONSE #100
+        IncrementGlobal("E3LOVETALK","GLOBAL",2)
+END
+
 
 IF
   InParty(Myself)
@@ -572,7 +665,7 @@ IF
   See(Player1)
   !AreaType(DUNGEON)
   CombatCounter(0)
-  OR(27)
+  OR(26)
        Global("E3LOVETALK","GLOBAL",1)
        Global("E3LOVETALK","GLOBAL",3)
        Global("E3LOVETALK","GLOBAL",5)
@@ -583,13 +676,12 @@ IF
        Global("E3LOVETALK","GLOBAL",17)
        Global("E3LOVETALK","GLOBAL",19)
        Global("E3LOVETALK","GLOBAL",21)
-       Global("E3LOVETALK","GLOBAL",23)
+       Global("E3LOVETALK","GLOBAL",25)
        Global("E3LOVETALK","GLOBAL",27)
        Global("E3LOVETALK","GLOBAL",29)
        Global("E3LOVETALK","GLOBAL",31)
        Global("E3LOVETALK","GLOBAL",33)
        Global("E3LOVETALK","GLOBAL",37)
-       Global("E3LOVETALK","GLOBAL",39)
        Global("E3LOVETALK","GLOBAL",41)
        Global("E3LOVETALK","GLOBAL",43)
        Global("E3LOVETALK","GLOBAL",45)
@@ -604,6 +696,7 @@ THEN
     RESPONSE #100
         RealSetGlobalTimer("E3FADEROMANCE","GLOBAL",10)
 END
+
 
 IF
   InParty(Myself)
@@ -620,7 +713,7 @@ IF
   !See([ENEMY])
   !Range([NEUTRAL],10)
   CombatCounter(0)
-  OR(27)
+  OR(25)
        Global("E3LOVETALK","GLOBAL",1)
        Global("E3LOVETALK","GLOBAL",3)
        Global("E3LOVETALK","GLOBAL",5)
@@ -631,13 +724,13 @@ IF
        Global("E3LOVETALK","GLOBAL",17)
        Global("E3LOVETALK","GLOBAL",19)
        Global("E3LOVETALK","GLOBAL",21)
-       Global("E3LOVETALK","GLOBAL",23)
+//       Global("E3LOVETALK","GLOBAL",23) //special case because there is no dialogue for "24"
        Global("E3LOVETALK","GLOBAL",27)
        Global("E3LOVETALK","GLOBAL",29)
        Global("E3LOVETALK","GLOBAL",31)
        Global("E3LOVETALK","GLOBAL",33)
        Global("E3LOVETALK","GLOBAL",37)
-       Global("E3LOVETALK","GLOBAL",39)
+//       Global("E3LOVETALK","GLOBAL",39) //special case because there is no dialogue for "40"
        Global("E3LOVETALK","GLOBAL",41)
        Global("E3LOVETALK","GLOBAL",43)
        Global("E3LOVETALK","GLOBAL",45)
@@ -650,39 +743,34 @@ IF
        Global("E3LOVETALK","GLOBAL",63)
 THEN
     RESPONSE #100
-        PlaySong(0)
-        MoveViewObject("E3Fade",INSTANT)
         IncrementGlobal("E3LOVETALK","GLOBAL",1)
+END
+
+
+IF
+  InParty(Myself)
+  !StateCheck("E3FADE",CD_STATE_NOTVALID)
+  !StateCheck(Player1,CD_STATE_NOTVALID)
+  CombatCounter(0)
+  RealGlobalTimerExpired("E3FADEROMANCE","GLOBAL")
+  Global("E3FADEMATCH","GLOBAL",1)
+  Global("E3LOVETALK","GLOBAL",58)
+THEN 
+   RESPONSE #100
+        PlaySong(0)
+        RealSetGlobalTimer("E3FADEROMANCE","GLOBAL",1000) //shorter timer
+        MoveViewObject("E3Fade",INSTANT)
         PlaySound("E3THEME")
         Interact(Player1)
 END
 
 IF
   InParty(Myself)
-  RealGlobalTimerExpired("E3FADEROMANCE","GLOBAL")
+  !StateCheck("E3FADE",CD_STATE_NOTVALID)
+  !StateCheck(Player1,CD_STATE_NOTVALID)
+  CombatCounter(0)
   Global("E3FADEMATCH","GLOBAL",1)
-  Global("E3LOVETALK","GLOBAL",50)
-THEN
-    RESPONSE #100
-        IncrementGlobal("E3LOVETALK","GLOBAL",1)
-END
-
-IF
-  InParty(Myself)
-  RealGlobalTimerExpired("E3FADEROMANCE","GLOBAL")
-  Global("E3FADEMATCH","GLOBAL",1)
-  Global("E3LOVETALK","GLOBAL",58)
-THEN 
-   RESPONSE #100
-      IncrementGlobal("E3LOVETALK","GLOBAL",1)
-      RealSetGlobalTimer("E3FADEROMANCE","GLOBAL",1000)
-END
-
-IF
-  InParty(Myself)
-  RealGlobalTimerExpired("E3FADEROMANCE","GLOBAL")
-  Global("E3FADEMATCH","GLOBAL",1)
-  OR(30)
+  OR(25)
        Global("E3LOVETALK","GLOBAL",2)
        Global("E3LOVETALK","GLOBAL",4)
        Global("E3LOVETALK","GLOBAL",6)
@@ -690,19 +778,16 @@ IF
        Global("E3LOVETALK","GLOBAL",10)
        Global("E3LOVETALK","GLOBAL",12)
        Global("E3LOVETALK","GLOBAL",14)
-       Global("E3LOVETALK","GLOBAL",16)
        Global("E3LOVETALK","GLOBAL",18)
        Global("E3LOVETALK","GLOBAL",20)
        Global("E3LOVETALK","GLOBAL",22)
-       Global("E3LOVETALK","GLOBAL",24)
-       Global("E3LOVETALK","GLOBAL",26)
+//       Global("E3LOVETALK","GLOBAL",24) //doesn't exist?
        Global("E3LOVETALK","GLOBAL",28)
        Global("E3LOVETALK","GLOBAL",30)
        Global("E3LOVETALK","GLOBAL",32)
        Global("E3LOVETALK","GLOBAL",34)
-       Global("E3LOVETALK","GLOBAL",36)
        Global("E3LOVETALK","GLOBAL",38)
-       Global("E3LOVETALK","GLOBAL",40)
+//       Global("E3LOVETALK","GLOBAL",40) //doesn't exist?
        Global("E3LOVETALK","GLOBAL",42)
        Global("E3LOVETALK","GLOBAL",44)
        Global("E3LOVETALK","GLOBAL",46)
@@ -715,9 +800,13 @@ IF
        Global("E3LOVETALK","GLOBAL",64)
 THEN
      RESPONSE #100
-        IncrementGlobal("E3LOVETALK","GLOBAL",1)
+        PlaySong(0)
         RealSetGlobalTimer("E3FADEROMANCE","GLOBAL",2600)
+        MoveViewObject("E3Fade",INSTANT)
+        PlaySound("E3THEME")
+        Interact(Player1)
 END
+
 
 IF
    InParty(Myself)
@@ -793,13 +882,26 @@ END
 IF
    InParty(Myself)
    See(Player1)
-   !StateCheck(Player1,STATE_SLEEPING)
+   !StateCheck(Myself,CD_STATE_NOTVALID)
+   !StateCheck(Player1,CD_STATE_NOTVALID)
    Global("E3FADEFRIENDSHIP","GLOBAL",1)
    GlobalLT("E3FRIENDTALK","GLOBAL",9)
    RealGlobalTimerExpired("E3FADEFRIEND","GLOBAL")
 THEN 
    RESPONSE #100
       IncrementGlobal("E3FRIENDTALK","GLOBAL",1)
+END
+
+IF
+   InParty(Myself)
+   See(Player1)
+   !StateCheck(Myself,CD_STATE_NOTVALID)
+   !StateCheck(Player1,CD_STATE_NOTVALID)
+   Global("E3FADEFRIENDSHIP","GLOBAL",1)
+   GlobalLT("E3FRIENDTALK","GLOBAL",10)
+   RealGlobalTimerExpired("E3FADEFRIEND","GLOBAL")
+THEN 
+   RESPONSE #100
       StartDialogueNoSet(Player1)
 END
 
@@ -809,6 +911,8 @@ END
 IF
 InParty(Myself)
 See(Player1)
+   !StateCheck(Myself,CD_STATE_NOTVALID)
+   !StateCheck(Player1,CD_STATE_NOTVALID)
 CombatCounter(0)
 PartyHasItem("E3DT")
 !StateCheck("E3FADE",CD_STATE_NOTVALID)
@@ -819,6 +923,8 @@ SetGlobal("E3SWORD4U","GLOBAL",1)
 END
 
 IF
+   !StateCheck(Myself,CD_STATE_NOTVALID)
+   !StateCheck(Player1,CD_STATE_NOTVALID)
 Global("E3SWORD4U","GLOBAL",1)
 THEN
 RESPONSE #100

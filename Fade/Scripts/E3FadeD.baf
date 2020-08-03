@@ -55,7 +55,7 @@ IF
    !Global("E3FADEROMANCEACTIVE","GLOBAL",0)
    !Global("E3FADEROMANCEACTIVE","GLOBAL",3)
    Global("E3DIDSVIRFTALK","LOCALS",0)
-   Global("Chapter","GLOBAL",5)
+   Global("Chapter","GLOBAL",%bg2_chapter_5%)
    AreaCheck("AR2100")
    Range("udsvir04",15)
    See(Player1)

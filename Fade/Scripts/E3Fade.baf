@@ -111,7 +111,7 @@ END
 
 IF
    InParty(Myself)
-   GlobalGT("Chapter","GLOBAL",5)
+   GlobalGT("Chapter","GLOBAL",%bg2_chapter_5%)
    Global("E3FADEROMANCEACTIVE","GLOBAL",2)
    GlobalGT("E3LOVETALK","GLOBAL",64)
    Global("E3MESSENGERTIMERSET","LOCALS",0)
@@ -264,9 +264,9 @@ IF
    GlobalTimerExpired("E3SLAVERTIMER","GLOBAL")
    Global("E3SLAVERKIDNAP","GLOBAL",0)
    !Exists("E3Mallon")
-   !Global("Chapter","GLOBAL",4)
-   !Global("Chapter","GLOBAL",5)
-   !Global("Chapter","GLOBAL",7)
+   !Global("Chapter","GLOBAL",%bg2_chapter_4%)
+   !Global("Chapter","GLOBAL",%bg2_chapter_5%)
+   !Global("Chapter","GLOBAL",%bg2_chapter_7%)
    AreaType(OUTDOOR)
    CombatCounter(0)
 THEN
@@ -455,7 +455,7 @@ IF
    See(Player1)
    !StateCheck(Player1,STATE_SLEEPING)
    AreaCheck("AR2202")
-   Global("Chapter","GLOBAL",5)
+   Global("Chapter","GLOBAL",%bg2_chapter_5%)
    Global("PhaereJob","GLOBAL",1)
    Global("E3DIDUDTAVERNTALK","LOCALS",0)
    OR(2)
@@ -525,7 +525,7 @@ IF
    Global("E3LOVETALK","GLOBAL",0)
    AreaCheck("AR0307")
    Global("E3FADEMATCH","GLOBAL",1)
-   GlobalLT("Chapter","GLOBAL",4)
+   GlobalLT("Chapter","GLOBAL",%bg2_chapter_4%)
 THEN
     RESPONSE #100
         RealSetGlobalTimer("E3FADEROMANCE","GLOBAL",3800)
@@ -613,6 +613,8 @@ IF
   Global("E3FADEMATCH","GLOBAL",1)
   Global("E3TREATMENTNOFLIRT","GLOBAL",0)
   !AreaType(DUNGEON)
+  !StateCheck("E3FADE",CD_STATE_NOTVALID)
+  !StateCheck(Player1,CD_STATE_NOTVALID)
   !AreaCheck("AR1300")
   See(Player1)
   !See([ENEMY])
@@ -758,7 +760,7 @@ IF
    Global("E3FRIENDTALK","GLOBAL",0)
    Global("E3CHECKFADEFRIEND","GLOBAL",0)
    !Global("E3FADEMATCH","GLOBAL",1)
-   GlobalLT("Chapter","GLOBAL",4)
+   GlobalLT("Chapter","GLOBAL",%bg2_chapter_4%)
 THEN
     RESPONSE #100
         SetGlobal("E3CHECKFADEFRIEND","GLOBAL",1)

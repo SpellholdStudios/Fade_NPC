@@ -1,5 +1,5 @@
 IF
-   Global("E3TRIGGER","GLOBAL",0)
+   Global("E3TRIGGER","AR0900",0)
 THEN
    RESPONSE #100
       SetGlobal("E3TRIGGER","AR0900",1)

@@ -572,7 +572,7 @@ END
 
 IF ~InParty(Myself)
 See(Player1)
-!StateCheck(Player1,STATE_SLEEPING)
+!StateCheck(Player1,CD_STATE_NOTVALID)
 AreaCheck("AR0300")
 Global("E3FADEDOCKSTALK","LOCALS",0)~ THEN BEGIN fadedocks
 SAY @120
@@ -656,7 +656,7 @@ END
 
 IF ~InParty(Myself)
 See(Player1)
-!StateCheck(Player1,STATE_SLEEPING)
+!StateCheck(Player1,CD_STATE_NOTVALID)
 AreaCheck("AR2013")
 PartyHasItem("misc8l")
 Global("E3FADETOMBTALK","LOCALS",0)~ THEN BEGIN fadetomb
@@ -780,7 +780,7 @@ END
 
 IF ~InParty(Myself)
 See(Player1)
-!StateCheck(Player1,STATE_SLEEPING)
+!StateCheck(Player1,CD_STATE_NOTVALID)
 AreaCheck("AR0902")
 Global("E3FADELATHTALK","LOCALS",0)~ THEN BEGIN fadelath
 SAY @208
@@ -851,7 +851,7 @@ END
 
 IF ~InParty(Myself)
 See(Player1)
-!StateCheck(Player1,STATE_SLEEPING)
+!StateCheck(Player1,CD_STATE_NOTVALID)
 AreaCheck("AR0202")
 !InParty("Minsc")
 Global("BeholderPlot","GLOBAL",1)
@@ -928,7 +928,7 @@ END
 
 IF ~InParty(Myself)
 See(Player1)
-!StateCheck(Player1,STATE_SLEEPING)
+!StateCheck(Player1,CD_STATE_NOTVALID)
 Global("E3FADERENAL","LOCALS",1)
 OR(2)
 AreaCheck("AR0305")
@@ -963,7 +963,7 @@ END
 
 IF ~InParty(Myself)
 See(Player1)
-!StateCheck(Player1,STATE_SLEEPING)
+!StateCheck(Player1,CD_STATE_NOTVALID)
 AreaCheck("AR0301")
 Global("E3FADEMAEVAR","LOCALS",0)
 Global("MaeVarWork","GLOBAL",0)~ THEN BEGIN maevar_start
@@ -996,7 +996,7 @@ END
 
 IF ~InParty(Myself)
 See(Player1)
-!StateCheck(Player1,STATE_SLEEPING)
+!StateCheck(Player1,CD_STATE_NOTVALID)
 AreaCheck("AR1002")
 Global("E3FADECOUNCILBUILDING","LOCALS",0)~ THEN BEGIN council_start
 SAY @288
@@ -1006,7 +1006,7 @@ END
 
 IF ~InParty(Myself)
 See(Player1)
-!StateCheck(Player1,STATE_SLEEPING)
+!StateCheck(Player1,CD_STATE_NOTVALID)
 AreaCheck("AR0800")
 Global("E3FADEROMANCEACTIVE","GLOBAL",1)
 Global("AranJob","GLOBAL",3)
@@ -1047,7 +1047,7 @@ END
 
 IF ~InParty(Myself)
 See(Player1)
-!StateCheck(Player1,STATE_SLEEPING)
+!StateCheck(Player1,CD_STATE_NOTVALID)
 AreaCheck("AR0800")
 Global("E3FADEROMANCEACTIVE","GLOBAL",2)
 Global("AranJob","GLOBAL",3)
@@ -1088,7 +1088,7 @@ END
 
 IF ~InParty(Myself)
 See(Player1)
-!StateCheck(Player1,STATE_SLEEPING)
+!StateCheck(Player1,CD_STATE_NOTVALID)
 !Global("E3FADEROMANCEACTIVE","GLOBAL",1)
 !Global("E3FADEROMANCEACTIVE","GLOBAL",2)
 Global("E3FADEFIRSTBODHIPOST","LOCALS",0)
@@ -1100,7 +1100,7 @@ END
 
 IF ~InParty(Myself)
 See(Player1)
-!StateCheck(Player1,STATE_SLEEPING)
+!StateCheck(Player1,CD_STATE_NOTVALID)
 OR(2)
    Global("E3FADEROMANCEACTIVE","GLOBAL",1)
    Global("E3FADEROMANCEACTIVE","GLOBAL",2)
@@ -1113,7 +1113,7 @@ END
 
 IF ~InParty(Myself)
 See(Player1)
-!StateCheck(Player1,STATE_SLEEPING)
+!StateCheck(Player1,CD_STATE_NOTVALID)
 AreaCheck("AR1602")
 GlobalLT("AsylumPlot","GLOBAL",20)
 Global("E3FADEBRYNNTALK","LOCALS",0)~ THEN BEGIN brynn_start
@@ -1227,7 +1227,7 @@ END
 
 IF ~InParty(Myself)
 See(Player1)
-!StateCheck(Player1,STATE_SLEEPING)
+!StateCheck(Player1,CD_STATE_NOTVALID)
 Global("E3FADEROMANCEACTIVE","GLOBAL",1)
 Global("PhaereInnuendo","GLOBAL",2)
 !Range("Phaere",6)
@@ -1285,7 +1285,7 @@ END
 
 IF ~InParty(Myself)
 See(Player1)
-!StateCheck(Player1,STATE_SLEEPING)
+!StateCheck(Player1,CD_STATE_NOTVALID)
 Global("E3FADEROMANCEACTIVE","GLOBAL",2)
 Global("PhaereInnuendo","GLOBAL",2)
 !Range("Phaere",6)
@@ -1358,7 +1358,7 @@ END
 
 IF ~InParty(Myself)
 See(Player1)
-!StateCheck(Player1,STATE_SLEEPING)
+!StateCheck(Player1,CD_STATE_NOTVALID)
 Global("E3FADEROMANCEACTIVE","GLOBAL",1)
 Global("PhaereInnuendo","GLOBAL",3)
 !Range("Phaere",6)
@@ -1397,7 +1397,7 @@ END
 
 IF ~InParty(Myself)
 See(Player1)
-!StateCheck(Player1,STATE_SLEEPING)
+!StateCheck(Player1,CD_STATE_NOTVALID)
 Global("E3FADEROMANCEACTIVE","GLOBAL",2)
 Global("PhaereInnuendo","GLOBAL",3)
 !Range("Phaere",6)
@@ -1420,7 +1420,7 @@ END
 
 IF ~InParty(Myself)
 See(Player1)
-!StateCheck(Player1,STATE_SLEEPING)
+!StateCheck(Player1,CD_STATE_NOTVALID)
 AreaCheck("AR0500")
 Global("E3ARANSMUM","GLOBAL",2)
 Global("E3FADEARANSMUM","LOCALS",0)~ THEN BEGIN aransmum_start
@@ -1430,7 +1430,7 @@ END
 
 IF ~InParty(Myself)
 See(Player1)
-!StateCheck(Player1,STATE_SLEEPING)
+!StateCheck(Player1,CD_STATE_NOTVALID)
 AreaCheck("AR0500")
 Global("E3ARANSMUM","GLOBAL",4)
 Global("E3FADEARANSMUM2","LOCALS",0)~ THEN BEGIN aransmum_quest
@@ -1440,7 +1440,7 @@ END
 
 IF ~InParty(Myself)
 See(Player1)
-!StateCheck(Player1,STATE_SLEEPING)
+!StateCheck(Player1,CD_STATE_NOTVALID)
 AreaCheck("AR1900")
 Global("E3FADEGROVE","LOCALS",0)~ THEN BEGIN fadegrove
 SAY @413
@@ -1453,10 +1453,10 @@ SAY @416
 IF ~OR(3)
 !InParty("Cernd")
 !See("Cernd")
-StateCheck("Cernd",STATE_SLEEPING)~ THEN EXIT
+StateCheck("Cernd",CD_STATE_NOTVALID)~ THEN EXIT
 IF ~InParty("Cernd")
 See("Cernd")
-!StateCheck("Cernd",STATE_SLEEPING)~ THEN EXTERN CERNDJ fadegrove
+!StateCheck("Cernd",CD_STATE_NOTVALID)~ THEN EXTERN CERNDJ fadegrove
 END
 
 IF ~~ THEN BEGIN fadegrove_annoyed
@@ -1464,15 +1464,15 @@ SAY @417
 IF ~OR(3)
 !InParty("Cernd")
 !See("Cernd")
-StateCheck("Cernd",STATE_SLEEPING)~ THEN EXIT
+StateCheck("Cernd",CD_STATE_NOTVALID)~ THEN EXIT
 IF ~InParty("Cernd")
 See("Cernd")
-!StateCheck("Cernd",STATE_SLEEPING)~ THEN EXTERN CERNDJ fadegrove
+!StateCheck("Cernd",CD_STATE_NOTVALID)~ THEN EXTERN CERNDJ fadegrove
 END
 
 IF ~InParty(Myself)
 See(Player1)
-!StateCheck(Player1,STATE_SLEEPING)
+!StateCheck(Player1,CD_STATE_NOTVALID)
 AreaCheck("AR1515")
 Global("E3FADESPELLHOLD","LOCALS",0)
 Global("HasAsylumWardstone","GLOBAL",1)
@@ -1751,7 +1751,7 @@ Global("E3FADEREMINDER","GLOBAL",0)
 Global("E3FINALQUEST","GLOBAL",1)
 InParty(Myself)
 See(Player1)
-!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN fade_reminder1
+!StateCheck(Player1,CD_STATE_NOTVALID)~ THEN BEGIN fade_reminder1
 SAY @484 
 IF ~~ THEN DO ~SetGlobal("E3FADEREMINDER","GLOBAL",1)
 SetGlobalTimer("E3FADEREMINDSARAN","GLOBAL",THREE_DAYS)~ EXIT
@@ -1762,7 +1762,7 @@ Global("E3FADEREMINDER","GLOBAL",1)
 Global("E3FINALQUEST","GLOBAL",1)
 InParty(Myself)
 See(Player1)
-!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN fade_reminder2
+!StateCheck(Player1,CD_STATE_NOTVALID)~ THEN BEGIN fade_reminder2
 SAY @485
 IF ~~ THEN DO ~SetGlobal("E3FADEREMINDER","GLOBAL",2)
 SetGlobal("E3FADEARANONOWN","GLOBAL",1)
@@ -1775,7 +1775,7 @@ END
 
 IF ~InParty(Myself)
 See(Player1)
-!StateCheck(Player1,STATE_SLEEPING)
+!StateCheck(Player1,CD_STATE_NOTVALID)
 AreaCheck("AR0500")
 Global("E3FINALQUEST","GLOBAL",3)
 Global("E3POSTFLAGONS","LOCALS",0)~ THEN BEGIN postflagons_start
@@ -1796,7 +1796,7 @@ END
 
 IF ~InParty(Myself)
 See(Player1)
-!StateCheck(Player1,STATE_SLEEPING)
+!StateCheck(Player1,CD_STATE_NOTVALID)
 AreaCheck("AR0318")
 Dead("E3Xekral")
 Global("E3FINALQUEST","GLOBAL",4)
@@ -1846,7 +1846,7 @@ END
 
 IF ~InParty(Myself)
 See(Player1)
-!StateCheck(Player1,STATE_SLEEPING)
+!StateCheck(Player1,CD_STATE_NOTVALID)
 AreaCheck("AR2600")
 Global("ElvenCityTree","GLOBAL",2)
 Global("E3DIDSULTALK1","LOCALS",0)~ THEN BEGIN sultalk1_start
@@ -1878,7 +1878,7 @@ END
 
 IF ~InParty(Myself)
 See(Player1)
-!StateCheck(Player1,STATE_SLEEPING)
+!StateCheck(Player1,CD_STATE_NOTVALID)
 AreaCheck("AR0202")
 Dead("UnseeingEye")
 GlobalGT("E3FINALQUEST","GLOBAL",3)
@@ -1890,7 +1890,7 @@ END
 
 IF ~InParty(Myself)
 See(Player1)
-!StateCheck(Player1,STATE_SLEEPING)
+!StateCheck(Player1,CD_STATE_NOTVALID)
 AreaCheck("AR0204")
 Dead("E3Cirion")
 Dead("E3Savanya")
@@ -1926,7 +1926,7 @@ END
 
 IF ~InParty(Myself)
 See(Player1)
-!StateCheck(Player1,STATE_SLEEPING)
+!StateCheck(Player1,CD_STATE_NOTVALID)
 AreaCheck("AR0314")
 Dead("Embarl")
 Global("E3DIDEMBARLDEADTALK","LOCALS",0)~ THEN BEGIN embarldead
@@ -1935,7 +1935,7 @@ IF ~~ THEN DO ~SetGlobal("E3DIDEMBARLDEADTALK","LOCALS",1)~ EXIT
 END
 
 IF ~Global("E3FRIENDTALK","GLOBAL",2)
-!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN ft2_start
+!StateCheck(Player1,CD_STATE_NOTVALID)~ THEN BEGIN ft2_start
 SAY @522
 IF ~~ THEN REPLY @523 DO ~SetGlobal("E3FRIENDTALK","GLOBAL",3)
 RealSetGlobalTimer("E3FADEFRIEND","GLOBAL",2600)~ GOTO ft2_info
@@ -1950,7 +1950,7 @@ END
 IF ~Global("E3FADEROMANCEACTIVE","GLOBAL",3)
 GlobalLT("E3LOVETALK","GLOBAL",3)
 GlobalLT("E3FRIENDTALK","GLOBAL",3)
-!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN ft2_start
+!StateCheck(Player1,CD_STATE_NOTVALID)~ THEN BEGIN ft2_start
 SAY @522
 IF ~~ THEN REPLY @523 DO ~SetGlobal("E3FRIENDTALK","GLOBAL",3)
 RealSetGlobalTimer("E3FADEFRIEND","GLOBAL",2600)~ GOTO ft2_info
@@ -2069,7 +2069,7 @@ IF ~~ THEN REPLY @569 DO ~SetGlobal("E3FADEFRIENDSHIP","GLOBAL",3)~ EXIT
 END
 
 IF ~Global("E3FRIENDTALK","GLOBAL",4)
-!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN ft4_start
+!StateCheck(Player1,CD_STATE_NOTVALID)~ THEN BEGIN ft4_start
 SAY @575
 IF ~~ THEN REPLY @576 DO ~SetGlobal("E3FRIENDTALK","GLOBAL",5)
 RealSetGlobalTimer("E3FADEFRIEND","GLOBAL",2600)~ GOTO ft4_1b
@@ -2084,7 +2084,7 @@ END
 IF ~Global("E3FADEROMANCEACTIVE","GLOBAL",3)
 GlobalLT("E3LOVETALK","GLOBAL",5)
 GlobalLT("E3FRIENDTALK","GLOBAL",5)
-!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN ft4_start
+!StateCheck(Player1,CD_STATE_NOTVALID)~ THEN BEGIN ft4_start
 SAY @575
 IF ~~ THEN REPLY @576 DO ~SetGlobal("E3FRIENDTALK","GLOBAL",5)
 RealSetGlobalTimer("E3FADEFRIEND","GLOBAL",2600)~ GOTO ft4_1b
@@ -2233,7 +2233,7 @@ IF ~~ THEN DO ~SetGlobal("E3FADEFRIENDSHIP","GLOBAL",3)~ EXIT
 END
 
 IF ~Global("E3FRIENDTALK","GLOBAL",6)
-!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN ft6_start
+!StateCheck(Player1,CD_STATE_NOTVALID)~ THEN BEGIN ft6_start
 SAY @632
 IF ~~ THEN REPLY @633 DO ~SetGlobal("E3FRIENDTALK","GLOBAL",7)
 RealSetGlobalTimer("E3FADEFRIEND","GLOBAL",2600)~ GOTO ft6_worry
@@ -2246,7 +2246,7 @@ END
 IF ~Global("E3FADEROMANCEACTIVE","GLOBAL",3)
 GlobalLT("E3LOVETALK","GLOBAL",7)
 GlobalLT("E3FRIENDTALK","GLOBAL",7)
-!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN ft6_start
+!StateCheck(Player1,CD_STATE_NOTVALID)~ THEN BEGIN ft6_start
 SAY @632
 IF ~~ THEN REPLY @633 DO ~SetGlobal("E3FRIENDTALK","GLOBAL",7)
 RealSetGlobalTimer("E3FADEFRIEND","GLOBAL",2600)~ GOTO ft6_worry
@@ -2470,7 +2470,7 @@ IF ~~ THEN EXIT
 END
 
 IF ~Global("E3FRIENDTALK","GLOBAL",8)
-!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN ft8_start
+!StateCheck(Player1,CD_STATE_NOTVALID)~ THEN BEGIN ft8_start
 SAY @725
 IF ~OR(7)
 Class(Player1,MAGE)
@@ -2516,7 +2516,7 @@ END
 IF ~Global("E3FADEROMANCEACTIVE","GLOBAL",3)
 GlobalLT("E3LOVETALK","GLOBAL",7)
 GlobalLT("E3FRIENDTALK","GLOBAL",9)
-!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN ft8_start
+!StateCheck(Player1,CD_STATE_NOTVALID)~ THEN BEGIN ft8_start
 SAY @725
 IF ~OR(7)
 Class(Player1,MAGE)
@@ -2835,13 +2835,13 @@ EXIT
 EXTEND_BOTTOM PPWORKER 15
 IF ~InParty("E3Fade")
 See("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)~ THEN EXTERN E3FADEJ fadelonk
+!StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN EXTERN E3FADEJ fadelonk
 END
 
 EXTEND_BOTTOM PPIMOEN 4
 IF ~InParty("E3Fade")
 See("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)~ THEN EXTERN E3FADEJ fadeimoen
+!StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN EXTERN E3FADEJ fadeimoen
 END
 
 INTERJECT_COPY_TRANS YOSHJ 113 e3fadeyoshimobetrayal
@@ -2898,7 +2898,7 @@ END
 INTERJECT SHTHLT01 96 e3fadestronghold
 == E3FADEJ IF ~InParty("E3Fade")
 See("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)~ THEN @853
+!StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN @853
 END
 IF ~~ THEN REPLY @854 GOTO 101
 IF ~~ THEN REPLY @855 DO ~SetGlobal("E3FADETHIEFSLAVERY","GLOBAL",1)~ GOTO 100
@@ -2906,7 +2906,7 @@ IF ~~ THEN REPLY @855 DO ~SetGlobal("E3FADETHIEFSLAVERY","GLOBAL",1)~ GOTO 100
 INTERJECT SHTHLT01 97 e3fadestronghold
 == E3FADEJ IF ~InParty("E3Fade")
 See("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)~ THEN @853
+!StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN @853
 END
 IF ~~ THEN REPLY @854 GOTO 100
 IF ~~ THEN REPLY @855 DO ~SetGlobal("E3FADETHIEFSLAVERY","GLOBAL",1)~ GOTO 102
@@ -2914,7 +2914,7 @@ IF ~~ THEN REPLY @855 DO ~SetGlobal("E3FADETHIEFSLAVERY","GLOBAL",1)~ GOTO 102
 INTERJECT SHTHLT01 98 e3fadestronghold
 == E3FADEJ IF ~InParty("E3Fade")
 See("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)~ THEN @853
+!StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN @853
 END
 IF ~~ THEN REPLY @854 GOTO 103
 IF ~~ THEN REPLY @855 DO ~SetGlobal("E3FADETHIEFSLAVERY","GLOBAL",1)~ GOTO 101
@@ -2922,7 +2922,7 @@ IF ~~ THEN REPLY @855 DO ~SetGlobal("E3FADETHIEFSLAVERY","GLOBAL",1)~ GOTO 101
 INTERJECT SHTHLT01 99 e3fadestronghold
 == E3FADEJ IF ~InParty("E3Fade")
 See("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)~ THEN @853
+!StateCheck("E3FADE",CD_STATE_NOTVALID)~ THEN @853
 END
 IF ~~ THEN REPLY @854 GOTO 101
 IF ~~ THEN REPLY @855 DO ~SetGlobal("E3FADETHIEFSLAVERY","GLOBAL",1)~ GOTO 100

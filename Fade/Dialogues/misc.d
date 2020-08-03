@@ -5,7 +5,7 @@ END
 
 EXTEND_BOTTOM ARAN 24
 IF ~InParty("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)
+!StateCheck("E3Fade",CD_STATE_NOTVALID)
 Global("E3ARANSMUM","GLOBAL",0)~ THEN DO
 ~SetGlobal("E3ARANSMUM","GLOBAL",1)~ EXTERN ARAN aransmumchain_1
 END
@@ -22,7 +22,7 @@ END
 IF ~~ THEN UNSOLVED_JOURNAL @893 EXIT
 
 CHAIN IF WEIGHT #-1 ~InParty("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)
+!StateCheck("E3Fade",CD_STATE_NOTVALID)
 Global("E3ARANSMUM","GLOBAL",4)~ THEN ARAN aransmumchain_done
 @894 == E3FADEJ @895 == ARAN @896 = @897
 END
@@ -260,7 +260,7 @@ END
 
 CHAIN IF ~!Dead("E3Fade")
 InParty("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)
+!StateCheck("E3Fade",CD_STATE_NOTVALID)
 Global("E3SLAVERKIDNAP","GLOBAL",1)
 Global("E3MALLONTALK","GLOBAL",0)~ THEN E3MALLO kidnap
 @976 DO ~SetGlobal("E3MALLONTALK","GLOBAL",1)~
@@ -301,7 +301,7 @@ END
 
 CHAIN IF WEIGHT #-1 ~See("E3Fade")
 InParty("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)
+!StateCheck("E3Fade",CD_STATE_NOTVALID)
 Global("E3FADESIDGE","LOCALS",0)~ THEN THIEF1 fadesidge
 @990 DO ~SetGlobal("E3FADESIDGE","LOCALS",1)~
 == E3FADEJ @991 == THIEF1 @992 == E3FADEJ @993
@@ -309,7 +309,7 @@ EXIT
 
 CHAIN IF WEIGHT #-1 ~See("E3Fade")
 InParty("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)
+!StateCheck("E3Fade",CD_STATE_NOTVALID)
 Global("E3FADESIDGE","LOCALS",1)
 !Global("E3FADEROMANCEACTIVE","GLOBAL",0)
 !Global("E3FADEROMANCEACTIVE","GLOBAL",3)
@@ -334,7 +334,7 @@ IF ~~ THEN REPLY @1010 EXTERN E3FADEJ sidge_about
 
 CHAIN IF WEIGHT #-1 ~See("E3Fade")
 InParty("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)
+!StateCheck("E3Fade",CD_STATE_NOTVALID)
 Global("E3FADESIDGE","LOCALS",1)
 !Global("E3FADEROMANCEACTIVE","GLOBAL",1)
 !Global("E3FADEROMANCEACTIVE","GLOBAL",2)~ THEN THIEF1 fadesidge2
@@ -345,7 +345,7 @@ EXIT
 CHAIN IF WEIGHT #-1 ~NumTimesTalkedToGT(0)
 See("E3Fade")
 InParty("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)
+!StateCheck("E3Fade",CD_STATE_NOTVALID)
 Global("E3FADETASSA","LOCALS",0)~ THEN TASSA fadetassa
 @1012 DO ~SetGlobal("E3FADETASSA","LOCALS",1)~
 == E3FADEJ @1013 == TASSA @1014 == E3FADEJ @1015 == TASSA @1016 == E3FADEJ @1017 == TASSA @1018
@@ -354,7 +354,7 @@ EXIT
 CHAIN IF WEIGHT #-1 ~NumTimesTalkedToGT(0)
 See("E3Fade")
 InParty("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)
+!StateCheck("E3Fade",CD_STATE_NOTVALID)
 Global("E3FADEBOOTER","LOCALS",0)
 OR(2)
 Global("E3FADEROMANCEACTIVE","GLOBAL",1)
@@ -631,7 +631,7 @@ IF ~!InParty("Jan")
 Race(LastTalkedToBy,GNOME)~ THEN REPLY @1114 GOTO aransmum_yes
 IF ~InParty("Jan")
 See("Jan")
-!StateCheck("Jan",STATE_SLEEPING)~ THEN EXTERN JANJ aransmum_jan
+!StateCheck("Jan",CD_STATE_NOTVALID)~ THEN EXTERN JANJ aransmum_jan
 END
 
 IF ~~ THEN BEGIN aransmum_delivery
@@ -652,7 +652,7 @@ IF ~!InParty("Jan")
 Race(LastTalkedToBy,GNOME)~ THEN REPLY @1114 GOTO aransmum_yes
 IF ~InParty("Jan")
 See("Jan")
-!StateCheck("Jan",STATE_SLEEPING)~ THEN EXTERN JANJ aransmum_jan
+!StateCheck("Jan",CD_STATE_NOTVALID)~ THEN EXTERN JANJ aransmum_jan
 END
 
 IF ~~ THEN BEGIN aransmum_pretend
@@ -671,7 +671,7 @@ END
 
 CHAIN IF ~InParty("E3Fade")
 See("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)
+!StateCheck("E3Fade",CD_STATE_NOTVALID)
 Global("E3ARANSMUM","GLOBAL",2)~ THEN E3ARANS aransmum_start
 @1110 == E3FADEJ @1125 == E3ARANS @1126 = @1127
 END
@@ -1263,16 +1263,16 @@ StartCutScene("E3cut008")~ EXIT
 INTERJECT_COPY_TRANS NALIAJ 29 e3fadedaleson
 == E3FADEJ IF ~InParty("E3Fade")
 See("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)~ THEN @1313
+!StateCheck("E3Fade",CD_STATE_NOTVALID)~ THEN @1313
 == NALIAJ IF ~InParty("E3Fade")
 See("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)~ THEN @1314
+!StateCheck("E3Fade",CD_STATE_NOTVALID)~ THEN @1314
 == E3FADEJ IF ~InParty("E3Fade")
 See("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)~ THEN @1315
+!StateCheck("E3Fade",CD_STATE_NOTVALID)~ THEN @1315
 == NALIAJ IF ~InParty("E3Fade")
 See("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)~ THEN @1316
+!StateCheck("E3Fade",CD_STATE_NOTVALID)~ THEN @1316
 END
 
 ADD_TRANS_TRIGGER DELCIA 20 ~OR(2)
@@ -1320,19 +1320,19 @@ Global("E3DELCIAKNOCKOUT","GLOBAL",1)~ THEN BEGIN fadedelcia_knockout
 SAY @1323
 IF ~InParty("Nalia")
 See("Nalia")
-!StateCheck("Nalia",STATE_SLEEPING)~ THEN EXTERN NALIAJ fadedelcia_knockout
+!StateCheck("Nalia",CD_STATE_NOTVALID)~ THEN EXTERN NALIAJ fadedelcia_knockout
 IF ~OR(3)
 !InParty("Nalia")
 !See("Nalia")
-StateCheck("Nalia",STATE_SLEEPING)~ THEN REPLY @1324 GOTO fadedelcia_punch
+StateCheck("Nalia",CD_STATE_NOTVALID)~ THEN REPLY @1324 GOTO fadedelcia_punch
 IF ~OR(3)
 !InParty("Nalia")
 !See("Nalia")
-StateCheck("Nalia",STATE_SLEEPING)~ THEN REPLY @1325 GOTO fadedelcia_reason
+StateCheck("Nalia",CD_STATE_NOTVALID)~ THEN REPLY @1325 GOTO fadedelcia_reason
 IF ~OR(3)
 !InParty("Nalia")
 !See("Nalia")
-StateCheck("Nalia",STATE_SLEEPING)~ THEN REPLY @1326 GOTO fadedelcia_throw
+StateCheck("Nalia",CD_STATE_NOTVALID)~ THEN REPLY @1326 GOTO fadedelcia_throw
 END
 
 IF ~~ THEN BEGIN fadedelcia_knockout2
@@ -1547,7 +1547,7 @@ CHAIN
 IF WEIGHT #-1
 ~InParty("E3Fade")
 See("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)
+!StateCheck("E3Fade",CD_STATE_NOTVALID)
 Global("E3FADEPELANNA","GLOBAL",0)
 Global("arntra03Move","AR0307",4)
 Global("TalkedToPelanna","GLOBAL",1)~ THEN PELANNA fadepelanna
@@ -1604,7 +1604,7 @@ CHAIN
 IF WEIGHT #-1
 ~InParty("E3Fade")
 See("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)
+!StateCheck("E3Fade",CD_STATE_NOTVALID)
 Global("E3FADERIBALD","LOCALS",0)~ THEN RIBALD faderibald
 #38861 DO ~SetGlobal("E3FADERIBALD","LOCALS",1)~
 = @1398 == E3FADEJ @1399 == RIBALD @1400 == E3FADEJ @1401
@@ -1615,7 +1615,7 @@ CHAIN
 IF WEIGHT #-1
 ~InParty("E3Fade")
 See("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)
+!StateCheck("E3Fade",CD_STATE_NOTVALID)
 Global("E3FADETHUMB","LOCALS",0)~ THEN THUMB fadethumb
 #23429 DO ~SetGlobal("E3FADETHUMB","LOCALS",1)~
 = @1402 == E3FADEJ @1403 == THUMB @1404 == E3FADEJ @1405
@@ -1624,12 +1624,12 @@ EXIT
 ADD_TRANS_TRIGGER PPSAEM2 19 ~OR(3)
 !InParty("E3Fade")
 !See("E3Fade")
-StateCheck("E3Fade",STATE_SLEEPING)~
+StateCheck("E3Fade",CD_STATE_NOTVALID)~
 
 EXTEND_BOTTOM PPSAEM2 19
 IF ~InParty("E3Fade")
 See("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)~ THEN EXTERN E3FADEJ fadesaemon
+!StateCheck("E3Fade",CD_STATE_NOTVALID)~ THEN EXTERN E3FADEJ fadesaemon
 END
 
 INTERJECT_COPY_TRANS ANOMENJ 150 e3fadeanomenssister
@@ -1662,7 +1662,7 @@ END
 CHAIN
 IF WEIGHT #-1 ~InParty("E3Fade")
 See("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)
+!StateCheck("E3Fade",CD_STATE_NOTVALID)
 RandomNum(2,1)
 Global("E3FADECELVAN","AR0300",0)~ THEN CELVAN fadecelvan
 @1418 DO ~SetGlobal("E3FADECELVAN","AR0300",1)~
@@ -1677,7 +1677,7 @@ END
 CHAIN
 IF WEIGHT #-1 ~InParty("E3Fade")
 See("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)
+!StateCheck("E3Fade",CD_STATE_NOTVALID)
 Global("E3FADEWAYLANE","LOCALS",0)~ THEN WAYLANE fadewaylane
 @1421 DO ~SetGlobal("E3FADEWAYLANE","LOCALS",1)~
 == E3FADEJ @1422
@@ -1756,7 +1756,7 @@ END
 END
 
 CHAIN IF WEIGHT #-1 ~InParty("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)
+!StateCheck("E3Fade",CD_STATE_NOTVALID)
 Global("E3FINALQUEST","GLOBAL",1)
 Global("E3FADEREMINDER","GLOBAL",0)~ THEN ARAN finalquest2_start
 @1443
@@ -1769,7 +1769,7 @@ IF ~~ THEN REPLY @1448 EXTERN E3FADEJ finalquest2_idea
 IF ~~ THEN REPLY @1449 EXTERN E3FADEJ finalquest2_better
 
 CHAIN IF WEIGHT #-1 ~InParty("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)
+!StateCheck("E3Fade",CD_STATE_NOTVALID)
 Global("E3FINALQUEST","GLOBAL",1)
 Global("E3FADEREMINDER","GLOBAL",1)~ THEN ARAN finalquest2_start2
 @1450 
@@ -1844,7 +1844,7 @@ BEGIN E3DARLA
 IF ~OR(3)
 !InParty("E3Fade")
 !See("E3Fade")
-StateCheck("E3Fade",STATE_SLEEPING)~ THEN BEGIN goaway
+StateCheck("E3Fade",CD_STATE_NOTVALID)~ THEN BEGIN goaway
 SAY @1464
 IF ~~ THEN EXIT
 END
@@ -1862,7 +1862,7 @@ END
 
 CHAIN IF ~InParty("E3Fade")
 See("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)
+!StateCheck("E3Fade",CD_STATE_NOTVALID)
 Global("E3FINALQUEST","GLOBAL",2)~ THEN E3DARLA finalquest3_start
 @1467 DO ~SetGlobal("E3FINALQUEST","GLOBAL",3)~
 = @1468
@@ -1886,7 +1886,7 @@ EXIT
 
 CHAIN IF ~InParty("E3Fade")
 See("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)
+!StateCheck("E3Fade",CD_STATE_NOTVALID)
 PartyHasItem("E3XLETTE")
 Global("E3FINALQUEST","GLOBAL",4)~ THEN E3DARLA finalquest4_start
 @1484 DO ~SetGlobal("E3FINALQUEST","GLOBAL",5)~
@@ -1902,7 +1902,7 @@ BEGIN E3XEKRA
 IF ~OR(3)
 !InParty("E3Fade")
 !See("E3Fade")
-StateCheck("E3Fade",STATE_SLEEPING)~ THEN BEGIN goaway
+StateCheck("E3Fade",CD_STATE_NOTVALID)~ THEN BEGIN goaway
 SAY @1491
 IF ~~ THEN EXIT
 END
@@ -1910,7 +1910,7 @@ END
 CHAIN
 IF ~InParty("E3Fade")
 See("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)
+!StateCheck("E3Fade",CD_STATE_NOTVALID)
 Global("E3FINALQUEST","GLOBAL",3)~ THEN E3XEKRA finalquest4_start
 @1492
 == E3FADEJ @1493
@@ -2049,14 +2049,14 @@ BEGIN E3CIRION
 IF ~OR(3)
 !InParty("E3Fade")
 !See("E3Fade")
-StateCheck("E3Fade",STATE_SLEEPING)~ THEN BEGIN goaway
+StateCheck("E3Fade",CD_STATE_NOTVALID)~ THEN BEGIN goaway
 SAY @1510
 IF ~~ THEN EXIT
 END
 
 CHAIN IF ~InParty("E3Fade")
 See("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)~ THEN E3CIRION fadecirion
+!StateCheck("E3Fade",CD_STATE_NOTVALID)~ THEN E3CIRION fadecirion
 @1511 DO ~SetGlobal("E3CIRIONTALKS","LOCALS",1)
 SetGlobal("E3FINALQUEST","GLOBAL",7)~ 
 == E3FADEJ @1512
@@ -2090,7 +2090,7 @@ EXIT
 
 CHAIN IF WEIGHT #-1 ~InParty("E3Fade")
 See("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)
+!StateCheck("E3Fade",CD_STATE_NOTVALID)
 Global("E3FINALQUEST","GLOBAL",8)~ THEN ARAN finalquest8_start
 @1528 DO ~SetGlobal("E3FINALQUEST","GLOBAL",9)~
 == E3FADEJ @1529
@@ -2367,16 +2367,16 @@ APPEND ARAN
 IF ~GlobalLT("E3FINALQUEST","GLOBAL",8)~ THEN BEGIN finalquest_filler
 SAY @1598
 IF ~~ THEN REPLY @1599 EXIT
-IF ~Global("Chapter","GLOBAL",6)
+IF ~Global("Chapter","GLOBAL",%bg2_chapter_6%)
 Global("ShadowFightBodhi","GLOBAL",0)
 !Dead("c6bodhi")~ THEN REPLY @1600 GOTO finalquest_filler_1
-IF ~Global("Chapter","GLOBAL",6)
+IF ~Global("Chapter","GLOBAL",%bg2_chapter_6%)
 Global("ShadowFightBodhi","GLOBAL",1)
 !Dead("c6bodhi")~ THEN REPLY @1600 GOTO finalquest_filler_2
-IF ~Global("Chapter","GLOBAL",6)
+IF ~Global("Chapter","GLOBAL",%bg2_chapter_6%)
 Global("ShadowFightBodhi","GLOBAL",2)
 !Dead("c6bodhi")~ THEN REPLY @1600 GOTO finalquest_filler_3
-IF ~GlobalGT("Chapter","GLOBAL",5)
+IF ~GlobalGT("Chapter","GLOBAL",%bg2_chapter_5%)
 Dead("c6bodhi")~ THEN REPLY @1600 GOTO finalquest_filler_4
 END
 
@@ -2971,7 +2971,7 @@ END
 INTERJECT BANOMEN 185 e3fadeobjectsanomen
 == E3FADEJ IF ~InParty("E3Fade")
 See("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)~ THEN @1736
+!StateCheck("E3Fade",CD_STATE_NOTVALID)~ THEN @1736
 END
 IF ~~ THEN REPLY @1737 EXTERN E3FADEJ fadeobjectsano_aimed
 IF ~~ THEN REPLY @1738 EXTERN E3FADEJ fadeobjectsano_sorry

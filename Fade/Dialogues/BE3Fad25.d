@@ -885,7 +885,7 @@ END
 
 //Post-Saradush LT
 IF ~Global("E3POSTSARADUSHTALK","LOCALS",1)
-!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN ltpostsd_start
+!StateCheck(Player1,CD_STATE_NOTVALID)~ THEN BEGIN ltpostsd_start
 SAY @5509
 IF ~~ THEN REPLY @5510 DO ~SetGlobal("E3POSTSARADUSHTALK","LOCALS",2)~ GOTO ltpostsd_failed
 IF ~~ THEN REPLY @5511 DO ~SetGlobal("E3POSTSARADUSHTALK","LOCALS",2)~ GOTO ltpostsd_incident
@@ -1135,7 +1135,7 @@ END
 
 //Final LT
 IF ~Global("E3FINALLOVETALK","LOCALS",1)
-!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN ltfinal_start
+!StateCheck(Player1,CD_STATE_NOTVALID)~ THEN BEGIN ltfinal_start
 SAY @5583
 IF ~~ THEN REPLY @5584 DO ~SetGlobal("E3FINALLOVETALK","LOCALS",2)~ GOTO ltfinal_what
 IF ~~ THEN REPLY @5585 DO ~SetGlobal("E3FINALLOVETALK","LOCALS",2)~ GOTO ltfinal_happen
@@ -3844,7 +3844,7 @@ CHAIN IF~InParty("HAERDALIS") See("HAERDALIS") !StateCheck("E3Fade",CD_STATE_NOT
 CHAIN
 IF ~InParty("Imoen2")
 See("Imoen2")
-!StateCheck("Imoen2",STATE_SLEEPING)
+!StateCheck("Imoen2",CD_STATE_NOTVALID)
 Global("E3FADEIMOENTALKToB","LOCALS",0)~ THEN BE3FAD25 fadeimoentob1
 @6526
 DO ~SetGlobal("E3FADEIMOENTALKToB","LOCALS",1)~
@@ -3902,7 +3902,7 @@ EXIT
 CHAIN
 IF ~InParty("Jan")
 See("Jan")
-!StateCheck("Jan",STATE_SLEEPING)
+!StateCheck("Jan",CD_STATE_NOTVALID)
 Global("E3FADEJAN25TALK1","LOCALS",0)~ THEN BE3FAD25 fadejantob1
 @6559
 DO ~SetGlobal("E3FADEJAN25TALK1","LOCALS",1)~
@@ -3974,7 +3974,7 @@ CHAIN IF~InParty("MAZZY") See("MAZZY") !StateCheck("E3Fade",CD_STATE_NOTVALID) !
 CHAIN
 IF ~InParty("Minsc")
 See("Minsc")
-!StateCheck("Minsc",STATE_SLEEPING)
+!StateCheck("Minsc",CD_STATE_NOTVALID)
 Global("E3FADEMINSC25TALK1","LOCALS",0)~ THEN BE3FAD25 FadeMinscToB01
 @6603
 DO ~SetGlobal("E3FADEMINSC25TALK1","LOCALS",1)~
@@ -3991,7 +3991,7 @@ EXIT
 CHAIN
 IF ~InParty("Minsc")
 See("Minsc")
-!StateCheck("Minsc",STATE_SLEEPING)
+!StateCheck("Minsc",CD_STATE_NOTVALID)
 Global("E3FADEMINSC25TALK1","LOCALS",1)~ THEN BE3FAD25 FadeMinscToB02
 @6612
 DO ~SetGlobal("E3FADEMINSC25TALK1","LOCALS",2)~
@@ -4013,7 +4013,7 @@ EXIT
 CHAIN
 IF ~InParty("E3Fade")
 See("E3Fade")
-!StateCheck("E3Fade",STATE_SLEEPING)
+!StateCheck("E3Fade",CD_STATE_NOTVALID)
 Global("E3FADENALIATALKTOB","GLOBAL",0)~ THEN BNALIA25 fadenaliatob
 @6624
 DO ~SetGlobal("E3FADENALIATALKTOB","GLOBAL",1)~

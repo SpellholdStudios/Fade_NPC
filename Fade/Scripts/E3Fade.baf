@@ -220,17 +220,6 @@ THEN
       SetGlobal("E3DIDFINALLOVETALK","LOCALS",1)
 END
 
-IF
-   InParty(Myself)
-   See(Player1)
-   !StateCheck(Player1,CD_STATE_NOTVALID)
-   Global("E3DIDFINALLOVETALK","LOCALS",1)
-THEN
-   RESPONSE #100
-      PlaySong(0)
-      PlaySound("E3THEME")
-      Interact(Player1)
-END
 
 IF
    InParty(Myself)
@@ -770,7 +759,7 @@ IF
   !StateCheck(Player1,CD_STATE_NOTVALID)
   CombatCounter(0)
   Global("E3FADEMATCH","GLOBAL",1)
-  OR(25)
+  OR(26)
        Global("E3LOVETALK","GLOBAL",2)
        Global("E3LOVETALK","GLOBAL",4)
        Global("E3LOVETALK","GLOBAL",6)
@@ -798,6 +787,7 @@ IF
        Global("E3LOVETALK","GLOBAL",60)
        Global("E3LOVETALK","GLOBAL",62)
        Global("E3LOVETALK","GLOBAL",64)
+       Global("E3LOVETALK","GLOBAL",66)
 THEN
      RESPONSE #100
         PlaySong(0)

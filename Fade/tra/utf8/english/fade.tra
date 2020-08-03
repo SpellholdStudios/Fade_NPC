@@ -14,26 +14,26 @@
 @13   = ~(Suddenly, Fade is standing before you again, looking bewildered and dangerously near collapse)~
 @14   = ~(As you cradle her in your arms, you feel her breathing become shallow again, and she begins to twitch)~
 @15   = ~(hold her even closer to you)~
-@16   = ~(whisper) Fade, don't leave me! I need you... I love you... ~
+@16   = ~(whisper) Fade, don't leave me! I need you... I love you...~
 @17   = ~Fade, don't you dare leave me! Come on, girl, fight it!~
-@18   = ~(She continues to twitch, and it seems as if she is trying to say something to you. Listening carefully, you can just make out one sentence) Don't leave me... ~
-@19   = ~I won't leave you! Fade, please, don't leave me. I need you... I love you... ~
-@20   = ~(whisper) Love... you... ~
+@18   = ~(She continues to twitch, and it seems as if she is trying to say something to you. Listening carefully, you can just make out one sentence) Don't leave me...~
+@19   = ~I won't leave you! Fade, please, don't leave me. I need you... I love you...~
+@20   = ~(whisper) Love... you...~
 @21   = ~(gasp) No! (She holds on to you tightly) Not... leaving! (She screams again and then slumps in your arms, exhausted)~
 @22   = ~(shake her) Fade, are you okay? Please tell me you're okay!~
-@23   = ~Sweet one, it's alright... please be alright... ~
-@24   = ~(She grimaces as if in pain, but nods) Fight! Yes... fight... ~
-@25   = ~(Fade lies still in your arms for a moment, and you are unsure if she has won. Then, much to your relief, you feel her wrap her arms around your neck) Don't shake me... I ache... ~
-@26   = ~(Her eyes flutter open) I... I cannot believe it... I am still here! You fought for me again, <CHARNAME>... ~
+@23   = ~Sweet one, it's alright... please be alright...~
+@24   = ~(She grimaces as if in pain, but nods) Fight! Yes... fight...~
+@25   = ~(Fade lies still in your arms for a moment, and you are unsure if she has won. Then, much to your relief, you feel her wrap her arms around your neck) Don't shake me... I ache...~
+@26   = ~(Her eyes flutter open) I... I cannot believe it... I am still here! You fought for me again, <CHARNAME>...~
 @27   = ~Of course I did. I couldn't leave you with that demon inside you. I had to get you back. I love you.~
 @28   = ~Of course, but don't ever do anything like that again! You damn near gave me a heart attack!~
 @29   = ~(say nothing, just kiss her)~
 @30   = ~(Fade lies still in your arms for a moment, and you are unsure if she has won. Then, much to your relief, you feel her wrap her arms around your neck)~
 @31   = ~I love you too. I just couldn't stop it... the demonic spirit took advantage of my weakened state and used me against you! I tried to fight back, but it was too strong.~
-@32   = ~It... it taunted me, saying that I would have to witness your death, that it would devour you--and I couldn't stop it! I'm sorry, <CHARNAME>, so very sorry... ~
+@32   = ~It... it taunted me, saying that I would have to witness your death, that it would devour you--and I couldn't stop it! I'm sorry, <CHARNAME>, so very sorry...~
 @33   = ~Shhhh--you have nothing to be sorry about. Let's just go. Imoen is restored and I have you back, and that is all that matters.~
 @34   = ~I... I couldn't help it, <CHARNAME>. I tried to fight it, but it was too strong. After Bodhi had bitten me, I was weakened. The spirit took advantage of that, and so was able to use me against you.~
-@35   = ~It taunted me, saying that I would have to witness your death at its--and therefore at my--hands. I couldn't stop it! I'm sorry... so very sorry... ~
+@35   = ~It taunted me, saying that I would have to witness your death at its--and therefore at my--hands. I couldn't stop it! I'm sorry... so very sorry...~
 @36   = ~Shhh--you don't need to apologize. Let's just go. Imoen is restored and I have you back, and that is all that matters.~
 @37   = ~(She accepts your kiss with an urgency bordering on fervor. When you break apart, she buries her face into your shoulder and holds on to you as if her life depended on it) Thank you for not abandoning me.~
 @38   = ~The Final Battle with Bodhi.
@@ -42,7 +42,7 @@ While I had feared for some time that Bodhi's final revenge on me would be to ta
 @39   = ~Yes. (She buries her face into your shoulder and holds on to you as if her life depended on it) Thank you for not abandoning me.~
 @40   = ~You'd better go and speak to the Shadow Master first. He's not altogether... happy with how things have turned out.~
 @41   = ~Come on, <CHARNAME>. We'd better hurry up and find those two contacts.~
-@42   = ~(On entering the room, you find Fade huddled in a corner, blindfolded with her wrists bound, clad only in her underclothes. As you step towards her, she shrinks back from you, growling)~
+@42   = ~(On entering the room, you find Fade huddled in a corner, blindfolded with her wrists bound, clad only in her underclothes. As you step towards her, she shrinks back from you, growling.)~
 @43   = ~Get away from me!~
 @44   = ~Shhh... Fade, it's me, <CHARNAME>. I've come here to rescue you.~
 @45   = ~<CHARNAME>? Is it really... you?~
@@ -69,16 +69,16 @@ While I had feared for some time that Bodhi's final revenge on me would be to ta
 @66   = ~(In her rage, she turns and swings a fist wildly at you, catching you a glancing blow on the chin)~
 @67   = ~(leave her alone and let her vent her rage on the corpse)~
 @68   = ~You punched me! Right, that's enough! (grab her wrists and continue to try to drag her away from the corpse)~
-@69   = ~(It doesn't take her long to reduce the corpse to a bloody pulp, and with a shuddering gasp, she stands up, shaking, covered from head to toe in blood and gore. Then, to your surprise, she laughs)~
+@69   = ~(It doesn't take her long to reduce the corpse to a bloody pulp, and with a shuddering gasp, she stands up, shaking, covered from head to toe in blood and gore. Then, to your surprise, she laughs.)~
 @70   = ~Dead! May you rot in hell, Mallon!~
-@71   = ~(She then kicks what remains of the corpse in viciously. You cannot help but wince when you hear something crack. With a defiant toss of her head, she looks around at you. For a moment you can see exactly why the Fey'ri should be feared. Rather than fear, there is a savage look of triumphant satisfaction on Fade's face. It is soon replaced by a look of shame when she looks to you)~
+@71   = ~(She then kicks what remains of the corpse in viciously. You cannot help but wince when you hear something crack. With a defiant toss of her head, she looks around at you. For a moment you can see exactly why the Fey'ri should be feared. Rather than fear, there is a savage look of triumphant satisfaction on Fade's face. It is soon replaced by a look of shame when she looks to you.)~
 @72   = ~Shall... shall we go on now, <CHARNAME>?~
 @73   = ~Yes, join up with me again. But I really think we should get some rest straightaway. You need some treatment for those injuries, and possibly a bath.~
 @74   = ~Are you insane?! Do you honestly think I'd want someone who could tear up a corpse with her own bare hands in my company? No way, Fade. You're too unstable.~
 @75   = ~I would like to have you back, but I fear I have no room in the party for you at the moment. Maybe you could join up with me later?~
 @76   = ~Unstable, am I? If you'd been through what they put me through... and here I thought you would at least... I'm not staying here any more! I'll be back at the Shadow Thieves' Guild, where they at least need me!~
 @77   = ~(She struggles against you, trying to reach the corpse again, but you are eventually able to drag her away. She does manage one last, savage kick at Mallon's head. You cannot help but wince when you hear something crack. With a defiant toss of her head, she looks around at you. For a moment you can see exactly why the Fey'ri should be feared. Rather than fear, there is a savage look of triumphant satisfaction on Fade's face. It is soon replaced by a look of shame when she looks to you)~
-@78   = ~(She nods her head, and suddenly she looks very small and very tired. She does however take your hand in hers and attempts to smile, although it looks more like a grimace)~
+@78   = ~(She nods her head, and suddenly she looks very small and very tired. She does however take your hand in hers and attempts to smile, although it looks more like a grimace.)~
 @79   = ~Thank you.~
 @80   = ~W-what? You come all this way to get me, and then tell me you have no room for me? I... I can't believe it!~
 @81   = ~Fair enough, join up with me again. But I really think we should get some rest straightaway. You need some treatment for those injuries.~
@@ -96,7 +96,7 @@ While I had feared for some time that Bodhi's final revenge on me would be to ta
 @93   = ~You're welcome.~
 @94   = ~(She looks at the parchment, and then back to you, slightly confused) I... own myself? So, I'm free?~
 @95   = ~(A slow, triumphant smile spreads its way across her face, re-splitting her lip. She winces, but continues to smile, and then viciously tears up the contract) I'm free! Thank you!~
-@96   = ~You... you dare say that? At a time like this? And here I thought you... you... ~
+@96   = ~You... you dare say that? At a time like this? And here I thought you... you...~
 @97   = ~I hate you.~
 @98   = ~(She sharply draws a breath and winces as your arms encircle her waist) Please... don't do that. It hurts.~
 @99   = ~Can... can we just go on now, <CHARNAME>?~
@@ -107,7 +107,7 @@ While I had feared for some time that Bodhi's final revenge on me would be to ta
 @104  = ~If I need you, I'll know where to find you.~
 @105  = ~No, you can't go back to the guild. Stay here.~
 @106  = ~(grin) I knew you couldn't resist my company.~
-@107  = ~Y-you wish me to leave? I thought we had something that went beyond being mere travelling companions... ~
+@107  = ~Y-you wish me to leave? I thought we had something that went beyond being mere travelling companions...~
 @108  = ~Sorry, Fade, but I have decided otherwise. I think you should leave.~
 @109  = ~We do. I don't know what I was thinking. Of course, stay at my side.~
 @110  = ~Well, then... as you wish, <CHARNAME>. I will return to my guild and the Shadow Master.~
@@ -121,7 +121,7 @@ While I had feared for some time that Bodhi's final revenge on me would be to ta
 @118  = ~(laugh) Willing... and very able!~
 @119  = ~You dare attack those that help you?! TRAITOR! You will die upon my sword!~
 @120  = ~(As you leave the guild, you find yourself pondering your newest travelling companion and cannot help but wonder what her actual motivations for joining you are. She notices your gaze and smiles rather disarmingly at you.)~
-@121  = ~Are you sure? If you have something to say, surely it would be better to speak freely than to brood over it... ~
+@121  = ~Are you sure? If you have something to say, surely it would be better to speak freely than to brood over it...~
 @122  = ~I said no and I mean no... I am grateful for your offer to help me, but that does not mean I trust you. Let us leave it at that.~
 @123  = ~I suppose you are right. I just wonder what your true motivations for wanting to help a near-stranger are. Aran says he didn't draft you, and your other explanation hardly sheds any light on why you are really here... how can I trust you?~
 @124  = ~Okay... no matter what you say, I think you are a plant, sent by Aran to make sure I don't betray him, and that your other "reasons" are just excuses. I don't trust you, Fade.~
@@ -1526,7 +1526,7 @@ And after her still they trudge!"~
 @1495 = ~Though I must say, I don't think much of the company you're keeping. Tut, tut. Gallivanting with Lessers, no less.~
 @1496 = ~For someone who thought I was dead, you don't seem too surprised to see me! And how DARE you pass judgment on <CHARNAME> and his companions like that!~
 @1497 = ~Ahh, I see that some of your infernal wrath has not left you--there may be hope for you still! Yes, Cirion told us you were dead, but you know better than to trust that old snake.~
-@1498 = ~And besides, someone yelled @231 after me once, and I seem to remember that being the stupid soubriquet you started to go by before you left. I knew then that you weren't dead. Pity.~
+@1498 = ~And besides, someone yelled after me once, and I seem to remember that being the stupid soubriquet you started to go by before you left. I knew then that you weren't dead. Pity.~
 @1499 = ~Cirion? Cirion is here?? Where is he?! Why have you come here to Athkatla? Must I forever be haunted by you all?!~
 @1500 = ~Oh, please, get over yourself. You always were the selfish one. We're not here for you! We have better and more important things to do. In fact, killing you would just be a nice bonus for me. Goodbye, sister dear.~
 @1501 = ~Hello, Roger. Have you by any chance seen any strange people come through here recently?~
@@ -2197,7 +2197,7 @@ And after her still they trudge!"~
 @2166 = ~Yes, of course. What is on your mind?~
 @2167 = ~Not right now.~
 @2168 = ~Again? You're really beginning to wear on my nerves, you know.~
-@2169 = ~I am just intrigued. We have spoken much of your...unusual heritage, and I just wonder how that affected you as you were growing up. Were you reviled or revered, I wonder?~
+@2169 = ~I am just intrigued. We have spoken much of your... unusual heritage, and I just wonder how that affected you as you were growing up. Were you reviled or revered, I wonder?~
 @2170 = ~Actually, my childhood was very pleasant. I knew nothing of my heritage, and those who did know treated me no differently from the other children. I still had to attend my classes, do my chores... and I had my fair share of clips round the ear for misbehaving, as well!~
 @2171 = ~Neither. I didn't actually know anything of my heritage as a child. I only found out about it relatively recently, so it was never an issue.~
 @2172 = ~My childhood was nothing special. I hardly think about it, to be honest. I didn't know anything about my heritage--hardly anyone did. Gorion made sure of that.~
@@ -2229,7 +2229,7 @@ And after her still they trudge!"~
 @2198 = ~Of course I do! That is because complete strangers don't fly off the handle unexpectedly, and they don't expect to be the complete focus of my attention all the time! Fade, I don't know what you were expecting from me, but as you said yourself, you're just here to help. Nothing more.~
 @2199 = ~I'm not offended, <CHARNAME>, not as such. I should never have said that. I don't even know why I did. I have a bit of a temper sometimes, and I do say things I don't really mean. I'm sorry.~
 @2200 = ~I just wanted to ask you something that has intrigued me for a while. We have spoken much of your... unusual heritage, and I just wonder how that affected you as you were growing up. Were you reviled or revered, I wonder?~
-@2201 = ~It's okay, Fade. Actually, my childhood was very pleasant. I knew nothing of my heritage, and those who did know treated me no differently from the other children. I still had to attend my classes, do my chores...and I had my fair share of clips round the ear for misbehaving as well!~
+@2201 = ~It's okay, Fade. Actually, my childhood was very pleasant. I knew nothing of my heritage, and those who did know treated me no differently from the other children. I still had to attend my classes, do my chores... and I had my fair share of clips round the ear for misbehaving as well!~
 @2202 = ~Well, as long as you're sure you didn't mean it... My childhood was nothing special. I hardly think about it, to be honest. I didn't know anything of my heritage--hardly anyone did. Gorion made sure of that.~
 @2203 = ~And you wonder why I didn't want to talk to you in the first place? Why the hell are you asking me such inane questions, Fade? If you're bored, go pester someone else.~
 @2204 = ~Well, that's where you're wrong! I was actually going to ask you a question about you!~
@@ -3470,7 +3470,7 @@ She winked, left the room and I saw her nevermore"~
 @3424 = ~(grin and bury your head in her cleavage)~
 @3425 = ~(laugh) Okay, yes I do. And I love you too, <CHARNAME>, with all my heart. (She kisses you soundly)~
 @3426 = ~(Her eyes widen) Oh! I... see. Gosh! (She looks down, then looks back up at you) Yes, I would say that was a definite promise... ~
-@3427 = ~(She purses her lips and gives you a slightly quirky look) I'm sure you can think of something. I'm sure you have some kind of...tool at your disposal.~
+@3427 = ~(She purses her lips and gives you a slightly quirky look) I'm sure you can think of something. I'm sure you have some kind of... tool at your disposal.~
 @3428 = ~(grin) Oooh, I get a choice, do I? Well, in that case, you can promise to... threaten me later, okay? (wink)~
 @3429 = ~I think I can leave that up to you, <CHARNAME>. Surprise me, okay? (She winks and saunters off)~
 @3430 = ~Okay, <CHARNAME>. Until later... (She blows you a kiss and saunters off)~
@@ -3555,11 +3555,11 @@ She winked, left the room and I saw her nevermore"~
 @3509 = ~Well, I'd be lying if I said I wasn't surprised, Fade. I've never thought about this like that before. But I respect how you feel, and I shouldn't have tried it on. I'll wait until you are ready.~
 @3510 = ~Fade, I'm sorry. I know you've had a difficult time with men in the past, and I should have been a little more sensitive, but let's just say that the "big" head wasn't doing all the thinking.~
 @3511 = ~But Fade, I wouldn't have thought this would have bothered you! I mean, it's not like you haven't been round the block a few times already.~
-@3512 = ~Kind of. I *do* want you, <CHARNAME>, it's just that... I... I am having trouble in... reconciling myself. I get so confused! I love you, and so I want to protect you, to...keep you safe.~
+@3512 = ~Kind of. I *do* want you, <CHARNAME>, it's just that... I... I am having trouble in... reconciling myself. I get so confused! I love you, and so I want to protect you, to... keep you safe.~
 @3513 = ~Ironically, if you had approached me before my feelings had grown, I wouldn't have had a problem, quite the opposite. Now, however, I... I don't want you to be just another notch upon my bedpost, <CHARNAME>. You're too special to me.~
 @3514 = ~It's okay, <CHARNAME>. It's only natural. The problem lies with me. I'm the one who should be sorry. I... I am having trouble in... reconciling myself. I get so confused! I love you, and so I want to protect you, to... keep you safe.~
 @3515 = ~When... when we are going to be intimate. And there lies the problem. I... I am having trouble in... reconciling myself. I get so confused! I love you, and so I want to protect you, to... keep you safe.~
-@3516 = ~Fade, I'm sorry. I know you've had a difficult time with men in the past, and I should have been a little more...sensitive.~
+@3516 = ~Fade, I'm sorry. I know you've had a difficult time with men in the past, and I should have been a little more... sensitive.~
 @3517 = ~I don't think you'd have to "push" me into anything, <CHARNAME>. I'm not unwilling, just confused. I love you, and so I want to protect you, to... keep you safe.~
 @3518 = ~Thank you, <CHARNAME>. (She leans into you again and hugs you close) I love you. You're so much more than I deserve.~
 @3519 = ~(She chuckles and shakes her head) That's okay... and thank you. (She leans into you again and hugs you close) I love you. You're so much more than I deserve.~
@@ -4533,7 +4533,7 @@ She winked, left the room and I saw her nevermore"~
 @4487 = ~(grin) Well, now you mention it...~
 @4488 = ~Of all the women in the world, I end up with a tiefling with a cruel sense of humour! What did I do to deserve that?~
 @4489 = ~(She purses her lips in mock-admonishment.) That's NOT what I meant, <CHARNAME>, and you know it! Dreadful creature...~
-@4490 = ~(She tries to remain stern, but it is obvious by the way she is biting the insides of her cheeks that she is trying not to laugh. After a short while, however, it becomes too much for her and her strict faÃ§ade melts into a rather knowing smirk.) Well, okay, maybe later...~
+@4490 = ~(She tries to remain stern, but it is obvious by the way she is biting the insides of her cheeks that she is trying not to laugh. After a short while, however, it becomes too much for her and her strict façade melts into a rather knowing smirk.) Well, okay, maybe later...~
 @4491 = ~(She grins winsomely and bats her eyelashes at you, but says nothing.)~
 @4492 = ~(At first she looks bashful and tries to pull away from you, but when you don't release her, she leans forward and wraps her arms around your neck.)~
 @4493 = ~What are you doing?~
@@ -4583,7 +4583,7 @@ She winked, left the room and I saw her nevermore"~
 @4537 = ~(She coughs and looks furtively around herself for a while before looking guardedly at you again.) Well, what is it, then?~
 @4538 = ~You didn't? Not with... ewww! How could you? That's really, really nasty, Fade!~
 @4539 = ~Whoa... and there's me worried about giving you this! Here you go--although I'm game for a bit of weird-ness if you are.~
-@4540 = ~Err... yes... quickly changing the subject... Here you go! Go on, honeykitten.... Try it on for size--just for me!~
+@4540 = ~Err... yes... quickly changing the subject... Here you go! Go on, honeykitten... Try it on for size--just for me!~
 @4541 = ~You're male, aren't you? In my experience, all of you have a least one little peculiar quirk. (sigh) Go on, then, what is it?~
 @4542 = ~To wear? Well, that's not too bad... I hope. Come on, <CHARNAME>, hand it over!~
 @4543 = ~(say nothing, just hand over the bikini)~
@@ -5719,7 +5719,7 @@ She winked, left the room and I saw her nevermore"~
 @5673 = ~I wish we had the same thing, Fade, but we don't. We will simply have to see what happens. There is no point in trying to second-guess the future--I had hoped you would have realised this by now too. What will be, will be... and there is nothing any of us can do about that.~
 @5674 = ~I know... I know. I feel the same way, I suppose.~
 @5675 = ~Oh, <CHARNAME>, I wish we had a crystal ball--one where we could look at the future and know if all of this is going to turn out all right. I simply cannot bear to think that after all we have been through, we may be wrenched apart after all!~
-@5676 = ~I suppose it does... kind of. I do take your point. Please don't take this as any kind of aspersion upon your ability to defeat what ever is waiting for us! Maybe I am being just a little bit more paranoid than usual, but the worst thing about losing Keita was never having that one last time to tell her how I felt... and I am not going to waste that opportunity now.~
+@5676 = ~I suppose it does... kind of. I do take your point. Please don’t take this as any kind of aspersion upon your ability to defeat what ever is waiting for us! Maybe I am being just a little bit more paranoid than usual, but the worst thing about losing Keita was never having that one last time to tell her how I felt... and I am not going to waste that opportunity now.~
 @5677 = ~We can laugh at my... silliness once this is all over, but for now, please... take my words to heart. Now let us go forth and meet your destiny.~
 @5678 = ~So did I, but I have realised I already have the greatest treasure a woman could ever want--you. All the gold and glittering baubles in the world are so much rubbish compared to your heart.~
 @5679 = ~(sigh) I wish it was, <CHARNAME>... for then I could wish that this battle would be over and done with and we would already know the outcome.~
@@ -6329,7 +6329,7 @@ She winked, left the room and I saw her nevermore"~
 @6283 = ~(She falters, unable to express what she is feeling with mere words.)~
 @6284 = ~I know, Fade, I know. This just confirms everything, doesn't it? That we are indeed going to be parents.~
 @6285 = ~My love? Are... are you okay? Are you not delighted at this?~
-@6286 = ~(grin) Watch it, Fade... you don't want your slightly grumpy faÃ§ade to slip! You actually look like you're happy to be having this child.~
+@6286 = ~(grin) Watch it, Fade... you don't want your slightly grumpy façade to slip! You actually look like you're happy to be having this child.~
 @6287 = ~<CHARNAME>, I think I know the difference between a bit of trapped wind and the movement of our firstborn child! Of course I'm sure!~
 @6288 = ~Truly? Can I see if I can feel it too? (place your hand on her belly)~
 @6289 = ~Really? You're that sure? What did it feel like?~
@@ -7123,3 +7123,5 @@ She winked, left the room and I saw her nevermore"~
 @7077 = ~Well, the baby won't have any teeth for at least the first year--~
 @7078 = ~What? No teeth! Oh, this cannot be! Boo, did you hear that?  The baby will have no teeth! How can he become a great warrior with no teeth?  Oh, sad, sad day!~
 @7079 = ~No, Minsc, I mean... (shakes her head and sighs) You know, never mind.~
+
+

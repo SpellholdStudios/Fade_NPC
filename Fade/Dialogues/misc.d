@@ -271,6 +271,7 @@ DO ~ClearAllActions()
 StartCutSceneMode()
 StartCutScene("E3cut001")~ EXIT
 
+/*
 EXTEND_BOTTOM HLKETTA 0
 IF ~Global("E3KETTASION","GLOBAL",0)~ THEN DO
 ~SetGlobal("E3KETTASION","GLOBAL",1)~ EXTERN HLSION sionfade
@@ -285,17 +286,17 @@ IF ~~ THEN REPLY #56261 GOTO 4
 IF ~~ THEN REPLY #56265 GOTO 5
 IF ~Global("E3SLAVERKIDNAP","GLOBAL",1)~ THEN REPLY @988 GOTO sionfade1
 END
+*/
+
+EXTEND_BOTTOM HLSION 1
+IF ~Global("E3SLAVERKIDNAP","GLOBAL",1)~ THEN REPLY @988 GOTO sionfade1
+END
+
+APPEND HLSION
 
 IF ~~ THEN BEGIN sionfade1
 SAY @989
-IF ~~ THEN DO ~StartCutSceneMode()
-ActionOverride("hlketta",MoveToObjectNoInterrupt("HLSION"))
-ActionOverride("hlketta",Wait(1))
-ActionOverride("hlketta",EndCutSceneMode())
-ActionOverride("hlketta",DestroySelf())
-SetGlobal("TALKEDTOHLSION","GLOBAL",2)
-SetGlobal("TALKEDTOHLKETTA","GLOBAL",2)
-ForceSpell(Myself,DRYAD_TELEPORT)~ EXIT
+COPY_TRANS HLSION 3
 END
 END
 
@@ -816,9 +817,11 @@ CHAIN IF ~~ THEN E3ARANS aransmum_weight
 END
 IF ~~ THEN SOLVED_JOURNAL @1194 DO ~~ EXIT
 
+/*
 ADD_TRANS_TRIGGER BODHIAMB 5 ~OR(2)
 !InParty("E3Fade")
 !Global("E3FADEROMANCEACTIVE","GLOBAL",2)~
+*/
 
 EXTEND_BOTTOM BODHIAMB 5
 IF ~InParty("E3Fade")

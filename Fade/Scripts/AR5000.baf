@@ -1,0 +1,9 @@
+IF
+AreaCheckObject("AR5000",Player1)
+AreaCheckObject("AR5000","E3FADE")
+Global("E3TAVERNOUTBURSTTALK","GLOBAL",1)
+THEN
+RESPONSE #100
+ActionOverride("E3FADE",StartDialogueNoSet(Player1))
+Continue()
+END

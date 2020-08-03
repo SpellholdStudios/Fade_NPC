@@ -1,0 +1,7 @@
+IF
+   Global("E3DADROWMOVE","GLOBAL",1)
+THEN
+   RESPONSE #100
+      SetGlobal("E3DADROWMOVE","GLOBAL",2)
+END
+

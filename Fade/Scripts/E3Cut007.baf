@@ -1,0 +1,13 @@
+IF
+   True()
+THEN
+   RESPONSE #100
+      CutSceneId(Player1)
+      ActionOverride("E3Fade2",ForceSpell(Myself,LONG_RED_MIGHT))
+      Wait(1)
+      ActionOverride("E3Fade2",DestroySelf())
+      SetGlobal("E3TRANSFORM","GLOBAL",4)
+      CreateCreature("E3Demon2",[619.280],0)
+      Wait(2)
+      EndCutSceneMode()
+END

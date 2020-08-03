@@ -1,0 +1,10 @@
+IF
+   True()
+THEN 
+   RESPONSE #100
+      CutSceneId(Player1)
+      CreateVisualEffect("SPFLESHS",[1454.1398])
+      Wait(1)
+      CreateCreature("E3KEITA",[1454.1398],14)
+      ActionOverride("E3Keita",StartDialogueNoSet(Player1))
+END

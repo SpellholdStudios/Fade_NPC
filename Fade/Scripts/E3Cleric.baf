@@ -1,0 +1,138 @@
+// Spell list
+//
+// Shield of the Archons
+// Gate
+// Protection from Evil
+// Chaotic Commands
+// Heal
+// Slay Living
+// Flame Strike
+////////////////////////////////////////////////////
+
+// Preparation
+/////////////////
+IF
+   See(NearestEnemyOfType([PC]))
+   Global("Prep","LOCALS",0)
+THEN
+   RESPONSE #100
+      SetGlobalTimer("Cast","LOCALS",0)
+      SetGlobalTimer("TrueSeeing","LOCALS",60)
+      SetGlobal("Shield","LOCALS",1)
+      SetGlobal("Gate","LOCALS",1)
+      SetGlobal("Prot","LOCALS",1)
+      SetGlobal("Chaotic","LOCALS",1)
+      SetGlobal("Heal","LOCALS",3)
+      SetGlobal("Slay","LOCALS",2)
+      SetGlobal("Flame","LOCALS",2)
+      SetGlobal("True","LOCALS",3)
+      SetGlobal("Prep","LOCALS",1)
+      ReallyForceSpell(Myself,CLERIC_TRUE_SIGHT)
+      ReallyForceSpell(Myself,CLERIC_CHAOTIC_COMMANDS)
+      ReallyForceSpell(Myself,CLERIC_SHIELD_OF_THE_ARCHONS)
+END
+
+//Heal
+////////
+IF
+   GlobalTimerExpired("Cast","LOCALS")
+   GlobalGT("Heal","LOCALS",0)
+   HPPercentLT(Myself,50)
+THEN
+   RESPONSE #100
+      IncrementGlobal("Heal","LOCALS",-1)
+      SetGlobalTimer("Cast","LOCALS",6)
+      SpellNoDec(Myself,CLERIC_HEAL)
+END
+
+//Protection from Evil
+//////////////////////
+IF
+   GlobalTimerExpired("Cast","LOCALS")
+   GlobalGT("Prot","LOCALS",0)
+   See(NearestEnemyOfType([PC]))
+THEN
+   RESPONSE #100
+      IncrementGlobal("Prot","LOCALS",-1)
+      SetGlobalTimer("Cast","LOCALS",6)
+      SpellNoDec(Myself,CLERIC_PROTECT_FROM_EVIL)
+END
+
+//Gate
+/////////
+IF
+   GlobalTimerExpired("Cast","LOCALS")
+   GlobalLT("Prot","LOCALS",1)
+   GlobalGT("Gate","LOCALS",0)
+   See(NearestEnemyOfType([PC]))
+THEN
+   RESPONSE #100
+      IncrementGlobal("Gate","LOCALS",-1)
+      SetGlobalTimer("Cast","LOCALS",6)
+      SpellNoDec(LastSeenBy(Myself),CLERIC_GATE)
+END
+
+//True Seeing
+//////////////
+IF
+   GlobalTimerExpired("Cast","LOCALS")
+   GlobalTimerExpired("TrueSeeing","LOCALS")
+   GlobalGT("True","LOCALS",0)
+THEN
+   RESPONSE #100
+      IncrementGlobal("True","LOCALS",-1)
+      SetGlobalTimer("Cast","LOCALS",6)
+      SetGlobalTimer("TrueSeeing","LOCALS",60)
+      SpellNoDec(Myself,CLERIC_TRUE_SIGHT)
+END
+
+//Slay Living
+//////////////
+IF
+   GlobalTimerExpired("Cast","LOCALS")
+   GlobalGT("Slay","LOCALS",0)
+   !HasItem("slaylive",Myself)
+   See(NearestEnemyOfType([PC]))
+THEN
+   RESPONSE #100
+      IncrementGlobal("Slay","LOCALS",-1)
+      SetGlobalTimer("Cast","LOCALS",6)
+      SpellNoDec(Myself,CLERIC_SLAY_LIVING)
+END
+
+IF
+   HasItem("slaylive",Myself)
+   See(NearestEnemyOfType([PC]))
+THEN
+   RESPONSE #100
+      SelectWeaponAbility(SLOT_WEAPON1,0)
+      Attack(LastSeenBy(Myself))
+END
+
+//Flame Strike
+///////////////
+IF
+   GlobalTimerExpired("Cast","LOCALS")
+   GlobalGT("Flame","LOCALS",0)
+   See(NearestEnemyOfType([PC]))
+THEN
+   RESPONSE #100
+      IncrementGlobal("Flame","LOCALS",-1)
+      SetGlobalTimer("Cast","LOCALS",6)
+      SpellNoDec(LastSeenBy(Myself),CLERIC_FLAME_STRIKE)
+END
+
+//Attack
+/////////
+IF
+   See(NearestEnemyOf(Myself))
+   !Allegiance(LastSeenBy(Myself),ENEMY)
+THEN
+   RESPONSE #100
+      AttackReevaluate(LastSeenBy(Myself),12)
+END
+
+
+
+
+

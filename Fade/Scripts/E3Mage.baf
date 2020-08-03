@@ -1,0 +1,198 @@
+// Spell List
+//
+// Horrid Wilting
+// Time Stop
+// Finger of Death
+// Breach
+// Remove Magic
+// Stone Skin
+// Protection from Magical Weapons
+// Acid Arrow
+// Magic Missile
+////////////////////////
+
+IF
+   See(NearestEnemyOfType([PC]))
+   Global("Prep","LOCALS",0)
+THEN
+   RESPONSE #100
+      SetGlobalTimer("Cast","LOCALS",0)
+      SetGlobalTimer("CastProtMW","LOCALS",0)
+      SetGlobal("Wilting","LOCALS",2)
+      SetGlobal("Time","LOCALS",1)
+      SetGlobal("Finger","LOCALS",1)
+      SetGlobal("Breach","LOCALS",5)
+      SetGlobal("Remove","LOCALS",5)
+      SetGlobal("Stone","LOCALS",5)
+      SetGlobal("ProtMW","LOCALS",5)
+      SetGlobal("Acid","LOCALS",6)
+      SetGlobal("Missile","LOCALS",6)
+      SetGlobal("Prep","LOCALS",1)
+END
+
+//Chain Contingency
+///////////////////
+IF
+   See(NearestEnemyOfType([PC]))
+   Global("ChainContingency","LOCALS",0)
+THEN
+   RESPONSE #100
+      DisplayString(Myself,26328)
+      SetGlobal("ChainContingency","LOCALS",1)
+      SetGlobalTimer("CastRemove","LOCALS",18)
+      ApplySpell(Myself,WIZARD_STONE_SKIN)
+      ApplySpell(Myself,WIZARD_IMPROVED_MANTLE)
+      ApplySpell(NearestEnemyOfType([PC]),WIZARD_DISPEL_MAGIC)
+END
+
+//Protection from Magical Weapons
+//////////////////////////////////
+IF
+   GlobalTimerExpired("Cast","LOCALS")
+   GlobalTimerExpired("CastProtMW","LOCALS")
+   GlobalGT("ProtMW","LOCALS",0)
+   HPPercentLT(Myself,100)
+   Range(NearestEnemyOf(Myself),2)
+THEN
+   RESPONSE #100
+      IncrementGlobal("ProtMW","LOCALS",-1)
+      SetGlobalTimer("Cast","LOCALS",6)
+      SetGlobalTimer("CastProtMW","LOCALS",24)
+      SpellNoDec(Myself,WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)
+END
+
+//Stoneskin
+///////////
+IF
+   GlobalTimerExpired("Cast","LOCALS")
+   GlobalGT("Stone","LOCALS",0)
+   CheckStatLT(Myself,1,STONESKINS)
+THEN
+   RESPONSE #100
+      IncrementGlobal("Stone","LOCALS",-1)
+      SetGlobalTimer("Cast","LOCALS",6)
+      SpellNoDec(Myself,WIZARD_STONE_SKIN)
+END
+
+//Potion
+/////////
+IF
+   GlobalTimerExpired("Cast","LOCALS")
+   HasItem("potn55",Myself)
+   HPPercentLT(Myself,80)
+THEN
+   RESPONSE #100
+      UseItem("potn55",Myself)
+      SetGlobalTimer("Cast","LOCALS",6)
+END
+
+//Breach
+/////////
+IF
+   GlobalTimerExpired("Cast","LOCALS")
+   GlobalGT("Breach","LOCALS",0)
+   See(NearestEnemyOfType([PC]))
+   OR(2)
+      HasImmunityEffects(LastSeenBy(Myself))
+      CheckStatGT(LastSeenBy(Myself),0,STONESKINS)
+THEN
+   RESPONSE #100
+      IncrementGlobal("Breach","LOCALS",-1)
+      SetGlobalTimer("Cast","LOCALS",6)
+      SpellNoDec(LastSeenBy(Myself),WIZARD_BREACH)
+END
+
+//Remove Magic
+//////////////
+IF
+   GlobalTimerExpired("Cast","LOCALS")
+   GlobalTimerExpired("CastRemove","LOCALS")
+   GlobalGT("Remove","LOCALS",0)
+   See(NearestEnemyOfType([PC]))
+THEN
+   RESPONSE #100
+      IncrementGlobal("Remove","LOCALS",-1)
+      SetGlobalTimer("Cast","LOCALS",6)
+      SetGlobalTimer("CastRemove","LOCALS",18)
+      SpellNoDec(LastSeenBy(Myself),WIZARD_DISPEL_MAGIC)
+END
+
+//Time Stop
+////////////
+IF
+   GlobalTimerExpired("Cast","LOCALS")
+   GlobalGT("Time","LOCALS",0)
+THEN
+   RESPONSE #100
+      IncrementGlobal("Time","LOCALS",-1)
+      SetGlobalTimer("Cast","LOCALS",6)
+      SpellNoDec(Myself,WIZARD_TIME_STOP)
+END
+
+//Finger of Death
+//////////////////
+IF
+   GlobalTimerExpired("Cast","LOCALS")
+   GlobalGT("Finger","LOCALS",0)
+   See(NearestEnemyOfType([PC]))
+THEN
+   RESPONSE #100
+      IncrementGlobal("Finger","LOCALS",-1)
+      SetGlobalTimer("Cast","LOCALS",6)
+      SpellNoDec(LastSeenBy(Myself),WIZARD_FINGER_OF_DEATH)
+END
+
+//Horrid Wilting
+////////////////
+IF
+   GlobalTimerExpired("Cast","LOCALS")
+   GlobalGT("Wilting","LOCALS",0)
+   See(NearestEnemyOfType([PC]))
+THEN
+   RESPONSE #100
+      IncrementGlobal("Wilting","LOCALS",-1)
+      SetGlobalTimer("Cast","LOCALS",6)
+      SpellNoDec(LastSeenBy(Myself),WIZARD_ABI_DALZIMS_HORRID_WILTING)
+END
+
+//Acid Arrow
+/////////////
+IF
+   GlobalTimerExpired("Cast","LOCALS")
+   GlobalGT("Acid","LOCALS",0)
+   See(NearestEnemyOfType([PC]))
+THEN
+   RESPONSE #100
+      IncrementGlobal("Acid","LOCALS",-1)
+      SetGlobalTimer("Cast","LOCALS",6)
+      SpellNoDec(LastSeenBy(Myself),WIZARD_MELF_ACID_ARROW)
+END
+
+//Magic Missile
+////////////////
+IF
+   GlobalTimerExpired("Cast","LOCALS")
+   GlobalGT("Missile","LOCALS",0)
+   See(NearestEnemyOfType([PC]))
+THEN
+   RESPONSE #100
+      IncrementGlobal("Missile","LOCALS",-1)
+      SetGlobalTimer("Cast","LOCALS",6)
+      SpellNoDec(LastSeenBy(Myself),WIZARD_MAGIC_MISSILE)
+END
+
+//Attack
+/////////
+IF
+   See(NearestEnemyOf(Myself))
+   !Allegiance(LastSeenBy(Myself),ENEMY)
+THEN
+   RESPONSE #100
+      EquipMostDamagingMelee()
+      AttackReevaluate(LastSeenBy(Myself),12)
+END
+
+
+
+
+

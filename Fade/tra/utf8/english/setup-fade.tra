@@ -1,0 +1,188 @@
+@0    = ~Fade: An NPC for Baldur's Gate II: SoA and ToB~
+@1    = ~Fade~
+@2    = ~Perhaps we'd better leave...Now!~ [E3FADE01]
+@3    = ~Is that the best you can do?~ [E3FADE24]
+@4    = ~...that's not good at all...~ [E3FADE31]
+@5    = ~Even I have my limits.~ [E3FADE33]
+@6    = ~Why, how lovely...Thanks ever so much.~ [E3FADE02]
+@7    = ~OK, that's enough for me...I need some rest.~ [E3FADE03]
+@8    = ~Oh come on! Let's move this along, people!~ [E3FADE04]
+@9    = ~All right crew, let's take them down!~ [E3FADE05]
+@10   = ~Ha! There's more where that came from!~ [E3FADE06]
+@11   = ~This is too easy!~ [E3FADE07]
+@12   = ~You're about to bite off more than you can chew, cur.~ [E3FADE08]
+@13   = ~I think I spy some unsuspecting play-mates ahead.~ [E3FADE26]
+@14   = ~~ [E3FADE09]
+@15   = ~It's not supposed to happen like this...~ [E3FADE10]
+@16   = ~Ah! This isn't good...I need a healer, quick!~ [E3FADE11]
+@17   = ~Stay close.~ [E3FADE34]
+@18   = ~Yes?~ [E3FADE12]
+@19   = ~Why, hello there.~ [E3FADE20]
+@20   = ~Well, then...~ [E3FADE32]
+@21   = ~No.~ [E3FADE37]
+@22   = ~Well, of course I can do that.~ [E3FADE13]
+@23   = ~Mmm...yes.~ [E3FADE14]
+@24   = ~Why don't you let me squeeze through there?~ [E3FADE23]
+@25   = ~Finished.~ [E3FADE25]
+@26   = ~I think that's a lovely idea.~ [E3FADE28]
+@27   = ~Alright.~ [E3FADE29]
+@28   = ~Aye.~ [E3FADE30]
+@29   = ~You just follow me. And stay close.~ [E3FADE27]
+@30   = ~I need you to watch my back.~ [E3FADE36]
+@31   = ~Ha-ha!~ [E3FADE15]
+@32   = ~Blast!~ [E3FADE16]
+@33   = ~This...usually...works...Bah! I need a better weapon!~ [E3FADE17]
+@34   = ~Look at this.~ [E3FADE22]
+@35   = ~No, I'm carrying far too much useless garbage. I'm going to have to dump some of this.~ [E3FADE18]
+@36   = ~My charms don't usually fall flat like that.~ [E3FADE19]
+@37   = ~Now, just wait right there and don't move a muscle until I say.~ [E3FADE21]
+@38   = ~He he he.~ [E3FADE38]
+@39   = ~When you ask FADE, your exotic Fey'ri companion, about her background, she simply says she has been a member of the Shadow Thieves for a little over three years, after Aran Linvail found her living rough in the Docks District. She refuses to elaborate any further than that, and by the defiant set of her chin and the way her tail is twitching, you know better than to push her.~
+@40   = ~Mallon~
+@41   = ~Hooded Figure~
+@42   = ~Mrs. Linvail~
+@43   = ~Fade-Demon~
+@44   = ~Shadow Thief Messenger~
+@45   = ~Darla~
+@46   = ~Ella~
+@47   = ~Xek'ral~
+@48   = ~Cirion~
+@49   = ~Savanya~
+@50   = ~Jekh'ril~
+@51   = ~Sume~
+@52   = ~Eriale~
+@53   = ~Taeghen~
+@54   = ~Keita~
+@55   = ~Torn Parchment~
+@56   = ~This parchment has been badly damaged in the brief struggle you witnessed, and is torn and crumpled. You can only make out the following:
+
+...the fiendling bitch is in Athkatla after all. I will not...though she could hide fro...be warned--she travels...Bhaa...ake her to the strongho...Temple...will arrange transport as soon as I receive you...do not delay...fool out of me!
+
+D
+~
+@57   = ~Slaver Contract~
+@58   = ~This is a contract of sale for "one (1) female fiendling". A rough but accurate description of Fade follows.~
+@59   = ~Fade's Body~
+@60   = ~Fade was captured by Bodhi and infected with vampirism, and now lies in a trance. There may be some way to revive her, though you don't know what it would be.~
+@61   = ~Fade lies terribly weakened after your battle with the demonic spirit that still possesses her. You need to find a way to revive her as soon as possible.~
+@62   = ~Firkraag's Tooth~
+@63   = ~One of Firkraag's teeth has broken off. You look it over, and for some reason you get a distinct feeling of latent power. Although you do not know why, you get the feeling you should hang on to this--its function may come clearer in the future.~
+@64   = ~Fade's Amulet~
+@65   = ~This amulet was given to Fade by the Shadow Master once he charged her with uncovering all she could find out about the rival Guild plaguing the Shadow Thieves.
+
+STATISTICS
+
+Equipped Abilities:
+Negative Plane Protection
+Protection from Evil
+Protection from Charm
+
+Usable by:
+Fade~
+@66   = ~This amulet was given to <CHARNAME> by Fade to protect him from the many different dangers vampires can pose.
+
+STATISTICS
+
+Equipped Abilities:
+Negative Plane Protection
+Protection from Evil
+Protection from Charm
+
+Usable by:
+Fade
+<CHARNAME>~
+@67   = ~Letter from Cirion~
+@68   = ~I think we have located the item. If it is indeed as powerful as it is rumoured to be, the Countess will surely be pleased. Secure a base somewhere, and then come and meet us in the bowels of the city. Kill any who oppose you, but use restraint. Being discovered will only bring us more problems. Once we have the item, you can satiate your bloodlust to your heart's content.
+
+Cirion
+~
+@69   = ~Chain Mail Bikini~
+@70   = ~Prized by many males on Faerun, the humble chain mail bikini is now the stuff of legend. This one seems to be constructed of simply a few squares of chain mail and scraps of leather, providing little modesty and maximum cleavage potential.
+
+(This item provides little to no actual protection, and you do wonder for a moment why Ribald would have something like this in stock... although maybe you could convince a certain person to give you a very private viewing...)~
+@71   = ~Exquisite Ruby Ring~
+@72   = ~This ring appears to have no other purpose than one of decoration. The ruby that adorns it is a deep crimson colour that almost matches the colour of Fade's eyes. It has no flaws and is beautifully cut, catching the light on every facet so it appears to glitter even when held still.
+
+Wearable by:
+Fade~
+@73   = ~Engraved Ruby Ring~
+@74   = ~This ring appears to have no other purpose than one of decoration. The ruby that adorns it is a deep crimson colour that almost matches the colour of Fade's eyes. It has no flaws and is beautifully cut, catching the light on every facet so it appears to glitter even when held still. There is now an inscription engraved on the inside of the ring that reads: "Dearest Fade, With Love Forever, <CHARNAME>."
+
+Wearable by:
+Fade~
+@75   = ~This ring appears to have no other purpose than one of decoration. The ruby that adorns it is a deep crimson colour that almost matches the colour of Fade's eyes. It has no flaws and is beautifully cut, catching the light on every facet so it appears to glitter even when held still. There is now an inscription engraved on the inside of the ring that reads: "Yours always and forever, <CHARNAME>."
+
+Wearable by:
+Fade~
+@76   = ~Soulfire Ring~
+@77   = ~Soulfire gems are as rare as they are beautiful, and hold many magical enchantments. Now whole, the Soulfire Ring is prized for its ability to clear the mind and to regenerate the health of its wearer. This particular Soulfire Ring was made as an engagement ring from <CHARNAME> to his Fey'ri sweetheart, Fade.
+
+STATISTICS
+
+Equipped Abilities:
+Wearer regenerates 1 hit point every 6 seconds
+Chaotic Commands
+Fire Resistance: +10%
+
+Usable by:
+Fade~
+@78   = ~Soulfire Gem~
+@79   = ~Soulfire gems are as rare as they are beautiful, and hold many magical enchantments. Rumoured to hold the trapped spirits of a fire elemental at their hearts, they can be combined with other, flawless gemstones to create potent magical artefacts.~
+@80   = ~Uulia'Moor~
+@81   = ~This short sword bears the curious name "The Playful Scar", although why it is called that is a mystery to all save the one who named this maleficent blade.  It once belonged to the infamous fey'ri assassin Slythithia. In her time Slythithia was a fighter and sorceress of immense power, and a penchant for cruelty and bloodshed unprecedented even among her own kind. Her nefarious reputation was cemented the day she slaughtered every last resident of a small elven fishing village: men and women, from the oldest man to the youngest babe. Not a soul was spared. Some stories say that Slythithia stumbled upon this village when she was but a child, and her curiosity led her to enter it and explore when she should have ran away. The villagers hurled rocks and rotten vegetables at her, called her a monster and chased her with sticks and spears. Others say that this was just a fanciful tale, and the real reason for the slaughter was simply that Slythithia despised these surface elves, believing them to be pathetic and undeserving of life.
+
+No one knows how or even if Slythithia ever met her end; bards today still sing of the legend of the fey'ri woman who vanished into the mists, never to be seen again. But once a year, when the sky glows red, it is said that she comes back to take the lives of any and all who wander too close to the site of the village she hated to much.
+
+STATISTICS:
+
+Special abillities:
+  This weapon is always considered a +4 short sword
+  +30% bonus to detect illusion
+  5% to stop time for 3 seconds on succesful hit
+
+THAC0:  +4 bonus
+Damage:  1D6 +2, +1D4 acid damage
+Damage type: piercing
+Weight: 3
+Speed Factor: 0
+Proficiency Type: Short Sword
+Type:  1-handed
+Requires: 5 Strength
+Usable By:
+ Fey'ri~
+@82   = ~Marked Uulia'Moor~
+@83   = ~This short sword bears the curious name "The Playful Scar", although why it is called that is a mystery to all save the one who named this maleficent blade.  It once belonged to the infamous fey'ri assassin Slythithia. In her time Slythithia was a fighter and sorceress of immense power, and a penchant for cruelty and bloodshed unprecedented even among her own kind. Her nefarious reputation was cemented the day she slaughtered every last resident of a small elven fishing village: men and women, from the oldest man to the youngest babe. Not a soul was spared. Some stories say that Slythithia stumbled upon this village when she was but a child, and her curiosity led her to enter it and explore when she should have ran away. The villagers hurled rocks and rotten vegetables at her, called her a monster and chased her with sticks and spears. Others say that this was just a fanciful tale, and the real reason for the slaughter was simply that Slythithia despised these surface elves, believing them to be pathetic and undeserving of life.
+
+No one knows how or even if Slythithia ever met her end; bards today still sing of the legend of the fey'ri woman who vanished into the mists, never to be seen again. But once a year, when the sky glows red, it is said that she comes back to take the lives of any and all who wander too close to the site of the village she hated to much.
+
+After Cespenar's enchantment the blade is even sharper and more powerful.
+
+STATISTICS:
+
+Special abillities:
+  This weapon is always considered a +5 short sword
+  +30% bonus to detect illusion
+  5% chance to stop time for 3 seconds on succesful hit
+  5% chance to drain one level on succesful hit
+
+THAC0:  +5 bonus
+Damage:  1D6 +4, +1D4 acid damage
+Damage type: piercing
+Weight: 3
+Speed Factor: 0
+Proficiency Type: Short Sword
+Type:  1-handed
+Requires: 5 Strength
+Usable By:
+ Fey'ri~
+@84   = ~Olias-Kin Scroll~
+@85   = ~This strange parchment has some peculiar marks on it. Even though the signs look as if they were written in blood, you are almost certain that's actually some kind of red ink.~
+@86   = ~Fade continued to adventure after leaving <CHARNAME>'s company, but after a few short months, she seemed to disappear. No one knows exactly what became of her, but rumours persist of a pirate queen, one who targets the many slave ships that plague the shores of the remoter areas of Faerun. Tales of her unmerciful stance of killing the crews of ships that insist on trafficking human flesh are now renowned throughout the Realms, as well as her compassionate habit of taking on the former slaves as members of her crew if they so wish. Her identity remains a secret, and the pirates she sails with would never betray her... but the rumour continues that she has hair as red as blood, and fiery gaze and a curious stump, almost as if she once had a tail.~
+@87   = ~Fade continued to adventure after leaving <CHARNAME>'s company, but after a few short months, she seemed to disappear. No one knows exactly what became of her, but rumours persist of a pirate queen, one who targets the many slave ships that plague the shores of the remoter areas of Faerun. Tales of her unmerciful stance of killing the crew of ships that insist on trafficking human flesh are now renowned throughout the realms, as well as her compassionate habit of taking on the former slaves as members of her crew if they so wish. Her identity remains a secret, and the pirates she sails with would never betray her... but the rumour continues that she has hair as red as blood, and fiery gaze and a curious stump, almost as if she once had a tail... and that she refuses any man to touch her, as if she is lamenting the loss of some mysterious love, many years ago.~
+@88   = ~Fade continued to adventure after leaving <CHARNAME>'s company right up until the birth of her daughter, but a few short months after the birth, she seemed to disappear, abandoning the child to the care of a local temple one stormy night. No one knows exactly what became of her after that, but rumours persist of a pirate queen, one who targets the many slave ships that plague the shores of the remoter areas of Faerun. Tales of her unmerciful stance of killing the crew of ships that insist on trafficking human flesh are now renowned throughout the realms, as well as her compassionate habit of taking on the former slaves as members of her crew if they so wish. Her identity remains a secret, and the pirates she sails with would never betray her... but the rumour continues that she has hair as red as blood, and fiery gaze and a curious stump, almost as if she once had a tail... and that she refuses any man to touch her, as if she is lamenting the loss of some mysterious love, many years ago.~
+@89   = ~Once the Bhaalspawn saga was over, Fade and <CHARNAME> decided to travel north. It was on this journey that they made the rather surprising discovery that Fade was with child. After this pleasant revelation, they made the conscious decision not to adventure again, choosing instead to raise their children in the relative peace of a small village, located far to the north of Faerun. After the birth of their twins, <CHARNAME> and his fey'ri love were handfasted and became the appointed protectors of the village they had adopted as their home. Fade at last found the peace within herself to totally accept her own heritage, and whilst outsiders remain suspicious of the hot-tempered tiefling, this does not bother her. "Why should it," she reasons with a smile as she watches her children play outside her small but comfortable cottage, "when I have the love of such a special and extraordinary man?"~
+@90   = ~Once the Bhaalspawn saga was over, Fade and <CHARNAME> made the conscious decision not to adventure again, choosing instead to raise their children in the relative peace of a small village, located far to the north of Faerun. After the birth of their twins--Fade's hunch being totally correct --<CHARNAME> and his fey'ri love were handfasted and became the appointed protectors of the village they had adopted as their home. Fade at last found the peace within herself to totally accept her own heritage, and whilst outsiders remain suspicious of the hot-tempered tiefling, this does not bother her. "Why should it," she reasons with a smile as she watches her children play outside her small but comfortable cottage, "when I have the love of such a special and extraordinary man?"~
+@91   = ~Fade NPC: reactions to Romantic Encounters (RE may be installed before or after this component)~
+@92   = ~Install the main component of Fade NPC mod first~
+
+@93   = ~Fade EE: give Fade Shadowdancer kit~

@@ -1,0 +1,18 @@
+IF
+   Global("E3FADEVAMPIRE","GLOBAL",1)
+THEN
+   RESPONSE #100
+      SetGlobal("E3FADEVAMPIRE","GLOBAL",2)
+      CreateCreature("E3Invis",[1473.332],0)
+      ActionOverride("E3Invis",DropInventory())
+      ActionOverride("E3Invis",DestroySelf())
+END
+
+IF
+   Dead("C6Bodhi")
+   GlobalLT("udMind","GLOBAL",41)
+THEN
+   RESPONSE #100
+      EraseJournalEntry(@1213)
+      SetGlobal("udMind","GLOBAL",41)
+END

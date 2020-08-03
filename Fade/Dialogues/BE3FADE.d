@@ -1,0 +1,6065 @@
+BEGIN BE3FADE
+
+IF ~GlobalGT("E3LOVETALK","GLOBAL",30)
+!GlobalTimerExpired("E3TREATMENTTIMER","GLOBAL")
+Global("E3DIDTREATMENTTALK","GLOBAL",1)
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN treatment_start
+SAY @1750
+IF ~~ THEN REPLY @1751 DO ~SetGlobal("E3DIDTREATMENTTALK","GLOBAL",2)~ EXIT
+IF ~~ THEN REPLY @1752 DO ~SetGlobal("E3DIDTREATMENTTALK","GLOBAL",2)~ GOTO treatment_help
+END
+
+IF ~~ THEN BEGIN treatment_help
+SAY @1753 = @1754
+IF ~~ THEN REPLY @1755 GOTO treatment_healing
+IF ~~ THEN REPLY @1756 GOTO treatment_yell
+IF ~~ THEN REPLY @1757 GOTO treatment_else
+END
+
+IF ~~ THEN BEGIN treatment_healing
+SAY @1758
+IF ~~ THEN REPLY @1759 GOTO treatment_potion
+IF ~~ THEN REPLY @1760 GOTO treatment_cleaning
+IF ~~ THEN REPLY @1761 GOTO treatment_yell
+END
+
+IF ~~ THEN BEGIN treatment_yell
+SAY @1762
+IF ~~ THEN DO ~RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN treatment_else
+SAY @1763
+IF ~~ THEN REPLY @1764 GOTO treatment_abused
+IF ~~ THEN REPLY @1765 GOTO treatment_glad
+END
+
+IF ~~ THEN BEGIN treatment_potion
+SAY @1766 = @1767 = @1768
+IF ~~ THEN REPLY @1769 GOTO treatment_water
+IF ~~ THEN REPLY @1770 GOTO treatment_wounds
+END
+
+IF ~~ THEN BEGIN treatment_cleaning
+SAY @1771
+IF ~~ THEN REPLY @1769 GOTO treatment_water
+IF ~~ THEN REPLY @1772 GOTO treatment_water
+IF ~~ THEN REPLY @1770 GOTO treatment_wounds
+END
+
+IF ~~ THEN BEGIN treatment_abused
+SAY @1773 = @1774
+IF ~~ THEN REPLY @1775 GOTO treatment_healing
+IF ~~ THEN REPLY @1776 GOTO treatment_yell
+END
+
+IF ~~ THEN BEGIN treatment_glad
+SAY @1777
+IF ~~ THEN REPLY @1778 GOTO treatment_healing
+IF ~~ THEN REPLY @1776 GOTO treatment_yell
+END
+
+IF ~~ THEN BEGIN treatment_water
+SAY @1779 = @1780 = @1781
+IF ~~ THEN REPLY @1782 GOTO treatment_gentle
+IF ~~ THEN REPLY @1783 GOTO treatment_still
+END
+
+IF ~~ THEN BEGIN treatment_wounds
+SAY @1784
+IF ~~ THEN REPLY @1785 GOTO treatment_water
+END
+
+IF ~~ THEN BEGIN treatment_gentle
+SAY @1786
+IF ~~ THEN REPLY @1787 GOTO treatment_embarrass
+IF ~~ THEN REPLY @1788 GOTO treatment_finish
+END
+
+IF ~~ THEN BEGIN treatment_still
+SAY @1789
+IF ~~ THEN REPLY @1787 GOTO treatment_embarrass
+IF ~~ THEN REPLY @1788 GOTO treatment_finish
+END
+
+IF ~~ THEN BEGIN treatment_embarrass
+SAY @1790
+IF ~~ THEN REPLY @1791 GOTO treatment_around
+IF ~~ THEN REPLY @1792 GOTO treatment_finish
+END
+
+IF ~~ THEN BEGIN treatment_finish
+SAY @1793
+IF ~~ THEN REPLY @1794 GOTO treatment_around
+END
+
+IF ~~ THEN BEGIN treatment_around
+SAY @1795
+IF ~~ THEN REPLY @1796 GOTO treatment_yourself
+IF ~~ THEN REPLY @1797 GOTO treatment_help2
+END
+
+IF ~~ THEN BEGIN treatment_yourself
+SAY @1798
+IF ~~ THEN DO ~RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN treatment_help2
+SAY @1799 = @1800
+IF ~~ THEN REPLY @1801 GOTO treatment_sleep
+IF ~~ THEN REPLY @1802 GOTO treatment_help3
+END
+
+IF ~~ THEN BEGIN treatment_sleep
+SAY @1803
+IF ~~ THEN DO ~RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN treatment_help3
+SAY @1804 = @1805
+IF ~~ THEN REPLY @1806 GOTO treatment_fond
+IF ~~ THEN REPLY @1807 GOTO treatment_leave
+END
+
+IF ~~ THEN BEGIN treatment_fond
+SAY @1808
+IF ~~ THEN DO ~RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN treatment_leave
+SAY @1809
+IF ~~ THEN REPLY @1810 GOTO treatment_fond
+IF ~~ THEN REPLY @1811 GOTO treatment_friends
+END
+
+IF ~~ THEN BEGIN treatment_friends
+SAY @1812
+IF ~~ THEN DO ~RestParty()~ EXIT
+END
+
+IF ~GlobalGT("E3LOVETALK","GLOBAL",60)
+Global("E3DIDDRUNKTALK","GLOBAL",1)
+!StateCheck(Player1,STATE_SLEEPING)
+OR(9)
+AreaCheck("AR0313")
+AreaCheck("AR0406")
+AreaCheck("AR0509")
+AreaCheck("AR0513")
+AreaCheck("AR0522")
+AreaCheck("AR0704")
+AreaCheck("AR0709")
+AreaCheck("AR1105")
+AreaCheck("AR2010")~ THEN BEGIN drunk_start
+SAY @1813 = @1814 = @1815
+IF ~~ THEN REPLY @1816 DO ~SetGlobal("E3DIDDRUNKTALK","GLOBAL",2)~ GOTO drunk_enough
+IF ~~ THEN REPLY @1817 DO ~SetGlobal("E3DIDDRUNKTALK","GLOBAL",2)~ GOTO drunk_fun
+IF ~~ THEN REPLY @1818 DO ~SetGlobal("E3DIDDRUNKTALK","GLOBAL",2)~ GOTO drunk_pester
+END
+
+IF ~~ THEN BEGIN drunk_enough
+SAY @1819 = @1820
+IF ~~ THEN REPLY @1821 GOTO drunk_morning
+IF ~~ THEN REPLY @1822 GOTO drunk_gorgeous
+IF ~~ THEN REPLY @1823 GOTO drunk_no
+END
+
+IF ~~ THEN BEGIN drunk_fun
+SAY @1824 = @1825 = @1820
+IF ~~ THEN REPLY @1826 GOTO drunk_morning
+IF ~~ THEN REPLY @1822 GOTO drunk_gorgeous
+IF ~~ THEN REPLY @1827 GOTO drunk_no
+END
+
+IF ~~ THEN BEGIN drunk_pester
+SAY @1828 = @1829
+IF ~~ THEN DO ~RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN drunk_morning
+SAY @1830 = @1831
+IF ~~ THEN REPLY @1832 GOTO drunk_shocked
+IF ~~ THEN REPLY @1833 GOTO drunk_wine
+IF ~~ THEN REPLY @1834 GOTO drunk_ale
+END
+
+IF ~~ THEN BEGIN drunk_gorgeous
+SAY @1835 = @1836 = @1837
+IF ~~ THEN REPLY @1838 GOTO drunk_satisfied
+IF ~~ THEN REPLY @1839 GOTO drunk_disentangle
+END
+
+IF ~~ THEN BEGIN drunk_no
+SAY @1840 = @1841
+IF ~~ THEN DO ~RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN drunk_shocked
+SAY @1842 = @1843
+IF ~~ THEN REPLY @1844 GOTO drunk_confused
+IF ~~ THEN REPLY @1845 GOTO drunk_no
+END
+
+IF ~~ THEN BEGIN drunk_wine
+SAY @1846
+IF ~~ THEN REPLY @1847 GOTO drunk_no
+IF ~~ THEN REPLY @1848 GOTO drunk_ale
+IF ~~ THEN REPLY @1849 GOTO drunk_bed
+END
+
+IF ~~ THEN BEGIN drunk_ale
+SAY @1850
+IF ~~ THEN REPLY @1851 GOTO drunk_kiss
+IF ~~ THEN REPLY @1852 GOTO drunk_bed
+END
+
+IF ~~ THEN BEGIN drunk_satisfied
+SAY @1853
+IF ~~ THEN REPLY @1854 GOTO drunk_kiss
+IF ~~ THEN REPLY @1855 GOTO drunk_bed
+END
+
+IF ~~ THEN BEGIN drunk_disentangle
+SAY @1856
+IF ~~ THEN DO ~RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN drunk_confused
+SAY @1857 = @1858
+IF ~~ THEN REPLY @1859 GOTO drunk_bed
+END
+
+IF ~~ THEN BEGIN drunk_bed
+SAY @1860 = @1861
+IF ~~ THEN REPLY @1862 GOTO drunk_find
+IF ~~ THEN REPLY @1863 GOTO drunk_room
+END
+
+IF ~~ THEN BEGIN drunk_kiss
+SAY @1864
+IF ~~ THEN REPLY @1865 GOTO drunk_advice
+IF ~~ THEN REPLY @1866 GOTO drunk_ignore
+END
+
+IF ~~ THEN BEGIN drunk_advice
+SAY @1867
+IF ~~ THEN GOTO drunk_room
+END
+
+IF ~~ THEN BEGIN drunk_ignore
+SAY @1868
+IF ~~ THEN REPLY @1869 GOTO drunk_bed
+END
+
+IF ~~ THEN BEGIN drunk_find
+SAY @1870
+IF ~~ THEN DO ~RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN drunk_room
+SAY @1871 = @1872
+IF ~~ THEN REPLY @1873 GOTO drunk_carryon
+IF ~~ THEN REPLY @1874 GOTO drunk_rest
+END
+
+IF ~~ THEN BEGIN drunk_carryon
+SAY @1875 = @1876
+IF ~~ THEN DO ~RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN drunk_rest
+SAY @1877 = @1876
+IF ~~ THEN DO ~RestParty()~ EXIT
+END
+
+IF ~GlobalGT("E3LOVETALK","GLOBAL",60)
+Global("E3DIDDRUNKTALK","GLOBAL",3)
+!StateCheck(Player1,STATE_SLEEPING)
+OR(9)
+AreaCheck("AR0313")
+AreaCheck("AR0406")
+AreaCheck("AR0509")
+AreaCheck("AR0513")
+AreaCheck("AR0522")
+AreaCheck("AR0704")
+AreaCheck("AR0709")
+AreaCheck("AR1105")
+AreaCheck("AR2010")~ THEN BEGIN hangover_start
+SAY @1878
+IF ~~ THEN REPLY @1879 DO ~SetGlobal("E3DIDDRUNKTALK","GLOBAL",4)~ GOTO hangover_right
+IF ~~ THEN REPLY @1880 DO ~SetGlobal("E3DIDDRUNKTALK","GLOBAL",4)~ GOTO hangover_alright
+IF ~~ THEN REPLY @1881 DO ~SetGlobal("E3DIDDRUNKTALK","GLOBAL",4)~ GOTO hangover_sympathy
+IF ~~ THEN REPLY @1882 DO ~SetGlobal("E3DIDDRUNKTALK","GLOBAL",4)~ GOTO hangover_poor
+END
+
+IF ~~ THEN BEGIN hangover_right
+SAY @1883
+IF ~~ THEN REPLY @1881 GOTO hangover_sympathy
+IF ~~ THEN REPLY @1884 GOTO hangover_asleep
+IF ~~ THEN REPLY @1882 GOTO hangover_poor
+END
+
+IF ~~ THEN BEGIN hangover_alright
+SAY @1885
+IF ~~ THEN REPLY @1886 GOTO hangover_anything
+IF ~~ THEN REPLY @1881 GOTO hangover_sympathy
+IF ~~ THEN REPLY @1882 GOTO hangover_poor
+END
+
+IF ~~ THEN BEGIN hangover_sympathy
+SAY @1887
+IF ~~ THEN REPLY @1888 GOTO hangover_poor
+IF ~~ THEN REPLY @1889 GOTO hangover_breakfast
+IF ~Global("E3FADENOOKIE","GLOBAL",1)~ THEN REPLY @1890 GOTO hangover_better
+END
+
+IF ~~ THEN BEGIN hangover_poor
+SAY @1891
+IF ~~ THEN REPLY @1892 GOTO hangover_dwarves
+IF ~~ THEN REPLY @1893 GOTO hangover_own
+IF ~~ THEN REPLY @1889 GOTO hangover_breakfast
+IF ~Global("E3FADENOOKIE","GLOBAL",1)~ THEN REPLY @1890 GOTO hangover_better
+END
+
+IF ~~ THEN BEGIN hangover_asleep
+SAY @1894
+IF ~~ THEN REPLY @1886 GOTO hangover_anything
+IF ~~ THEN REPLY @1881 GOTO hangover_sympathy
+IF ~~ THEN REPLY @1882 GOTO hangover_poor
+END
+
+IF ~~ THEN BEGIN hangover_anything
+SAY @1895
+IF ~~ THEN REPLY @1892 GOTO hangover_dwarves
+IF ~~ THEN REPLY @1893 GOTO hangover_own
+IF ~~ THEN REPLY @1889 GOTO hangover_breakfast
+IF ~Global("E3FADENOOKIE","GLOBAL",1)~ THEN REPLY @1890 GOTO hangover_better
+END
+
+IF ~~ THEN BEGIN hangover_breakfast
+SAY @1896
+IF ~~ THEN REPLY @1897 GOTO hangover_egg
+IF ~~ THEN REPLY @1898 GOTO hangover_yours
+IF ~Global("E3FADENOOKIE","GLOBAL",1)~ THEN REPLY @1899 GOTO hangover_better
+END
+
+IF ~~ THEN BEGIN hangover_better
+SAY @1900
+IF ~~ THEN REPLY @1901 GOTO hangover_lewd
+IF ~~ THEN REPLY @1902 GOTO hangover_ill
+END
+
+IF ~~ THEN BEGIN hangover_dwarves
+SAY @1903
+IF ~~ THEN REPLY @1904 GOTO hangover_throat
+IF ~~ THEN REPLY @1905 GOTO hangover_ofcourse
+END
+
+IF ~~ THEN BEGIN hangover_own
+SAY @1906
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN hangover_egg
+SAY @1907
+IF ~~ THEN REPLY @1908 GOTO hangover_dwarves
+IF ~~ THEN REPLY @1909 GOTO hangover_travel
+END
+
+IF ~~ THEN BEGIN hangover_yours
+SAY @1910 
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN hangover_lewd
+SAY @1911 
+IF ~~ THEN REPLY @1912 GOTO hangover_mind
+IF ~~ THEN REPLY @1913 GOTO hangover_eat
+END
+
+IF ~~ THEN BEGIN hangover_ill
+SAY @1914
+IF ~~ THEN REPLY @1912 GOTO hangover_mind
+IF ~~ THEN REPLY @1915 GOTO hangover_later
+IF ~~ THEN REPLY @1916 GOTO hangover_eat
+END
+
+IF ~~ THEN BEGIN hangover_throat
+SAY @1917
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN hangover_ofcourse
+SAY @1918
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN hangover_travel
+SAY @1919
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN hangover_mind
+SAY @1920
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN hangover_eat
+SAY @1921
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN hangover_later
+SAY @1922
+IF ~~ THEN EXIT
+END
+
+IF ~Global("PhaereJob","GLOBAL",1)
+Global("E3DIDUDTAVERNTALK","LOCALS",0)
+AreaCheck("AR2202")
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN udtavern_start
+SAY @1923
+IF ~~ THEN REPLY @1924 DO ~SetGlobal("E3DIDUDTAVERNTALK","LOCALS",1)~ GOTO udtavern_question
+IF ~~ THEN REPLY @1925 DO ~SetGlobal("E3DIDUDTAVERNTALK","LOCALS",1)~ GOTO udtavern_ignore
+END
+
+IF ~~ THEN BEGIN udtavern_question
+SAY @1926 
+IF ~~ THEN REPLY @1927 GOTO udtavern_cover
+IF ~~ THEN REPLY @1928 GOTO udtavern_later
+IF ~~ THEN REPLY @1929 GOTO udtavern_rebuke
+END
+
+IF ~~ THEN BEGIN udtavern_ignore
+SAY @1930
+IF ~~ THEN REPLY @1931 GOTO udtavern_question
+IF ~~ THEN REPLY @1932 GOTO udtavern_male
+END
+
+IF ~~ THEN BEGIN udtavern_cover
+SAY @1933 = @1934
+IF ~~ THEN REPLY @1935 GOTO udtavern_talk
+IF ~~ THEN REPLY @1936 GOTO udtavern_rebuke
+IF ~~ THEN REPLY @1937 GOTO udtavern_later
+END
+
+IF ~~ THEN BEGIN udtavern_later
+SAY @1938 = @1939
+IF ~~ THEN REPLY @1940 DO ~SetGlobal("E3DIDUDTAVERNTALK","LOCALS",2)
+ClearAllActions()
+StartCutSceneMode()
+StartCutScene("E3Cut003")~ EXIT
+IF ~~ THEN REPLY @1941 GOTO udtavern_unimportant
+END
+
+IF ~~ THEN BEGIN udtavern_rebuke
+SAY @1942 = @1943
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN udtavern_male
+SAY @1944
+IF ~~ THEN REPLY @1945 GOTO udtavern_question
+END
+
+IF ~~ THEN BEGIN udtavern_talk
+SAY @1946 = @1939
+IF ~~ THEN REPLY @1940 DO ~SetGlobal("E3DIDUDTAVERNTALK","LOCALS",2)
+ClearAllActions()
+StartCutSceneMode()
+StartCutScene("E3Cut003")~ EXIT
+IF ~~ THEN REPLY @1941 GOTO udtavern_unimportant
+END
+
+IF ~~ THEN BEGIN udtavern_unimportant
+SAY @1947 = @1943
+IF ~~ THEN EXIT
+END
+
+IF ~Global("PhaereJob","GLOBAL",1)
+Global("E3DIDUDTAVERNTALK","LOCALS",2)
+AreaCheck("AR2203")
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN udtavern2_start
+SAY @1948
+IF ~~ THEN REPLY @1949 DO ~SetGlobal("E3DIDUDTAVERNTALK","LOCALS",3)~ GOTO udtavern2_necessary
+IF ~~ THEN REPLY @1950 DO ~SetGlobal("E3DIDUDTAVERNTALK","LOCALS",3)~ GOTO udtavern2_atmosphere
+END
+
+IF ~~ THEN BEGIN udtavern2_necessary
+SAY @1951
+IF ~~ THEN REPLY @1952 GOTO udtavern2_atmosphere
+IF ~~ THEN REPLY @1953 GOTO udtavern2_atmosphere
+END
+
+IF ~~ THEN BEGIN udtavern2_atmosphere
+SAY @1954 = @1955 = @1956 = @1957 = @1958 = @1959 = @1960
+IF ~~ THEN REPLY @1961 GOTO udtavern2_temptation
+IF ~~ THEN REPLY @1962 GOTO udtavern2_temptation
+IF ~~ THEN REPLY @1963 GOTO udtavern2_away
+IF ~~ THEN REPLY @1964 GOTO udtavern2_evil
+END
+
+IF ~~ THEN BEGIN udtavern2_temptation
+SAY @1965
+IF ~~ THEN REPLY @1966 GOTO udtavern2_shock
+IF ~~ THEN REPLY @1967 GOTO udtavern2_denial
+IF ~~ THEN REPLY @1968 GOTO udtavern2_regret
+END
+
+IF ~~ THEN BEGIN udtavern2_away
+SAY @1969
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
+END
+
+IF ~~ THEN BEGIN udtavern2_evil
+SAY @1970 = @1971
+IF ~~ THEN REPLY @1972 GOTO udtavern2_seduction
+IF ~~ THEN REPLY @1973 GOTO udtavern2_horror
+END
+
+IF ~~ THEN BEGIN udtavern2_shock
+SAY @1974 = @1975 = @1976
+IF ~~ THEN REPLY @1977 GOTO udtavern2_rest
+IF ~~ THEN REPLY @1978 GOTO udtavern2_away
+IF ~Global("E3FADEROMANCEACTIVE","GLOBAL",1)~ THEN REPLY @1979 GOTO udtavern2_disinterest
+END
+
+IF ~~ THEN BEGIN udtavern2_denial
+SAY @1980 = @1981
+IF ~~ THEN REPLY @1982 GOTO udtavern2_rest
+IF ~~ THEN REPLY @1983 GOTO udtavern2_kill
+END
+
+IF ~~ THEN BEGIN udtavern2_regret
+SAY @1984
+IF ~~ THEN REPLY @1985 GOTO udtavern2_kill
+IF ~~ THEN REPLY @1986 GOTO udtavern2_rest
+END
+
+IF ~~ THEN BEGIN udtavern2_seduction
+SAY @1987 = @1988
+IF ~~ THEN REPLY @1989 GOTO udtavern2_away
+IF ~~ THEN REPLY @1990 GOTO udtavern2_rest
+END
+
+IF ~~ THEN BEGIN udtavern2_horror
+SAY @1991 = @1988
+IF ~~ THEN REPLY @1989 GOTO udtavern2_away
+IF ~~ THEN REPLY @1992 GOTO udtavern2_rest
+IF ~~ THEN REPLY @1993 GOTO udtavern2_totallyevil
+END
+
+IF ~~ THEN BEGIN udtavern2_rest
+SAY @1994
+IF ~~ THEN REPLY @1995 DO ~RestParty()~ EXIT
+IF ~~ THEN REPLY @1996 DO ~RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN udtavern2_disinterest
+SAY @1997
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)
+RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN udtavern2_kill
+SAY @1998 = @1999
+IF ~~ THEN REPLY @1982 GOTO udtavern2_rest
+IF ~~ THEN REPLY @1989 GOTO udtavern2_away
+END                                       
+
+IF ~~ THEN BEGIN udtavern2_totallyevil
+SAY @2000 = @2001
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
+END
+
+IF ~Global("E3DIDSVIRFTALK","LOCALS",1)
+Global("Chapter","GLOBAL",5)
+AreaCheck("AR2100")
+Range("udsvir04",15)
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN svirf_start
+SAY @2002
+IF ~~ THEN REPLY @2003 DO ~SetGlobal("E3DIDSVIRFTALK","LOCALS",2)~ GOTO svirf_understatement
+IF ~~ THEN REPLY @2004 DO ~SetGlobal("E3DIDSVIRFTALK","LOCALS",2)~ GOTO svirf_know
+IF ~~ THEN REPLY @2005 DO ~SetGlobal("E3DIDSVIRFTALK","LOCALS",2)~ GOTO svirf_reassure
+END
+
+IF ~~ THEN BEGIN svirf_understatement
+SAY @2006
+IF ~~ THEN REPLY @2007 GOTO svirf_scared
+IF ~Global("E3FADEROMANCEACTIVE","GLOBAL",1)~ THEN REPLY @2008 GOTO svirf_along
+IF ~Global("E3FADEROMANCEACTIVE","GLOBAL",2)~ THEN REPLY @2008 GOTO svirf_along_2
+IF ~Global("E3FADEROMANCEACTIVE","GLOBAL",1)~ THEN REPLY @2009 GOTO svirf_alright
+IF ~Global("E3FADEROMANCEACTIVE","GLOBAL",2)~ THEN REPLY @2009 GOTO svirf_alright_2
+END
+
+IF ~~ THEN BEGIN svirf_know
+SAY @2010
+IF ~~ THEN REPLY @2007 GOTO svirf_scared
+IF ~Global("E3FADEROMANCEACTIVE","GLOBAL",1)~ THEN REPLY @2008 GOTO svirf_along
+IF ~Global("E3FADEROMANCEACTIVE","GLOBAL",2)~ THEN REPLY @2008 GOTO svirf_along_2
+IF ~Global("E3FADEROMANCEACTIVE","GLOBAL",1)~ THEN REPLY @2009 GOTO svirf_alright
+IF ~Global("E3FADEROMANCEACTIVE","GLOBAL",2)~ THEN REPLY @2009 GOTO svirf_alright_2
+END
+
+IF ~~ THEN BEGIN svirf_reassure
+SAY @2011
+IF ~Global("E3FADEROMANCEACTIVE","GLOBAL",1)~ THEN REPLY @2012 GOTO svirf_along
+IF ~Global("E3FADEROMANCEACTIVE","GLOBAL",2)~ THEN REPLY @2008 GOTO svirf_along_2
+IF ~Global("E3FADEROMANCEACTIVE","GLOBAL",1)~ THEN REPLY @2013 GOTO svirf_fine
+IF ~Global("E3FADEROMANCEACTIVE","GLOBAL",2)~ THEN REPLY @2009 GOTO svirf_fine_2
+IF ~~ THEN REPLY @2014 GOTO svirf_scared
+END
+
+IF ~~ THEN BEGIN svirf_scared
+SAY @2015
+IF ~Global("E3FADEROMANCEACTIVE","GLOBAL",2)~ THEN REPLY @2016 GOTO svirf_here
+IF ~Global("E3FADEROMANCEACTIVE","GLOBAL",1)~ THEN REPLY @2017 GOTO svirf_fine
+IF ~Global("E3FADEROMANCEACTIVE","GLOBAL",2)~ THEN REPLY @2009 GOTO svirf_fine_2
+END
+
+IF ~~ THEN BEGIN svirf_along
+SAY @2018 = @2019
+IF ~~ THEN DO ~RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN svirf_alright
+SAY @2020 = @2019
+IF ~~ THEN DO ~RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN svirf_fine
+SAY @2021 = @2022
+IF ~~ THEN DO ~RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN svirf_along_2
+SAY @2023 = @2024
+IF ~~ THEN DO ~RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN svirf_alright_2
+SAY @2020 = @2025
+IF ~~ THEN DO ~RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN svirf_fine_2
+SAY @2021 = @2026
+IF ~~ THEN DO ~RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN svirf_here
+SAY @2027
+IF ~~ THEN DO ~RestParty()~ EXIT
+END
+
+IF ~Global("udDoneDuty","AR2400",1)
+Global("E3DIDMINDFLAYERTALK","LOCALS",0)
+AreaCheck("AR2400")
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN mindflayer_start
+SAY @2028
+IF ~~ THEN REPLY @2029 DO ~SetGlobal("E3DIDMINDFLAYERTALK","LOCALS",1)~ EXIT
+IF ~~ THEN REPLY @2030 DO ~SetGlobal("E3DIDMINDFLAYERTALK","LOCALS",1)~ GOTO mindflayer_touch
+END
+
+IF ~~ THEN BEGIN mindflayer_touch
+SAY @2031
+IF ~~ THEN REPLY @2032 GOTO mindflayer_okay
+IF ~~ THEN REPLY @2033 GOTO mindflayer_insane
+END
+
+IF ~~ THEN BEGIN mindflayer_okay
+SAY @2034
+IF ~~ THEN REPLY @2035 GOTO mindflayer_slaves
+IF ~~ THEN REPLY @2036 GOTO mindflayer_hug
+END
+
+IF ~~ THEN BEGIN mindflayer_insane
+SAY @2037
+IF ~~ THEN REPLY @2035 GOTO mindflayer_slaves
+IF ~~ THEN REPLY @2036 GOTO mindflayer_hug
+END
+
+IF ~~ THEN BEGIN mindflayer_slaves
+SAY @2038
+IF ~~ THEN REPLY @2039 GOTO mindflayer_calm
+IF ~~ THEN REPLY @2040 GOTO mindflayer_getout
+END
+
+IF ~~ THEN BEGIN mindflayer_hug
+SAY @2041
+IF ~~ THEN REPLY @2042 GOTO mindflayer_calm
+END
+
+IF ~~ THEN BEGIN mindflayer_calm
+SAY @2043 = @2044
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN mindflayer_getout
+SAY @2045 = @2044
+IF ~~ THEN EXIT
+END
+
+IF ~Global("E3LOVETALK","GLOBAL",2)
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN lt2_1
+SAY @522
+IF ~~ THEN REPLY @523 GOTO lt2_info
+IF ~~ THEN REPLY @524 GOTO lt2_later
+IF ~~ THEN REPLY @525 GOTO lt2_insult
+IF ~~ THEN REPLY @526 GOTO lt2_annoyance
+END
+
+IF ~~ THEN BEGIN lt2_info
+SAY @527
+IF ~~ THEN REPLY @528 GOTO lt2_sister
+IF ~~ THEN REPLY @529 GOTO lt2_honour
+IF ~~ THEN REPLY @530 GOTO lt2_uninterest
+END
+
+IF ~~ THEN BEGIN lt2_sister
+SAY @531
+IF ~~ THEN REPLY @532 GOTO lt2_abandon
+IF ~~ THEN REPLY @533 GOTO lt2_location
+IF ~~ THEN REPLY @534 GOTO lt2_insufferable
+IF ~~ THEN REPLY @535 GOTO lt2_owe
+END
+
+IF ~~ THEN BEGIN lt2_abandon
+SAY @536
+IF ~~ THEN REPLY @537 EXIT
+IF ~~ THEN REPLY @538 GOTO lt2_incarceration
+END
+
+IF ~~ THEN BEGIN lt2_incarceration
+SAY @539 = @540
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt2_location
+SAY @541
+IF ~~ THEN REPLY @542 GOTO lt2_suffer
+IF ~~ THEN REPLY @543 GOTO lt2_wizards
+END
+
+IF ~~ THEN BEGIN lt2_suffer
+SAY @544 = @545
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt2_wizards
+SAY @546 = @547
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt2_insufferable
+SAY @548
+IF ~~ THEN REPLY @549 EXIT
+IF ~~ THEN REPLY @550 GOTO lt2_owe
+END
+
+IF ~~ THEN BEGIN lt2_owe
+SAY @551 = @552
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt2_honour
+SAY @553
+IF ~~ THEN REPLY @554 GOTO lt2_friend
+IF ~~ THEN REPLY @555 GOTO lt2_rescue
+END
+
+IF ~~ THEN BEGIN lt2_friend
+SAY @556 = @557
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt2_rescue
+SAY @558 = @559
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt2_uninterest
+SAY @560
+IF ~~ THEN REPLY @561 GOTO lt2_stop
+IF ~~ THEN REPLY @562 GOTO lt2_sister
+END
+
+IF ~~ THEN BEGIN lt2_stop
+SAY @563
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
+END
+
+IF ~~ THEN BEGIN lt2_later
+SAY @564
+IF ~~ THEN REPLY @565 GOTO lt2_info
+IF ~~ THEN REPLY @566 GOTO lt2_uninterest
+IF ~~ THEN REPLY @567 GOTO lt2_insult
+END
+
+IF ~~ THEN BEGIN lt2_insult
+SAY @563
+IF ~~ THEN REPLY @568 GOTO lt2_allofthis
+IF ~~ THEN REPLY @569 DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
+END
+
+IF ~~ THEN BEGIN lt2_allofthis
+SAY @570
+IF ~~ THEN REPLY @571 GOTO lt2_sister
+IF ~~ THEN REPLY @572 GOTO lt2_uninterest
+IF ~~ THEN REPLY @573 GOTO lt2_honour
+END
+
+IF ~~ THEN BEGIN lt2_annoyance
+SAY @574
+IF ~~ THEN REPLY @568 GOTO lt2_allofthis
+IF ~~ THEN REPLY @569 DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
+END
+
+IF ~Global("E3LOVETALK","GLOBAL",4)
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN lt4_start
+SAY @2046
+IF ~~ THEN REPLY @2047 GOTO lt4_1a
+IF ~~ THEN REPLY @2048 GOTO lt4_2a
+IF ~~ THEN REPLY @2049 GOTO lt4_3c
+END
+
+IF ~~ THEN BEGIN lt4_1a
+SAY @2050
+IF ~~ THEN REPLY @2051 GOTO lt4_1b
+IF ~~ THEN REPLY @2052 GOTO lt4_1c
+IF ~~ THEN REPLY @2053 GOTO lt4_1d
+IF ~~ THEN REPLY @2054 GOTO lt4_1e
+END
+
+IF ~~ THEN BEGIN lt4_1b
+SAY @2055
+IF ~~ THEN REPLY @581 GOTO lt4_1f
+IF ~~ THEN REPLY @582 GOTO lt4_1g
+IF ~~ THEN REPLY @583 GOTO lt4_1h
+END
+
+IF ~~ THEN BEGIN lt4_1c
+SAY @2056
+IF ~~ THEN REPLY @2057 GOTO lt4_1i
+IF ~~ THEN REPLY @586 GOTO lt4_1j
+IF ~~ THEN REPLY @2058 GOTO lt4_1k
+END
+
+IF ~~ THEN BEGIN lt4_1d
+SAY @2059
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt4_1e
+SAY @2060 = @2061
+IF ~~ THEN REPLY @2062 GOTO lt4_1l
+IF ~~ THEN REPLY @2063 GOTO lt4_4a
+IF ~~ THEN REPLY @2064 GOTO lt4_1m
+END
+
+IF ~~ THEN BEGIN lt4_1f
+SAY @2065 = @2066
+IF ~~ THEN REPLY @594 GOTO lt4_1n
+IF ~~ THEN REPLY @595 GOTO lt4_1n
+IF ~~ THEN REPLY @2067 GOTO lt4_1p
+END
+
+IF ~~ THEN BEGIN lt4_1g
+SAY @597
+IF ~~ THEN REPLY @598 GOTO lt4_4a
+IF ~~ THEN REPLY @2068 GOTO lt4_1q
+END
+
+IF ~~ THEN BEGIN lt4_1h
+SAY @2069
+IF ~~ THEN REPLY @2070 GOTO lt4_1n
+IF ~~ THEN REPLY @609 GOTO lt4_1n
+IF ~~ THEN REPLY @601 GOTO lt4_1p
+END
+
+IF ~~ THEN BEGIN lt4_1i
+SAY @2071
+IF ~~ THEN REPLY @603 GOTO lt4_1n
+IF ~~ THEN REPLY @2072 GOTO lt4_1p
+IF ~~ THEN REPLY @2073 GOTO lt4_1r
+IF ~~ THEN REPLY @606 GOTO lt4_1n
+END
+
+IF ~~ THEN BEGIN lt4_1j
+SAY @2074 
+IF ~~ THEN REPLY @608 GOTO lt4_1s
+IF ~~ THEN REPLY @609 GOTO lt4_1n
+END
+
+IF ~~ THEN BEGIN lt4_1k
+SAY @2075 = @611
+IF ~~ THEN REPLY @612 GOTO lt4_1t
+IF ~~ THEN REPLY @613 GOTO lt4_4b
+END
+
+IF ~~ THEN BEGIN lt4_1l
+SAY @2076
+IF ~~ THEN REPLY @603 GOTO lt4_1n
+IF ~~ THEN REPLY @2077 GOTO lt4_1u
+IF ~~ THEN REPLY @2078 GOTO lt4_1r
+END
+
+IF ~~ THEN BEGIN lt4_1m
+SAY @2079 = @2080
+IF ~~ THEN REPLY @603 GOTO lt4_1n
+IF ~~ THEN REPLY @2077 GOTO lt4_1u
+IF ~~ THEN REPLY @2078 GOTO lt4_1r
+END
+
+IF ~~ THEN BEGIN lt4_1n
+SAY @2081
+IF ~~ THEN REPLY @618 GOTO lt4_1r
+IF ~~ THEN REPLY @2082 GOTO lt4_4a
+IF ~~ THEN REPLY @620 GOTO lt4_1v
+END
+
+IF ~~ THEN BEGIN lt4_1p
+SAY @2083
+IF ~~ THEN REPLY @2084 GOTO lt4_1r
+IF ~~ THEN REPLY @623 GOTO lt4_1v
+END
+
+IF ~~ THEN BEGIN lt4_1q
+SAY @624
+IF ~~ THEN REPLY @603 GOTO lt4_1n
+IF ~~ THEN REPLY @609 GOTO lt4_1n
+IF ~~ THEN REPLY @601 GOTO lt4_1p
+END
+
+IF ~~ THEN BEGIN lt4_1r
+SAY @2085
+IF ~~ THEN REPLY @2086 GOTO lt4_4c
+IF ~~ THEN REPLY @2087 GOTO lt4_4b
+END
+
+IF ~~ THEN BEGIN lt4_1s
+SAY @2088
+IF ~~ THEN REPLY @618 GOTO lt4_1r
+IF ~~ THEN REPLY @620 GOTO lt4_1v
+END
+
+IF ~~ THEN BEGIN lt4_1t
+SAY @2089
+IF ~~ THEN REPLY @2090 GOTO lt4_4c
+END
+
+IF ~~ THEN BEGIN lt4_1u
+SAY @628
+IF ~~ THEN REPLY @2086 GOTO lt4_4c
+IF ~~ THEN REPLY @2087 GOTO lt4_4b
+END
+
+IF ~~ THEN BEGIN lt4_1v
+SAY @2091
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt4_2a
+SAY @2092
+IF ~~ THEN REPLY @2093 GOTO lt4_1a
+IF ~~ THEN REPLY @2094 GOTO lt4_4a
+END
+
+IF ~~ THEN BEGIN lt4_3c
+SAY @2095
+IF ~~ THEN REPLY @2093 GOTO lt4_1a
+IF ~~ THEN REPLY @2096 GOTO lt4_4a
+END
+
+IF ~~ THEN BEGIN lt4_4a
+SAY @630
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
+END
+
+IF ~~ THEN BEGIN lt4_4b
+SAY @631
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt4_4c
+SAY @2097
+IF ~~ THEN EXIT
+END
+
+IF ~Global("E3LOVETALK","GLOBAL",6)
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN lt6_start
+SAY @2098
+IF ~~ THEN REPLY @633 GOTO lt6_worry
+IF ~~ THEN REPLY @2099 GOTO lt6_feyri
+IF ~~ THEN REPLY @2100 GOTO lt6_elves
+END
+
+IF ~~ THEN BEGIN lt6_worry
+SAY @636
+IF ~~ THEN REPLY @2101 GOTO lt6_curious
+IF ~~ THEN REPLY @638 GOTO lt6_elves
+END
+
+IF ~~ THEN BEGIN lt6_feyri
+SAY @2102
+IF ~~ THEN REPLY @640 GOTO lt6_heritage
+IF ~~ THEN REPLY @641 GOTO lt6_demonic
+IF ~~ THEN REPLY @642 GOTO lt6_meet
+END
+
+IF ~~ THEN BEGIN lt6_elves
+SAY @2103
+IF ~~ THEN REPLY @644 GOTO lt6_heritage
+IF ~~ THEN REPLY @645 GOTO lt6_demonic
+IF ~~ THEN REPLY @2104 GOTO lt6_meet
+END
+
+IF ~~ THEN BEGIN lt6_curious
+SAY @2105
+IF ~~ THEN REPLY @2106 GOTO lt6_heritage
+IF ~~ THEN REPLY @648 GOTO lt6_demonic
+IF ~~ THEN REPLY @2107 GOTO lt6_meet
+END
+
+IF ~~ THEN BEGIN lt6_heritage
+SAY @2108 = @2109
+IF ~~ THEN REPLY @652 GOTO lt6_evil
+IF ~~ THEN REPLY @2110 GOTO lt6_surprise
+IF ~~ THEN REPLY @654 GOTO lt6_judge
+IF ~~ THEN REPLY @2111 GOTO lt6_shock
+END
+
+IF ~~ THEN BEGIN lt6_demonic
+SAY @2112 = @2109
+IF ~~ THEN REPLY @657 GOTO lt6_surprise
+IF ~~ THEN REPLY @2113 GOTO lt6_evil
+IF ~~ THEN REPLY @2114 GOTO lt6_judge
+IF ~~ THEN REPLY @2115 GOTO lt6_shock
+END
+
+IF ~~ THEN BEGIN lt6_meet
+SAY @2116
+IF ~~ THEN REPLY @2117 GOTO lt6_bother
+IF ~~ THEN REPLY @663 GOTO lt6_interest
+END
+
+IF ~~ THEN BEGIN lt6_evil
+SAY @2118
+IF ~~ THEN REPLY @665 GOTO lt6_excuse
+IF ~~ THEN REPLY @666 GOTO lt6_different
+END
+
+IF ~~ THEN BEGIN lt6_surprise
+SAY @2119
+IF ~~ THEN REPLY @2120 GOTO lt6_tease
+IF ~~ THEN REPLY @2121 GOTO lt6_judge
+IF ~~ THEN REPLY @670 GOTO lt6_matters
+IF ~~ THEN REPLY @2122 GOTO lt6_advantage
+END
+
+IF ~~ THEN BEGIN lt6_judge
+SAY @2123
+IF ~~ THEN REPLY @2124 GOTO lt6_trust
+IF ~~ THEN REPLY @2125 GOTO lt6_honest
+IF ~~ THEN REPLY @2126 GOTO lt6_letsgo
+END
+
+IF ~~ THEN BEGIN lt6_shock
+SAY @2127 = @2128
+IF ~~ THEN REPLY @679 GOTO lt6_goaway
+IF ~~ THEN REPLY @2129 GOTO lt6_hasty
+IF ~~ THEN REPLY @681 GOTO lt6_stayaway
+END
+
+IF ~~ THEN BEGIN lt6_bother
+SAY @2130
+IF ~~ THEN REPLY @657 GOTO lt6_surprise
+IF ~~ THEN REPLY @684 GOTO lt6_evil
+IF ~~ THEN REPLY @2114 GOTO lt6_judge
+IF ~~ THEN REPLY @685 GOTO lt6_shock
+END
+
+IF ~~ THEN BEGIN lt6_interest
+SAY @2131
+IF ~~ THEN REPLY @687 GOTO lt6_evil
+IF ~~ THEN REPLY @688 GOTO lt6_abyss
+IF ~~ THEN REPLY @2132 GOTO lt6_yet
+END
+
+IF ~~ THEN BEGIN lt6_excuse
+SAY @690
+IF ~~ THEN REPLY @691 GOTO lt6_different
+IF ~~ THEN REPLY @692 GOTO lt6_exterminate
+IF ~~ THEN REPLY @2133 GOTO lt6_tease
+END
+
+IF ~~ THEN BEGIN lt6_different
+SAY @2134
+IF ~~ THEN REPLY @2135 GOTO lt6_compassion
+IF ~~ THEN REPLY @696 GOTO lt6_experience
+END
+
+IF ~~ THEN BEGIN lt6_exterminate
+SAY @2136
+IF ~~ THEN REPLY @2137 GOTO lt6_action
+IF ~~ THEN REPLY @2138 GOTO lt6_easy
+END
+
+IF ~~ THEN BEGIN lt6_tease
+SAY @2139
+IF ~~ THEN REPLY @2135 GOTO lt6_compassion
+IF ~~ THEN REPLY @696 GOTO lt6_experience
+END
+
+IF ~~ THEN BEGIN lt6_matters
+SAY @2140 = @2141
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt6_advantage
+SAY @2142 = @2143
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt6_trust
+SAY @2144 = @2145
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt6_honest
+SAY @2146 = @2147
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt6_hasty
+SAY @2148 = @2149
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt6_stayaway
+SAY @705
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)
+SetGlobal("E3FADEJOINED","LOCALS",0)
+ChangeAIScript("",DEFAULT)
+SetLeavePartyDialogFile()
+LeaveParty()
+EscapeAreaMove("AR0307",4836,2136,6)~ EXIT
+END
+
+IF ~~ THEN BEGIN lt6_abyss
+SAY @2150
+IF ~~ THEN REPLY @707 GOTO lt6_different
+END
+
+IF ~~ THEN BEGIN lt6_yet
+SAY @2151 = @2152
+IF ~~ THEN REPLY @710 GOTO lt6_buttout
+IF ~~ THEN REPLY @2153 GOTO lt6_concern
+END
+
+IF ~~ THEN BEGIN lt6_compassion
+SAY @2154 = @2155
+IF ~~ THEN REPLY @2156 GOTO lt6_what
+END
+
+IF ~~ THEN BEGIN lt6_experience
+SAY @2157 = @2158
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt6_action
+SAY @2159
+IF ~~ THEN REPLY @720 GOTO lt6_dare
+IF ~~ THEN REPLY @2160 GOTO lt6_easy
+END
+
+IF ~~ THEN BEGIN lt6_easy
+SAY @2161 = @2162
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt6_what
+SAY @2163
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt6_letsgo
+SAY @676
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt6_goaway
+SAY @682
+IF ~~ THEN DO ~SetGlobal("E3FADEJOINED","LOCALS",0)
+ChangeAIScript("",DEFAULT)
+SetLeavePartyDialogFile()
+LeaveParty()
+EscapeAreaMove("AR0307",4836,2136,6)~ EXIT
+END
+
+IF ~~ THEN BEGIN lt6_buttout
+SAY @712
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
+END
+
+IF ~~ THEN BEGIN lt6_concern
+SAY @2164
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt6_dare
+SAY @722
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
+END
+
+IF ~Global("E3LOVETALK","GLOBAL",8)
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN lt8_start
+SAY @2165
+IF ~~ THEN REPLY @2166 GOTO lt8_childhood
+IF ~~ THEN REPLY @2167 GOTO lt8_delayed
+IF ~~ THEN REPLY @2168 GOTO lt8_nerves
+END
+
+IF ~~ THEN BEGIN lt8_childhood
+SAY @2169
+IF ~~ THEN REPLY @2170 GOTO lt8_perception
+IF ~~ THEN REPLY @2171 GOTO lt8_issue
+IF ~~ THEN REPLY @2172 GOTO lt8_heritage
+IF ~~ THEN REPLY @2173 GOTO lt8_pester
+END
+
+IF ~~ THEN BEGIN lt8_delayed
+SAY @2174
+IF ~~ THEN REPLY @2175 GOTO lt8_rude
+IF ~~ THEN REPLY @1534 GOTO lt8_selfabsorbed
+IF ~~ THEN REPLY @2176 GOTO lt8_offended
+END
+
+IF ~~ THEN BEGIN lt8_nerves
+SAY @2177
+IF ~~ THEN REPLY @2178 GOTO lt8_yourself
+IF ~~ THEN REPLY @2179 GOTO lt8_got
+END
+
+IF ~~ THEN BEGIN lt8_perception
+SAY @2180 = @2181
+IF ~~ THEN REPLY @2182 GOTO lt8_father
+IF ~~ THEN REPLY @2183 GOTO lt8_left
+IF ~~ THEN REPLY @2184 GOTO lt8_impulse
+IF ~~ THEN REPLY @2185 GOTO lt8_slaughter
+END
+
+IF ~~ THEN BEGIN lt8_issue
+SAY @2186
+IF ~~ THEN REPLY @2187 GOTO lt8_god
+IF ~~ THEN REPLY @2188 GOTO lt8_future
+IF ~~ THEN REPLY @2189 GOTO lt8_couldve
+END
+
+IF ~~ THEN BEGIN lt8_heritage
+SAY @2190
+IF ~~ THEN REPLY @2191 GOTO lt8_father
+IF ~~ THEN REPLY @2192 GOTO lt8_impulse
+IF ~~ THEN REPLY @2193 GOTO lt8_left
+END
+
+IF ~~ THEN BEGIN lt8_pester
+SAY @2194
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
+END
+
+IF ~~ THEN BEGIN lt8_rude
+SAY @2195
+IF ~~ THEN REPLY @2170 GOTO lt8_perception
+IF ~~ THEN REPLY @2171 GOTO lt8_issue
+IF ~~ THEN REPLY @2172 GOTO lt8_heritage
+IF ~~ THEN REPLY @2173 GOTO lt8_pester
+END
+
+IF ~~ THEN BEGIN lt8_selfabsorbed
+SAY @2196
+IF ~~ THEN REPLY @2197 GOTO lt8_bothered
+IF ~~ THEN REPLY @2198 GOTO lt8_nothing
+END
+
+IF ~~ THEN BEGIN lt8_offended
+SAY @2199 = @2200
+IF ~~ THEN REPLY @2201 GOTO lt8_perception
+IF ~~ THEN REPLY @2171 GOTO lt8_issue
+IF ~~ THEN REPLY @2202 GOTO lt8_heritage
+IF ~~ THEN REPLY @2203 GOTO lt8_pester
+END
+
+IF ~~ THEN BEGIN lt8_yourself
+SAY @2204 
+IF ~~ THEN REPLY @2205 GOTO lt8_me
+IF ~~ THEN REPLY @2206 GOTO lt8_gladly
+END
+
+IF ~~ THEN BEGIN lt8_father
+SAY @2207
+IF ~~ THEN REPLY @2208 GOTO lt8_wish
+IF ~~ THEN REPLY @2209 GOTO lt8_future
+IF ~~ THEN REPLY @2210 GOTO lt8_upbringing
+END
+
+IF ~~ THEN BEGIN lt8_left
+SAY @2211
+IF ~~ THEN REPLY @2212 GOTO lt8_sympathy
+IF ~~ THEN REPLY @2213 GOTO lt8_abandon
+IF ~~ THEN REPLY @2210 GOTO lt8_upbringing
+END
+
+IF ~~ THEN BEGIN lt8_impulse
+SAY @2214 = @2215
+IF ~~ THEN REPLY @2216 GOTO lt8_uncomfortable
+IF ~~ THEN REPLY @2217 GOTO lt8_why
+IF ~~ THEN REPLY @2218 GOTO lt8_scared
+IF ~~ THEN REPLY @2219 GOTO lt8_demon
+END
+
+IF ~~ THEN BEGIN lt8_slaughter
+SAY @2220
+IF ~~ THEN REPLY @2221 GOTO lt8_upbringing
+IF ~~ THEN REPLY @2222 GOTO lt8_upbringing
+IF ~~ THEN REPLY @2223 GOTO lt8_leave
+END
+
+IF ~~ THEN BEGIN lt8_god
+SAY @2224 = @2225
+IF ~~ THEN REPLY @2226 GOTO lt8_father
+IF ~~ THEN REPLY @2227 GOTO lt8_father
+IF ~~ THEN REPLY @2228 GOTO lt8_left
+END
+
+IF ~~ THEN BEGIN lt8_future
+SAY @2229
+IF ~~ THEN REPLY @2230 GOTO lt8_upbringing
+IF ~~ THEN REPLY @2231 GOTO lt8_courage
+END
+
+IF ~~ THEN BEGIN lt8_couldve
+SAY @2232 = @2215
+IF ~~ THEN REPLY @2216 GOTO lt8_uncomfortable
+IF ~~ THEN REPLY @2217 GOTO lt8_why
+IF ~~ THEN REPLY @2218 GOTO lt8_scared
+IF ~~ THEN REPLY @2219 GOTO lt8_demon
+END
+
+IF ~~ THEN BEGIN lt8_bothered
+SAY @2233 = @2234
+IF ~~ THEN REPLY @2170 GOTO lt8_perception
+IF ~~ THEN REPLY @2171 GOTO lt8_issue
+IF ~~ THEN REPLY @2172 GOTO lt8_heritage
+IF ~~ THEN REPLY @2173 GOTO lt8_pester
+END
+
+IF ~~ THEN BEGIN lt8_nothing
+SAY @2235
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt8_me
+SAY @2236 
+IF ~~ THEN REPLY @2237 GOTO lt8_perception
+IF ~~ THEN REPLY @2238 GOTO lt8_heritage
+IF ~~ THEN REPLY @2239 GOTO lt8_pester
+END
+
+IF ~~ THEN BEGIN lt8_gladly
+SAY @2240
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
+END
+
+IF ~~ THEN BEGIN lt8_wish
+SAY @2241
+IF ~~ THEN REPLY @2242 GOTO lt8_sympathy
+IF ~~ THEN REPLY @2243 GOTO lt8_upbringing
+END
+
+IF ~~ THEN BEGIN lt8_upbringing
+SAY @2244 = @2245 = @2246
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt8_leave
+SAY @2247
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt8_sympathy
+SAY @2248
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt8_abandon
+SAY @2249 = @2250
+IF ~~ THEN REPLY @2251 GOTO lt8_do
+IF ~~ THEN REPLY @2252 GOTO lt8_upbringing
+IF ~~ THEN REPLY @2253 GOTO lt8_mind
+END
+
+IF ~~ THEN BEGIN lt8_uncomfortable
+SAY @2254
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt8_why
+SAY @2255
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt8_scared
+SAY @2256 = @2257
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt8_demon
+SAY @2258 = @2259
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt8_mind
+SAY @2260
+IF ~~ THEN REPLY @2261 GOTO lt8_upbringing
+IF ~~ THEN REPLY @2262 GOTO lt8_upbringing
+IF ~~ THEN REPLY @2223 GOTO lt8_leave
+END
+
+IF ~~ THEN BEGIN lt8_got
+SAY @2263
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
+END
+
+IF ~~ THEN BEGIN lt8_courage
+SAY @2264
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt8_do
+SAY @2265
+IF ~~ THEN EXIT
+END
+
+IF ~Global("E3LOVETALK","GLOBAL",10)
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN lt10_start
+SAY @2266 = @2267
+IF ~~ THEN REPLY @2268 GOTO lt10_waned
+IF ~~ THEN REPLY @2269 GOTO lt10_childhood
+END
+
+IF ~~ THEN BEGIN lt10_waned
+SAY @2270 = @2271
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt10_childhood
+SAY @2272
+IF ~~ THEN REPLY @2273 GOTO lt10_horrible
+IF ~~ THEN REPLY @2274 GOTO lt10_siblings
+IF ~~ THEN REPLY @2275 GOTO lt10_comparison
+END
+
+IF ~~ THEN BEGIN lt10_horrible
+SAY @2276
+IF ~~ THEN REPLY @2277 GOTO lt10_siblings
+IF ~~ THEN REPLY @2278 GOTO lt10_comparison
+IF ~~ THEN REPLY @2279 GOTO lt10_sorry
+END
+
+IF ~~ THEN BEGIN lt10_siblings
+SAY @2280 = @2281
+IF ~~ THEN REPLY @2282 GOTO lt10_killed
+IF ~~ THEN REPLY @2283 GOTO lt10_brother
+IF ~~ THEN REPLY @2284 GOTO lt10_prolific
+END
+
+IF ~~ THEN BEGIN lt10_comparison
+SAY @2285 = @2286
+IF ~~ THEN REPLY @2287 GOTO lt10_siblings
+IF ~~ THEN REPLY @2288 GOTO lt10_insane
+END
+
+IF ~~ THEN BEGIN lt10_sorry
+SAY @2289
+IF ~~ THEN REPLY @2287 GOTO lt10_siblings
+IF ~~ THEN REPLY @2288 GOTO lt10_insane
+END
+
+IF ~~ THEN BEGIN lt10_killed
+SAY @2290 
+IF ~~ THEN REPLY @2291 GOTO lt10_wrench
+IF ~~ THEN REPLY @2292 GOTO lt10_threat
+IF ~~ THEN REPLY @2293 GOTO lt10_brother
+IF ~~ THEN REPLY @2294 GOTO lt10_murder
+END
+
+IF ~~ THEN BEGIN lt10_brother
+SAY @2295 = @2296
+IF ~~ THEN REPLY @2297 GOTO lt10_insane
+IF ~~ THEN REPLY @2298 GOTO lt10_threat
+END
+
+IF ~~ THEN BEGIN lt10_prolific
+SAY @2299
+IF ~~ THEN REPLY @2300 GOTO lt10_threat
+IF ~~ THEN REPLY @2301 GOTO lt10_murder
+END
+
+IF ~~ THEN BEGIN lt10_insane
+SAY @2302 = @2303
+IF ~~ THEN REPLY @2304 GOTO lt10_riddles
+IF ~~ THEN REPLY @2305 GOTO lt10_no
+END
+
+IF ~~ THEN BEGIN lt10_wrench
+SAY @2306
+IF ~~ THEN REPLY @2307 GOTO lt10_murder
+IF ~~ THEN REPLY @2308 GOTO lt10_threat
+END
+
+IF ~~ THEN BEGIN lt10_threat
+SAY @2309 = @2303
+IF ~~ THEN REPLY @2304 GOTO lt10_riddles
+IF ~~ THEN REPLY @2310 GOTO lt10_breed
+END
+
+IF ~~ THEN BEGIN lt10_murder
+SAY @2311 = @2303
+IF ~~ THEN REPLY @2304 GOTO lt10_riddles
+IF ~~ THEN REPLY @2312 GOTO lt10_monster
+END
+
+IF ~~ THEN BEGIN lt10_riddles 
+SAY @2313
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt10_no
+SAY @2314
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt10_breed
+SAY @2315 = @2316
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt10_monster
+SAY @2317
+IF ~~ THEN REPLY @2318 GOTO lt10_upset
+IF ~~ THEN REPLY @2319 GOTO lt10_regret
+END
+
+IF ~~ THEN BEGIN lt10_upset
+SAY @2320
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt10_regret
+SAY @2321 = @2322
+IF ~~ THEN EXIT
+END
+
+IF ~Global("E3LOVETALK","GLOBAL",12)
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN lt12_start
+SAY @2323
+IF ~~ THEN REPLY @2324 GOTO lt12_what
+IF ~~ THEN REPLY @2325 GOTO lt12_tiresome
+IF ~~ THEN REPLY @2326 GOTO lt12_amusing
+END
+
+IF ~~ THEN BEGIN lt12_what
+SAY @2327 = @2328
+IF ~~ THEN REPLY @2329 GOTO lt12_trick
+IF ~~ THEN REPLY @2330 GOTO lt12_appreciate
+END
+
+IF ~~ THEN BEGIN lt12_tiresome
+SAY @2331
+IF ~~ THEN REPLY @569 GOTO lt12_good
+IF ~~ THEN REPLY @2332 GOTO lt12_trick
+END
+
+IF ~~ THEN BEGIN lt12_amusing
+SAY @2333 = @2328
+IF ~~ THEN REPLY @2329 GOTO lt12_trick
+IF ~~ THEN REPLY @2330 GOTO lt12_appreciate
+END
+
+IF ~~ THEN BEGIN lt12_trick
+SAY @2334 = @2335
+IF ~~ THEN REPLY @2336 GOTO lt12_how
+IF ~~ THEN REPLY @2337 GOTO lt12_applaud
+IF ~~ THEN REPLY @2338 GOTO lt12_disappoint
+END
+
+IF ~~ THEN BEGIN lt12_appreciate
+SAY @2339
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt12_how
+SAY @2340
+IF ~~ THEN REPLY @2341 GOTO lt12_yes
+IF ~~ THEN REPLY @2342 GOTO lt12_flower
+END
+
+IF ~~ THEN BEGIN lt12_applaud
+SAY @2343
+IF ~~ THEN REPLY @2341 GOTO lt12_yes
+IF ~~ THEN REPLY @2342 GOTO lt12_flower
+END
+
+IF ~~ THEN BEGIN lt12_disappoint
+SAY @2344
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt12_yes
+SAY @2345 = @2346 = @2347 = @2348 = @2349
+IF ~~ THEN REPLY @2350 GOTO lt12_choose
+IF ~~ THEN REPLY @2351 GOTO lt12_coin
+END
+
+IF ~~ THEN BEGIN lt12_flower
+SAY @2352 = @2353
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt12_choose
+SAY @2354 = @2353
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt12_coin
+SAY @2355 = @2356
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt12_good
+SAY @2357
+IF ~~ THEN EXIT
+END
+
+IF ~Global("E3LOVETALK","GLOBAL",14)
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN lt14_start
+SAY @2358
+IF ~~ THEN REPLY @2359 GOTO lt14_recently
+IF ~~ THEN REPLY @2360 GOTO lt14_surprise
+IF ~~ THEN REPLY @2361 GOTO lt14_sarcasm
+IF ~~ THEN REPLY @2362 GOTO lt14_alone
+END
+
+IF ~~ THEN BEGIN lt14_recently
+SAY @2363
+IF ~~ THEN REPLY @2364 GOTO lt14_say
+IF ~~ THEN REPLY @2365 GOTO lt14_elsewhere
+IF ~~ THEN REPLY @2366 GOTO lt14_sleep
+END
+
+IF ~~ THEN BEGIN lt14_surprise
+SAY @2367
+IF ~~ THEN REPLY @2364 GOTO lt14_say
+IF ~~ THEN REPLY @2365 GOTO lt14_elsewhere
+IF ~~ THEN REPLY @2366 GOTO lt14_sleep
+END
+
+IF ~~ THEN BEGIN lt14_sarcasm
+SAY @2368
+IF ~~ THEN REPLY @2369 GOTO lt14_stupid
+IF ~~ THEN REPLY @2370 GOTO lt14_recently
+IF ~~ THEN REPLY @2362 GOTO lt14_alone
+END
+
+IF ~~ THEN BEGIN lt14_alone
+SAY @2371
+IF ~~ THEN REPLY @2372 GOTO lt14_find
+IF ~~ THEN REPLY @2373 GOTO lt14_stupid
+IF ~~ THEN REPLY @2374 GOTO lt14_headaches
+END
+
+IF ~~ THEN BEGIN lt14_find
+SAY @2375
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt14_say
+SAY @2376
+IF ~~ THEN REPLY @2377 GOTO lt14_sleep
+IF ~~ THEN REPLY @2378 GOTO lt14_about
+IF ~~ THEN REPLY @2379 GOTO lt14_headaches
+END
+
+IF ~~ THEN BEGIN lt14_elsewhere
+SAY @2380
+IF ~~ THEN REPLY @2381 GOTO lt14_headaches
+IF ~~ THEN REPLY @2362 GOTO lt14_alone
+IF ~~ THEN REPLY @2382 GOTO lt14_stupid
+END
+
+IF ~~ THEN BEGIN lt14_sleep
+SAY @2383
+IF ~~ THEN REPLY @2381 GOTO lt14_headaches
+IF ~~ THEN REPLY @2362 GOTO lt14_alone
+IF ~~ THEN REPLY @2382 GOTO lt14_stupid
+END
+
+IF ~~ THEN BEGIN lt14_stupid
+SAY @2384
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt14_headaches
+SAY @2385
+IF ~~ THEN REPLY @2386 GOTO lt14_really
+IF ~~ THEN REPLY @2387 GOTO lt14_alright
+END
+
+IF ~~ THEN BEGIN lt14_about
+SAY @2388
+IF ~~ THEN REPLY @2389 GOTO lt14_stupid
+IF ~~ THEN REPLY @2390 GOTO lt14_worry
+IF ~~ THEN REPLY @2391 GOTO lt14_headaches
+END
+
+IF ~~ THEN BEGIN lt14_really
+SAY @2392 = @2393
+IF ~~ THEN REPLY @2394 GOTO lt14_learn
+IF ~~ THEN REPLY @2395 GOTO lt14_thanks
+END
+
+IF ~~ THEN BEGIN lt14_alright
+SAY @2396
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt14_worry
+SAY @2397
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt14_learn
+SAY @2398 = @2399
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt14_thanks
+SAY @2400
+IF ~~ THEN EXIT
+END
+
+IF ~Global("E3LOVETALK","GLOBAL",16)
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN lt16_start
+SAY @2401
+IF ~~ THEN REPLY @2402 GOTO lt16_1a
+IF ~~ THEN REPLY @2403 GOTO lt16_2a
+END
+
+IF ~~ THEN BEGIN lt16_1a
+SAY @2404
+IF ~~ THEN REPLY @2405 GOTO lt16_1b
+IF ~~ THEN REPLY @2406 GOTO lt16_1c
+END
+
+IF ~~ THEN BEGIN lt16_1b
+SAY @2407
+IF ~~ THEN REPLY @2408 GOTO lt16_1d
+IF ~~ THEN REPLY @2409 GOTO lt16_1e
+IF ~~ THEN REPLY @2410 GOTO lt16_1f
+END
+
+IF ~~ THEN BEGIN lt16_1c
+SAY @2411
+IF ~~ THEN REPLY @2412 GOTO lt16_2b
+IF ~~ THEN REPLY @2413 GOTO lt16_2c
+IF ~~ THEN REPLY @2414 GOTO lt16_2d
+END
+
+IF ~~ THEN BEGIN lt16_1d
+SAY @2415
+IF ~~ THEN REPLY @2416 GOTO lt16_2f
+IF ~~ THEN REPLY @2417 GOTO lt16_1g
+IF ~~ THEN REPLY @2418 GOTO lt16_1h
+END
+
+IF ~~ THEN BEGIN lt16_1e
+SAY @2419
+IF ~~ THEN REPLY @2420 GOTO lt16_2o
+IF ~~ THEN REPLY @2421 GOTO lt16_2g
+IF ~~ THEN REPLY @2422 GOTO lt16_1i
+IF ~~ THEN REPLY @2423 GOTO lt16_2p
+END
+
+IF ~~ THEN BEGIN lt16_1f
+SAY @2424
+IF ~~ THEN REPLY @2425 GOTO lt16_2e
+IF ~~ THEN REPLY @2426 GOTO lt16_2f
+IF ~~ THEN REPLY @2427 GOTO lt16_2g
+IF ~~ THEN REPLY @2428 GOTO lt16_2h
+END
+
+IF ~~ THEN BEGIN lt16_1g
+SAY @2429
+IF ~~ THEN REPLY @2430 GOTO lt16_2e
+IF ~~ THEN REPLY @2426 GOTO lt16_2f
+IF ~~ THEN REPLY @2431 GOTO lt16_2g
+IF ~~ THEN REPLY @2432 GOTO lt16_2h
+END
+
+IF ~~ THEN BEGIN lt16_1h
+SAY @2433
+IF ~~ THEN REPLY @2430 GOTO lt16_2e
+IF ~~ THEN REPLY @2431 GOTO lt16_2g
+IF ~~ THEN REPLY @2434 GOTO lt16_2h
+END
+
+IF ~~ THEN BEGIN lt16_1i
+SAY @2435 = @2436
+IF ~~ THEN REPLY @2437 GOTO lt16_2m
+IF ~~ THEN REPLY @2438 GOTO lt16_2n
+IF ~~ THEN REPLY @2439 GOTO lt16_4a
+END
+
+IF ~~ THEN BEGIN lt16_2a
+SAY @2440
+IF ~~ THEN REPLY @2412 GOTO lt16_2b
+IF ~~ THEN REPLY @2413 GOTO lt16_2c
+IF ~~ THEN REPLY @2414 GOTO lt16_2d
+END
+
+IF ~~ THEN BEGIN lt16_2b
+SAY @2441
+IF ~~ THEN REPLY @2430 GOTO lt16_2e
+IF ~~ THEN REPLY @2426 GOTO lt16_2f
+IF ~~ THEN REPLY @2431 GOTO lt16_2g
+IF ~~ THEN REPLY @2428 GOTO lt16_2h
+END
+
+IF ~~ THEN BEGIN lt16_2c
+SAY @2442
+IF ~~ THEN REPLY @2443 GOTO lt16_2i
+IF ~~ THEN REPLY @2444 GOTO lt16_2j
+IF ~~ THEN REPLY @2445 GOTO lt16_2k
+IF ~~ THEN REPLY @2446 GOTO lt16_2l
+END
+
+IF ~~ THEN BEGIN lt16_2d
+SAY @2447
+IF ~~ THEN REPLY @2430 GOTO lt16_2e
+IF ~~ THEN REPLY @2426 GOTO lt16_2f
+IF ~~ THEN REPLY @2431 GOTO lt16_2g
+IF ~~ THEN REPLY @2432 GOTO lt16_2h
+END
+
+IF ~~ THEN BEGIN lt16_2e
+SAY @2448 = @2436
+IF ~~ THEN REPLY @2437 GOTO lt16_2m
+IF ~~ THEN REPLY @2438 GOTO lt16_2n
+IF ~~ THEN REPLY @2439 GOTO lt16_4a
+END
+
+IF ~~ THEN BEGIN lt16_2f
+SAY @2449
+IF ~~ THEN REPLY @2420 GOTO lt16_2o
+IF ~~ THEN REPLY @2450 GOTO lt16_2g
+IF ~~ THEN REPLY @2451 GOTO lt16_2e
+IF ~~ THEN REPLY @2423 GOTO lt16_2p
+END
+
+IF ~~ THEN BEGIN lt16_2g
+SAY @2452 = @2453
+IF ~~ THEN REPLY @2454 GOTO lt16_2q
+IF ~~ THEN REPLY @2455 GOTO lt16_2r
+IF ~~ THEN REPLY @2456 GOTO lt16_2s
+IF ~~ THEN REPLY @2457 GOTO lt16_2t
+END
+
+IF ~~ THEN BEGIN lt16_2h
+SAY @2458 = @2459
+IF ~~ THEN REPLY @2460 GOTO lt16_2u
+IF ~~ THEN REPLY @2461 GOTO lt16_2g
+IF ~~ THEN REPLY @2462 GOTO lt16_3a
+END
+
+IF ~~ THEN BEGIN lt16_2i
+SAY @2463 = @2453
+IF ~~ THEN REPLY @2454 GOTO lt16_2q
+IF ~~ THEN REPLY @2455 GOTO lt16_2r
+IF ~~ THEN REPLY @2456 GOTO lt16_2s
+IF ~~ THEN REPLY @2457 GOTO lt16_2t
+END
+
+IF ~~ THEN BEGIN lt16_2j
+SAY @2464
+IF ~~ THEN REPLY @2420 GOTO lt16_2o
+IF ~~ THEN REPLY @2450 GOTO lt16_2g
+IF ~~ THEN REPLY @2451 GOTO lt16_2e
+IF ~~ THEN REPLY @2423 GOTO lt16_2p
+END
+
+IF ~~ THEN BEGIN lt16_2k
+SAY @2465 = @2453
+IF ~~ THEN REPLY @2454 GOTO lt16_2q
+IF ~~ THEN REPLY @2455 GOTO lt16_2r
+IF ~~ THEN REPLY @2456 GOTO lt16_2s
+IF ~~ THEN REPLY @2457 GOTO lt16_2t
+END
+
+IF ~~ THEN BEGIN lt16_2l
+SAY @2466 = @2453
+IF ~~ THEN REPLY @2454 GOTO lt16_2q
+IF ~~ THEN REPLY @2455 GOTO lt16_2r
+IF ~~ THEN REPLY @2456 GOTO lt16_2s
+IF ~~ THEN REPLY @2457 GOTO lt16_2t
+END
+
+IF ~~ THEN BEGIN lt16_2m
+SAY @2467
+IF ~~ THEN REPLY @2468 GOTO lt16_2g
+IF ~~ THEN REPLY @2469 GOTO lt16_2p
+IF ~~ THEN REPLY @2470 GOTO lt16_2h
+END
+
+IF ~~ THEN BEGIN lt16_2n
+SAY @2471
+IF ~~ THEN DO ~RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN lt16_2o
+SAY @2472 = @2459
+IF ~~ THEN REPLY @2460 GOTO lt16_2u
+IF ~~ THEN REPLY @2461 GOTO lt16_2g
+IF ~~ THEN REPLY @2462 GOTO lt16_3a
+END
+
+IF ~~ THEN BEGIN lt16_2p
+SAY @2473 = @2474
+IF ~~ THEN DO ~RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN lt16_2q
+SAY @2475
+IF ~~ THEN REPLY @2476 GOTO lt16_2p
+IF ~~ THEN REPLY @2477 GOTO lt16_3b
+IF ~~ THEN REPLY @2478 GOTO lt16_3c
+IF ~~ THEN REPLY @2479 GOTO lt16_2v
+END
+
+IF ~~ THEN BEGIN lt16_2r
+SAY @2480
+IF ~~ THEN REPLY @2476 GOTO lt16_2p
+IF ~~ THEN REPLY @2477 GOTO lt16_3b
+IF ~~ THEN REPLY @2478 GOTO lt16_3c
+IF ~~ THEN REPLY @2481 GOTO lt16_2v
+END
+
+IF ~~ THEN BEGIN lt16_2s
+SAY @2482
+IF ~~ THEN DO ~RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN lt16_2t
+SAY @2483 = @2484
+IF ~~ THEN DO ~RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN lt16_2u
+SAY @2485
+IF ~~ THEN REPLY @2478 GOTO lt16_3c
+IF ~~ THEN REPLY @2486 GOTO lt16_3a
+IF ~~ THEN REPLY @2487 GOTO lt16_4b
+END
+
+IF ~~ THEN BEGIN lt16_2v
+SAY @2488 = @2489
+IF ~~ THEN DO ~RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN lt16_3a
+SAY @2490 = @2491
+IF ~~ THEN DO ~SetGlobal("E3FADEJOINED","LOCALS",0)
+SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)
+LeaveParty()
+EscapeArea()
+RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN lt16_3b
+SAY @2492
+IF ~~ THEN DO ~RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN lt16_3c
+SAY @2493 = @2494
+IF ~~ THEN DO ~RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN lt16_4a
+SAY @2495
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)
+RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN lt16_4b
+SAY @2496
+IF ~~ THEN DO ~RestParty()~ EXIT
+END
+
+IF ~Global("E3LOVETALK","GLOBAL",18)
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN lt18_start
+SAY @2497
+IF ~~ THEN REPLY @2498 GOTO lt18_no
+IF ~~ THEN REPLY @2499 GOTO lt18_thief
+IF ~~ THEN REPLY @2500 GOTO lt18_possessed
+END
+
+IF ~~ THEN BEGIN lt18_no
+SAY @2501
+IF ~~ THEN REPLY @2502 GOTO lt18_serious
+IF ~~ THEN REPLY @2503 GOTO lt18_thief
+IF ~~ THEN REPLY @2504 GOTO lt18_possessed
+END
+
+IF ~~ THEN BEGIN lt18_thief
+SAY @2505
+IF ~~ THEN REPLY @2506 GOTO lt18_secret
+IF ~~ THEN REPLY @2507 GOTO lt18_possessed
+END
+
+IF ~~ THEN BEGIN lt18_possessed
+SAY @2508
+IF ~~ THEN REPLY @2509 GOTO lt18_club
+IF ~~ THEN REPLY @2510 GOTO lt18_refuse
+IF ~~ THEN REPLY @2511 GOTO lt18_offered
+END
+
+IF ~~ THEN BEGIN lt18_serious
+SAY @2512
+IF ~~ THEN REPLY @2503 GOTO lt18_thief
+IF ~~ THEN REPLY @2504 GOTO lt18_possessed
+END
+
+IF ~~ THEN BEGIN lt18_secret
+SAY @2513
+IF ~~ THEN REPLY @2514 GOTO lt18_exist
+IF ~~ THEN REPLY @2515 GOTO lt18_aran
+IF ~~ THEN REPLY @2516 GOTO lt18_proud
+END
+
+IF ~~ THEN BEGIN lt18_club
+SAY @2517 = @2518 = @2519
+IF ~~ THEN REPLY @2520 GOTO lt18_convinced
+IF ~~ THEN REPLY @2521 GOTO lt18_ultimatum
+END
+
+IF ~~ THEN BEGIN lt18_refuse
+SAY @2522 = @2518 = @2519
+IF ~~ THEN REPLY @2520 GOTO lt18_convinced
+IF ~~ THEN REPLY @2521 GOTO lt18_ultimatum
+END
+
+IF ~~ THEN BEGIN lt18_offered
+SAY @2523 = @2518 = @2519
+IF ~~ THEN REPLY @2520 GOTO lt18_convinced
+IF ~~ THEN REPLY @2521 GOTO lt18_ultimatum
+END
+
+IF ~~ THEN BEGIN lt18_exist
+SAY @2524
+IF ~~ THEN REPLY @2525 GOTO lt18_refuse
+END
+
+IF ~~ THEN BEGIN lt18_aran
+SAY @2526
+IF ~~ THEN REPLY @2527 GOTO lt18_authority
+IF ~~ THEN REPLY @2528 GOTO lt18_refuse
+END
+
+IF ~~ THEN BEGIN lt18_proud
+SAY @2529
+IF ~~ THEN REPLY @2530 GOTO lt18_crimerate
+IF ~~ THEN REPLY @2531 GOTO lt18_offered
+END
+
+IF ~~ THEN BEGIN lt18_convinced
+SAY @2532
+IF ~~ THEN REPLY @2533 GOTO lt18_rot
+IF ~~ THEN REPLY @2534 GOTO lt18_ultimatum
+END
+
+IF ~~ THEN BEGIN lt18_ultimatum
+SAY @2535
+IF ~~ THEN REPLY @2536 GOTO lt18_rot
+END
+
+IF ~~ THEN BEGIN lt18_authority
+SAY @2537
+IF ~~ THEN REPLY @2538 GOTO lt18_smut
+IF ~~ THEN REPLY @2539 GOTO lt18_refuse
+END
+
+IF ~~ THEN BEGIN lt18_crimerate
+SAY @2540
+IF ~~ THEN REPLY @2541 GOTO lt18_aran
+IF ~~ THEN REPLY @2542 GOTO lt18_slave
+END
+
+IF ~~ THEN BEGIN lt18_rot
+SAY @2543 = @2544
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt18_smut
+SAY @2545
+IF ~~ THEN REPLY @2546 GOTO lt18_rot
+IF ~~ THEN REPLY @2547 GOTO lt18_slave
+END
+
+IF ~~ THEN BEGIN lt18_slave
+SAY @2548 = @2544
+IF ~~ THEN EXIT
+END
+
+IF ~Global("E3LOVETALK","GLOBAL",20)
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN lt20_start
+SAY @2549
+IF ~~ THEN REPLY @2550 GOTO lt20_reasons
+IF ~~ THEN REPLY @2551 GOTO lt20_enough
+IF ~~ THEN REPLY @2552 GOTO lt20_angry
+END
+
+IF ~~ THEN BEGIN lt20_reasons
+SAY @2553
+IF ~~ THEN REPLY @2554 GOTO lt20_angry
+END
+
+IF ~~ THEN BEGIN lt20_enough
+SAY @2555 
+IF ~~ THEN REPLY @2556 GOTO lt20_angry
+IF ~~ THEN REPLY @2557 GOTO lt20_explain
+IF ~~ THEN REPLY @2558 GOTO lt20_bug
+END
+
+IF ~~ THEN BEGIN lt20_bug
+SAY @2559 
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
+END
+
+IF ~~ THEN BEGIN lt20_angry
+SAY @2560
+IF ~~ THEN REPLY @2561 GOTO lt20_conscience
+IF ~~ THEN REPLY @2562 GOTO lt20_thief
+END
+
+IF ~~ THEN BEGIN lt20_explain
+SAY @2563
+IF ~~ THEN REPLY @2561 GOTO lt20_conscience
+IF ~~ THEN REPLY @2562 GOTO lt20_thief
+IF ~~ THEN REPLY @2564 GOTO lt20_bug
+END
+
+IF ~~ THEN BEGIN lt20_conscience
+SAY @2565
+IF ~~ THEN REPLY @2566 GOTO lt20_trouble
+IF ~~ THEN REPLY @2567 GOTO lt20_stop
+IF ~~ THEN REPLY @2568 GOTO lt20_blindeye
+END
+
+IF ~~ THEN BEGIN lt20_thief
+SAY @2569
+IF ~~ THEN REPLY @2566 GOTO lt20_trouble
+IF ~~ THEN REPLY @2567 GOTO lt20_stop
+IF ~~ THEN REPLY @2568 GOTO lt20_blindeye
+END
+
+IF ~~ THEN BEGIN lt20_trouble
+SAY @2570
+IF ~~ THEN REPLY @2571 GOTO lt20_leave
+IF ~~ THEN REPLY @2572 GOTO lt20_leave
+IF ~~ THEN REPLY @2573 GOTO lt20_joined
+END
+
+IF ~~ THEN BEGIN lt20_stop
+SAY @2574
+IF ~~ THEN REPLY @2575 GOTO lt20_simple
+IF ~~ THEN REPLY @2576 GOTO lt20_leave
+IF ~~ THEN REPLY @2573 GOTO lt20_joined
+END
+
+IF ~~ THEN BEGIN lt20_blindeye
+SAY @2577
+IF ~~ THEN REPLY @2578 GOTO lt20_leave
+IF ~~ THEN REPLY @2579 GOTO lt20_joined
+END
+
+IF ~~ THEN BEGIN lt20_leave
+SAY @2580
+IF ~~ THEN REPLY @2581 GOTO lt20_security
+IF ~~ THEN REPLY @2582 GOTO lt20_weak
+IF ~~ THEN REPLY @2583 GOTO lt20_simple
+END
+
+IF ~~ THEN BEGIN lt20_joined
+SAY @2584 = @2585
+IF ~~ THEN REPLY @2581 GOTO lt20_security
+IF ~~ THEN REPLY @2582 GOTO lt20_weak
+IF ~~ THEN REPLY @2583 GOTO lt20_simple
+END
+
+IF ~~ THEN BEGIN lt20_simple
+SAY @2586
+IF ~~ THEN REPLY @2587 GOTO lt20_standby
+IF ~~ THEN REPLY @2588 GOTO lt20_commodity
+IF ~~ THEN REPLY @2589 GOTO lt20_happen
+END
+
+IF ~~ THEN BEGIN lt20_security
+SAY @2590 = @2591
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt20_weak
+SAY @2592 = @2593 = @2594
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt20_standby
+SAY @2595 = @2596 = @2591
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt20_commodity
+SAY @2597
+IF ~~ THEN REPLY @2598 GOTO lt20_weak
+IF ~~ THEN REPLY @2599 GOTO lt20_standby
+END
+
+IF ~~ THEN BEGIN lt20_happen
+SAY @2600 = @2594
+IF ~~ THEN EXIT
+END
+
+IF ~Global("E3LOVETALK","GLOBAL",22)
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN lt22_start
+SAY @2601
+IF ~~ THEN REPLY @1925 EXIT
+IF ~~ THEN REPLY @2602 GOTO lt22_thoughts
+IF ~~ THEN REPLY @2603 GOTO lt22_attention
+END
+
+IF ~~ THEN BEGIN lt22_thoughts
+SAY @2604
+IF ~~ THEN REPLY @2605 GOTO lt22_travel
+IF ~~ THEN REPLY @2606 GOTO lt22_explore
+IF ~~ THEN REPLY @2607 GOTO lt22_home
+END
+
+IF ~~ THEN BEGIN lt22_attention
+SAY @2608
+IF ~~ THEN REPLY @2605 GOTO lt22_travel
+IF ~~ THEN REPLY @2606 GOTO lt22_explore
+IF ~~ THEN REPLY @2607 GOTO lt22_home
+IF ~~ THEN REPLY @2609 GOTO lt22_concentrate
+END
+
+IF ~~ THEN BEGIN lt22_travel
+SAY @2610
+IF ~~ THEN REPLY @2611 GOTO lt22_where
+IF ~~ THEN REPLY @2612 GOTO lt22_selfish
+IF ~~ THEN REPLY @2613 GOTO lt22_visit
+END
+
+IF ~~ THEN BEGIN lt22_explore
+SAY @2614
+IF ~~ THEN REPLY @2615 GOTO lt22_where
+IF ~~ THEN REPLY @2616 GOTO lt22_snow
+IF ~~ THEN REPLY @2617 GOTO lt22_silverymoon
+IF ~~ THEN REPLY @2618 GOTO lt22_chult
+IF ~~ THEN REPLY @2619 GOTO lt22_calimshan
+END
+
+IF ~~ THEN BEGIN lt22_home
+SAY @2620
+IF ~~ THEN REPLY @2621 GOTO lt22_stay
+IF ~~ THEN REPLY @2622 GOTO lt22_alone
+END
+
+IF ~~ THEN BEGIN lt22_concentrate
+SAY @2623
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt22_where
+SAY @2624 = @2625
+IF ~~ THEN REPLY @2626 GOTO lt22_company
+IF ~~ THEN REPLY @2627 GOTO lt22_door
+IF ~~ THEN REPLY @2628 GOTO lt22_sea
+END
+
+IF ~~ THEN BEGIN lt22_selfish
+SAY @2629
+IF ~~ THEN REPLY @2630 GOTO lt22_where
+END
+
+IF ~~ THEN BEGIN lt22_snow
+SAY @2631 = @2625
+IF ~~ THEN REPLY @2626 GOTO lt22_company
+IF ~~ THEN REPLY @2627 GOTO lt22_door
+IF ~~ THEN REPLY @2628 GOTO lt22_sea
+END
+
+IF ~~ THEN BEGIN lt22_silverymoon
+SAY @2632 = @2625
+IF ~~ THEN REPLY @2626 GOTO lt22_company
+IF ~~ THEN REPLY @2627 GOTO lt22_door
+IF ~~ THEN REPLY @2628 GOTO lt22_sea
+END
+
+IF ~~ THEN BEGIN lt22_chult
+SAY @2633 = @2625
+IF ~~ THEN REPLY @2626 GOTO lt22_company
+IF ~~ THEN REPLY @2627 GOTO lt22_door
+IF ~~ THEN REPLY @2628 GOTO lt22_sea
+END
+
+IF ~~ THEN BEGIN lt22_calimshan
+SAY @2634
+IF ~~ THEN REPLY @2635 GOTO lt22_revenge
+IF ~~ THEN REPLY @2636 GOTO lt22_sent
+IF ~~ THEN REPLY @2637 GOTO lt22_without
+END
+
+IF ~~ THEN BEGIN lt22_stay
+SAY @2638 = @2625
+IF ~~ THEN REPLY @2626 GOTO lt22_company
+IF ~~ THEN REPLY @2627 GOTO lt22_door
+IF ~~ THEN REPLY @2628 GOTO lt22_sea
+END
+
+IF ~~ THEN BEGIN lt22_alone
+SAY @2639
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt22_company
+SAY @2640
+IF ~~ THEN REPLY @2641 GOTO lt22_me
+END
+
+IF ~~ THEN BEGIN lt22_door
+SAY @2642 = @2643
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt22_sea
+SAY @2644
+IF ~~ THEN REPLY @2645 GOTO lt22_elsewhere
+IF ~~ THEN REPLY @2646 GOTO lt22_stomach
+END
+
+IF ~~ THEN BEGIN lt22_elsewhere
+SAY @2647
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt22_revenge
+SAY @2648
+IF ~~ THEN REPLY @2649 GOTO lt22_friend
+IF ~~ THEN REPLY @2650 GOTO lt22_honour
+END
+
+IF ~~ THEN BEGIN lt22_sent
+SAY @2651
+IF ~~ THEN REPLY @2652 GOTO lt22_mind
+IF ~~ THEN REPLY @2653 GOTO lt22_fears
+END
+
+IF ~~ THEN BEGIN lt22_without
+SAY @2654
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt22_me
+SAY @2655
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt22_stomach
+SAY @2656
+IF ~~ THEN REPLY @2657 GOTO lt22_more
+IF ~~ THEN REPLY @2658 GOTO lt22_time
+IF ~~ THEN REPLY @2659 GOTO lt22_happen
+END
+
+IF ~~ THEN BEGIN lt22_friend
+SAY @2660
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt22_honour
+SAY @2661
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt22_mind
+SAY @2662 = @2663
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt22_fears
+SAY @2664
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt22_more
+SAY @2665
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt22_time
+SAY @2666 = @2667
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt22_happen
+SAY @2668 = @2669
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt22_visit
+SAY @2670
+IF ~~ THEN REPLY @2626 GOTO lt22_company
+IF ~~ THEN REPLY @2627 GOTO lt22_door
+IF ~~ THEN REPLY @2628 GOTO lt22_sea
+END
+
+IF ~Global("E3LOVETALK","GLOBAL",26)
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN lt26_start
+SAY @2671
+IF ~~ THEN REPLY @2672 GOTO lt26_awake
+IF ~~ THEN REPLY @2673 GOTO lt26_stick
+IF ~~ THEN REPLY @2674 GOTO lt26_wait
+END
+
+IF ~~ THEN BEGIN lt26_awake
+SAY @2675
+IF ~~ THEN REPLY @2676 GOTO lt26_knife
+IF ~~ THEN REPLY @2677 GOTO lt26_recognition
+IF ~~ THEN REPLY @2678 GOTO lt26_angry
+END
+
+IF ~~ THEN BEGIN lt26_stick
+SAY @2679
+IF ~~ THEN REPLY @2680 GOTO lt26_knife
+IF ~~ THEN REPLY @2681 GOTO lt26_leave
+IF ~~ THEN REPLY @2682 GOTO lt26_angry
+END
+
+IF ~~ THEN BEGIN lt26_wait
+SAY @2683
+IF ~~ THEN REPLY @2684 GOTO lt26_comfort
+IF ~~ THEN REPLY @2685 GOTO lt26_callous
+IF ~~ THEN REPLY @2686 GOTO lt26_okay
+END
+
+IF ~~ THEN BEGIN lt26_knife
+SAY @2687 = @2688
+IF ~~ THEN REPLY @2689 GOTO lt26_apology
+IF ~~ THEN REPLY @2690 GOTO lt26_soothe
+IF ~~ THEN REPLY @2691 GOTO lt26_angry
+END
+
+IF ~~ THEN BEGIN lt26_recognition
+SAY @2692 = @2693 = @2694 = @2695
+IF ~~ THEN REPLY @2696 GOTO lt26_soothe
+IF ~~ THEN REPLY @2697 GOTO lt26_angry
+IF ~~ THEN REPLY @2698 GOTO lt26_apology
+END
+
+IF ~~ THEN BEGIN lt26_angry
+SAY @2699
+IF ~~ THEN REPLY @2700 GOTO lt26_explain
+IF ~~ THEN REPLY @2701 GOTO lt26_soothe
+IF ~~ THEN REPLY @2702 GOTO lt26_leave
+END
+
+IF ~~ THEN BEGIN lt26_comfort
+SAY @2703 = @2704
+IF ~~ THEN REPLY @2705 GOTO lt26_explain
+IF ~~ THEN REPLY @2706 GOTO lt26_hurt
+IF ~~ THEN REPLY @2707 GOTO lt26_callous
+END
+
+IF ~~ THEN BEGIN lt26_callous
+SAY @2708 = @2709
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)
+RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN lt26_okay
+SAY @2710
+IF ~~ THEN REPLY @2711 GOTO lt26_hurt
+IF ~~ THEN REPLY @2712 GOTO lt26_explain
+IF ~~ THEN REPLY @2713 GOTO lt26_leave
+END
+
+IF ~~ THEN BEGIN lt26_apology
+SAY @2714
+IF ~~ THEN REPLY @2705 GOTO lt26_explain
+IF ~~ THEN REPLY @2702 GOTO lt26_leave
+IF ~~ THEN REPLY @2711 GOTO lt26_hurt
+END
+
+IF ~~ THEN BEGIN lt26_soothe
+SAY @2703 = @2715
+IF ~~ THEN REPLY @2705 GOTO lt26_explain
+IF ~~ THEN REPLY @2706 GOTO lt26_hurt
+IF ~~ THEN REPLY @2707 GOTO lt26_callous
+END
+
+IF ~~ THEN BEGIN lt26_explain
+SAY @2716 = @2717 = @2718 = @2719
+IF ~~ THEN REPLY @2720 GOTO lt26_sleep
+IF ~~ THEN REPLY @2721 GOTO lt26_callous
+IF ~~ THEN REPLY @2722 GOTO lt26_deny
+END
+
+IF ~~ THEN BEGIN lt26_leave
+SAY @2723
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)
+RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN lt26_hurt
+SAY @2724 = @2717 = @2718 = @2719
+IF ~~ THEN REPLY @2720 GOTO lt26_sleep
+IF ~~ THEN REPLY @2721 GOTO lt26_callous
+IF ~~ THEN REPLY @2722 GOTO lt26_deny
+END
+
+IF ~~ THEN BEGIN lt26_sleep
+SAY @2725 = @2726
+IF ~~ THEN DO ~RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN lt26_deny
+SAY @2727
+IF ~~ THEN REPLY @2728 GOTO lt26_sleep
+IF ~~ THEN REPLY @2729 GOTO lt26_callous
+END
+
+IF ~Global("E3LOVETALK","GLOBAL",28)
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN lt28_start
+SAY @2730
+IF ~~ THEN REPLY @2731 GOTO lt28_curious
+IF ~~ THEN REPLY @2732 GOTO lt28_nasty
+IF ~~ THEN REPLY @2733 GOTO lt28_discouraged
+END
+
+IF ~~ THEN BEGIN lt28_curious
+SAY @2734 = @2735 = @2736
+IF ~~ THEN REPLY @2737 GOTO lt28_continueone
+IF ~~ THEN REPLY @2738 GOTO lt28_continuetwo
+IF ~~ THEN REPLY @2739 GOTO lt28_melodrama
+END
+
+IF ~~ THEN BEGIN lt28_nasty
+SAY @2740 = @2741
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
+END
+
+IF ~~ THEN BEGIN lt28_discouraged
+SAY @2742
+IF ~~ THEN REPLY @2743 GOTO lt28_curious
+IF ~~ THEN REPLY @2744 GOTO lt28_breakup
+END
+
+IF ~~ THEN BEGIN lt28_continueone
+SAY @2745 = @2746 = @2747 = @2748
+IF ~~ THEN REPLY @2749 GOTO lt28_fault
+IF ~~ THEN REPLY @2750 GOTO lt28_blame
+END
+
+IF ~~ THEN BEGIN lt28_continuetwo
+SAY @2746 = @2747 = @2748
+IF ~~ THEN REPLY @2749 GOTO lt28_fault
+IF ~~ THEN REPLY @2750 GOTO lt28_blame
+IF ~~ THEN REPLY @2751 GOTO lt28_continuethree
+END
+
+IF ~~ THEN BEGIN lt28_melodrama
+SAY @2752
+IF ~~ THEN REPLY @2753 GOTO lt28_apology
+IF ~~ THEN REPLY @2754 GOTO lt28_punishment
+IF ~~ THEN REPLY @2755 GOTO lt28_moveon
+END
+
+IF ~~ THEN BEGIN lt28_breakup
+SAY @2756
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
+END
+
+IF ~~ THEN BEGIN lt28_fault
+SAY @2757 = @2758 = @2759
+IF ~~ THEN REPLY @2760 GOTO lt28_solace
+IF ~~ THEN REPLY @2761 GOTO lt28_close
+IF ~~ THEN REPLY @2762 GOTO lt28_priority
+END
+
+IF ~~ THEN BEGIN lt28_blame
+SAY @2763 = @2764 = @2758 = @2759
+IF ~~ THEN REPLY @2760 GOTO lt28_solace
+IF ~~ THEN REPLY @2761 GOTO lt28_close
+IF ~~ THEN REPLY @2762 GOTO lt28_priority
+END
+
+IF ~~ THEN BEGIN lt28_apology
+SAY @2765
+IF ~~ THEN REPLY @2766 GOTO lt28_future
+IF ~~ THEN REPLY @2767 GOTO lt28_discovery
+IF ~~ THEN REPLY @2768 GOTO lt28_dead
+END
+
+IF ~~ THEN BEGIN lt28_punishment
+SAY @2769 = @2770
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
+END
+
+IF ~~ THEN BEGIN lt28_moveon
+SAY @2771
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
+END
+
+IF ~~ THEN BEGIN lt28_solace
+SAY @2772
+IF ~~ THEN REPLY @2773 GOTO lt28_discovery
+IF ~~ THEN REPLY @2774 GOTO lt28_dead
+IF ~~ THEN REPLY @2775 GOTO lt28_foolish
+END
+
+IF ~~ THEN BEGIN lt28_close
+SAY @2776
+IF ~~ THEN REPLY @2773 GOTO lt28_discovery
+IF ~~ THEN REPLY @2774 GOTO lt28_dead
+IF ~~ THEN REPLY @2775 GOTO lt28_foolish
+END
+
+IF ~~ THEN BEGIN lt28_priority
+SAY @2777
+IF ~~ THEN REPLY @2778 GOTO lt28_discovery
+IF ~~ THEN REPLY @2779 GOTO lt28_dead
+IF ~~ THEN REPLY @2780 GOTO lt28_moveon
+END
+
+IF ~~ THEN BEGIN lt28_future
+SAY @2781
+IF ~~ THEN REPLY @2782 GOTO lt28_dead
+IF ~~ THEN REPLY @2783 GOTO lt28_moveon
+END
+
+IF ~~ THEN BEGIN lt28_discovery
+SAY @2784 = @2785 = @2786
+IF ~~ THEN REPLY @2787 GOTO lt28_escape
+END
+
+IF ~~ THEN BEGIN lt28_dead
+SAY @2788 = @2789 = @2790 = @2791 = @2792 = @2793 = @2794 = @2795 = @2796
+IF ~~ THEN REPLY @2797 GOTO lt28_thanks
+IF ~~ THEN REPLY @2798 GOTO lt28_thanks
+END
+
+IF ~~ THEN BEGIN lt28_foolish
+SAY @2799
+IF ~~ THEN REPLY @2778 GOTO lt28_discovery
+IF ~~ THEN REPLY @2779 GOTO lt28_dead
+IF ~~ THEN REPLY @2780 GOTO lt28_moveon
+END
+
+IF ~~ THEN BEGIN lt28_escape
+SAY @2800 = @2791 = @2792 = @2793 = @2794 = @2795 = @2796
+IF ~~ THEN REPLY @2797 GOTO lt28_thanks
+IF ~~ THEN REPLY @2798 GOTO lt28_thanks
+END
+
+IF ~~ THEN BEGIN lt28_thanks
+SAY @2801
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt28_continuethree
+SAY @2802 = @2758 = @2759
+IF ~~ THEN REPLY @2760 GOTO lt28_solace
+IF ~~ THEN REPLY @2761 GOTO lt28_close
+IF ~~ THEN REPLY @2762 GOTO lt28_priority
+END
+
+IF ~Global("E3LOVETALK","GLOBAL",30)
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN lt30_start
+SAY @2803
+IF ~~ THEN REPLY @2804 GOTO lt30_better
+IF ~~ THEN REPLY @2805 GOTO lt30_grateful
+IF ~~ THEN REPLY @2806 GOTO lt30_her
+END
+
+IF ~~ THEN BEGIN lt30_better
+SAY @2807
+IF ~~ THEN REPLY @2808 GOTO lt30_grateful
+IF ~~ THEN REPLY @2809 GOTO lt30_punish
+END
+
+IF ~~ THEN BEGIN lt30_grateful
+SAY @2810
+IF ~~ THEN REPLY @2811 GOTO lt30_strong
+IF ~~ THEN REPLY @2812 GOTO lt30_selfpity
+END
+
+IF ~~ THEN BEGIN lt30_her
+SAY @2813
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
+END
+
+IF ~~ THEN BEGIN lt30_punish
+SAY @2814
+IF ~~ THEN REPLY @2811 GOTO lt30_strong
+IF ~~ THEN REPLY @2812 GOTO lt30_selfpity
+END
+
+IF ~~ THEN BEGIN lt30_strong
+SAY @2815 = @2816
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt30_selfpity
+SAY @2817
+IF ~~ THEN REPLY @2811 GOTO lt30_strong
+IF ~~ THEN REPLY @2818 GOTO lt30_maudlin
+END
+
+IF ~~ THEN BEGIN lt30_maudlin
+SAY @2819 = @2820
+IF ~~ THEN EXIT
+END
+
+IF ~Global("E3LOVETALK","GLOBAL",32)
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN lt32_start
+SAY @2821
+IF ~~ THEN REPLY @1863 GOTO lt32_okay
+IF ~~ THEN REPLY @2822 GOTO lt32_sorry
+IF ~~ THEN REPLY @2823 GOTO lt32_maybe
+END
+
+IF ~~ THEN BEGIN lt32_okay
+SAY @2824
+IF ~~ THEN REPLY @2825 GOTO lt32_sit
+IF ~~ THEN REPLY @2029 GOTO lt32_leave
+END
+
+IF ~~ THEN BEGIN lt32_leave
+SAY @2826
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt32_sorry
+SAY @2827
+IF ~~ THEN REPLY @2828 GOTO lt32_whine
+IF ~~ THEN REPLY @2829 GOTO lt32_rest
+IF ~~ THEN REPLY @2830 GOTO lt32_continue
+END
+
+IF ~~ THEN BEGIN lt32_maybe
+SAY @2831 = @2832 = @2833
+IF ~~ THEN REPLY @2828 GOTO lt32_whine
+IF ~~ THEN REPLY @2829 GOTO lt32_rest
+IF ~~ THEN REPLY @2830 GOTO lt32_continue
+END
+
+IF ~~ THEN BEGIN lt32_sit
+SAY @2834
+IF ~~ THEN REPLY @2835 GOTO lt32_bizarre
+IF ~~ THEN REPLY @2836 GOTO lt32_weird
+END
+
+IF ~~ THEN BEGIN lt32_whine
+SAY @2837
+IF ~~ THEN REPLY @2838 GOTO lt32_rest
+IF ~~ THEN REPLY @2839 GOTO lt32_okay
+IF ~~ THEN REPLY @2840 GOTO lt32_serious
+END
+
+IF ~~ THEN BEGIN lt32_rest
+SAY @2841
+IF ~~ THEN REPLY @2842 GOTO lt32_okay
+IF ~~ THEN REPLY @2840 GOTO lt32_serious
+END
+
+IF ~~ THEN BEGIN lt32_continue
+SAY @2843
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt32_bizarre
+SAY @2844
+IF ~~ THEN REPLY @2845 GOTO lt32_too
+IF ~~ THEN REPLY @2846 GOTO lt32_feet
+IF ~~ THEN REPLY @2847 GOTO lt32_feet
+END
+
+IF ~~ THEN BEGIN lt32_too
+SAY @2848
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt32_feet
+SAY @2849
+IF ~~ THEN REPLY @2850 GOTO lt32_disgusting
+IF ~~ THEN REPLY @2851 GOTO lt32_everyday
+END
+
+IF ~~ THEN BEGIN lt32_weird
+SAY @2852
+IF ~~ THEN REPLY @2845 GOTO lt32_too
+IF ~~ THEN REPLY @2846 GOTO lt32_feet
+IF ~~ THEN REPLY @2847 GOTO lt32_feet
+END
+
+IF ~~ THEN BEGIN lt32_serious
+SAY @2853
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt32_disgusting
+SAY @2854 = @2855
+IF ~~ THEN REPLY @2856 GOTO lt32_elf
+IF ~~ THEN REPLY @2857 GOTO lt32_findout
+IF ~~ THEN REPLY @2858 GOTO lt32_shudder
+END
+
+IF ~~ THEN BEGIN lt32_everyday
+SAY @2859
+IF ~~ THEN REPLY @2860 GOTO lt32_scars
+IF ~~ THEN REPLY @2861 GOTO lt32_unusual
+END
+
+IF ~~ THEN BEGIN lt32_unusual
+SAY @2862
+IF ~~ THEN REPLY @2863 GOTO lt32_odd
+IF ~~ THEN REPLY @2864 GOTO lt32_tunic
+END
+
+IF ~~ THEN BEGIN lt32_elf
+SAY @2865
+IF ~~ THEN REPLY @2860 GOTO lt32_scars
+IF ~~ THEN REPLY @2861 GOTO lt32_unusual
+END
+
+IF ~~ THEN BEGIN lt32_findout
+SAY @2866
+IF ~~ THEN REPLY @2867 GOTO lt32_scars
+IF ~~ THEN REPLY @2868 GOTO lt32_unusual
+END
+
+IF ~~ THEN BEGIN lt32_shudder
+SAY @2869
+IF ~~ THEN REPLY @2870 GOTO lt32_scars
+IF ~~ THEN REPLY @2871 GOTO lt32_forget
+IF ~~ THEN REPLY @2872 GOTO lt32_unusual
+END
+
+IF ~~ THEN BEGIN lt32_forget
+SAY @2873
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
+END
+
+IF ~~ THEN BEGIN lt32_scars
+SAY @2874 = @2875
+IF ~~ THEN REPLY @2863 GOTO lt32_odd
+IF ~~ THEN REPLY @2864 GOTO lt32_tunic
+END
+
+IF ~~ THEN BEGIN lt32_odd
+SAY @2876
+IF ~~ THEN REPLY @2877 GOTO lt32_basilisk
+IF ~~ THEN REPLY @2878 GOTO lt32_whoa
+IF ~~ THEN REPLY @2879 GOTO lt32_finger
+END
+
+IF ~~ THEN BEGIN lt32_tunic
+SAY @2880
+IF ~~ THEN REPLY @2881 GOTO lt32_bellybutton
+IF ~~ THEN REPLY @2882 GOTO lt32_embarassed
+END
+
+IF ~~ THEN BEGIN lt32_basilisk
+SAY @2883 = @2884
+IF ~~ THEN REPLY @2885 GOTO lt32_aches
+IF ~~ THEN REPLY @2886 GOTO lt32_escape
+END
+
+IF ~~ THEN BEGIN lt32_whoa
+SAY @2887
+IF ~~ THEN REPLY @2888 GOTO lt32_impressive
+IF ~~ THEN REPLY @2889 GOTO lt32_hip
+IF ~~ THEN REPLY @2890 GOTO lt32_it
+END
+
+IF ~~ THEN BEGIN lt32_finger
+SAY @2891
+IF ~~ THEN REPLY @2892 GOTO lt32_proud
+IF ~~ THEN REPLY @2893 GOTO lt32_dog
+IF ~~ THEN REPLY @2894 GOTO lt32_derringdo
+END
+
+IF ~~ THEN BEGIN lt32_bellybutton
+SAY @2895
+IF ~~ THEN REPLY @2896 GOTO lt32_stickie
+IF ~~ THEN REPLY @2897 GOTO lt32_best
+END
+
+IF ~~ THEN BEGIN lt32_embarassed
+SAY @2898
+IF ~~ THEN REPLY @2899 GOTO lt32_perfect
+IF ~~ THEN REPLY @2900 GOTO lt32_stop
+END
+
+IF ~~ THEN BEGIN lt32_aches
+SAY @2901
+IF ~~ THEN REPLY @2902 GOTO lt32_piss
+IF ~~ THEN REPLY @2903 GOTO lt32_help
+END
+
+IF ~~ THEN BEGIN lt32_escape
+SAY @2904
+IF ~~ THEN REPLY @2905 GOTO lt32_one
+IF ~~ THEN REPLY @2906 GOTO lt32_suppose
+IF ~~ THEN REPLY @2907 GOTO lt32_girls
+END
+
+IF ~~ THEN BEGIN lt32_one
+SAY @2908
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt32_suppose
+SAY @2909
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt32_impressive
+SAY @2910 = @2911
+IF ~~ THEN REPLY @2912 GOTO lt32_trees
+IF ~~ THEN REPLY @2913 GOTO lt32_show
+END
+
+IF ~~ THEN BEGIN lt32_hip
+SAY @2914 = @2915
+IF ~~ THEN REPLY @2912 GOTO lt32_trees
+IF ~~ THEN REPLY @2913 GOTO lt32_show
+END
+
+IF ~~ THEN BEGIN lt32_it
+SAY @2916
+IF ~~ THEN REPLY @2917 GOTO lt32_lower
+IF ~~ THEN REPLY @2918 GOTO lt32_lewd
+IF ~~ THEN REPLY @2919 GOTO lt32_that
+END
+
+IF ~~ THEN BEGIN lt32_lower
+SAY @2920
+IF ~~ THEN REPLY @2912 GOTO lt32_trees
+IF ~~ THEN REPLY @2913 GOTO lt32_show
+END
+
+IF ~~ THEN BEGIN lt32_proud
+SAY @2921
+IF ~~ THEN REPLY @2905 GOTO lt32_one
+IF ~~ THEN REPLY @2906 GOTO lt32_suppose
+IF ~~ THEN REPLY @2907 GOTO lt32_girls
+END
+
+IF ~~ THEN BEGIN lt32_dog
+SAY @2922
+IF ~~ THEN REPLY @2902 GOTO lt32_piss
+IF ~~ THEN REPLY @2903 GOTO lt32_help
+END
+
+IF ~~ THEN BEGIN lt32_derringdo
+SAY @2923
+IF ~~ THEN REPLY @2924 GOTO lt32_proud
+IF ~~ THEN REPLY @2925 GOTO lt32_dog
+END
+
+IF ~~ THEN BEGIN lt32_stickie
+SAY @2926 = @2927 = @2928
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt32_best
+SAY @2929
+IF ~~ THEN REPLY @2899 GOTO lt32_perfect
+IF ~~ THEN REPLY @2900 GOTO lt32_stop
+END
+
+IF ~~ THEN BEGIN lt32_perfect
+SAY @2930 = @2931
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt32_stop
+SAY @2932 = @2933
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt32_piss
+SAY @2934 = @2935
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt32_help
+SAY @2936
+IF ~~ THEN REPLY @2937 GOTO lt32_better
+IF ~~ THEN REPLY @2938 GOTO lt32_quite
+END
+
+IF ~~ THEN BEGIN lt32_girls
+SAY @2939 = @2935
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt32_trees
+SAY @2940
+IF ~~ THEN REPLY @2941 GOTO lt32_laugh
+IF ~~ THEN REPLY @2942 GOTO lt32_quite
+END
+
+IF ~~ THEN BEGIN lt32_show
+SAY @2943 = @2931
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt32_lewd
+SAY @2944
+IF ~~ THEN REPLY @2919 GOTO lt32_that
+IF ~~ THEN REPLY @2917 GOTO lt32_lower
+END
+
+IF ~~ THEN BEGIN lt32_that
+SAY @2945
+IF ~~ THEN REPLY @2946 GOTO lt32_quite
+IF ~~ THEN REPLY @2947 GOTO lt32_joking
+END
+
+IF ~~ THEN BEGIN lt32_better
+SAY @2948 = @2949
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt32_quite
+SAY @2950 = @2949
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt32_joking
+SAY @2951 = @2949
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt32_laugh
+SAY @2952
+IF ~~ THEN EXIT
+END
+
+IF ~Global("E3LOVETALK","GLOBAL",34)
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN lt34_start
+SAY @2953
+IF ~~ THEN REPLY @2954 GOTO lt34_sing
+IF ~~ THEN REPLY @2955 GOTO lt34_what
+IF ~~ THEN REPLY @2956 GOTO lt34_shutup
+END
+
+IF ~~ THEN BEGIN lt34_sing
+SAY @2957
+IF ~~ THEN REPLY @2958 GOTO lt34_distracting
+IF ~~ THEN REPLY @2959 GOTO lt34_voice
+IF ~~ THEN REPLY @2960 GOTO lt34_shutup
+END
+
+IF ~~ THEN BEGIN lt34_what
+SAY @2961
+IF ~~ THEN REPLY @2954 GOTO lt34_sing
+IF ~~ THEN REPLY @2962 GOTO lt34_know
+IF ~~ THEN REPLY @1042 GOTO lt34_nothing
+END
+
+IF ~~ THEN BEGIN lt34_shutup
+SAY @2963
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt34_distracting
+SAY @2964
+IF ~~ THEN REPLY @2965 GOTO lt34_know
+IF ~~ THEN REPLY @2966 GOTO lt34_habit
+IF ~~ THEN REPLY @2967 GOTO lt34_sarcasm
+END
+
+IF ~~ THEN BEGIN lt34_voice
+SAY @2968
+IF ~~ THEN REPLY @2969 GOTO lt34_habit
+IF ~~ THEN REPLY @2970 GOTO lt34_happy
+IF ~~ THEN REPLY @2971 GOTO lt34_know
+END
+
+IF ~~ THEN BEGIN lt34_know
+SAY @2972
+IF ~~ THEN REPLY @2973 GOTO lt34_psong
+IF ~~ THEN REPLY @2974 GOTO lt34_thing
+END
+
+IF ~~ THEN BEGIN lt34_nothing
+SAY @2975
+IF ~~ THEN REPLY @2976 GOTO lt34_know
+IF ~~ THEN REPLY @2977 GOTO lt34_habit
+IF ~~ THEN REPLY @2978 GOTO lt34_voice
+END
+
+IF ~~ THEN BEGIN lt34_habit
+SAY @2979
+IF ~~ THEN REPLY @2980 GOTO lt34_particular
+IF ~~ THEN REPLY @2981 GOTO lt34_tease
+END
+
+IF ~~ THEN BEGIN lt34_sarcasm
+SAY @2982 = @2983
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt34_happy
+SAY @2984 = @2985
+IF ~~ THEN REPLY @2973 GOTO lt34_psong
+IF ~~ THEN REPLY @2974 GOTO lt34_thing
+IF ~~ THEN REPLY @2986 GOTO lt34_nothappy
+END
+
+IF ~~ THEN BEGIN lt34_song
+SAY @2987
+IF ~~ THEN REPLY @2988 GOTO lt34_red
+IF ~~ THEN REPLY @2989 GOTO lt34_remember
+END
+
+IF ~~ THEN BEGIN lt34_thing
+SAY @2990
+IF ~~ THEN REPLY @2973 GOTO lt34_psong
+IF ~~ THEN REPLY @2991 GOTO lt34_sorry
+END
+
+IF ~~ THEN BEGIN lt34_particular
+SAY @2992
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt34_tease
+SAY @2993
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt34_nothappy
+SAY @2994
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt34_red
+SAY @2995
+IF ~~ THEN REPLY @2996 GOTO lt34_serious
+IF ~~ THEN REPLY @2997 GOTO lt34_this
+END
+
+IF ~~ THEN BEGIN lt34_remember
+SAY @2998 = @2999
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt34_sorry
+SAY @3000
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt34_serious
+SAY @3001 = @3002
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt34_this
+SAY @3003
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt34_psong
+SAY @3004 = @3005 = @3006 = @3007 = @3008 = @3009
+IF ~~ THEN GOTO lt34_song
+END
+
+IF ~Global("E3LOVETALK","GLOBAL",36)
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN lt36_start
+SAY @3010 = @3011
+IF ~~ THEN REPLY @3012 GOTO lt36_journal
+IF ~~ THEN REPLY @3013 GOTO lt36_read
+IF ~~ THEN REPLY @3014 GOTO lt36_reason
+END
+
+IF ~~ THEN BEGIN lt36_journal
+SAY @3015
+IF ~~ THEN REPLY @3016 GOTO lt36_read
+IF ~~ THEN REPLY @3017 GOTO lt36_thoughts
+IF ~~ THEN REPLY @3018 GOTO lt36_trade
+IF ~~ THEN REPLY @3019 GOTO lt36_annoy
+END
+
+IF ~~ THEN BEGIN lt36_read
+SAY @3020
+IF ~~ THEN REPLY @3021 GOTO lt36_grab
+IF ~~ THEN REPLY @3022 GOTO lt36_hand
+IF ~~ THEN REPLY @3023 GOTO lt36_thoughts
+END
+
+IF ~~ THEN BEGIN lt36_reason
+SAY @3024
+IF ~~ THEN REPLY @3025 GOTO lt36_feelings
+IF ~~ THEN REPLY @3026 GOTO lt36_hand
+IF ~~ THEN REPLY @3017 GOTO lt36_thoughts
+END
+
+IF ~~ THEN BEGIN lt36_thoughts
+SAY @3027
+IF ~~ THEN REPLY @3028 GOTO lt36_hand
+IF ~~ THEN REPLY @3029 GOTO lt36_grab
+IF ~~ THEN REPLY @3030 GOTO lt36_feelings
+END
+
+IF ~~ THEN BEGIN lt36_trade
+SAY @3031
+IF ~~ THEN REPLY @3032 GOTO lt36_grab
+IF ~~ THEN REPLY @3022 GOTO lt36_hand
+IF ~~ THEN REPLY @3023 GOTO lt36_thoughts
+END
+
+IF ~~ THEN BEGIN lt36_annoy
+SAY @3033 = @3034
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)
+RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN lt36_feelings
+SAY @3035
+IF ~~ THEN REPLY @3036 GOTO lt36_grab
+IF ~~ THEN REPLY @3037 GOTO lt36_hand
+END
+
+IF ~~ THEN BEGIN lt36_grab
+SAY @3038
+IF ~~ THEN REPLY @3039 GOTO lt36_kiss
+IF ~~ THEN REPLY @3040 GOTO lt36_toofar
+END
+
+IF ~~ THEN BEGIN lt36_toofar
+SAY @3041 = @3042
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)
+RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN lt36_hand
+SAY @3043
+IF ~~ THEN REPLY @3039 GOTO lt36_kiss
+IF ~~ THEN REPLY @3040 GOTO lt36_toofar
+END
+
+IF ~~ THEN BEGIN lt36_kiss
+SAY @3044 = @3045
+IF ~~ THEN REPLY @3046 GOTO lt36_mexplanation
+IF ~~ THEN REPLY @3047 GOTO lt36_mplayful
+IF ~~ THEN REPLY @3048 GOTO lt36_mplayful
+END
+
+IF ~~ THEN BEGIN lt36_mexplanation
+SAY @3049 = @3050
+IF ~~ THEN REPLY @3051 GOTO lt36_mplayful
+IF ~~ THEN REPLY @3052 GOTO lt36_mquestion
+IF ~~ THEN REPLY @3048 GOTO lt36_mplayful
+END
+
+IF ~~ THEN BEGIN lt36_mplayful
+SAY @3053 = @3054
+IF ~~ THEN DO ~RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN lt36_mquestion
+SAY @3055
+IF ~~ THEN REPLY @3056 GOTO lt36_mplayful
+IF ~~ THEN REPLY @3057 GOTO lt36_mplayful
+END
+
+IF ~Global("E3LOVETALK","GLOBAL",38)
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN lt38_start
+SAY @3058
+IF ~~ THEN REPLY @3059 GOTO lt38_water
+IF ~~ THEN REPLY @3060 GOTO lt38_smile
+IF ~~ THEN REPLY @3061 GOTO lt38_ashamed
+END
+
+IF ~~ THEN BEGIN lt38_water
+SAY @3062
+IF ~~ THEN REPLY @3063 GOTO lt38_problem
+IF ~~ THEN REPLY @3060 GOTO lt38_smile
+END
+
+IF ~~ THEN BEGIN lt38_smile
+SAY @3064 = @3065
+IF ~~ THEN REPLY @3066 GOTO lt38_much
+IF ~~ THEN REPLY @3067 GOTO lt38_busy
+IF ~~ THEN REPLY @3068 GOTO lt38_way
+END
+
+IF ~~ THEN BEGIN lt38_ashamed
+SAY @3069
+IF ~~ THEN REPLY @3070 GOTO lt38_just
+IF ~~ THEN REPLY @3071 GOTO lt38_carryon
+END
+
+IF ~~ THEN BEGIN lt38_problem
+SAY @3072 = @3073
+IF ~~ THEN REPLY @3066 GOTO lt38_much
+IF ~~ THEN REPLY @3067 GOTO lt38_busy
+IF ~~ THEN REPLY @3068 GOTO lt38_way
+END
+
+IF ~~ THEN BEGIN lt38_much
+SAY @3074
+IF ~~ THEN REPLY @3075 GOTO lt38_kiss
+IF ~~ THEN REPLY @3076 GOTO lt38_drop
+END
+
+IF ~~ THEN BEGIN lt38_busy
+SAY @3077
+IF ~~ THEN REPLY @3070 GOTO lt38_just
+IF ~~ THEN REPLY @3076 GOTO lt38_drop
+END
+
+IF ~~ THEN BEGIN lt38_way
+SAY @3078
+IF ~~ THEN REPLY @3079 GOTO lt38_carryon
+IF ~~ THEN REPLY @3080 GOTO lt38_mistake
+END
+
+IF ~~ THEN BEGIN lt38_just
+SAY @3081
+IF ~~ THEN REPLY @3082 GOTO lt38_regret
+IF ~~ THEN REPLY @3083 GOTO lt38_experience
+IF ~~ THEN REPLY @3084 GOTO lt38_mistake
+END
+
+IF ~~ THEN BEGIN lt38_carryon
+SAY @3085
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
+END
+
+IF ~~ THEN BEGIN lt38_kiss
+SAY @3086
+IF ~~ THEN REPLY @3082 GOTO lt38_regret
+IF ~~ THEN REPLY @3083 GOTO lt38_experience
+IF ~~ THEN REPLY @3084 GOTO lt38_mistake
+END
+
+IF ~~ THEN BEGIN lt38_drop
+SAY @3087
+IF ~~ THEN REPLY @3088 GOTO lt38_experience
+IF ~~ THEN REPLY @3089 GOTO lt38_deal
+IF ~~ THEN REPLY @3090 GOTO lt38_mistake
+END
+
+IF ~~ THEN BEGIN lt38_regret
+SAY @3091
+IF ~~ THEN REPLY @3092 GOTO lt38_fool
+IF ~~ THEN REPLY @3093 GOTO lt38_same
+END
+
+IF ~~ THEN BEGIN lt38_experience
+SAY @3094
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
+END
+
+IF ~~ THEN BEGIN lt38_mistake
+SAY @3095
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
+END
+
+IF ~~ THEN BEGIN lt38_deal
+SAY @3096 = @3097
+IF ~~ THEN REPLY @3098 GOTO lt38_emotion
+IF ~~ THEN REPLY @3093 GOTO lt38_same
+END
+
+IF ~~ THEN BEGIN lt38_fool
+SAY @3099 = @3100
+IF ~~ THEN REPLY @3101 GOTO lt38_kissagain
+IF ~~ THEN REPLY @3102 GOTO lt38_compliment
+IF ~~ THEN REPLY @3103 GOTO lt38_dally
+END
+
+IF ~~ THEN BEGIN lt38_dally
+SAY @3104
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt38_same
+SAY @3105
+IF ~~ THEN REPLY @3106 GOTO lt38_fool
+IF ~~ THEN REPLY @3107 GOTO lt38_glad
+END
+
+IF ~~ THEN BEGIN lt38_glad
+SAY @3108
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt38_emotion
+SAY @3109
+IF ~~ THEN REPLY @3106 GOTO lt38_fool
+IF ~~ THEN REPLY @3110 GOTO lt38_sure
+END
+
+IF ~~ THEN BEGIN lt38_sure
+SAY @3111 
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt38_kissagain
+SAY @3112 = @3113
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt38_compliment
+SAY @3114
+IF ~~ THEN EXIT
+END
+
+IF ~Global("E3LOVETALK","GLOBAL",42)
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN lt42_start
+SAY @3115
+IF ~~ THEN REPLY @3116 GOTO lt42_depends
+IF ~~ THEN REPLY @3117 GOTO lt42_yes
+IF ~~ THEN REPLY @3118 GOTO lt42_no
+END
+
+IF ~~ THEN BEGIN lt42_depends
+SAY @3119
+IF ~~ THEN REPLY @3120 GOTO lt42_ask
+IF ~~ THEN REPLY @3121 GOTO lt42_know
+IF ~~ THEN REPLY @3122 GOTO lt42_real
+IF ~~ THEN REPLY @3123 GOTO lt42_answer
+IF ~~ THEN REPLY @3124 GOTO lt42_time
+END
+
+IF ~~ THEN BEGIN lt42_yes
+SAY @3125
+IF ~~ THEN REPLY @3120 GOTO lt42_ask
+IF ~~ THEN REPLY @3121 GOTO lt42_know
+IF ~~ THEN REPLY @3122 GOTO lt42_real
+IF ~~ THEN REPLY @3123 GOTO lt42_answer
+IF ~~ THEN REPLY @3124 GOTO lt42_time
+END
+
+IF ~~ THEN BEGIN lt42_no
+SAY @3126
+IF ~~ THEN REPLY @3127 GOTO lt42_yes
+IF ~~ THEN REPLY @3128 GOTO lt42_say
+IF ~~ THEN REPLY @3129 GOTO lt42_depends
+END
+
+IF ~~ THEN BEGIN lt42_ask
+SAY @3130
+IF ~~ THEN REPLY @3131 GOTO lt42_calia
+IF ~~ THEN REPLY @3132 GOTO lt42_jak
+IF ~~ THEN REPLY @3133 GOTO lt42_kirsten
+IF ~~ THEN REPLY @3134 GOTO lt42_furry
+END
+
+IF ~~ THEN BEGIN lt42_know
+SAY @3135
+IF ~~ THEN REPLY @3136 GOTO lt42_girls
+IF ~~ THEN REPLY @3137 GOTO lt42_lust
+IF ~~ THEN REPLY @3138 GOTO lt42_happen
+END
+
+IF ~~ THEN BEGIN lt42_real
+SAY @3139
+IF ~~ THEN REPLY @3140 GOTO lt42_before
+IF ~~ THEN REPLY @3141 GOTO lt42_reciprocate
+IF ~~ THEN REPLY @3142 GOTO lt42_kid
+END
+
+IF ~~ THEN BEGIN lt42_answer
+SAY @3143
+IF ~~ THEN REPLY @3144 GOTO lt42_personal
+IF ~~ THEN REPLY @3145 GOTO lt42_say
+END
+
+IF ~~ THEN BEGIN lt42_time
+SAY @3146
+IF ~~ THEN REPLY @3147 GOTO lt42_all
+IF ~~ THEN REPLY @3148 GOTO lt42_joke
+IF ~~ THEN REPLY @3149 GOTO lt42_know
+END
+
+IF ~~ THEN BEGIN lt42_say
+SAY @3150
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
+END
+
+IF ~~ THEN BEGIN lt42_calia
+SAY @3151
+IF ~~ THEN REPLY @3152 GOTO lt42_devastated
+IF ~~ THEN REPLY @3153 GOTO lt42_young
+IF ~~ THEN REPLY @3154 GOTO lt42_end
+END
+
+IF ~~ THEN BEGIN lt42_jak
+SAY @3155
+IF ~~ THEN REPLY @3156 GOTO lt42_exist
+IF ~~ THEN REPLY @3157 GOTO lt42_confusion
+IF ~~ THEN REPLY @3158 GOTO lt42_interest
+END
+
+IF ~~ THEN BEGIN lt42_kirsten
+SAY @3159
+IF ~~ THEN REPLY @3160 GOTO lt42_seven
+IF ~~ THEN REPLY @3161 GOTO lt42_missing
+IF ~~ THEN REPLY @3162 GOTO lt42_tutor
+END
+
+IF ~~ THEN BEGIN lt42_furry
+SAY @3163
+IF ~~ THEN REPLY @3164 GOTO lt42_specify
+IF ~~ THEN REPLY @3165 GOTO lt42_specify
+END
+
+IF ~~ THEN BEGIN lt42_girls
+SAY @3166
+IF ~~ THEN REPLY @3167 GOTO lt42_scared
+IF ~~ THEN REPLY @3168 GOTO lt42_nobody
+IF ~~ THEN REPLY @3169 GOTO lt42_terrify
+END
+
+IF ~~ THEN BEGIN lt42_lust
+SAY @3170
+IF ~~ THEN REPLY @3171 GOTO lt42_mean
+IF ~~ THEN REPLY @3172 GOTO lt42_symptoms
+IF ~~ THEN REPLY @3173 GOTO lt42_instinct
+IF ~~ THEN REPLY @3174 GOTO lt42_feel
+END
+
+IF ~~ THEN BEGIN lt42_happen
+SAY @3175
+IF ~~ THEN REPLY @3171 GOTO lt42_mean
+IF ~~ THEN REPLY @3172 GOTO lt42_symptoms
+IF ~~ THEN REPLY @3173 GOTO lt42_instinct
+IF ~~ THEN REPLY @3174 GOTO lt42_feel
+END
+
+IF ~~ THEN BEGIN lt42_before
+SAY @3176
+IF ~~ THEN REPLY @3177 GOTO lt42_symptoms
+IF ~~ THEN REPLY @3174 GOTO lt42_feel
+END
+
+IF ~~ THEN BEGIN lt42_reciprocate
+SAY @3178
+IF ~~ THEN REPLY @3179 GOTO lt42_unrequited
+IF ~~ THEN REPLY @3180 GOTO lt42_again
+END
+
+IF ~~ THEN BEGIN lt42_kid
+SAY @3181
+IF ~~ THEN REPLY @3182 GOTO lt42_relief
+IF ~~ THEN REPLY @3183 GOTO lt42_busy
+IF ~~ THEN REPLY @3184 GOTO lt42_before
+END
+
+IF ~~ THEN BEGIN lt42_personal
+SAY @3185
+IF ~~ THEN REPLY @3186 GOTO lt42_say
+IF ~~ THEN REPLY @3187 GOTO lt42_symptoms
+IF ~~ THEN REPLY @3173 GOTO lt42_instinct
+IF ~~ THEN REPLY @3174 GOTO lt42_feel
+END
+
+IF ~~ THEN BEGIN lt42_all
+SAY @3188
+IF ~~ THEN REPLY @3189 GOTO lt42_joke
+IF ~~ THEN REPLY @3190 GOTO lt42_know
+END
+
+IF ~~ THEN BEGIN lt42_joke
+SAY @3191
+IF ~~ THEN REPLY @3131 GOTO lt42_calia
+IF ~~ THEN REPLY @3132 GOTO lt42_jak
+IF ~~ THEN REPLY @3133 GOTO lt42_kirsten
+END
+
+IF ~~ THEN BEGIN lt42_devastated
+SAY @3192
+IF ~~ THEN REPLY @3193 GOTO lt42_questions
+IF ~~ THEN REPLY @3194 GOTO lt42_what
+IF ~~ THEN REPLY @3195 GOTO lt42_help
+END
+
+IF ~~ THEN BEGIN lt42_young
+SAY @3196
+IF ~~ THEN REPLY @3197 GOTO lt42_forever
+IF ~~ THEN REPLY @3198 GOTO lt42_full
+IF ~~ THEN REPLY @3199 GOTO lt42_negative
+END
+
+IF ~~ THEN BEGIN lt42_end
+SAY @3200
+IF ~~ THEN REPLY @3193 GOTO lt42_questions
+IF ~~ THEN REPLY @3201 GOTO lt42_inevitable
+IF ~~ THEN REPLY @3202 GOTO lt42_cheating
+END
+
+IF ~~ THEN BEGIN lt42_exist
+SAY @3203
+IF ~~ THEN REPLY @3204 GOTO lt42_same
+IF ~~ THEN REPLY @3205 GOTO lt42_why
+IF ~~ THEN REPLY @3206 GOTO lt42_special
+END
+
+IF ~~ THEN BEGIN lt42_confusion
+SAY @3207
+IF ~~ THEN REPLY @3204 GOTO lt42_same
+IF ~~ THEN REPLY @3205 GOTO lt42_why
+IF ~~ THEN REPLY @3206 GOTO lt42_special
+END
+
+IF ~~ THEN BEGIN lt42_interest
+SAY @3208
+IF ~~ THEN REPLY @3204 GOTO lt42_same
+IF ~~ THEN REPLY @3205 GOTO lt42_why
+IF ~~ THEN REPLY @3206 GOTO lt42_special
+END
+
+IF ~~ THEN BEGIN lt42_seven
+SAY @3209
+IF ~~ THEN REPLY @3210 GOTO lt42_adult
+IF ~~ THEN REPLY @3211 GOTO lt42_calia
+IF ~~ THEN REPLY @3212 GOTO lt42_jak
+IF ~~ THEN REPLY @3190 GOTO lt42_know
+END
+
+IF ~~ THEN BEGIN lt42_missing
+SAY @3213
+IF ~~ THEN REPLY @3214 GOTO lt42_awkward
+IF ~~ THEN REPLY @3215 GOTO lt42_spot
+END
+
+IF ~~ THEN BEGIN lt42_tutor
+SAY @3216
+IF ~~ THEN REPLY @3210 GOTO lt42_adult
+IF ~~ THEN REPLY @3211 GOTO lt42_calia
+IF ~~ THEN REPLY @3212 GOTO lt42_jak
+IF ~~ THEN REPLY @3190 GOTO lt42_know
+END
+
+IF ~~ THEN BEGIN lt42_specify
+SAY @3217
+IF ~~ THEN REPLY @3210 GOTO lt42_adult
+IF ~~ THEN REPLY @3211 GOTO lt42_calia
+IF ~~ THEN REPLY @3212 GOTO lt42_jak
+IF ~~ THEN REPLY @3190 GOTO lt42_know
+END
+
+IF ~~ THEN BEGIN lt42_scared
+SAY @3218
+IF ~~ THEN REPLY @3219 GOTO lt42_cheeks
+IF ~~ THEN REPLY @3220 GOTO lt42_nobody
+END
+
+IF ~~ THEN BEGIN lt42_nobody
+SAY @3221
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt42_terrify
+SAY @3222
+IF ~~ THEN REPLY @3223 GOTO lt42_realise
+IF ~~ THEN REPLY @3224 GOTO lt42_makes
+IF ~~ THEN REPLY @3225 GOTO lt42_stop
+END
+
+IF ~~ THEN BEGIN lt42_mean
+SAY @3226
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt42_symptoms
+SAY @3227
+IF ~~ THEN REPLY @3228 GOTO lt42_idea
+IF ~~ THEN REPLY @3229 GOTO lt42_feel
+IF ~~ THEN REPLY @3230 GOTO lt42_teasing
+END
+
+IF ~~ THEN BEGIN lt42_instinct
+SAY @3231
+IF ~~ THEN REPLY @3232 GOTO lt42_here
+IF ~~ THEN REPLY @3233 GOTO lt42_feel
+END
+
+IF ~~ THEN BEGIN lt42_feel
+SAY @3234
+IF ~~ THEN REPLY @3235 GOTO lt42_symptoms
+IF ~~ THEN REPLY @3236 GOTO lt42_individual
+END
+
+IF ~~ THEN BEGIN lt42_unrequited
+SAY @3237 = @3238
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt42_again
+SAY @3239
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt42_relief
+SAY @3240
+IF ~~ THEN REPLY @3241 GOTO lt42_unrequited
+IF ~~ THEN REPLY @3242 GOTO lt42_again
+END
+
+IF ~~ THEN BEGIN lt42_questions
+SAY @3243
+IF ~~ THEN REPLY @3244 GOTO lt42_help
+IF ~~ THEN REPLY @3245 GOTO lt42_analyse
+END
+
+IF ~~ THEN BEGIN lt42_what
+SAY @3246
+IF ~~ THEN REPLY @3247 GOTO lt42_help
+IF ~~ THEN REPLY @3248 GOTO lt42_analyse
+IF ~~ THEN REPLY @3249 GOTO lt42_shy
+END
+
+IF ~~ THEN BEGIN lt42_forever
+SAY @3250
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt42_full
+SAY @3251
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt42_negative
+SAY @3252
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt42_inevitable
+SAY @3196
+IF ~~ THEN REPLY @3197 GOTO lt42_forever
+IF ~~ THEN REPLY @3198 GOTO lt42_full
+IF ~~ THEN REPLY @3199 GOTO lt42_negative
+END
+
+IF ~~ THEN BEGIN lt42_cheating
+SAY @3253
+IF ~~ THEN REPLY @3254 GOTO lt42_proud
+IF ~~ THEN REPLY @3255 GOTO lt42_fact
+END
+
+IF ~~ THEN BEGIN lt42_same
+SAY @3256 = @3257
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt42_why
+SAY @3258
+IF ~~ THEN REPLY @3259 GOTO lt42_same
+IF ~~ THEN REPLY @3260 GOTO lt42_regret
+IF ~~ THEN REPLY @3261 GOTO lt42_gay
+END
+
+IF ~~ THEN BEGIN lt42_special
+SAY @3262 = @3263
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt42_adult
+SAY @3264
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt42_awkward
+SAY @3265
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt42_spot
+SAY @3266
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt42_cheeks
+SAY @3267 = @3268
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt42_realise
+SAY @3269
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt42_makes
+SAY @3270
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt42_hope
+SAY @3271
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt42_stop
+SAY @3272
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt42_idea
+SAY @3273 = @3274
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt42_teasing
+SAY @3275 = @3274
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt42_here
+SAY @3276 = @3277
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt42_individual
+SAY @3278
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt42_help
+SAY @3279 = @3280
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt42_analyse
+SAY @3281
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt42_shy
+SAY @3282 = @3283
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt42_proud
+SAY @3284
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt42_fact
+SAY @3285
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt42_regret
+SAY @3286 = @3277
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt42_gay
+SAY @3287
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt42_busy
+SAY @3288
+IF ~~ THEN EXIT
+END
+
+IF ~Global("E3LOVETALK","GLOBAL",44)
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN lt44_start
+SAY @3289
+IF ~~ THEN REPLY @3290 GOTO lt44_follow
+IF ~~ THEN REPLY @3291 GOTO lt44_talk
+END
+
+IF ~~ THEN BEGIN lt44_follow
+SAY @3292 = @3293 = @3294
+IF ~~ THEN REPLY @3295 GOTO lt44_drag
+IF ~~ THEN REPLY @3046 GOTO lt44_okay
+IF ~~ THEN REPLY @3296 GOTO lt44_stupid
+IF ~~ THEN REPLY @3297 GOTO lt44_honey
+END
+
+IF ~~ THEN BEGIN lt44_talk
+SAY @3298
+IF ~~ THEN REPLY @1863 GOTO lt44_follow
+IF ~~ THEN REPLY @3299 GOTO lt44_busy
+END
+
+IF ~~ THEN BEGIN lt44_drag
+SAY @3300
+IF ~~ THEN REPLY @3301 GOTO lt44_jest
+IF ~~ THEN REPLY @3302 GOTO lt44_weird
+IF ~~ THEN REPLY @3303 GOTO lt44_notinterested
+END
+
+IF ~~ THEN BEGIN lt44_okay
+SAY @3304 = @3305
+IF ~~ THEN REPLY @3306 GOTO lt44_listen
+IF ~~ THEN REPLY @3307 GOTO lt44_honey
+IF ~~ THEN REPLY @3308 GOTO lt44_madness
+END
+
+IF ~~ THEN BEGIN lt44_stupid
+SAY @3309
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
+END
+
+IF ~~ THEN BEGIN lt44_honey
+SAY @3310
+IF ~~ THEN REPLY @3311 GOTO lt44_nickname
+IF ~~ THEN REPLY @3312 GOTO lt44_silly
+IF ~~ THEN REPLY @3313 GOTO lt44_say
+END
+
+IF ~~ THEN BEGIN lt44_busy
+SAY @3314
+IF ~~ THEN REPLY @3315 GOTO lt44_means
+IF ~~ THEN REPLY @3316 GOTO lt44_secrecy
+END
+
+IF ~~ THEN BEGIN lt44_jest
+SAY @3317
+IF ~~ THEN REPLY @3318 GOTO lt44_understand
+IF ~~ THEN REPLY @3319 GOTO lt44_sorry
+END
+
+IF ~~ THEN BEGIN lt44_weird
+SAY @3320
+IF ~~ THEN REPLY @3321 GOTO lt44_wrong
+IF ~~ THEN REPLY @3322 GOTO lt44_sarcasm
+END
+
+IF ~~ THEN BEGIN lt44_notinterested
+SAY @3323
+IF ~~ THEN REPLY @3324 GOTO lt44_opposite
+IF ~~ THEN REPLY @3325 GOTO lt44_bonfire
+END
+
+IF ~~ THEN BEGIN lt44_listen
+SAY @3326 = @3327 = @3328
+IF ~~ THEN REPLY @3329 GOTO lt44_feel
+IF ~~ THEN REPLY @3330 GOTO lt44_sorry
+IF ~~ THEN REPLY @3331 GOTO lt44_misinterpreted
+END
+
+IF ~~ THEN BEGIN lt44_madness
+SAY @3332
+IF ~~ THEN REPLY @3333 GOTO lt44_context
+IF ~~ THEN REPLY @3334 GOTO lt44_sorry
+IF ~~ THEN REPLY @3335 GOTO lt44_love
+END
+
+IF ~~ THEN BEGIN lt44_nickname
+SAY @3336
+IF ~~ THEN REPLY @3337 GOTO lt44_understand
+IF ~~ THEN REPLY @3338 GOTO lt44_mock
+END
+
+IF ~~ THEN BEGIN lt44_silly
+SAY @3339 = @3305
+IF ~~ THEN REPLY @3306 GOTO lt44_listen
+IF ~~ THEN REPLY @3308 GOTO lt44_madness
+END
+
+IF ~~ THEN BEGIN lt44_say
+SAY @3340
+IF ~~ THEN REPLY @3341 GOTO lt44_understand
+IF ~~ THEN REPLY @3342 GOTO lt44_point
+END
+
+IF ~~ THEN BEGIN lt44_means
+SAY @3343 = @3292 = @3293 = @3294
+IF ~~ THEN REPLY @3295 GOTO lt44_drag
+IF ~~ THEN REPLY @3046 GOTO lt44_okay
+IF ~~ THEN REPLY @3296 GOTO lt44_stupid
+IF ~~ THEN REPLY @3297 GOTO lt44_honey
+END
+
+IF ~~ THEN BEGIN lt44_secrecy
+SAY @3344
+IF ~~ THEN REPLY @3345 GOTO lt44_means
+IF ~~ THEN REPLY @3319 GOTO lt44_sorry
+END
+
+IF ~~ THEN BEGIN lt44_understand
+SAY @3346 = @3305
+IF ~~ THEN REPLY @3306 GOTO lt44_listen
+IF ~~ THEN REPLY @3308 GOTO lt44_madness
+END
+
+IF ~~ THEN BEGIN lt44_wrong
+SAY @3347
+IF ~~ THEN REPLY @3318 GOTO lt44_understand
+IF ~~ THEN REPLY @3319 GOTO lt44_sorry
+END
+
+IF ~~ THEN BEGIN lt44_sarcasm
+SAY @3348
+IF ~~ THEN REPLY @3349 GOTO lt44_fine
+IF ~~ THEN REPLY @3350 GOTO lt44_notinterested
+END
+
+IF ~~ THEN BEGIN lt44_fine
+SAY @3351
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
+END
+
+IF ~~ THEN BEGIN lt44_opposite
+SAY @3352
+IF ~~ THEN REPLY @3353 GOTO lt44_apologyhug
+END
+
+IF ~~ THEN BEGIN lt44_bonfire
+SAY @3354
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
+END
+
+IF ~~ THEN BEGIN lt44_feel
+SAY @3355 = @3356
+IF ~~ THEN REPLY @3357 GOTO lt44_drastic
+IF ~~ THEN REPLY @3358 GOTO lt44_dont
+END
+
+IF ~~ THEN BEGIN lt44_sorry
+SAY @3359
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
+END
+
+IF ~~ THEN BEGIN lt44_misinterpreted
+SAY @3360
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)
+SetGlobal("E3FADEJOINED","LOCALS",0)
+ChangeAIScript("",DEFAULT)
+SetLeavePartyDialogFile()
+LeaveParty()
+EscapeAreaMove("AR0307",4836,2136,6)~ EXIT
+END
+
+IF ~~ THEN BEGIN lt44_context
+SAY @3361 = @3327 = @3328
+IF ~~ THEN REPLY @3329 GOTO lt44_feel
+IF ~~ THEN REPLY @3330 GOTO lt44_sorry
+IF ~~ THEN REPLY @3331 GOTO lt44_misinterpreted
+END
+
+IF ~~ THEN BEGIN lt44_love
+SAY @3362 = @3363 = @3364 = @3365
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",2)~ EXIT
+END
+
+IF ~~ THEN BEGIN lt44_mock
+SAY @3366 = @3305
+IF ~~ THEN REPLY @3306 GOTO lt44_listen
+IF ~~ THEN REPLY @3308 GOTO lt44_madness
+END
+
+IF ~~ THEN BEGIN lt44_point
+SAY @3367
+IF ~~ THEN REPLY @3368 GOTO lt44_notinterested
+IF ~~ THEN REPLY @3301 GOTO lt44_jest
+END
+
+IF ~~ THEN BEGIN lt44_apologyhug
+SAY @3369 = @3370 = @3363 = @3364 = @3365
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",2)~ EXIT
+END
+
+IF ~~ THEN BEGIN lt44_drastic
+SAY @3371 = @3372 = @3365
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",2)~ EXIT
+END
+
+IF ~~ THEN BEGIN lt44_dont
+SAY @3373 = @3364 = @3365
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",2)~ EXIT
+END
+
+IF ~Global("E3LOVETALK","GLOBAL",46)
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN lt46_start
+SAY @3374
+IF ~~ THEN REPLY @3375 GOTO lt46_run
+IF ~~ THEN REPLY @3376 GOTO lt46_ear
+IF ~~ THEN REPLY @3377 GOTO lt46_mood
+END
+
+IF ~~ THEN BEGIN lt46_run
+SAY @3378
+IF ~~ THEN REPLY @3379 GOTO lt46_bet
+IF ~~ THEN REPLY @3380 GOTO lt46_stop
+IF ~~ THEN REPLY @3381 GOTO lt46_ear
+IF ~~ THEN REPLY @3377 GOTO lt46_mood
+END
+
+IF ~~ THEN BEGIN lt46_ear
+SAY @3382
+IF ~~ THEN REPLY @3383 GOTO lt46_mood
+IF ~~ THEN REPLY @3384 GOTO lt46_gesture
+END
+
+IF ~~ THEN BEGIN lt46_mood
+SAY @3385
+IF ~~ THEN REPLY @3386 GOTO lt46_tweak
+IF ~~ THEN REPLY @3387 GOTO lt46_more
+IF ~~ THEN REPLY @3388 GOTO lt46_embarrass
+END
+
+IF ~~ THEN BEGIN lt46_bet
+SAY @3389
+IF ~~ THEN REPLY @3390 GOTO lt46_caught
+IF ~~ THEN REPLY @3391 GOTO lt46_pin
+IF ~~ THEN REPLY @3392 GOTO lt46_careful
+END
+
+IF ~~ THEN BEGIN lt46_stop
+SAY @3393
+IF ~~ THEN REPLY @3394 GOTO lt46_caught
+IF ~~ THEN REPLY @3395 GOTO lt46_pin
+IF ~~ THEN REPLY @3392 GOTO lt46_careful
+END
+
+IF ~~ THEN BEGIN lt46_gesture
+SAY @3396
+IF ~~ THEN REPLY @3397 GOTO lt46_stop
+IF ~~ THEN REPLY @3398 GOTO lt46_bet
+IF ~~ THEN REPLY @3399 GOTO lt46_embarrass
+END
+
+IF ~~ THEN BEGIN lt46_tweak
+SAY @3400
+IF ~~ THEN REPLY @3401 GOTO lt46_else
+IF ~~ THEN REPLY @3402 GOTO lt46_mean
+END
+
+IF ~~ THEN BEGIN lt46_more
+SAY @3403
+IF ~~ THEN REPLY @3404 GOTO lt46_promise
+IF ~~ THEN REPLY @3405 GOTO lt46_threat
+IF ~~ THEN REPLY @3406 GOTO lt46_depends
+END
+
+IF ~~ THEN BEGIN lt46_embarrass
+SAY @3407
+IF ~~ THEN REPLY @3408 GOTO lt46_later
+IF ~~ THEN REPLY @3409 GOTO lt46_around
+IF ~~ THEN REPLY @3410 GOTO lt46_once
+END
+
+IF ~~ THEN BEGIN lt46_caught 
+SAY @3411
+IF ~~ THEN REPLY @3412 GOTO lt46_suggestions
+IF ~~ THEN REPLY @3413 GOTO lt46_mistress
+IF ~~ THEN REPLY @3388 GOTO lt46_embarrass
+END
+
+IF ~~ THEN BEGIN lt46_pin
+SAY @3414
+IF ~~ THEN REPLY @3415 GOTO lt46_suggestions
+IF ~~ THEN REPLY @3416 GOTO lt46_lips
+IF ~~ THEN REPLY @3417 GOTO lt46_kiss
+END
+
+IF ~~ THEN BEGIN lt46_careful
+SAY @3418
+IF ~~ THEN REPLY @3419 GOTO lt46_pin
+IF ~~ THEN REPLY @3420 GOTO lt46_around
+IF ~~ THEN REPLY @3421 GOTO lt46_embarrass
+END
+
+IF ~~ THEN BEGIN lt46_else
+SAY @3422
+IF ~~ THEN REPLY @3423 GOTO lt46_meaning
+IF ~~ THEN REPLY @3416 GOTO lt46_lips
+IF ~~ THEN REPLY @3424 GOTO lt46_cleavage
+END
+
+IF ~~ THEN BEGIN lt46_mean
+SAY @3425
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt46_promise
+SAY @3426
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt46_threat
+SAY @3427
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt46_depends
+SAY @3428
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt46_later
+SAY @3429
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt46_around
+SAY @3430
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt46_once
+SAY @3431
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt46_suggestions
+SAY @3432
+IF ~~ THEN REPLY @3433 GOTO lt46_naughty
+IF ~~ THEN REPLY @3434 GOTO lt46_minx
+IF ~~ THEN REPLY @3416 GOTO lt46_lips
+END
+
+IF ~~ THEN BEGIN lt46_mistress
+SAY @3435 = @3436
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt46_lips
+SAY @3437
+IF ~~ THEN REPLY @3438 GOTO lt46_like
+IF ~~ THEN REPLY @3439 GOTO lt46_innuendo
+END
+
+IF ~~ THEN BEGIN lt46_kiss
+SAY @3440
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt46_meaning
+SAY @3441
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt46_cleavage
+SAY @3442
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt46_naughty
+SAY @3443
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt46_minx
+SAY @3444
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt46_like
+SAY @3445
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt46_innuendo
+SAY @3446
+IF ~~ THEN EXIT
+END
+
+IF ~Global("E3LOVETALK","GLOBAL",48)
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN lt48_start
+SAY @3447
+IF ~~ THEN REPLY @3448 GOTO lt48_yes
+IF ~~ THEN REPLY @3449 GOTO lt48_laugh
+IF ~~ THEN REPLY @3450 GOTO lt48_analyse
+END
+
+IF ~~ THEN BEGIN lt48_yes
+SAY @3451
+IF ~~ THEN REPLY @3452 GOTO lt48_getting
+IF ~~ THEN REPLY @3450 GOTO lt48_analyse
+IF ~~ THEN REPLY @3453 GOTO lt48_guideline
+IF ~~ THEN REPLY @3454 GOTO lt48_amateurs
+END
+
+IF ~~ THEN BEGIN lt48_laugh
+SAY @3455 = @3456
+IF ~~ THEN REPLY @3452 GOTO lt48_getting
+IF ~~ THEN REPLY @3450 GOTO lt48_analyse
+IF ~~ THEN REPLY @3453 GOTO lt48_guideline
+IF ~~ THEN REPLY @3454 GOTO lt48_amateurs
+END
+
+IF ~~ THEN BEGIN lt48_analyse
+SAY @3457
+IF ~~ THEN REPLY @3458 GOTO lt48_getting
+IF ~~ THEN REPLY @3459 GOTO lt48_daunting
+IF ~~ THEN REPLY @3460 GOTO lt48_dream
+IF ~~ THEN REPLY @3461 GOTO lt48_experience
+END
+
+IF ~~ THEN BEGIN lt48_getting
+SAY @3462 = @3463
+IF ~~ THEN REPLY @3464 GOTO lt48_natural
+IF ~~ THEN REPLY @3465 GOTO lt48_want
+IF ~~ THEN REPLY @3459 GOTO lt48_daunting
+END
+
+IF ~~ THEN BEGIN lt48_guideline
+SAY @3466
+IF ~~ THEN REPLY @3467 GOTO lt48_analyse
+IF ~~ THEN REPLY @3468 GOTO lt48_getting
+IF ~~ THEN REPLY @3469 GOTO lt48_kiss
+IF ~~ THEN REPLY @3470 GOTO lt48_conflict
+END
+
+IF ~~ THEN BEGIN lt48_amateurs
+SAY @3471
+IF ~~ THEN REPLY @3461 GOTO lt48_experience
+IF ~~ THEN REPLY @3464 GOTO lt48_natural
+IF ~~ THEN REPLY @3459 GOTO lt48_daunting
+END
+
+IF ~~ THEN BEGIN lt48_daunting
+SAY @3472
+IF ~~ THEN REPLY @3473 GOTO lt48_kiss
+IF ~~ THEN REPLY @3474 GOTO lt48_times
+IF ~~ THEN REPLY @3470 GOTO lt48_conflict
+END
+
+IF ~~ THEN BEGIN lt48_dream
+SAY @3475
+IF ~~ THEN REPLY @3476 GOTO lt48_want
+IF ~~ THEN REPLY @3477 GOTO lt48_kiss
+IF ~~ THEN REPLY @3478 GOTO lt48_communicate
+END
+
+IF ~~ THEN BEGIN lt48_experience
+SAY @3479
+IF ~~ THEN REPLY @3480 GOTO lt48_want
+IF ~~ THEN REPLY @3481 GOTO lt48_kiss
+IF ~~ THEN REPLY @3482 GOTO lt48_communicate
+END
+
+IF ~~ THEN BEGIN lt48_natural
+SAY @3483
+IF ~~ THEN REPLY @3484 GOTO lt48_want
+IF ~~ THEN REPLY @3477 GOTO lt48_kiss
+END
+
+IF ~~ THEN BEGIN lt48_want
+SAY @3485
+IF ~~ THEN REPLY @3486 GOTO lt48_belly
+IF ~~ THEN REPLY @3487 GOTO lt48_belly
+IF ~~ THEN REPLY @3488 GOTO lt48_tightly
+END
+
+IF ~~ THEN BEGIN lt48_kiss
+SAY @3489
+IF ~~ THEN REPLY @3486 GOTO lt48_belly
+IF ~~ THEN REPLY @3487 GOTO lt48_belly
+IF ~~ THEN REPLY @3488 GOTO lt48_tightly
+END
+
+IF ~~ THEN BEGIN lt48_conflict
+SAY @3490
+IF ~~ THEN REPLY @3491 GOTO lt48_know
+IF ~~ THEN REPLY @3477 GOTO lt48_kiss
+END
+
+IF ~~ THEN BEGIN lt48_times
+SAY @3492
+IF ~~ THEN REPLY @3484 GOTO lt48_want
+IF ~~ THEN REPLY @3477 GOTO lt48_kiss
+END
+
+IF ~~ THEN BEGIN lt48_communicate
+SAY @3493
+IF ~~ THEN REPLY @3494 GOTO lt48_know
+IF ~~ THEN REPLY @3481 GOTO lt48_kiss
+END
+
+IF ~~ THEN BEGIN lt48_belly
+SAY @3495
+IF ~~ THEN REPLY @3496 GOTO lt48_wrong
+IF ~~ THEN REPLY @3497 GOTO lt48_confused
+IF ~~ THEN REPLY @3498 GOTO lt48_sorry
+END
+
+IF ~~ THEN BEGIN lt48_tightly
+SAY @3499
+IF ~~ THEN REPLY @3500 GOTO lt48_wrong
+IF ~~ THEN REPLY @3501 GOTO lt48_sorry
+IF ~~ THEN REPLY @3502 GOTO lt48_confused
+END
+
+IF ~~ THEN BEGIN lt48_know
+SAY @3503
+IF ~~ THEN REPLY @399 GOTO lt48_when
+IF ~~ THEN REPLY @3504 GOTO lt48_confused
+IF ~~ THEN REPLY @3505 GOTO lt48_push
+END
+
+IF ~~ THEN BEGIN lt48_wrong
+SAY @3506 = @3507 = @3508
+IF ~~ THEN REPLY @3509 GOTO lt48_ready
+IF ~~ THEN REPLY @3510 GOTO lt48_sensitive
+IF ~~ THEN REPLY @3511 GOTO lt48_block
+END
+
+IF ~~ THEN BEGIN lt48_confused
+SAY @3512 = @3507 = @3513
+IF ~~ THEN REPLY @3509 GOTO lt48_ready
+IF ~~ THEN REPLY @3510 GOTO lt48_sensitive
+IF ~~ THEN REPLY @3511 GOTO lt48_block
+END
+
+IF ~~ THEN BEGIN lt48_sorry
+SAY @3514 = @3507 = @3513
+IF ~~ THEN REPLY @3509 GOTO lt48_ready
+IF ~~ THEN REPLY @3510 GOTO lt48_sensitive
+IF ~~ THEN REPLY @3511 GOTO lt48_block
+END
+
+IF ~~ THEN BEGIN lt48_when
+SAY @3515 = @3507 = @3513
+IF ~~ THEN REPLY @3509 GOTO lt48_ready
+IF ~~ THEN REPLY @3516 GOTO lt48_sensitive
+IF ~~ THEN REPLY @3511 GOTO lt48_block
+END
+
+IF ~~ THEN BEGIN lt48_push
+SAY @3517 = @3507 = @3513
+IF ~~ THEN REPLY @3509 GOTO lt48_ready
+IF ~~ THEN REPLY @3511 GOTO lt48_block
+END
+
+IF ~~ THEN BEGIN lt48_ready
+SAY @3518
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt48_sensitive
+SAY @3519
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt48_block
+SAY @3520
+IF ~~ THEN REPLY @3521 GOTO lt48_sensitive
+IF ~~ THEN REPLY @3522 GOTO lt48_bothered
+IF ~~ THEN REPLY @3523 GOTO lt48_teasing
+END
+
+IF ~~ THEN BEGIN lt48_bothered
+SAY @3524
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt48_teasing
+SAY @3525
+IF ~~ THEN REPLY @3526 GOTO lt48_people
+IF ~~ THEN REPLY @3527 GOTO lt48_sensitive
+IF ~~ THEN REPLY @3528 GOTO lt48_goods
+END
+
+IF ~~ THEN BEGIN lt48_people
+SAY @3529
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt48_goods
+SAY @3530
+IF ~~ THEN EXIT
+END
+
+IF ~Global("E3LOVETALK","GLOBAL",50)
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN lt50_start
+SAY @3531
+IF ~~ THEN REPLY @3532 GOTO lt50_why
+IF ~~ THEN REPLY @1863 GOTO lt50_okay
+IF ~~ THEN REPLY @3533 GOTO lt50_here
+END
+
+IF ~~ THEN BEGIN lt50_why
+SAY @3534
+IF ~~ THEN REPLY @1863 GOTO lt50_okay
+IF ~~ THEN REPLY @3535 GOTO lt50_here
+END
+
+IF ~~ THEN BEGIN lt50_okay
+SAY @3536
+IF ~~ THEN REPLY @3537 GOTO lt50_kiss
+IF ~~ THEN REPLY @3538 GOTO lt50_problem
+IF ~~ THEN REPLY @3539 GOTO lt50_disinterest
+END
+
+IF ~~ THEN BEGIN lt50_here
+SAY @3540 = @3536
+IF ~~ THEN REPLY @3537 GOTO lt50_kiss
+IF ~~ THEN REPLY @3538 GOTO lt50_problem
+IF ~~ THEN REPLY @3539 GOTO lt50_disinterest
+END
+
+IF ~~ THEN BEGIN lt50_kiss
+SAY @3541 = @3542 = @3543
+IF ~~ THEN REPLY @3544 GOTO lt50_continue
+IF ~~ THEN REPLY @3545 GOTO lt50_lesson
+IF ~~ THEN REPLY @3546 GOTO lt50_disinterest
+END
+
+IF ~~ THEN BEGIN lt50_problem
+SAY @3547 = @3548 = @3542 = @3543
+IF ~~ THEN REPLY @3544 GOTO lt50_continue
+IF ~~ THEN REPLY @3545 GOTO lt50_lesson
+IF ~~ THEN REPLY @3546 GOTO lt50_disinterest
+END
+
+IF ~~ THEN BEGIN lt50_disinterest
+SAY @3549
+IF ~~ THEN REPLY @3550 GOTO lt50_yet
+IF ~~ THEN REPLY @3551 GOTO lt50_unusual
+END
+
+IF ~~ THEN BEGIN lt50_continue
+SAY @3552 = @3553 = @3554 = @3555
+IF ~~ THEN DO ~SetGlobal("E3FADENOOKIE","GLOBAL",1)
+RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN lt50_lesson
+SAY @3556 = @3557 = @3554 = @3555
+IF ~~ THEN DO ~SetGlobal("E3FADENOOKIE","GLOBAL",1)
+RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN lt50_yet
+SAY @3558
+IF ~~ THEN DO ~SetGlobal("E3FADENOOKIE","GLOBAL",2)
+RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN lt50_unusual
+SAY @3559 = @3560 = @3561
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)
+RestParty()~ EXIT
+END
+
+IF ~Global("E3LOVETALK","GLOBAL",52)
+!StateCheck(Player1,STATE_SLEEPING)
+Global("E3FADENOOKIE","GLOBAL",1)~ THEN BEGIN lt52_start
+SAY @3562
+IF ~~ THEN REPLY @3563 GOTO lt52_moment
+IF ~~ THEN REPLY @3564 GOTO lt52_feel
+IF ~~ THEN REPLY @3565 GOTO lt52_awake
+END
+
+IF ~~ THEN BEGIN lt52_moment
+SAY @3566
+IF ~~ THEN REPLY @3567 GOTO lt52_selfish
+IF ~~ THEN REPLY @3568 GOTO lt52_expression
+IF ~~ THEN REPLY @3569 GOTO lt52_gratify
+END
+
+IF ~~ THEN BEGIN lt52_feel
+SAY @3570
+IF ~~ THEN REPLY @3567 GOTO lt52_selfish
+IF ~~ THEN REPLY @3568 GOTO lt52_expression
+IF ~~ THEN REPLY @3569 GOTO lt52_gratify
+END
+
+IF ~~ THEN BEGIN lt52_awake
+SAY @3571
+IF ~~ THEN REPLY @3567 GOTO lt52_selfish
+IF ~~ THEN REPLY @3568 GOTO lt52_expression
+IF ~~ THEN REPLY @3569 GOTO lt52_gratify
+END
+
+IF ~~ THEN BEGIN lt52_selfish
+SAY @3572
+IF ~~ THEN REPLY @3573 GOTO lt52_gratify
+IF ~~ THEN REPLY @3574 GOTO lt52_wake
+END
+
+IF ~~ THEN BEGIN lt52_expression
+SAY @3575 = @3576
+IF ~~ THEN REPLY @3573 GOTO lt52_gratify
+IF ~~ THEN REPLY @3574 GOTO lt52_wake
+END
+
+IF ~~ THEN BEGIN lt52_gratify
+SAY @3577
+IF ~~ THEN REPLY @3578 GOTO lt52_wake
+IF ~~ THEN REPLY @3579 GOTO lt52_get
+END
+
+IF ~~ THEN BEGIN lt52_wake
+SAY @3580
+IF ~~ THEN DO ~RestParty()~ EXIT
+END
+
+IF ~~ THEN BEGIN lt52_get
+SAY @3581
+IF ~~ THEN REPLY @3582 GOTO lt52_go
+IF ~~ THEN REPLY @3583 GOTO lt52_temptress
+END
+
+IF ~~ THEN BEGIN lt52_go
+SAY @3584
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt52_temptress
+SAY @3585
+IF ~~ THEN DO ~RestParty()~ EXIT
+END
+
+IF ~Global("E3LOVETALK","GLOBAL",54)
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN lt54_start
+SAY @3586
+IF ~~ THEN REPLY @3587 GOTO lt54_yes
+IF ~~ THEN REPLY @3588 GOTO lt54_silly
+IF ~~ THEN REPLY @3589 GOTO lt54_things
+END
+
+IF ~~ THEN BEGIN lt54_yes
+SAY @3590
+IF ~~ THEN REPLY @3591 GOTO lt54_suppose
+IF ~~ THEN REPLY @3592 GOTO lt54_along
+IF ~~ THEN REPLY @3593 GOTO lt54_matter
+IF ~~ THEN REPLY @3594 GOTO lt54_leather
+END
+
+IF ~~ THEN BEGIN lt54_silly
+SAY @3595
+IF ~~ THEN REPLY @3591 GOTO lt54_suppose
+IF ~~ THEN REPLY @3592 GOTO lt54_along
+IF ~~ THEN REPLY @3593 GOTO lt54_matter
+IF ~~ THEN REPLY @3594 GOTO lt54_leather
+END
+
+IF ~~ THEN BEGIN lt54_things
+SAY @3596
+IF ~~ THEN REPLY @3597 GOTO lt54_yes
+IF ~~ THEN REPLY @3598 GOTO lt54_nonsense
+IF ~~ THEN REPLY @3599 GOTO lt54_bug
+END
+
+IF ~~ THEN BEGIN lt54_suppose
+SAY @3600
+IF ~~ THEN REPLY @3601 GOTO lt54_changed
+IF ~~ THEN REPLY @3602 GOTO lt54_leather
+IF ~~ THEN REPLY @3603 GOTO lt54_spy
+IF ~~ THEN REPLY @3604 GOTO lt54_reasons
+END
+
+IF ~~ THEN BEGIN lt54_along
+SAY @3605
+IF ~~ THEN REPLY @3606 GOTO lt54_changed
+IF ~~ THEN REPLY @3607 GOTO lt54_leather
+IF ~~ THEN REPLY @3608 GOTO lt54_reasons
+END
+
+IF ~~ THEN BEGIN lt54_matter
+SAY @3609 = @3610
+IF ~~ THEN REPLY @3611 GOTO lt54_something
+IF ~~ THEN REPLY @3608 GOTO lt54_reasons
+IF ~~ THEN REPLY @3612 GOTO lt54_important
+END
+
+IF ~~ THEN BEGIN lt54_leather
+SAY @3613
+IF ~~ THEN REPLY @3614 GOTO lt54_reasons
+IF ~~ THEN REPLY @3615 GOTO lt54_impress
+IF ~~ THEN REPLY @3593 GOTO lt54_matter
+END
+
+IF ~~ THEN BEGIN lt54_nonsense
+SAY @3616 = @3617
+IF ~~ THEN REPLY @3591 GOTO lt54_suppose
+IF ~~ THEN REPLY @3592 GOTO lt54_along
+IF ~~ THEN REPLY @3593 GOTO lt54_matter
+IF ~~ THEN REPLY @3594 GOTO lt54_leather
+END
+
+IF ~~ THEN BEGIN lt54_bug
+SAY @3618 = @3590
+IF ~~ THEN REPLY @3591 GOTO lt54_suppose
+IF ~~ THEN REPLY @3592 GOTO lt54_along
+IF ~~ THEN REPLY @3593 GOTO lt54_matter
+IF ~~ THEN REPLY @3594 GOTO lt54_leather
+END
+
+IF ~~ THEN BEGIN lt54_changed
+SAY @3619 = @3620
+IF ~~ THEN REPLY @3621 GOTO lt54_slaves
+IF ~~ THEN REPLY @3622 GOTO lt54_dear
+IF ~~ THEN REPLY @3623 GOTO lt54_me
+END
+
+IF ~~ THEN BEGIN lt54_spy
+SAY @3624 = @3620
+IF ~~ THEN REPLY @3621 GOTO lt54_slaves
+IF ~~ THEN REPLY @3622 GOTO lt54_dear
+IF ~~ THEN REPLY @3623 GOTO lt54_me
+END
+
+IF ~~ THEN BEGIN lt54_reasons
+SAY @3625
+IF ~~ THEN REPLY @3626 GOTO lt54_me
+IF ~~ THEN REPLY @3627 GOTO lt54_beautiful
+IF ~~ THEN REPLY @3628 GOTO lt54_impress
+END
+
+IF ~~ THEN BEGIN lt54_something
+SAY @3629 = @3630 = @3620
+IF ~~ THEN REPLY @3621 GOTO lt54_slaves
+IF ~~ THEN REPLY @3622 GOTO lt54_dear
+IF ~~ THEN REPLY @3623 GOTO lt54_me
+END
+
+IF ~~ THEN BEGIN lt54_important
+SAY @3631 = @3620
+IF ~~ THEN REPLY @3621 GOTO lt54_slaves
+IF ~~ THEN REPLY @3622 GOTO lt54_dear
+IF ~~ THEN REPLY @3623 GOTO lt54_me
+END
+
+IF ~~ THEN BEGIN lt54_impress
+SAY @3632
+IF ~~ THEN REPLY @3633 GOTO lt54_beautiful
+IF ~~ THEN REPLY @3634 GOTO lt54_dear
+IF ~~ THEN REPLY @3635 GOTO lt54_me
+END
+
+IF ~~ THEN BEGIN lt54_slaves
+SAY @3636
+IF ~~ THEN REPLY @3637 GOTO lt54_noble
+IF ~~ THEN REPLY @3638 GOTO lt54_me
+END
+
+IF ~~ THEN BEGIN lt54_dear
+SAY @3639
+IF ~~ THEN REPLY @3640 GOTO lt54_bad
+IF ~~ THEN REPLY @3641 GOTO lt54_disappointed
+IF ~~ THEN REPLY @3642 GOTO lt54_supernatural
+END
+
+IF ~~ THEN BEGIN lt54_me
+SAY @3643
+IF ~~ THEN REPLY @3640 GOTO lt54_bad
+IF ~~ THEN REPLY @3641 GOTO lt54_disappointed
+IF ~~ THEN REPLY @3642 GOTO lt54_supernatural
+END
+
+IF ~~ THEN BEGIN lt54_beautiful
+SAY @3644
+IF ~~ THEN REPLY @3645 GOTO lt54_me
+IF ~~ THEN REPLY @3646 GOTO lt54_me
+END
+
+IF ~~ THEN BEGIN lt54_noble
+SAY @3647  
+IF ~~ THEN REPLY @3648 GOTO lt54_change
+IF ~~ THEN REPLY @3649 GOTO lt54_me
+END
+
+IF ~~ THEN BEGIN lt54_bad
+SAY @3650
+IF ~~ THEN REPLY @3651 GOTO lt54_how
+IF ~~ THEN REPLY @3652 GOTO lt54_hit
+END
+
+IF ~~ THEN BEGIN lt54_disappointed
+SAY @3653 = @3654
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt54_supernatural
+SAY @3655 = @3654
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt54_change
+SAY @3656 = @3654
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt54_how
+SAY @3657 = @3654
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt54_hit
+SAY @3658 = @3654
+IF ~~ THEN EXIT
+END
+
+IF ~Global("E3LOVETALK","GLOBAL",56)
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN lt56_start
+SAY @3659 = @3660
+IF ~~ THEN REPLY @3661 GOTO lt56_troubled
+IF ~~ THEN REPLY @3662 GOTO lt56_safe
+IF ~~ THEN REPLY @3663 GOTO lt56_that
+END
+
+IF ~~ THEN BEGIN lt56_troubled
+SAY @3664
+IF ~~ THEN REPLY @3665 GOTO lt56_tell
+IF ~~ THEN REPLY @3666 GOTO lt56_talk
+IF ~~ THEN REPLY @3667 GOTO lt56_wait
+END
+
+IF ~~ THEN BEGIN lt56_safe
+SAY @3668
+IF ~~ THEN REPLY @3669 GOTO lt56_mean
+IF ~~ THEN REPLY @3670 GOTO lt56_slavers
+IF ~~ THEN REPLY @3671 GOTO lt56_mind
+END
+
+IF ~~ THEN BEGIN lt56_that
+SAY @3672
+IF ~~ THEN REPLY @3673 GOTO lt56_troubles
+IF ~~ THEN REPLY @3674 GOTO lt56_things
+IF ~~ THEN REPLY @3675 GOTO lt56_tell
+END
+
+IF ~~ THEN BEGIN lt56_tell
+SAY @3676
+IF ~Global("E3BOUGHTFADE","GLOBAL",1)~ THEN REPLY @3677 GOTO lt56_bought
+IF ~!Global("E3BOUGHTFADE","GLOBAL",1)
+Dead("E3Mallon")~ THEN REPLY @3678 GOTO lt56_rational
+IF ~~ THEN REPLY @3679 GOTO lt56_mind
+END
+
+IF ~~ THEN BEGIN lt56_talk
+SAY @3680
+IF ~Global("E3BOUGHTFADE","GLOBAL",1)~ THEN REPLY @3677 GOTO lt56_bought
+IF ~!Global("E3BOUGHTFADE","GLOBAL",1)
+Dead("E3Mallon")~ THEN REPLY @3678 GOTO lt56_rational
+IF ~~ THEN REPLY @3679 GOTO lt56_mind
+END
+
+IF ~~ THEN BEGIN lt56_wait
+SAY @3681
+IF ~~ THEN GOTO lt56_tell
+END
+
+IF ~~ THEN BEGIN lt56_mean
+SAY @3682
+IF ~!Global("E3BOUGHTFADE","GLOBAL",1)
+Dead("E3Mallon")~ THEN REPLY @3683 GOTO lt56_rational
+IF ~Global("E3BOUGHTFADE","GLOBAL",1)~ THEN REPLY @3684 GOTO lt56_bought
+IF ~~ THEN REPLY @3679 GOTO lt56_mind
+END
+
+IF ~~ THEN BEGIN lt56_slavers
+SAY @3685
+IF ~!Global("E3BOUGHTFADE","GLOBAL",1)
+Dead("E3Mallon")~ THEN REPLY @3683 GOTO lt56_rational
+IF ~Global("E3BOUGHTFADE","GLOBAL",1)~ THEN REPLY @3684 GOTO lt56_bought
+IF ~~ THEN REPLY @3686 GOTO lt56_mind
+END
+
+IF ~~ THEN BEGIN lt56_mind
+SAY @3687
+IF ~~ THEN REPLY @3688 GOTO lt56_take
+IF ~~ THEN REPLY @3689 GOTO lt56_eat
+IF ~~ THEN REPLY @3690 GOTO lt56_happy
+END
+
+IF ~~ THEN BEGIN lt56_troubles
+SAY @3691
+IF ~~ THEN REPLY @3669 GOTO lt56_mean
+IF ~~ THEN REPLY @3692 GOTO lt56_slavers
+IF ~~ THEN REPLY @3693 GOTO lt56_mind
+END
+
+IF ~~ THEN BEGIN lt56_things
+SAY @3676
+IF ~Global("E3BOUGHTFADE","GLOBAL",1)~ THEN REPLY @3677 GOTO lt56_bought
+IF ~!Global("E3BOUGHTFADE","GLOBAL",1)
+Dead("E3Mallon")~ THEN REPLY @3678 GOTO lt56_rational
+IF ~~ THEN REPLY @3679 GOTO lt56_mind
+END
+
+IF ~~ THEN BEGIN lt56_bought
+SAY @3694
+IF ~~ THEN REPLY @3695 GOTO lt56_again
+IF ~~ THEN REPLY @3696 GOTO lt56_promise
+END
+
+IF ~~ THEN BEGIN lt56_rational
+SAY @3697
+IF ~~ THEN REPLY @3695 GOTO lt56_again
+IF ~~ THEN REPLY @3696 GOTO lt56_promise
+END
+
+IF ~~ THEN BEGIN lt56_take
+SAY @3698
+IF ~~ THEN REPLY @3695 GOTO lt56_again
+IF ~~ THEN REPLY @3696 GOTO lt56_promise
+END
+
+IF ~~ THEN BEGIN lt56_eat
+SAY @3699
+IF ~~ THEN REPLY @3695 GOTO lt56_again
+IF ~~ THEN REPLY @3696 GOTO lt56_promise
+END
+
+IF ~~ THEN BEGIN lt56_happy
+SAY @3700
+IF ~~ THEN REPLY @3701 GOTO lt56_kiss
+IF ~~ THEN REPLY @3702 GOTO lt56_now
+IF ~~ THEN REPLY @3703 GOTO lt56_command
+END
+
+IF ~~ THEN BEGIN lt56_again
+SAY @3704
+IF ~~ THEN REPLY @1873 GOTO lt56_continue
+IF ~~ THEN REPLY @3705 GOTO lt56_kiss
+END
+
+IF ~~ THEN BEGIN lt56_promise
+SAY @3706
+IF ~~ THEN REPLY @1873 GOTO lt56_continue
+IF ~~ THEN REPLY @3705 GOTO lt56_kiss
+END
+
+IF ~~ THEN BEGIN lt56_kiss
+SAY @3707 = @3708 = @3709 = @3710
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt56_now
+SAY @3711
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt56_command
+SAY @3712
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt56_continue
+SAY @3713 
+IF ~~ THEN REPLY @3714 GOTO lt56_bhaal
+IF ~~ THEN REPLY @3715 GOTO lt56_ones
+END
+
+IF ~~ THEN BEGIN lt56_bhaal
+SAY @3716
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt56_ones
+SAY @3717
+IF ~~ THEN EXIT
+END
+
+IF ~Global("E3LOVETALK","GLOBAL",58)
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN lt58_start
+SAY @3718
+IF ~~ THEN REPLY @3719 GOTO lt58_miss
+IF ~~ THEN REPLY @3720 GOTO lt58_torturing
+IF ~~ THEN REPLY @3721 GOTO lt58_wondered
+END
+
+IF ~~ THEN BEGIN lt58_miss
+SAY @3722
+IF ~~ THEN REPLY @3723 GOTO lt58_torturing
+IF ~~ THEN REPLY @3724 GOTO lt58_future
+IF ~~ THEN REPLY @3725 GOTO lt58_alive
+IF ~~ THEN REPLY @3726 GOTO lt58_over
+END
+
+IF ~~ THEN BEGIN lt58_torturing
+SAY @3727
+IF ~~ THEN REPLY @3721 GOTO lt58_wondered
+IF ~~ THEN REPLY @3724 GOTO lt58_future
+IF ~~ THEN REPLY @3725 GOTO lt58_alive
+IF ~~ THEN REPLY @3726 GOTO lt58_over
+END
+
+IF ~~ THEN BEGIN lt58_wondered
+SAY @3728
+IF ~~ THEN REPLY @3724 GOTO lt58_future
+IF ~~ THEN REPLY @3725 GOTO lt58_alive
+IF ~~ THEN REPLY @3726 GOTO lt58_over
+END
+
+IF ~~ THEN BEGIN lt58_future
+SAY @3729
+IF ~~ THEN REPLY @3730 GOTO lt58_know
+IF ~~ THEN REPLY @3731 GOTO lt58_defensive
+IF ~~ THEN REPLY @3732 GOTO lt58_happiness
+IF ~~ THEN REPLY @3725 GOTO lt58_alive
+END
+
+IF ~~ THEN BEGIN lt58_alive
+SAY @3733
+IF ~~ THEN REPLY @3734 GOTO lt58_ruin
+IF ~~ THEN REPLY @3735 GOTO lt58_defensive
+IF ~~ THEN REPLY @3736 GOTO lt58_happiness
+END
+
+IF ~~ THEN BEGIN lt58_over
+SAY @3737
+IF ~~ THEN REPLY @3730 GOTO lt58_know
+IF ~~ THEN REPLY @3731 GOTO lt58_defensive
+IF ~~ THEN REPLY @3732 GOTO lt58_happiness
+END
+
+IF ~~ THEN BEGIN lt58_know
+SAY @3738
+IF ~GlobalLT("AsylumPlot","GLOBAL",31)~ THEN REPLY @3739 GOTO lt58_imoen1
+IF ~GlobalGT("AsylumPlot","GLOBAL",30)~ THEN REPLY @3739 GOTO lt58_imoen2
+IF ~~ THEN REPLY @3731 GOTO lt58_defensive
+IF ~~ THEN REPLY @3740 GOTO lt58_happiness
+END
+
+IF ~~ THEN BEGIN lt58_defensive
+SAY @3741
+IF ~~ THEN REPLY @3742 GOTO lt58_happiness
+IF ~~ THEN REPLY @3743 GOTO lt58_ruin
+IF ~~ THEN REPLY @3744 GOTO lt58_memory
+END
+
+IF ~~ THEN BEGIN lt58_happiness
+SAY @3745
+IF ~GlobalLT("AsylumPlot","GLOBAL",31)~ THEN REPLY @3739 GOTO lt58_imoen1
+IF ~GlobalGT("AsylumPlot","GLOBAL",30)~ THEN REPLY @3739 GOTO lt58_imoen2
+IF ~~ THEN REPLY @3744 GOTO lt58_memory
+IF ~~ THEN REPLY @3746 GOTO lt58_ruin
+END
+
+IF ~~ THEN BEGIN lt58_ruin
+SAY @3747
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt58_imoen1
+SAY @3748 = @3749
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt58_imoen2
+SAY @3750 = @3749
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt58_memory
+SAY @3751 
+IF ~~ THEN EXIT
+END
+
+IF ~Global("E3LOVETALK","GLOBAL",60)
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN lt60_start
+SAY @3752
+IF ~~ THEN REPLY @3753 GOTO lt60_calm
+IF ~~ THEN REPLY @3754 GOTO lt60_upset
+IF ~~ THEN REPLY @3755 GOTO lt60_want
+END
+
+IF ~~ THEN BEGIN lt60_calm
+SAY @3756
+IF ~~ THEN REPLY @3757 GOTO lt60_thankful
+IF ~~ THEN REPLY @3758 GOTO lt60_upset
+IF ~~ THEN REPLY @3759 GOTO lt60_punish
+END
+
+IF ~~ THEN BEGIN lt60_upset
+SAY @3760
+IF ~~ THEN REPLY @3761 GOTO lt60_thankful
+IF ~~ THEN REPLY @3759 GOTO lt60_punish
+IF ~~ THEN REPLY @3762 GOTO lt60_blame
+END
+
+IF ~~ THEN BEGIN lt60_want
+SAY @3763
+IF ~~ THEN REPLY @3757 GOTO lt60_thankful
+IF ~~ THEN REPLY @3758 GOTO lt60_upset
+IF ~~ THEN REPLY @3759 GOTO lt60_punish
+IF ~~ THEN REPLY @3762 GOTO lt60_blame
+END
+
+IF ~~ THEN BEGIN lt60_thankful
+SAY @3764
+IF ~~ THEN REPLY @3765 GOTO lt60_weapon
+IF ~~ THEN REPLY @3766 GOTO lt60_happy
+IF ~~ THEN REPLY @3767 GOTO lt60_pasha
+END
+
+IF ~~ THEN BEGIN lt60_punish
+SAY @3768
+IF ~~ THEN REPLY @3769 GOTO lt60_weapon
+IF ~~ THEN REPLY @3767 GOTO lt60_pasha
+IF ~~ THEN REPLY @3770 GOTO lt60_happy
+END
+
+IF ~~ THEN BEGIN lt60_blame
+SAY @3771 = @3772
+IF ~~ THEN REPLY @3773 GOTO lt60_bother
+IF ~~ THEN REPLY @3765 GOTO lt60_weapon
+IF ~~ THEN REPLY @3766 GOTO lt60_happy
+IF ~~ THEN REPLY @3767 GOTO lt60_pasha
+END
+
+IF ~~ THEN BEGIN lt60_weapon
+SAY @3774
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt60_happy
+SAY @3775
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt60_pasha
+SAY @3776
+IF ~~ THEN REPLY @3777 GOTO lt60_happy
+IF ~~ THEN REPLY @3778 GOTO lt60_bastard
+END
+
+IF ~~ THEN BEGIN lt60_bother
+SAY @3779
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt60_bastard
+SAY @3780
+IF ~~ THEN EXIT
+END
+
+IF ~Global("E3LOVETALK","GLOBAL",62)
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN lt62_start
+SAY @3781
+IF ~~ THEN REPLY @3669 GOTO lt62_mean
+IF ~~ THEN REPLY @3782 GOTO lt62_next
+IF ~~ THEN REPLY @3783 GOTO lt62_thought
+END
+
+IF ~~ THEN BEGIN lt62_mean
+SAY @3784
+IF ~~ THEN REPLY @3785 GOTO lt62_thought
+IF ~~ THEN REPLY @3786 GOTO lt62_settle
+IF ~~ THEN REPLY @3787 GOTO lt62_adventure
+END
+
+IF ~~ THEN BEGIN lt62_next
+SAY @3788
+IF ~~ THEN REPLY @3789 GOTO lt62_farm
+IF ~~ THEN REPLY @3790 GOTO lt62_adventure
+END
+
+IF ~~ THEN BEGIN lt62_thought
+SAY @3791
+IF ~~ THEN REPLY @3792 GOTO lt62_future
+IF ~~ THEN REPLY @3793 GOTO lt62_settle
+IF ~~ THEN REPLY @3794 GOTO lt62_adventure
+END
+
+IF ~~ THEN BEGIN lt62_settle
+SAY @3795
+IF ~~ THEN REPLY @3796 GOTO lt62_farm
+IF ~~ THEN REPLY @3797 GOTO lt62_grandchildren
+END
+
+IF ~~ THEN BEGIN lt62_adventure
+SAY @3798
+IF ~~ THEN REPLY @3799 GOTO lt62_boring
+IF ~~ THEN REPLY @3800 GOTO lt62_travel
+END
+
+IF ~~ THEN BEGIN lt62_farm
+SAY @3801
+IF ~~ THEN REPLY @3802 GOTO lt62_together
+IF ~~ THEN REPLY @3803 GOTO lt62_us
+IF ~~ THEN REPLY @3804 GOTO lt62_future
+END
+
+IF ~~ THEN BEGIN lt62_future
+SAY @3805
+IF ~~ THEN REPLY @3806 GOTO lt62_together
+IF ~~ THEN REPLY @3807 GOTO lt62_happens
+END
+
+IF ~~ THEN BEGIN lt62_grandchildren
+SAY @3808
+IF ~~ THEN REPLY @3809 GOTO lt62_kids
+IF ~~ THEN REPLY @3810 GOTO lt62_happens
+END
+
+IF ~~ THEN BEGIN lt62_boring
+SAY @3811
+IF ~~ THEN REPLY @3812 GOTO lt62_together
+IF ~~ THEN REPLY @3807 GOTO lt62_happens
+END
+
+IF ~~ THEN BEGIN lt62_travel
+SAY @3813
+IF ~~ THEN REPLY @3814 GOTO lt62_together
+IF ~~ THEN REPLY @3807 GOTO lt62_happens
+END
+
+IF ~~ THEN BEGIN lt62_together
+SAY @3815 = @3816
+IF ~~ THEN REPLY @3817 GOTO lt62_tickle
+IF ~~ THEN REPLY @3818 GOTO lt62_kiss
+END
+
+IF ~~ THEN BEGIN lt62_us
+SAY @3819
+IF ~~ THEN REPLY @3820 GOTO lt62_grandchildren
+IF ~~ THEN REPLY @3821 GOTO lt62_together
+END
+
+IF ~~ THEN BEGIN lt62_happens
+SAY @3822
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt62_kids
+SAY @3823 = @3824
+IF ~~ THEN REPLY @3806 GOTO lt62_together
+IF ~~ THEN REPLY @3807 GOTO lt62_happens
+END
+
+IF ~~ THEN BEGIN lt62_tickle
+SAY @3825 = @3826
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt62_kiss
+SAY @3827 = @3828
+IF ~~ THEN EXIT
+END
+
+IF ~Global("E3LOVETALK","GLOBAL",64)
+Global("E3FADENOOKIE","GLOBAL",1)
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN lt64_start
+SAY @3829
+IF ~~ THEN REPLY @3830 GOTO lt64_there
+IF ~~ THEN REPLY @3831 GOTO lt64_minx
+IF ~~ THEN REPLY @3832 GOTO lt64_doing
+IF ~~ THEN REPLY @3833 GOTO lt64_stop
+END
+
+IF ~~ THEN BEGIN lt64_there
+SAY @3834
+IF ~~ THEN REPLY @3835 GOTO lt64_stop
+IF ~~ THEN REPLY @3836 GOTO lt64_caught
+IF ~~ THEN REPLY @3837 GOTO lt64_everyone
+END
+
+IF ~~ THEN BEGIN lt64_minx
+SAY @3838
+IF ~~ THEN REPLY @3839 GOTO lt64_later
+IF ~~ THEN REPLY @3836 GOTO lt64_caught
+IF ~~ THEN REPLY @3840 GOTO lt64_everyone
+END
+
+IF ~~ THEN BEGIN lt64_doing
+SAY @3841
+IF ~~ THEN REPLY @3842 GOTO lt64_minx
+IF ~~ THEN REPLY @3839 GOTO lt64_later
+IF ~~ THEN REPLY @3836 GOTO lt64_caught
+IF ~~ THEN REPLY @3840 GOTO lt64_everyone
+END
+
+IF ~~ THEN BEGIN lt64_stop
+SAY @3843
+IF ~~ THEN REPLY @3844 GOTO lt64_embarrass
+IF ~~ THEN REPLY @3839 GOTO lt64_later
+IF ~~ THEN REPLY @3836 GOTO lt64_caught
+IF ~~ THEN REPLY @3840 GOTO lt64_everyone
+END
+
+IF ~~ THEN BEGIN lt64_caught
+SAY @3845
+IF ~~ THEN REPLY @3846 GOTO lt64_later
+IF ~~ THEN REPLY @3847 GOTO lt64_really
+IF ~~ THEN REPLY @3848 GOTO lt64_influence
+END
+
+IF ~~ THEN BEGIN lt64_everyone
+SAY @3849 
+IF ~~ THEN REPLY @3850 GOTO lt64_caught
+IF ~~ THEN REPLY @3839 GOTO lt64_later
+END
+
+IF ~~ THEN BEGIN lt64_later
+SAY @3851
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt64_embarrass
+SAY @3852
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt64_really
+SAY @3853
+IF ~~ THEN REPLY @3854 GOTO lt64_secluded
+IF ~~ THEN REPLY @3855 GOTO lt64_later
+END
+
+IF ~~ THEN BEGIN lt64_influence
+SAY @3856
+IF ~~ THEN REPLY @3854 GOTO lt64_secluded
+IF ~~ THEN REPLY @3855 GOTO lt64_later
+END
+
+IF ~~ THEN BEGIN lt64_secluded
+SAY @3857
+IF ~~ THEN EXIT
+END
+
+IF ~Global("E3LOVETALK","GLOBAL",66)
+!StateCheck(Player1,STATE_SLEEPING)~ THEN BEGIN lt66_start
+SAY @3858
+IF ~~ THEN REPLY @3859 DO ~SetGlobal("E3LOVETALK","GLOBAL",67)~ GOTO lt66_close
+IF ~~ THEN REPLY @3860 DO ~SetGlobal("E3LOVETALK","GLOBAL",67)~ GOTO lt66_blush
+IF ~~ THEN REPLY @3861 DO ~SetGlobal("E3LOVETALK","GLOBAL",67)~ GOTO lt66_glad
+END
+
+IF ~~ THEN BEGIN lt66_close
+SAY @3862
+IF ~~ THEN REPLY @3863 GOTO lt66_crying
+IF ~~ THEN REPLY @3864 GOTO lt66_fine
+IF ~~ THEN REPLY @3865 GOTO lt66_do
+END
+
+IF ~~ THEN BEGIN lt66_blush
+SAY @3866 = @3867
+IF ~~ THEN REPLY @3868 GOTO lt66_way
+IF ~~ THEN REPLY @3859 GOTO lt66_close
+IF ~~ THEN REPLY @3869 GOTO lt66_partnership
+END
+
+IF ~~ THEN BEGIN lt66_glad
+SAY @3870 = @3867
+IF ~~ THEN REPLY @3868 GOTO lt66_way
+IF ~~ THEN REPLY @3859 GOTO lt66_close
+IF ~~ THEN REPLY @3869 GOTO lt66_partnership
+END
+
+IF ~~ THEN BEGIN lt66_crying
+SAY @3871
+IF ~~ THEN REPLY @3869 GOTO lt66_partnership
+IF ~~ THEN REPLY @3872 GOTO lt66_future
+IF ~~ THEN REPLY @3873 GOTO lt66_crazy
+END
+
+IF ~~ THEN BEGIN lt66_fine
+SAY @3874
+IF ~~ THEN REPLY @3868 GOTO lt66_way
+IF ~~ THEN REPLY @3869 GOTO lt66_partnership
+IF ~~ THEN REPLY @3873 GOTO lt66_crazy
+END
+
+IF ~~ THEN BEGIN lt66_do
+SAY @3875
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt66_way
+SAY @3876
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt66_partnership
+SAY @3877
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt66_future
+SAY @3878
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN lt66_crazy
+SAY @3879
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN fadebad
+SAY @3880
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN fun
+SAY @3881
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN fadevsaerie_me
+SAY @3882
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
+END
+
+IF ~~ THEN BEGIN fadevsaerie_like_2
+SAY @3883
+IF ~~ THEN REPLY @2047 GOTO lt4_1a
+IF ~~ THEN REPLY @2048 GOTO lt4_2a
+IF ~~ THEN REPLY @2049 GOTO lt4_3c
+END
+
+IF ~~ THEN BEGIN fadevsviconia3_point
+SAY @3884
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
+END
+
+IF ~~ THEN BEGIN fadevsviconia3_saying_2
+SAY @3885
+IF ~~ THEN REPLY @2550 GOTO lt20_reasons
+IF ~~ THEN REPLY @2551 GOTO lt20_enough
+IF ~~ THEN REPLY @2552 GOTO lt20_angry
+END
+
+IF ~~ THEN BEGIN fadevsjaheira_apologise
+SAY @3886
+IF ~~ THEN REPLY @3887 GOTO fadevsjaheira_tolerate
+IF ~~ THEN REPLY @3888 EXTERN BJAHEIR fadevsjaheira_ask
+END
+
+IF ~~ THEN BEGIN fadevsjaheira_tolerate
+SAY @3889
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
+END
+
+IF ~~ THEN BEGIN fademinscrat3
+SAY @3890
+IF ~Global("E3FADEMATCH","GLOBAL",1)~ THEN REPLY @3891 EXTERN BMINSC fademinscrat5
+IF ~Global("E3FADEMATCH","GLOBAL",1)~ THEN REPLY @3892 EXTERN BMINSC fademinscrat9
+IF ~~ THEN REPLY @3893 EXTERN BMINSC fademinscrat14
+END
+
+IF ~~ THEN BEGIN fademinscrat4
+SAY @3894
+IF ~~ THEN REPLY @3895 EXTERN BMINSC fademinscrat19
+IF ~~ THEN REPLY @3896 EXTERN BMINSC fademinscrat19
+END
+
+IF ~~ THEN BEGIN fademinscrat6
+SAY @3897
+IF ~~ THEN REPLY @3898 GOTO fademinscrat7
+END
+
+IF ~~ THEN BEGIN fademinscrat7
+SAY @3899
+IF ~~ THEN REPLY @3900 GOTO fademinscrat8
+END
+
+IF ~~ THEN BEGIN fademinscrat8
+SAY @3901 = @3902 = @3903 = @3904
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN fademinscrat10
+SAY @3905 = @3906
+IF ~~ THEN REPLY @3907 GOTO fademinscrat11
+END
+
+IF ~~ THEN BEGIN fademinscrat11
+SAY @3908
+IF ~~ THEN REPLY @3909 GOTO fademinscrat12
+IF ~~ THEN REPLY @3910 EXIT
+END
+
+IF ~~ THEN BEGIN fademinscrat12
+SAY @3911
+IF ~~ THEN REPLY @3912 GOTO fademinscrat13
+END
+
+IF ~~ THEN BEGIN fademinscrat13
+SAY @3913 = @3914 = @3915
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN fademinscrat15
+SAY @3916
+IF ~~ THEN REPLY @3917 GOTO fademinscrat16
+IF ~~ THEN REPLY @3918 GOTO fademinscrat17
+END
+
+IF ~~ THEN BEGIN fademinscrat16
+SAY @3919
+IF ~~ THEN REPLY @3909 GOTO fademinscrat12
+IF ~~ THEN REPLY @3910 EXIT
+END
+
+IF ~~ THEN BEGIN fademinscrat17
+SAY @3920
+IF ~~ THEN REPLY @3921 GOTO fademinscrat18
+END
+
+IF ~~ THEN BEGIN fademinscrat18
+SAY @3922
+IF ~~ THEN EXIT
+END
+
+CHAIN
+IF ~InParty("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)
+Global("VICONIAROMANCEACTIVE","GLOBAL",1)
+Global("E3FADEROMANCEACTIVE","GLOBAL",1)
+Global("E3FADEVSVICONIA2","GLOBAL",1)
+GlobalGT("E3LOVETALK","GLOBAL",10)
+GlobalLT("E3LOVETALK","GLOBAL",20)~ THEN VICONIJ fadevsviconia
+@3923 DO ~SetGlobal("E3FADEVSVICONIA2","GLOBAL",2)~
+== BE3FADE @3924 == BVICONI @3925 == BE3FADE @3926 == BVICONI @3927 == BE3FADE @3928 == BVICONI @3929 == BE3FADE @3930 == BVICONI @3931 == BE3FADE @3932 == BVICONI @3933 == BE3FADE @3934 = @3935 == BVICONI @3936 == BE3FADE @3937 == BVICONI @3938 == BE3FADE @3939 = @3940
+END
+IF ~~ THEN REPLY @3941 EXTERN BE3FADE fadevsviconia2
+
+CHAIN
+IF ~~ THEN BE3FADE fadevsviconia2
+@3942 == BVICONI @3943 = @3944
+END
+IF ~~ THEN REPLY @3945 GOTO catfight
+IF ~~ THEN REPLY @3946 GOTO fadebad
+IF ~~ THEN REPLY @3947 EXTERN BVICONI vicbad
+
+CHAIN
+IF ~~ THEN BE3FADE catfight
+@3948 == BVICONI @3949
+END
+IF ~~ THEN REPLY @3950 GOTO fadebad
+IF ~~ THEN REPLY @3951 EXTERN BVICONI vicbad
+IF ~~ THEN REPLY @3952 GOTO treat
+
+CHAIN
+IF ~~ THEN BE3FADE treat
+@3953 == BVICONI @3954 == BE3FADE @3955
+EXIT
+
+CHAIN
+IF ~~ THEN BE3FADE fadevsviconia3_interest
+@3956 DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~
+== BVICONI @3957 DO ~SetGlobal("VICONIAROMANCEACTIVE","GLOBAL",3)~
+EXIT
+
+CHAIN
+IF ~~ THEN BJAHEIR fadevsjaheira_slack
+@3958 == BE3FADE @3959 == BJAHEIR @3960
+END
+IF ~~ THEN REPLY @3961 GOTO fadevsjaheira_ask
+IF ~~ THEN REPLY @3962 EXTERN BE3FADE fadevsjaheira_worried
+
+CHAIN
+IF ~~ THEN BE3FADE fadevsjaheira_worried
+@3963 == BJAHEIR @3964 DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~
+EXIT
+
+CHAIN
+IF ~~ THEN BJAHEIR fadevsjaheira_ask
+@3965 DO ~SetGlobal("JAHEIRAROMANCEACTIVE","GLOBAL",3)~ 
+== BE3FADE @3966
+END
+IF ~~ THEN REPLY @2359 EXTERN BE3FADE lt14_recently
+IF ~~ THEN REPLY @2360 EXTERN BE3FADE lt14_surprise
+IF ~~ THEN REPLY @2361 EXTERN BE3FADE lt14_sarcasm
+IF ~~ THEN REPLY @2362 EXTERN BE3FADE lt14_alone
+
+CHAIN
+IF ~InParty("Anomen")
+See("Anomen")
+!StateCheck("Anomen",STATE_SLEEPING)
+AreaCheck("AR0903")
+Global("E3FADEANOMENORDERTALK","LOCALS",0)
+OR(2)
+Alignment("Anomen",LAWFUL_GOOD)
+Alignment("Anomen",LAWFUL_NEUTRAL)~ THEN BE3FADE fadeanomenorder
+@3967 DO ~SetGlobal("E3FADEANOMENORDERTALK","LOCALS",1)~
+== BANOMEN @3968 == BE3FADE @3969 = @3970 == BANOMEN @3971 == BE3FADE @3972 == BANOMEN @3973 == BE3FADE @3974 == BANOMEN @3975 == BE3FADE @3976 == BANOMEN @3977 == BE3FADE @3978 == BANOMEN @3979
+END
+IF ~~ THEN REPLY @3980 GOTO fun
+IF ~~ THEN REPLY @3981 EXTERN BANOMEN placate
+IF ~~ THEN REPLY @3982 EXIT
+
+CHAIN
+IF ~InParty("Aerie")
+See("Aerie")
+!StateCheck("Aerie",STATE_SLEEPING)
+Global("E3FADEAERIETALK","LOCALS",0)~ THEN BE3FADE fadeaerieid
+@3983 DO ~SetGlobal("E3FADEAERIETALK","LOCALS",1)~
+== BAERIE @3984 == BE3FADE @3985 == BAERIE @3986 == BE3FADE @3987 == BAERIE @3988 == BE3FADE @3989 == BAERIE @3990 == BE3FADE @3991 = @3992 == BAERIE @3993 == BE3FADE @3994 = @3995 == BAERIE @3996 = @3997 == BE3FADE @3998 = @3999
+EXIT
+
+CHAIN
+IF ~InParty("Aerie")
+See("Aerie")
+!StateCheck("Aerie",STATE_SLEEPING)
+Global("E3FADEAERIETALK2","LOCALS",0)~ THEN BE3FADE fadeaerietalk
+@4000 DO ~SetGlobal("E3FADEAERIETALK2","LOCALS",1)~
+== BAERIE @4001 == BE3FADE @4002 == BAERIE @4003 == BE3FADE @4004
+EXIT
+
+CHAIN
+IF ~InParty("E3Fade")
+See("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)
+Global("E3FADEANOMENTALK1","LOCALS",0)~ THEN BANOMEN fadeanomen1
+@4005 DO ~SetGlobal("E3FADEANOMENTALK1","LOCALS",1)~
+== BE3FADE @4006 == BANOMEN @4007
+== BE3FADE IF ~Global("PlayerThiefGuild","GLOBAL",1)~ THEN @4008
+== BE3FADE IF ~!Global("PlayerThiefGuild","GLOBAL",1)~ THEN @4009
+EXIT
+
+CHAIN
+IF ~InParty("Anomen")
+See("Anomen")
+!StateCheck("Anomen",STATE_SLEEPING)
+Global("E3FADEANOMENTALK2","LOCALS",0)~ THEN BE3FADE fadeanomen2
+@4010 DO ~SetGlobal("E3FADEANOMENTALK2","LOCALS",1)~
+== BANOMEN @4011 == BE3FADE @4012 == BANOMEN @4013 == BE3FADE @4014 == BANOMEN @4015
+EXIT
+
+CHAIN
+IF ~InParty("Cernd")
+See("Cernd")
+!StateCheck("Cernd",STATE_SLEEPING)
+Global("E3FADECERNDTALK1","LOCALS",0)~ THEN BE3FADE fadecernd1
+@4016 DO ~SetGlobal("E3FADECERNDTALK1","LOCALS",1)~
+== BCERND @4017 == BE3FADE @4018 == BCERND @4019
+EXIT
+
+CHAIN
+IF ~InParty("E3Fade")
+See("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)
+Global("E3FADECERNDTALK2","LOCALS",0)~ THEN BCERND fadecernd2
+@4020 DO ~SetGlobal("E3FADECERNDTALK2","LOCALS",1)~
+== BE3FADE @4021 == BCERND @4022 == BE3FADE @4023 == BCERND @4024 == BE3FADE @4025 == BCERND @4026 == BE3FADE @4027 == BCERND @4028
+EXIT
+
+CHAIN
+IF ~InParty("Edwin")
+See("Edwin")
+!StateCheck("Edwin",STATE_SLEEPING)
+Global("E3FADEEDWINTALK","LOCALS",0)~ THEN BE3FADE fadeedwinhowmany
+@4029 DO ~SetGlobal("E3FADEEDWINTALK","LOCALS",1)~
+== BEDWIN @4030
+EXIT
+
+CHAIN
+IF ~InParty("E3Fade")
+See("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)
+Global("E3FADEEDWINTALK2","LOCALS",0)~ THEN BEDWIN fadeedwinfeet
+@4031 DO ~SetGlobal("E3FADEEDWINTALK2","LOCALS",1)~
+== BE3FADE @4032 == BEDWIN @4033 == BE3FADE @4034 == BEDWIN @4035
+EXIT
+
+CHAIN
+IF ~InParty("Edwin")
+See("Edwin")
+Gender("Edwin",FEMALE)
+!StateCheck("Edwin",STATE_SLEEPING)
+Global("E3FADEEDWINA","LOCALS",0)~ THEN BE3FADE fadeedwina
+@4036 DO ~SetGlobal("E3FADEEDWINA","LOCALS",1)~
+== BEDWIN @4037
+EXIT
+
+CHAIN
+IF ~InParty("HaerDalis")
+See("HaerDalis")
+!StateCheck("HaerDalis",STATE_SLEEPING)
+Global("E3FADEHAERTALK","LOCALS",0)~ THEN BE3FADE fadehaerwonder
+@4038 DO ~SetGlobal("E3FADEHAERTALK","LOCALS",1)~
+== BHAERDA @4039 = @4040 == BE3FADE @4041 == BHAERDA @4042 == BE3FADE @4043 = @4044 == BHAERDA @4045 == BE3FADE @4046
+EXIT
+
+CHAIN
+IF ~InParty("E3Fade")
+See("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)
+Global("E3FADEHAERTALK2","LOCALS",0)~ THEN BHAERDA fadehaersigil
+@4047 DO ~SetGlobal("E3FADEHAERTALK2","LOCALS",1)~
+== BE3FADE @4048 == BHAERDA @4049 == BE3FADE @4050 == BHAERDA @4051 == BE3FADE @4052 == BHAERDA @4053
+EXIT
+
+CHAIN
+IF ~InParty("Imoen2")
+See("Imoen2")
+!StateCheck("Imoen2",STATE_SLEEPING)
+Global("E3FADEIMOENTALK1","LOCALS",0)
+GlobalGT("E3LOVETALK","GLOBAL",15)~ THEN BE3FADE fadeimoenmagic
+@4054 DO ~SetGlobal("E3FADEIMOENTALK1","LOCALS",1)~
+== IMOEN2J @4055 == BE3FADE @4056 == IMOEN2J @4057 == BE3FADE @4058 == IMOEN2J @4059 == BE3FADE @4060
+EXIT
+
+CHAIN
+IF ~InParty("Imoen2")
+See("Imoen2")
+!StateCheck("Imoen2",STATE_SLEEPING)
+Global("E3FADEIMOENTALK2","LOCALS",0)~ THEN BE3FADE fadeimoencookies
+@4061 DO ~SetGlobal("E3FADEIMOENTALK2","LOCALS",1)~
+== IMOEN2J @4062 == BE3FADE @4063 == IMOEN2J @4064 == BE3FADE @4065 == IMOEN2J @4066
+EXIT
+
+CHAIN
+IF ~InParty("Jaheira")
+See("Jaheira")
+!StateCheck("Jaheira",STATE_SLEEPING)
+Global("E3FADEJAHEIRATALK1","LOCALS",0)~ THEN BE3FADE fadejaheira1
+@4067 DO ~SetGlobal("E3FADEJAHEIRATALK1","LOCALS",1)~
+== BJAHEIR @4068 == BE3FADE @4069 == BJAHEIR @4070 == BE3FADE @4071
+EXIT
+
+CHAIN
+IF ~InParty("Jaheira")
+See("Jaheira")
+!StateCheck("Jaheira",STATE_SLEEPING)
+Global("E3FADEJAHEIRATALK2","LOCALS",0)~ THEN BE3FADE fadejaheira2
+@4072 DO ~SetGlobal("E3FADEJAHEIRATALK2","LOCALS",1)~
+== BJAHEIR @4073 == BE3FADE @4074 == BJAHEIR @4075 == BE3FADE @4076 == BJAHEIR @4077
+EXIT
+
+CHAIN
+IF ~InParty("Jan")
+See("Jan")
+!StateCheck("Jan",STATE_SLEEPING)
+Global("E3FADEJANTALK1","LOCALS",0)~ THEN BE3FADE fadejanstuff
+@4078 DO ~SetGlobal("E3FADEJANTALK1","LOCALS",1)
+SetGlobal("E3FADEJANTALK1","GLOBAL",1)~
+== BJAN @4079 == BE3FADE @4080 == BJAN @4081 = @4082 == BE3FADE @4083 == BJAN @4084 == BE3FADE @4085 == BJAN @4086 == BE3FADE @4087 == BJAN @4088 == BE3FADE @4089 == BJAN @4090 == BE3FADE @4091
+EXIT
+
+CHAIN
+IF ~InParty("E3Fade")
+See("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)
+Global("E3FADEJANTALK1","GLOBAL",1)
+Global("E3FADEJANTALK2","LOCALS",0)~ THEN BJAN fadejanturnips
+@4092 DO ~SetGlobal("E3FADEJANTALK2","LOCALS",1)~
+== BE3FADE @4093 == BJAN @4094 == BE3FADE @4095 == BJAN @4096 == BE3FADE @4097 == BJAN @4098 = @4099 = @4100 = @4101 == BE3FADE @4102
+EXIT
+
+CHAIN
+IF ~InParty("Keldorn")
+See("Keldorn")
+!StateCheck("Keldorn",STATE_SLEEPING)
+Global("E3FADEKELDORNTALK1","LOCALS",0)~ THEN BE3FADE fadekeldorn
+@4103 DO ~SetGlobal("E3FADEKELDORNTALK1","LOCALS",1)~
+== BKELDOR @4104 == BE3FADE @4105 == BKELDOR @4106 == BE3FADE @4107 == BKELDOR @4108 == BE3FADE @4109 == BKELDOR @4110 == BE3FADE @4111 == BKELDOR @4112 = @4113 == BE3FADE @4114
+EXIT
+
+CHAIN
+IF ~InParty("E3Fade")
+See("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)
+Global("E3FADEKORGANTALK1","LOCALS",0)~ THEN BKORGAN fadekorgantails
+@4115 DO ~SetGlobal("E3FADEKORGANTALK1","LOCALS",1)
+SetGlobal("E3FADEKORGANTALK1","GLOBAL",1)~
+== BE3FADE @4116 == BKORGAN @4117 == BE3FADE @4118 == BKORGAN @4119 == BE3FADE @4120 == BKORGAN @4121 == BE3FADE @4122 == BKORGAN @4123 == BE3FADE @4124
+EXIT
+
+CHAIN
+IF ~InParty("Korgan")
+See("Korgan")
+!StateCheck("Korgan",STATE_SLEEPING)
+Global("E3FADEKORGANTALK1","GLOBAL",1)
+Global("E3FADEKORGANTALK2","LOCALS",0)~ THEN BE3FADE fadekorganthreat
+@4125 DO ~SetGlobal("E3FADEKORGANTALK2","LOCALS",1)~
+== BKORGAN @4126 == BE3FADE @4127 == BKORGAN @4128 == BE3FADE @4129 == BKORGAN @4130 == BE3FADE @4131 == BKORGAN @4132 == BE3FADE @4133 == BKORGAN @4134
+EXIT
+
+CHAIN
+IF ~InParty("E3Fade")
+See("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)
+Global("E3FADEMAZZYTALK1","LOCALS",0)~ THEN BMAZZY fademazzyreligion
+@4135 = @4136 DO ~SetGlobal("E3FADEMAZZYTALK1","LOCALS",1)~ 
+== BE3FADE @4137 == BMAZZY @4138 == BE3FADE @4139 == BMAZZY @4140 == BE3FADE @4141 == BMAZZY @4142 == BE3FADE @4143
+== BMAZZY IF ~Global("E3FADEROMANCEACTIVE","GLOBAL",2)~ THEN @4144 
+== BE3FADE IF ~Global("E3FADEROMANCEACTIVE","GLOBAL",2)~ THEN @4145
+== BMAZZY IF ~Global("E3FADEROMANCEACTIVE","GLOBAL",2)~ THEN @4146
+EXIT
+
+CHAIN
+IF ~InParty("Mazzy")
+See("Mazzy")
+!StateCheck("Mazzy",STATE_SLEEPING)
+Global("E3FADEMAZZYTALK2","LOCALS",0)~ THEN BE3FADE fademazzyfamily
+@4147 DO ~SetGlobal("E3FADEMAZZYTALK2","LOCALS",1)~
+== BMAZZY @4148 == BE3FADE @4149 == BMAZZY @4150 == BE3FADE @4151 == BMAZZY @4152 == BE3FADE @4153 == BMAZZY @4154
+EXIT
+
+CHAIN
+IF ~InParty("Minsc")
+See("Minsc")
+!StateCheck("Minsc",STATE_SLEEPING)
+Global("E3FADEMINSCTALK","LOCALS",0)
+Global("E3FADEMATCH","GLOBAL",1)~ THEN BE3FADE fademinscrat
+@4155 DO ~SetGlobal("E3FADEMINSCTALK","LOCALS",1)~
+== BMINSC @4156 == BE3FADE @4157 == BMINSC @4158
+END
+IF ~~ THEN REPLY @4159 GOTO fademinscrat2
+
+CHAIN
+IF ~~ THEN BE3FADE fademinscrat2
+@4160 == BMINSC @4161 == BE3FADE @4162 == BMINSC @4163 == BE3FADE @4164
+END
+IF ~~ THEN REPLY @4165 GOTO fademinscrat3
+IF ~~ THEN REPLY @4166 GOTO fademinscrat4
+
+CHAIN
+IF ~InParty("E3Fade")
+See("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)
+Global("E3FADEMINSCTALK2","LOCALS",0)~ THEN BMINSC fademinsc2
+@4167 DO ~SetGlobal("E3FADEMINSCTALK2","LOCALS",1)~
+== BE3FADE @4168 == BMINSC @4169 == BE3FADE @4170 == BMINSC @4171
+EXIT
+
+CHAIN
+IF ~InParty("Minsc")
+See("Minsc")
+!StateCheck("Minsc",STATE_SLEEPING)
+Global("E3FADEMINSCTALK3","LOCALS",0)~ THEN BE3FADE fademinsc3
+@4172 DO ~SetGlobal("E3FADEMINSCTALK3","LOCALS",1)~
+== BMINSC @4173 == BE3FADE @4174 == BMINSC @4175 == BE3FADE @4176 == BMINSC @4177 == BE3FADE @4178 == BMINSC @4179
+EXIT
+
+CHAIN
+IF ~InParty("Nalia")
+See("Nalia")
+!StateCheck("Nalia",STATE_SLEEPING)
+Global("E3FADENALIATALK1","GLOBAL",0)~ THEN BE3FADE fadenalia1
+@4180 DO ~SetGlobal("E3FADENALIATALK1","GLOBAL",1)~
+== BNALIA @4181 == BE3FADE @4182 == BNALIA @4183 == BE3FADE @4184 == BNALIA @4185 == BE3FADE @4186 == BNALIA @4187 == BE3FADE @4188
+EXIT
+
+CHAIN
+IF ~InParty("E3Fade")
+See("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)
+Global("E3FADENALIATALK1","GLOBAL",1)~ THEN BNALIA fadenalia2
+@4189 DO ~SetGlobal("E3FADENALIATALK1","GLOBAL",2)~
+== BE3FADE @4190
+EXIT
+
+CHAIN
+IF ~InParty("Valygar")
+See("Valygar")
+!StateCheck("Valygar",STATE_SLEEPING)
+AreaType(FOREST)
+Global("E3FADEVALYGARTALK","LOCALS",0)~ THEN BE3FADE fadevalygarbear
+@4191 DO ~SetGlobal("E3FADEVALYGARTALK","LOCALS",1)~
+== BVALYGA @4192 == BE3FADE @4193 == BVALYGA @4194 == BE3FADE @4195 == BVALYGA @4196 = @4197
+EXIT
+
+CHAIN
+IF ~InParty("Valygar")
+See("Valygar")
+!StateCheck("Valygar",STATE_SLEEPING)
+Global("E3FADEVALYGARTALK2","LOCALS",0)~ THEN BE3FADE fadevalygarsmile
+@4198 DO ~SetGlobal("E3FADEVALYGARTALK2","LOCALS",1)~
+== BVALYGA @4199 == BE3FADE @4200 == BVALYGA @4201 == BE3FADE @4202 == BVALYGA @4203 == BE3FADE @4204 == BVALYGA @4205 == BE3FADE @4206
+EXIT
+
+CHAIN
+IF ~InParty("Viconia")
+See("Viconia")
+!StateCheck("Viconia",STATE_SLEEPING)
+Global("E3FADEVICONIATALK1","LOCALS",0)~ THEN BE3FADE fadeviconia1
+@4207 DO ~SetGlobal("E3FADEVICONIATALK1","LOCALS",1)~
+== BVICONI @4208 == BE3FADE @4209 == BVICONI @4210
+EXIT
+
+CHAIN
+IF ~InParty("E3Fade")
+See("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)
+Global("E3FADEVICONIATALK2","LOCALS",0)~ THEN BVICONI fadeviconia2
+@4211 DO ~SetGlobal("E3FADEVICONIATALK2","LOCALS",1)~
+== BE3FADE @4212 == BVICONI @4213 == BE3FADE @4214 == BVICONI @4215
+EXIT
+
+CHAIN
+IF ~InParty("E3Fade")
+See("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)
+Global("E3FADEYOSHIMOTALK","LOCALS",0)~ THEN BYOSHIM fadeyoshimo
+@4216 DO ~SetGlobal("E3FADEYOSHIMOTALK","LOCALS",1)~
+== BE3FADE @4217 == BYOSHIM @4218 == BE3FADE @4219 == BYOSHIM @4220 == BE3FADE @4221
+EXIT
+
+APPEND BAERIE
+IF ~~ THEN BEGIN fadevsaerie_like
+SAY @4222
+IF ~~ THEN DO ~SetGlobal("AERIEROMANCEACTIVE","GLOBAL",3)~ EXTERN BE3FADE fadevsaerie_like_2
+END
+END
+
+APPEND BANOMEN
+IF ~~ THEN BEGIN placate
+SAY @4223
+IF ~~ THEN EXIT
+END
+END
+
+APPEND BMINSC
+IF ~~ THEN BEGIN fademinscrat5
+SAY @4224
+IF ~~ THEN EXTERN BE3FADE fademinscrat6
+END
+
+IF ~~ THEN BEGIN fademinscrat9
+SAY @4224
+IF ~~ THEN EXTERN BE3FADE fademinscrat10
+END
+
+IF ~~ THEN BEGIN fademinscrat14
+SAY @4224
+IF ~~ THEN EXTERN BE3FADE fademinscrat15
+END
+
+IF ~~ THEN BEGIN fademinscrat19
+SAY @4225 = @4226
+IF ~~ THEN REPLY @4227 EXIT
+END
+END
+
+APPEND BVICONI
+IF ~~ THEN BEGIN vicbad
+SAY @4228
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN fadevsviconia3_saying
+SAY @3957
+IF ~~ THEN DO ~SetGlobal("VICONIAROMANCEACTIVE","GLOBAL",3)~ EXTERN BE3FADE fadevsviconia3_saying_2
+END
+END
+
+INTERJECT BE3FADE lt4_start e3fadevsaerie
+== BAERIE IF ~InParty("Aerie")
+!StateCheck("Aerie",STATE_SLEEPING)
+Global("AERIEROMANCEACTIVE","GLOBAL",1)~ THEN @4229
+== BE3FADE IF ~InParty("Aerie")
+!StateCheck("Aerie",STATE_SLEEPING)
+Global("AERIEROMANCEACTIVE","GLOBAL",1)~ THEN @4205
+== BAERIE IF ~InParty("Aerie")
+!StateCheck("Aerie",STATE_SLEEPING)
+Global("AERIEROMANCEACTIVE","GLOBAL",1)~ THEN @4230
+== BE3FADE IF ~InParty("Aerie")
+!StateCheck("Aerie",STATE_SLEEPING)
+Global("AERIEROMANCEACTIVE","GLOBAL",1)~ THEN @4231
+== BAERIE IF ~InParty("Aerie")
+!StateCheck("Aerie",STATE_SLEEPING)
+Global("AERIEROMANCEACTIVE","GLOBAL",1)~ THEN @4232
+== BE3FADE IF ~InParty("Aerie")
+!StateCheck("Aerie",STATE_SLEEPING)
+Global("AERIEROMANCEACTIVE","GLOBAL",1)~ THEN @4233
+== BAERIE IF ~InParty("Aerie")
+!StateCheck("Aerie",STATE_SLEEPING)
+Global("AERIEROMANCEACTIVE","GLOBAL",1)~ THEN @4234
+== BE3FADE IF ~InParty("Aerie")
+!StateCheck("Aerie",STATE_SLEEPING)
+Global("AERIEROMANCEACTIVE","GLOBAL",1)~ THEN @4235
+== BAERIE IF ~InParty("Aerie")
+!StateCheck("Aerie",STATE_SLEEPING)
+Global("AERIEROMANCEACTIVE","GLOBAL",1)~ THEN @4236
+END
+IF ~~ THEN REPLY @4237 GOTO fadevsaerie_me
+IF ~~ THEN REPLY @4238 EXTERN BAERIE fadevsaerie_like
+
+INTERJECT BE3FADE lt10_start e3fadevsviconia1
+== BVICONI IF ~InParty("Viconia")
+!StateCheck("Viconia",STATE_SLEEPING)
+Global("VICONIAROMANCEACTIVE","GLOBAL",1)~ THEN @4239
+== BE3FADE IF ~InParty("Viconia")
+!StateCheck("Viconia",STATE_SLEEPING)
+Global("VICONIAROMANCEACTIVE","GLOBAL",1)~ THEN @4240
+== BVICONI IF ~InParty("Viconia")
+!StateCheck("Viconia",STATE_SLEEPING)
+Global("VICONIAROMANCEACTIVE","GLOBAL",1)~ THEN @4241
+== BE3FADE IF ~InParty("Viconia")
+!StateCheck("Viconia",STATE_SLEEPING)
+Global("VICONIAROMANCEACTIVE","GLOBAL",1)~ THEN @4242
+== BVICONI IF ~InParty("Viconia")
+!StateCheck("Viconia",STATE_SLEEPING)
+Global("VICONIAROMANCEACTIVE","GLOBAL",1)~ THEN @4243
+END
+IF ~~ THEN REPLY @4244 GOTO lt10_childhood
+IF ~~ THEN REPLY @4245 GOTO lt10_waned
+
+INTERJECT BE3FADE lt20_start e3fadevsviconia3
+== BVICONI IF ~InParty("Viconia")
+!StateCheck("Viconia",STATE_SLEEPING)
+Global("VICONIAROMANCEACTIVE","GLOBAL",1)~ THEN @4246
+== BE3FADE IF ~InParty("Viconia")
+!StateCheck("Viconia",STATE_SLEEPING)
+Global("VICONIAROMANCEACTIVE","GLOBAL",1)~ THEN @4247
+== BVICONI IF ~InParty("Viconia")
+!StateCheck("Viconia",STATE_SLEEPING)
+Global("VICONIAROMANCEACTIVE","GLOBAL",1)~ THEN @4248
+== BE3FADE IF ~InParty("Viconia")
+!StateCheck("Viconia",STATE_SLEEPING)
+Global("VICONIAROMANCEACTIVE","GLOBAL",1)~ THEN @4249
+== BVICONI IF ~InParty("Viconia")
+!StateCheck("Viconia",STATE_SLEEPING)
+Global("VICONIAROMANCEACTIVE","GLOBAL",1)~ THEN @4250
+== BE3FADE IF ~InParty("Viconia")
+!StateCheck("Viconia",STATE_SLEEPING)
+Global("VICONIAROMANCEACTIVE","GLOBAL",1)~ THEN @4251
+== BVICONI IF ~InParty("Viconia")
+!StateCheck("Viconia",STATE_SLEEPING)
+Global("VICONIAROMANCEACTIVE","GLOBAL",1)~ THEN @4252
+END
+IF ~~ THEN REPLY @4253 GOTO fadevsviconia3_point
+IF ~~ THEN REPLY @4254 EXTERN BVICONI fadevsviconia3_saying
+IF ~~ THEN REPLY @4255 GOTO fadevsviconia3_interest
+
+INTERJECT BE3FADE lt14_start e3fadevsjaheira
+== BJAHEIR IF ~InParty("Jaheira")
+!StateCheck("Jaheira",STATE_SLEEPING)
+Global("JAHEIRAROMANCEACTIVE","GLOBAL",1)~ THEN @4256
+== BE3FADE IF ~InParty("Jaheira")
+!StateCheck("Jaheira",STATE_SLEEPING)
+Global("JAHEIRAROMANCEACTIVE","GLOBAL",1)~ THEN @4257
+== BJAHEIR IF ~InParty("Jaheira")
+!StateCheck("Jaheira",STATE_SLEEPING)
+Global("JAHEIRAROMANCEACTIVE","GLOBAL",1)~ THEN @4258
+== BE3FADE IF ~InParty("Jaheira")
+!StateCheck("Jaheira",STATE_SLEEPING)
+Global("JAHEIRAROMANCEACTIVE","GLOBAL",1)~ THEN @4259
+== BJAHEIR IF ~InParty("Jaheira")
+!StateCheck("Jaheira",STATE_SLEEPING)
+Global("JAHEIRAROMANCEACTIVE","GLOBAL",1)~ THEN @4260
+== BE3FADE IF ~InParty("Jaheira")
+!StateCheck("Jaheira",STATE_SLEEPING)
+Global("JAHEIRAROMANCEACTIVE","GLOBAL",1)~ THEN @4261
+END
+IF ~~ THEN REPLY @4262 GOTO fadevsjaheira_apologise
+IF ~~ THEN REPLY @4263 EXTERN BJAHEIR fadevsjaheira_slack
+IF ~~ THEN REPLY @4264 GOTO fadevsjaheira_tolerate
+
+
+
+
+

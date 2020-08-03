@@ -1,0 +1,71 @@
+IF
+Global("E3ARANSMUM","GLOBAL",3)
+Global("E3Journal1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("E3Journal1","GLOBAL",1)
+EraseJournalEntry(@893)
+Continue()
+END
+
+IF
+Global("E3SLAVERKIDNAP","GLOBAL",2)
+Global("E3Journal2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("E3Journal2","GLOBAL",1)
+EraseJournalEntry(@987)
+Continue()
+END
+
+IF
+Global("E3ARANSMUM","GLOBAL",4)
+Global("E3Journal3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("E3Journal3","GLOBAL",1)
+EraseJournalEntry(@893)
+Continue()
+END
+
+IF
+Global("E3TRANSFORM","GLOBAL",2)
+Global("E3Journal4","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("E3Journal4","GLOBAL",1)
+EraseJournalEntry(@1237)
+Continue()
+END
+
+IF
+Global("E3LOOKINGFORTOOTH","GLOBAL",1)
+Global("E3Journal5","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("E3Journal5","GLOBAL",1)
+Continue()
+END
+
+IF
+Global("E3LOOKINGFORTOOTH","GLOBAL",0)
+Global("E3Journal5","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("E3Journal5","GLOBAL",2)
+EraseJournalEntry(@1305)
+Continue()
+END
+
+IF
+Global("E3DeleteManyJournals","GLOBAL",1)
+Global("E3Journal6","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("E3Journal6","GLOBAL",1)
+EraseJournalEntry(@1213)
+EraseJournalEntry(@1237)
+EraseJournalEntry(@1260)
+EraseJournalEntry(@1305)
+Continue()
+END

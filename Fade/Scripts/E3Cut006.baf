@@ -1,0 +1,12 @@
+IF
+   True()
+THEN
+   RESPONSE #100
+      CutSceneId(Player1)
+      ActionOverride("E3Fade2",ForceSpell(Myself,SAREVOK_FLASHY1))
+      Wait(1)
+      SetGlobal("E3TRANSFORM","GLOBAL",3)
+      ActionOverride("E3Fade2",DestroySelf())
+      Wait(2)
+      EndCutSceneMode()
+END

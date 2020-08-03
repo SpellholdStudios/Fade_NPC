@@ -1,0 +1,3025 @@
+EXTEND_BOTTOM ARAN 54
+IF ~Global("E3FADEINTRO","GLOBAL",0)~ THEN DO
+~SetGlobal("E3FADEINTRO","GLOBAL",1)~ EXTERN ARAN fadeintro
+END
+
+EXTEND_BOTTOM ARAN 24
+IF ~InParty("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)
+Global("E3ARANSMUM","GLOBAL",0)~ THEN DO
+~SetGlobal("E3ARANSMUM","GLOBAL",1)~ EXTERN ARAN aransmumchain_1
+END
+
+CHAIN IF ~~ THEN ARAN aransmumchain_1
+@882 == E3FADEJ @883
+END
+IF ~~ THEN REPLY @884 DO ~SetGlobal("E3ARANSMUM","GLOBAL",2)~ GOTO aransmumchain_2
+IF ~~ THEN REPLY @885 DO ~SetGlobal("E3ARANSMUM","GLOBAL",3)~ GOTO aransmum_end
+
+CHAIN IF ~~ THEN ARAN aransmumchain_2
+@886 == E3FADEJ @887 == ARAN @888 == E3FADEJ @889 == ARAN @890 = @891 == E3FADEJ @892
+END
+IF ~~ THEN UNSOLVED_JOURNAL @893 EXIT
+
+CHAIN IF WEIGHT #-1 ~InParty("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)
+Global("E3ARANSMUM","GLOBAL",4)~ THEN ARAN aransmumchain_done
+@894 == E3FADEJ @895 == ARAN @896 = @897
+END
+IF ~~ THEN DO ~SetGlobal("E3ARANSMUM","GLOBAL",5)~ GOTO 12
+
+APPEND ARAN
+IF ~~ THEN BEGIN fadeintro
+SAY @898
+IF ~~ THEN DO ~CreateCreature("E3FADE13",[4836.2136],6)~ GOTO fadeintro2
+END
+
+IF ~~ THEN BEGIN fadeintro2
+SAY @899
+IF ~~ THEN REPLY @900
+EXTERN E3FADE fadeintro3
+IF ~~ THEN REPLY @901 GOTO fadeintro6
+IF ~~ THEN REPLY @902 GOTO fadeintro9
+END
+
+IF ~~ THEN BEGIN fadeintro6
+SAY @903
+IF ~~ THEN REPLY @904 
+EXTERN E3FADE fadeintro7
+IF ~~ THEN REPLY @905
+EXTERN E3FADE fadeintro8
+IF ~~ THEN REPLY @906 GOTO fadeintro9
+END
+
+IF ~~ THEN BEGIN fadeintro9
+SAY @907 = @908
+IF ~~ THEN DO ~SetGlobal("E3REFUSEFADE","GLOBAL",1)~ GOTO 2
+END
+
+IF ~~ THEN BEGIN fadeintrodone
+SAY @909
+IF ~~ THEN GOTO 2
+END
+
+IF ~~ THEN BEGIN aransmum_end
+SAY @910 = @897
+IF ~~ THEN GOTO 12
+END
+
+IF ~~ THEN BEGIN aransmum_refuse
+SAY @910 = @897
+IF ~~ THEN DO ~SetGlobal("E3ARANSMUM","GLOBAL",3)~ GOTO 12
+END
+
+IF WEIGHT #-1 ~Global("E3ARANSMUM","GLOBAL",2)~ THEN BEGIN aransmum_mid
+SAY @911
+IF ~~ THEN REPLY @912 EXIT
+IF ~~ THEN REPLY @913 GOTO aransmum_refuse
+END
+
+IF WEIGHT #-1 ~Global("E3ARANSMUM","GLOBAL",4)~ THEN BEGIN aransmum_done
+SAY @894
+IF ~~ THEN REPLY @914 GOTO aransmum_done_2
+END
+
+IF ~~ THEN BEGIN aransmum_done_2
+SAY @897
+IF ~~ THEN DO ~SetGlobal("E3ARANSMUM","GLOBAL",5)~ GOTO 12
+END
+END
+
+APPEND E3FADE
+IF ~~ THEN BEGIN fadeintro3
+SAY @915 = @916 = @917 = @918 = @919
+IF ~~ THEN REPLY @920 GOTO fadeintro4
+IF ~~ THEN REPLY @921 GOTO fadeintro4
+IF ~~ THEN REPLY @922 GOTO fadeintro5
+IF ~~ THEN REPLY @923 GOTO fadeintro5
+END
+
+IF ~~ THEN BEGIN fadeintro4
+SAY @924 
+IF ~~ THEN DO ~SetGlobal("E3ACCEPTFADE","GLOBAL",1)~ EXTERN ARAN fadeintrodone
+END
+
+IF ~~ THEN BEGIN fadeintro5
+SAY @925
+IF ~~ THEN DO ~SetGlobal("E3REFUSEFADE","GLOBAL",1)~ EXTERN ARAN fadeintrodone
+END
+
+IF ~~ THEN BEGIN fadeintro7
+SAY @916 = @926 = @927
+IF ~~ THEN REPLY @920 GOTO fadeintro4
+IF ~~ THEN REPLY @921 GOTO fadeintro4
+IF ~~ THEN REPLY @922 GOTO fadeintro5
+IF ~~ THEN REPLY @923 GOTO fadeintro5
+END
+
+IF ~~ THEN BEGIN fadeintro8
+SAY @928
+IF ~~ THEN REPLY @929 GOTO fadeintro4
+IF ~~ THEN REPLY @930 GOTO fadeintro4
+END
+END
+
+BEGIN E3HOODL
+BEGIN E3MALLO
+
+IF ~Global("E3SLAVERKIDNAP","GLOBAL",1)
+Global("E3MALLONTALK","GLOBAL",1)
+AreaCheck("AR0907")~ THEN BEGIN ransom
+SAY @931
+IF ~~ THEN REPLY @932 DO ~SetGlobal("E3MALLONTALK","GLOBAL",2)~ GOTO fade
+IF ~~ THEN REPLY @933 DO ~SetGlobal("E3MALLONTALK","GLOBAL",2)~ GOTO place
+IF ~~ THEN REPLY @934 DO ~SetGlobal("E3MALLONTALK","GLOBAL",2)~ GOTO friends
+END
+
+IF ~~ THEN BEGIN fade
+SAY @935
+IF ~~ THEN REPLY @936 GOTO fight
+IF ~~ THEN REPLY @937 GOTO buy
+IF ~~ THEN REPLY @938 GOTO belong
+IF ~~ THEN REPLY @939 GOTO profit
+END
+
+IF ~~ THEN BEGIN place
+SAY @940
+IF ~~ THEN REPLY @941 GOTO friends
+IF ~~ THEN REPLY @942 GOTO fade
+IF ~~ THEN REPLY @943 GOTO going
+END
+
+IF ~~ THEN BEGIN going
+SAY @944
+IF ~~ THEN SOLVED_JOURNAL @945
+DO ~SetGlobal("E3SLAVERKIDNAP","GLOBAL",2)
+SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)
+ClearAllActions()
+StartCutSceneMode()
+StartCutScene("E3cut002")~ EXIT
+END
+
+IF ~~ THEN BEGIN friends
+SAY @946
+IF ~~ THEN REPLY @936 GOTO fight
+IF ~~ THEN REPLY @937 GOTO buy
+IF ~~ THEN REPLY @938 GOTO belong
+IF ~~ THEN REPLY @939 GOTO profit
+END
+
+IF ~~ THEN BEGIN buy
+SAY @947
+IF ~PartyGoldGT(499)~ THEN REPLY @948 GOTO 500
+IF ~PartyGoldGT(999)~ THEN REPLY @949 GOTO 1000
+IF ~PartyGoldGT(1999)~ THEN REPLY @950 GOTO 2000
+IF ~~ THEN REPLY @951 GOTO fight
+END
+
+IF ~~ THEN BEGIN belong
+SAY @952
+IF ~~ THEN REPLY @953 GOTO buy
+IF ~~ THEN REPLY @939 GOTO profit
+IF ~~ THEN REPLY @954 GOTO fight
+END
+
+IF ~~ THEN BEGIN profit
+SAY @955
+IF ~~ THEN REPLY @956 GOTO evil500
+IF ~~ THEN REPLY @957 GOTO evil1000
+IF ~~ THEN REPLY @958 GOTO evil2000
+END
+
+IF ~~ THEN BEGIN 500
+SAY @959
+IF ~PartyGoldGT(999)~ THEN REPLY @960 GOTO 1000
+IF ~PartyGoldGT(1999)~ THEN REPLY @961 GOTO 2000
+IF ~~ THEN REPLY @962 GOTO fight
+END
+
+IF ~~ THEN BEGIN 1000
+SAY @963
+IF ~PartyGoldGT(1999)~ THEN REPLY @964 GOTO 2000
+IF ~~ THEN REPLY @962 GOTO fight
+END
+
+IF ~~ THEN BEGIN 2000
+SAY @965
+IF ~~ THEN SOLVED_JOURNAL @966
+DO ~TakePartyGold(2000)
+DestroyGold(2000)
+AddexperienceParty(2500)
+MoveGlobal("AR0907","E3Fade",[1882.723])
+SetGlobal("E3SLAVERKIDNAP","GLOBAL",2)
+SetGlobal("E3BOUGHTFADE","GLOBAL",1)
+GiveItemCreate("E3Contra",Player1,1,0,0)
+ClearAllActions()
+StartCutSceneMode()
+StartCutScene("E3cut002")~ EXIT
+END
+
+IF ~~ THEN BEGIN evil500
+SAY @967
+IF ~~ THEN SOLVED_JOURNAL @968
+DO ~GiveGoldForce(500)
+ReputationInc(-1)
+AddexperienceParty(2500)
+SetGlobal("E3SLAVERKIDNAP","GLOBAL",2)
+SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)
+ClearAllActions()
+StartCutSceneMode()
+StartCutScene("E3cut002")~ EXIT
+END
+
+IF ~~ THEN BEGIN evil1000
+SAY @969
+IF ~~ THEN SOLVED_JOURNAL @968
+DO ~GiveGoldForce(1000)
+ReputationInc(-1)
+AddexperienceParty(2500)
+SetGlobal("E3SLAVERKIDNAP","GLOBAL",2)
+SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)
+ClearAllActions()
+StartCutSceneMode()
+StartCutScene("E3cut002")~ EXIT
+END
+
+IF ~~ THEN BEGIN evil2000
+SAY @970
+IF ~~ THEN REPLY @971 GOTO fight
+IF ~~ THEN REPLY @972 GOTO evil1000
+IF ~~ THEN REPLY @973 GOTO evil500
+END
+
+IF ~~ THEN BEGIN fight
+SAY @974
+IF ~~ THEN SOLVED_JOURNAL @975
+DO ~Enemy()
+SetGlobal("E3SLAVERKIDNAP","GLOBAL",2)
+MoveGlobal("AR0907","E3Fade",[1882.723])~ EXIT
+END
+
+CHAIN IF ~!Dead("E3Fade")
+InParty("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)
+Global("E3SLAVERKIDNAP","GLOBAL",1)
+Global("E3MALLONTALK","GLOBAL",0)~ THEN E3MALLO kidnap
+@976 DO ~SetGlobal("E3MALLONTALK","GLOBAL",1)~
+== E3FADEJ @977 == E3MALLO @978 == E3FADEJ @979 == E3MALLO @980 = @981 == E3HOODL @982 == E3FADEJ @983 == E3MALLO @984 == E3HOODL @985 == E3FADEJ @986
+END
+IF ~~ THEN UNSOLVED_JOURNAL @987
+DO ~ClearAllActions()
+StartCutSceneMode()
+StartCutScene("E3cut001")~ EXIT
+
+EXTEND_BOTTOM HLKETTA 0
+IF ~Global("E3KETTASION","GLOBAL",0)~ THEN DO
+~SetGlobal("E3KETTASION","GLOBAL",1)~ EXTERN HLSION sionfade
+END
+
+APPEND HLSION
+IF ~~ THEN BEGIN sionfade
+SAY #56253
+IF ~~ THEN REPLY #56257 GOTO 2
+IF ~Global("HEARDOFSLAVELORDS","GLOBAL",1)~ THEN REPLY #56258 GOTO 4
+IF ~~ THEN REPLY #56261 GOTO 4
+IF ~~ THEN REPLY #56265 GOTO 5
+IF ~Global("E3SLAVERKIDNAP","GLOBAL",1)~ THEN REPLY @988 GOTO sionfade1
+END
+
+IF ~~ THEN BEGIN sionfade1
+SAY @989
+IF ~~ THEN DO ~StartCutSceneMode()
+ActionOverride("hlketta",MoveToObjectNoInterrupt("HLSION"))
+ActionOverride("hlketta",Wait(1))
+ActionOverride("hlketta",EndCutSceneMode())
+ActionOverride("hlketta",DestroySelf())
+SetGlobal("TALKEDTOHLSION","GLOBAL",2)
+SetGlobal("TALKEDTOHLKETTA","GLOBAL",2)
+ForceSpell(Myself,DRYAD_TELEPORT)~ EXIT
+END
+END
+
+CHAIN IF WEIGHT #-1 ~See("E3Fade")
+InParty("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)
+Global("E3FADESIDGE","LOCALS",0)~ THEN THIEF1 fadesidge
+@990 DO ~SetGlobal("E3FADESIDGE","LOCALS",1)~
+== E3FADEJ @991 == THIEF1 @992 == E3FADEJ @993
+EXIT
+
+CHAIN IF WEIGHT #-1 ~See("E3Fade")
+InParty("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)
+Global("E3FADESIDGE","LOCALS",1)
+!Global("E3FADEROMANCEACTIVE","GLOBAL",0)
+!Global("E3FADEROMANCEACTIVE","GLOBAL",3)
+GlobalGT("E3LOVETALK","GLOBAL",10)~ THEN THIEF1 fadesidge3
+@994 DO ~SetGlobal("E3FADESIDGE","LOCALS",2)~
+== E3FADEJ @995 == THIEF1 @996 == E3FADEJ @997 == THIEF1 @998 == E3FADEJ @999 == THIEF1 @1000 == E3FADEJ @1001
+END
+IF ~~ THEN REPLY @1002 GOTO sidge_planning
+IF ~~ THEN REPLY @1003 GOTO sidge_stay
+
+CHAIN IF ~~ THEN THIEF1 sidge_planning
+@1004 == E3FADEJ @1005
+END
+IF ~~ THEN REPLY @1006 EXTERN E3FADEJ sidge_about
+IF ~~ THEN REPLY @1007 EXTERN E3FADEJ sidge_boyfriend
+
+CHAIN IF ~~ THEN THIEF1 sidge_stay
+@1008 == E3FADEJ @1005
+END
+IF ~~ THEN REPLY @1009 EXTERN E3FADEJ sidge_anyone
+IF ~~ THEN REPLY @1010 EXTERN E3FADEJ sidge_about
+
+CHAIN IF WEIGHT #-1 ~See("E3Fade")
+InParty("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)
+Global("E3FADESIDGE","LOCALS",1)
+!Global("E3FADEROMANCEACTIVE","GLOBAL",1)
+!Global("E3FADEROMANCEACTIVE","GLOBAL",2)~ THEN THIEF1 fadesidge2
+@994 DO ~SetGlobal("E3FADESIDGE","LOCALS",2)~
+== E3FADEJ @995 == THIEF1 @1011
+EXIT
+
+CHAIN IF WEIGHT #-1 ~NumTimesTalkedToGT(0)
+See("E3Fade")
+InParty("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)
+Global("E3FADETASSA","LOCALS",0)~ THEN TASSA fadetassa
+@1012 DO ~SetGlobal("E3FADETASSA","LOCALS",1)~
+== E3FADEJ @1013 == TASSA @1014 == E3FADEJ @1015 == TASSA @1016 == E3FADEJ @1017 == TASSA @1018
+EXIT
+
+CHAIN IF WEIGHT #-1 ~NumTimesTalkedToGT(0)
+See("E3Fade")
+InParty("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)
+Global("E3FADEBOOTER","LOCALS",0)
+OR(2)
+Global("E3FADEROMANCEACTIVE","GLOBAL",1)
+Global("E3FADEROMANCEACTIVE","GLOBAL",2)~ THEN BOOTER fadebooter1
+@1019 DO ~SetGlobal("E3FADEBOOTER","LOCALS",1)~
+== E3FADEJ @1020
+END
+IF ~~ THEN REPLY @1021 EXTERN E3FADEJ booter_play
+IF ~~ THEN REPLY @1022 EXTERN E3FADEJ booter_nothing
+
+APPEND E3FADEJ
+IF ~~ THEN BEGIN sidge_about
+SAY @1023
+IF ~~ THEN REPLY @1024 GOTO sidge_nothing
+IF ~~ THEN REPLY @1025 GOTO sidge_want
+END
+
+IF ~~ THEN BEGIN sidge_boyfriend
+SAY @1026
+IF ~~ THEN REPLY @1027 GOTO sidge_what
+IF ~~ THEN REPLY @1028 GOTO sidge_spurned
+IF ~~ THEN REPLY @1029 GOTO sidge_good
+END
+
+IF ~~ THEN BEGIN sidge_anyone
+SAY @1030
+IF ~~ THEN REPLY @1031 GOTO sidge_invitation
+IF ~~ THEN REPLY @1032 GOTO sidge_friend
+IF ~~ THEN REPLY @1029 GOTO sidge_good
+END
+
+IF ~~ THEN BEGIN sidge_nothing
+SAY @1033
+IF ~~ THEN REPLY @1034 GOTO sidge_invitation
+IF ~~ THEN REPLY @1032 GOTO sidge_friend
+IF ~~ THEN REPLY @1029 GOTO sidge_good
+END
+
+IF ~~ THEN BEGIN sidge_want
+SAY @1035
+IF ~~ THEN REPLY @1034 GOTO sidge_invitation
+IF ~~ THEN REPLY @1032 GOTO sidge_friend
+IF ~~ THEN REPLY @1029 GOTO sidge_good
+END
+
+IF ~~ THEN BEGIN sidge_what
+SAY @1036
+IF ~~ THEN REPLY @1034 GOTO sidge_invitation
+IF ~~ THEN REPLY @1032 GOTO sidge_friend
+IF ~~ THEN REPLY @1029 GOTO sidge_good
+END
+
+IF ~~ THEN BEGIN sidge_spurned
+SAY @1037
+IF ~~ THEN REPLY @1038 GOTO sidge_group
+IF ~~ THEN REPLY @1039 GOTO sidge_crude
+IF ~~ THEN REPLY @1040 GOTO sidge_feelings
+END
+
+IF ~~ THEN BEGIN sidge_good
+SAY @1041
+IF ~~ THEN REPLY @1042 GOTO sidge_deny
+IF ~~ THEN REPLY @1043 GOTO sidge_torture
+END
+
+IF ~~ THEN BEGIN sidge_invitation
+SAY @1044
+IF ~~ THEN REPLY @1038 GOTO sidge_group
+IF ~~ THEN REPLY @1039 GOTO sidge_crude
+IF ~~ THEN REPLY @1040 GOTO sidge_feelings
+END
+
+IF ~~ THEN BEGIN sidge_friend
+SAY @1045
+IF ~~ THEN REPLY @1046 GOTO sidge_jealous
+IF ~~ THEN REPLY @1047 GOTO sidge_no
+IF ~~ THEN REPLY @1048 GOTO sidge_all
+END
+
+IF ~~ THEN BEGIN sidge_group
+SAY @1049
+IF ~~ THEN REPLY @1046 GOTO sidge_jealous
+IF ~~ THEN REPLY @1047 GOTO sidge_no
+IF ~~ THEN REPLY @1048 GOTO sidge_all
+END
+
+IF ~~ THEN BEGIN sidge_crude
+SAY @1050
+IF ~~ THEN REPLY @1051 GOTO sidge_joking
+IF ~~ THEN REPLY @1052 GOTO sidge_feelings
+END
+
+IF ~~ THEN BEGIN sidge_feelings
+SAY @1053
+IF ~~ THEN REPLY @1054 GOTO sidge_need
+IF ~~ THEN REPLY @1055 GOTO sidge_anymore
+END
+
+IF ~~ THEN BEGIN sidge_deny
+SAY @1056
+IF ~~ THEN REPLY @1057 GOTO sidge_drop
+IF ~~ THEN REPLY @1058 GOTO sidge_torture
+END
+
+IF ~~ THEN BEGIN sidge_drop
+SAY @1059
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN sidge_torture
+SAY @1060
+IF ~~ THEN REPLY @1061 GOTO sidge_crude
+IF ~~ THEN REPLY @1062 GOTO sidge_feelings
+END
+
+IF ~~ THEN BEGIN sidge_jealous
+SAY @1063
+IF ~~ THEN REPLY @1064 GOTO sidge_meaningful
+IF ~~ THEN REPLY @1065 GOTO sidge_urges
+END
+
+IF ~~ THEN BEGIN sidge_no
+SAY @1066
+IF ~~ THEN REPLY @1067 GOTO sidge_jealous
+IF ~~ THEN REPLY @1068 GOTO sidge_sarcastic
+IF ~~ THEN REPLY @1048 GOTO sidge_all
+END
+
+IF ~~ THEN BEGIN sidge_all
+SAY @1069
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN sidge_joking
+SAY @1070
+IF ~~ THEN REPLY @1046 GOTO sidge_jealous
+IF ~~ THEN REPLY @1047 GOTO sidge_no
+IF ~~ THEN REPLY @1048 GOTO sidge_all
+END
+
+IF ~~ THEN BEGIN sidge_need
+SAY @1071
+IF ~~ THEN REPLY @1046 GOTO sidge_jealous
+IF ~~ THEN REPLY @1047 GOTO sidge_no
+IF ~~ THEN REPLY @1048 GOTO sidge_all
+END
+
+IF ~~ THEN BEGIN sidge_anymore
+SAY @1072
+IF ~~ THEN REPLY @1064 GOTO sidge_meaningful
+IF ~~ THEN REPLY @1073 GOTO sidge_no
+END
+
+IF ~~ THEN BEGIN sidge_meaningful
+SAY @1074 = @1075
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN sidge_urges
+SAY @1076
+IF ~~ THEN REPLY @1077 GOTO sidge_hands
+IF ~~ THEN REPLY @1078 GOTO sidge_satisfy
+END
+
+IF ~~ THEN BEGIN sidge_sarcastic
+SAY @1079
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN sidge_hands
+SAY @1080 = @1081 = @1082
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN sidge_satisfy
+SAY @1083
+IF ~~ THEN EXIT
+END
+END
+
+CHAIN IF ~~ THEN E3FADEJ booter_play
+@1084 == BOOTER @1085 == E3FADEJ @1086 == BOOTER @1087 == E3FADEJ @1088
+END
+IF ~~ THEN REPLY @1089 GOTO booter_forward
+IF ~~ THEN REPLY @1090 EXTERN BOOTER booter_what
+IF ~~ THEN REPLY @1022 GOTO booter_nothing
+
+CHAIN IF ~~ THEN E3FADEJ booter_nothing
+@1091 == BOOTER @1092
+EXIT
+
+CHAIN IF ~~ THEN E3FADEJ booter_forward
+@1093 == BOOTER @1092
+EXIT
+
+CHAIN IF ~~ THEN BOOTER booter_what
+@1094 == E3FADEJ @1095 == BOOTER @1096
+EXIT
+
+CHAIN IF ~~ THEN E3FADEJ faderenal
+@1097 DO ~SetGlobal("E3FADERENAL","LOCALS",1)~
+== RENAL @1098 == E3FADEJ @1099 == RENAL @1100 == E3FADEJ @1101
+COPY_TRANS RENAL 30
+
+CHAIN IF ~~ THEN E3FADEJ faderenaljobdone
+@1102 == RENAL @1103
+COPY_TRANS RENAL 48
+
+ADD_TRANS_TRIGGER RENAL 30 ~!InParty("E3Fade")~
+
+EXTEND_BOTTOM RENAL 30
+IF ~InParty("E3Fade")~ THEN EXTERN RENAL faderenal
+END
+
+ADD_TRANS_TRIGGER RENAL 48 ~!InParty("E3Fade")~
+
+EXTEND_BOTTOM RENAL 48
+IF ~InParty("E3Fade")~ THEN EXTERN RENAL faderenaljobdone
+END
+
+INTERJECT_COPY_TRANS RENAL 64 e3faderenaloffer
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1104
+== RENAL IF ~InParty("E3Fade")~ THEN @1105
+END
+
+INTERJECT_COPY_TRANS RENAL 69 e3faderenalpcaccept
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1106
+== E3FADEJ IF ~InParty("E3Fade")
+OR(2)
+Global("E3FADEROMANCEACTIVE","GLOBAL",1)
+Global("E3FADEROMANCEACTIVE","GLOBAL",2)~ THEN @1107
+END
+
+APPEND RENAL
+IF ~~ THEN BEGIN faderenal
+SAY @1108
+IF ~~ THEN EXTERN E3FADEJ faderenal
+END
+
+IF ~~ THEN BEGIN faderenaljobdone
+SAY @1109
+IF ~~ THEN EXTERN E3FADEJ faderenaljobdone
+END
+END
+
+BEGIN E3ARANS
+
+IF ~!InParty("E3Fade")
+Global("E3ARANSMUM","GLOBAL",2)~ THEN BEGIN aransmum_none
+SAY @1110
+IF ~~ THEN EXIT
+END
+
+IF ~Global("E3ARANSMUM","GLOBAL",4)~ THEN BEGIN aransmum_done
+SAY @1111
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN aransmum_gnomes
+SAY @1112
+IF ~!InParty("Jan")
+Race(LastTalkedToBy,HUMAN)~ THEN REPLY @1113 GOTO aransmum_human
+IF ~!InParty("Jan")
+Race(LastTalkedToBy,ELF)~ THEN REPLY @1113 GOTO aransmum_elf
+IF ~!InParty("Jan")
+Race(LastTalkedToBy,HALF_ELF)~ THEN REPLY @1113 GOTO aransmum_halfelf
+IF ~!InParty("Jan")
+Race(LastTalkedToBy,HALFORC)~ THEN REPLY @1113 GOTO aransmum_halforc
+IF ~!InParty("Jan")
+Race(LastTalkedToBy,HALFLING)~ THEN REPLY @1113 GOTO aransmum_halfling
+IF ~!InParty("Jan")
+Race(LastTalkedToBy,DWARF)~ THEN REPLY @1113 GOTO aransmum_dwarf
+IF ~!InParty("Jan")
+Race(LastTalkedToBy,GNOME)~ THEN REPLY @1114 GOTO aransmum_yes
+IF ~InParty("Jan")
+See("Jan")
+!StateCheck("Jan",STATE_SLEEPING)~ THEN EXTERN JANJ aransmum_jan
+END
+
+IF ~~ THEN BEGIN aransmum_delivery
+SAY @1115 = @1116
+IF ~!InParty("Jan")
+Race(LastTalkedToBy,HUMAN)~ THEN REPLY @1113 GOTO aransmum_human
+IF ~!InParty("Jan")
+Race(LastTalkedToBy,ELF)~ THEN REPLY @1113 GOTO aransmum_elf
+IF ~!InParty("Jan")
+Race(LastTalkedToBy,HALF_ELF)~ THEN REPLY @1113 GOTO aransmum_halfelf
+IF ~!InParty("Jan")
+Race(LastTalkedToBy,HALFORC)~ THEN REPLY @1113 GOTO aransmum_halforc
+IF ~!InParty("Jan")
+Race(LastTalkedToBy,HALFLING)~ THEN REPLY @1113 GOTO aransmum_halfling
+IF ~!InParty("Jan")
+Race(LastTalkedToBy,DWARF)~ THEN REPLY @1113 GOTO aransmum_dwarf
+IF ~!InParty("Jan")
+Race(LastTalkedToBy,GNOME)~ THEN REPLY @1114 GOTO aransmum_yes
+IF ~InParty("Jan")
+See("Jan")
+!StateCheck("Jan",STATE_SLEEPING)~ THEN EXTERN JANJ aransmum_jan
+END
+
+IF ~~ THEN BEGIN aransmum_pretend
+SAY @1117
+IF ~~ THEN REPLY @1118 GOTO aransmum_thanks
+IF ~~ THEN REPLY @1119 EXTERN E3FADEJ aransmum_leave
+IF ~~ THEN REPLY @1120 GOTO aransmum_nasty
+END
+
+IF ~~ THEN BEGIN aransmum_cake
+SAY @1121
+IF ~~ THEN REPLY @1122 GOTO aransmum_pretend
+IF ~~ THEN REPLY @1123 DO ~ApplyDamage(LastTalkedToBy,2,MAGIC)~ GOTO aransmum_nibble
+IF ~~ THEN REPLY @1124 GOTO aransmum_weight
+END
+
+CHAIN IF ~InParty("E3Fade")
+See("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)
+Global("E3ARANSMUM","GLOBAL",2)~ THEN E3ARANS aransmum_start
+@1110 == E3FADEJ @1125 == E3ARANS @1126 = @1127
+END
+IF ~~ THEN REPLY @1128 DO ~SetGlobal("E3ARANSMUM","GLOBAL",4)~ EXTERN E3FADEJ aransmum_stamp
+IF ~~ THEN REPLY @1129 DO ~SetGlobal("E3ARANSMUM","GLOBAL",4)~ GOTO aransmum_tea
+IF ~~ THEN REPLY @1130 DO ~SetGlobal("E3ARANSMUM","GLOBAL",4)~ GOTO aransmum_gnomes
+
+CHAIN IF ~~ THEN E3FADEJ aransmum_stamp
+@1131 = @1132 = @1133 == E3ARANS @1134
+END
+IF ~~ THEN REPLY @1135 EXTERN E3ARANS aransmum_delivery
+IF ~~ THEN REPLY @1136 EXTERN E3ARANS aransmum_friend
+
+CHAIN IF ~~ THEN E3ARANS aransmum_tea
+@1137 == E3FADEJ @1138 = @1133 == E3ARANS @1134
+END
+IF ~~ THEN REPLY @1135 EXTERN E3ARANS aransmum_delivery
+IF ~~ THEN REPLY @1136 EXTERN E3ARANS aransmum_friend
+
+CHAIN IF ~~ THEN JANJ aransmum_jan
+@1139 == E3ARANS @1140 = @1141 == E3FADEJ @1142 == E3ARANS @1143 = @1144
+END
+IF ~~ THEN REPLY @1145 EXTERN E3ARANS aransmum_do
+IF ~~ THEN REPLY @1146 EXTERN E3ARANS aransmum_matters
+IF ~~ THEN REPLY @1147 EXTERN E3ARANS aransmum_rude
+
+CHAIN IF ~~ THEN E3ARANS aransmum_friend
+@1148 = @1149 = @1150 == E3FADEJ @1151
+END
+IF ~~ THEN REPLY @1152 EXTERN E3FADEJ aransmum_get
+
+CHAIN IF ~~ THEN E3FADEJ aransmum_get
+@1153 == E3ARANS @1154
+END
+IF ~~ THEN REPLY @1155 EXTERN E3ARANS aransmum_pretend
+IF ~~ THEN REPLY @1156 DO ~ApplyDamage(LastTalkedToBy,2,MAGIC)~ EXTERN E3ARANS aransmum_nibble
+IF ~~ THEN REPLY @1157 EXTERN E3ARANS aransmum_cake
+
+CHAIN IF ~~ THEN E3ARANS aransmum_human
+@1158 = @1159 == E3FADEJ @1151
+END
+IF ~~ THEN REPLY @1152 EXTERN E3FADEJ aransmum_get
+
+CHAIN IF ~~ THEN E3ARANS aransmum_elf
+@1160 = @1161 == E3FADEJ @1151
+END
+IF ~~ THEN REPLY @1152 EXTERN E3FADEJ aransmum_get
+
+CHAIN IF ~~ THEN E3ARANS aransmum_halfelf
+@1162 = @1163 = @1164 == E3FADEJ @1151
+END
+IF ~~ THEN REPLY @1152 EXTERN E3FADEJ aransmum_get
+
+CHAIN IF ~~ THEN E3ARANS aransmum_halforc
+@1165 = @1166 == E3FADEJ @1151
+END
+IF ~~ THEN REPLY @1152 EXTERN E3FADEJ aransmum_get
+
+CHAIN IF ~~ THEN E3ARANS aransmum_dwarf
+@1167 = @1168 == E3FADEJ @1151
+END
+IF ~~ THEN REPLY @1152 EXTERN E3FADEJ aransmum_get
+
+CHAIN IF ~~ THEN E3ARANS aransmum_halfling
+@1169 = @1170 == E3FADEJ @1151
+END
+IF ~~ THEN REPLY @1152 EXTERN E3FADEJ aransmum_get
+
+CHAIN IF ~~ THEN E3ARANS aransmum_yes
+@1140 = @1141 == E3FADEJ @1142 == E3ARANS @1143 = @1144
+END
+IF ~~ THEN REPLY @1145 GOTO aransmum_do
+IF ~~ THEN REPLY @1146 GOTO aransmum_matters
+IF ~~ THEN REPLY @1147 GOTO aransmum_rude
+IF ~~ THEN REPLY @1171 GOTO aransmum_why
+
+CHAIN IF ~~ THEN E3ARANS aransmum_do
+@1172 == E3FADEJ @1173
+END
+IF ~~ THEN REPLY @1174 GOTO aransmum_avoid
+IF ~~ THEN REPLY @1175 EXTERN E3FADEJ aransmum_company
+IF ~~ THEN REPLY @1171 GOTO aransmum_why
+
+CHAIN IF ~~ THEN E3ARANS aransmum_matters
+@1176 == E3FADEJ @1177 == E3ARANS @1178 = @1154
+END
+IF ~~ THEN REPLY @1179 GOTO aransmum_employ
+IF ~~ THEN REPLY @1155 GOTO aransmum_pretend
+IF ~~ THEN REPLY @1156 DO ~ApplyDamage(LastTalkedToBy,2,MAGIC)~ GOTO aransmum_nibble
+IF ~~ THEN REPLY @1157 GOTO aransmum_cake
+
+CHAIN IF ~~ THEN E3ARANS aransmum_rude
+@1180 = @1181 == E3FADEJ @1182 == E3ARANS @1183 == E3FADEJ @1184 == E3ARANS @1185 == E3FADEJ @1186
+EXIT
+
+CHAIN IF ~~ THEN E3ARANS aransmum_nibble
+@1187 == E3FADEJ @1188
+END
+IF ~~ THEN REPLY @1189 GOTO aransmum_thanks
+IF ~~ THEN REPLY @1119 EXTERN E3FADEJ aransmum_leave
+IF ~~ THEN REPLY @1190 GOTO aransmum_nasty
+
+CHAIN IF ~~ THEN E3ARANS aransmum_why
+@1191 == E3FADEJ @1192 == E3ARANS @1193 == E3FADEJ @1182 == E3ARANS @1183 == E3FADEJ @1184 == E3ARANS @1185 == E3FADEJ @1186
+END
+IF ~~ THEN SOLVED_JOURNAL @1194 DO ~~ EXIT
+
+CHAIN IF ~~ THEN E3ARANS aransmum_avoid
+@1195 == E3FADEJ @1196 == E3ARANS @1197 == E3FADEJ @1198
+END
+IF ~~ THEN SOLVED_JOURNAL @1194 DO ~~ EXIT
+
+CHAIN IF ~~ THEN E3FADEJ aransmum_company
+@1199 == E3ARANS @1200
+END
+IF ~~ THEN REPLY @1155 EXTERN E3ARANS aransmum_pretend
+IF ~~ THEN REPLY @1156 DO ~ApplyDamage(LastTalkedToBy,2,MAGIC)~ EXTERN E3ARANS aransmum_nibble
+IF ~~ THEN REPLY @1157 EXTERN E3ARANS aransmum_cake
+
+CHAIN IF ~~ THEN E3ARANS aransmum_employ
+@1201 == E3FADEJ @1182 == E3ARANS @1183 == E3FADEJ @1184 == E3ARANS @1185 == E3FADEJ @1186
+END
+IF ~~ THEN SOLVED_JOURNAL @1194 DO ~~ EXIT
+
+CHAIN IF ~~ THEN E3ARANS aransmum_thanks
+@1202 == E3FADEJ @1203 == E3ARANS @1195 == E3FADEJ @1196 == E3ARANS @1197 == E3FADEJ @1198
+END
+IF ~~ THEN SOLVED_JOURNAL @1194 DO ~~ EXIT
+
+CHAIN IF ~~ THEN E3FADEJ aransmum_leave
+@1204 == E3ARANS @1195 == E3FADEJ @1196 == E3ARANS @1197 == E3FADEJ @1198
+END
+IF ~~ THEN SOLVED_JOURNAL @1194 DO ~~ EXIT
+
+CHAIN IF ~~ THEN E3ARANS aransmum_nasty
+@1205 == E3FADEJ @1206 == E3ARANS @1207 == E3FADEJ @1196 == E3ARANS @1197 == E3FADEJ @1198
+END
+IF ~~ THEN SOLVED_JOURNAL @1194 DO ~~ EXIT
+
+CHAIN IF ~~ THEN E3ARANS aransmum_weight
+@1208 == E3FADEJ @1206 == E3ARANS @1207 == E3FADEJ @1196 == E3ARANS @1197 == E3FADEJ @1198
+END
+IF ~~ THEN SOLVED_JOURNAL @1194 DO ~~ EXIT
+
+ADD_TRANS_TRIGGER BODHIAMB 5 ~OR(2)
+!InParty("E3Fade")
+!Global("E3FADEROMANCEACTIVE","GLOBAL",2)~
+
+EXTEND_BOTTOM BODHIAMB 5
+IF ~InParty("E3Fade")
+Global("E3FADEROMANCEACTIVE","GLOBAL",2)~ THEN EXTERN BODHIAMB bodhi_start
+END
+
+EXTEND_BOTTOM C6BODHI 21
+IF ~Global("E3FADEVAMPIRE","GLOBAL",2)~ THEN EXTERN C6BODHI 23
+END
+
+EXTEND_BOTTOM C6BODHI 23
+IF ~Global("E3FADEVAMPIRE","GLOBAL",2)~ THEN REPLY @1209 EXTERN C6BODHI fade
+END
+
+EXTEND_BOTTOM IMOEN2J 16
+IF ~Global("E3FADEVAMPIRE","GLOBAL",2)~ THEN EXTERN IMOEN2J fadevampire
+END
+
+EXTEND_BOTTOM WARSAGE 0
+IF ~!Dead("c6bodhi")
+Global("E3FADEVAMPIRE","GLOBAL",2)~ THEN REPLY #56579 EXTERN WARSAGE 6
+END
+
+EXTEND_BOTTOM WARSAGE 0
+IF ~PartyHasItem("E3FADBD1")~ THEN REPLY #56580 EXTERN WARSAGE 5
+END
+
+EXTEND_BOTTOM UDPHAE01 106
+IF ~OR(2)
+Global("E3FADEROMANCEACTIVE","GLOBAL",1)
+Global("E3FADEROMANCEACTIVE","GLOBAL",2)~ THEN REPLY @1210 EXTERN UDPHAE01 110
+END
+
+ADD_TRANS_TRIGGER IMNBOOK1 0 ~OR(2)
+!Global("RevealUmar","GLOBAL",1)
+!PartyHasItem("E3FADBD1")~
+
+EXTEND_BOTTOM IMNBOOK1 0
+IF ~PartyHasItem("E3FADBD1")
+Global("RevealUmar","GLOBAL",1)~ THEN REPLY #59383 EXTERN IMNBOOK1 4
+END
+
+ADD_STATE_TRIGGER OGHMONK1 0 ~!PartyHasItem("E3FADBD1")
+!PartyHasItem("E3FADBD2")~
+
+ADD_STATE_TRIGGER OGHMONK1 1 ~!PartyHasItem("E3FADBD1")
+!PartyHasItem("E3FADBD2")~
+
+ADD_STATE_TRIGGER OGHMONK1 2 ~!PartyHasItem("E3FADBD1")
+!PartyHasItem("E3FADBD2")~
+
+ADD_STATE_TRIGGER OGHMONK1 3 ~!PartyHasItem("E3FADBD1")
+!PartyHasItem("E3FADBD2")~
+
+APPEND BODHIAMB
+IF ~~ THEN BEGIN bodhi_start
+SAY #56540
+IF ~OR(2)
+!InPartyAllowDead("E3Fade")
+Dead("E3Fade")~ THEN GOTO 6
+IF ~InPartyAllowDead("E3Fade")
+!Dead("E3Fade")~ THEN GOTO bodhi_2
+END
+
+IF ~~ THEN BEGIN bodhi_2
+SAY @1211
+IF ~~ THEN EXTERN E3FADEJ bodhi_3
+END
+
+IF ~~ THEN BEGIN bodhi_4
+SAY @1212
+IF ~~ THEN UNSOLVED_JOURNAL @1213 
+DO ~SetGlobal("Deactivate0801","AR0800",3)
+ClearAllActions()
+StartCutSceneMode()
+StartCutScene("E3cut004")~ EXIT
+END
+END
+
+APPEND E3FADEJ
+IF ~~ THEN BEGIN bodhi_3
+SAY @1214
+IF ~~ THEN EXTERN BODHIAMB bodhi_4
+END
+END
+
+APPEND C6DRIZZ2
+IF WEIGHT #-1 ~GlobalGT("E3FADEVAMPIRE","GLOBAL",0)
+Global("E3DIDVAMPIRETALK","LOCALS",0)
+!Global("AttackedDrizzt","GLOBAL",1)~ THEN BEGIN start
+SAY #53484
+IF ~~ THEN REPLY @1215 DO ~SetGlobal("E3DIDVAMPIRETALK","LOCALS",1)~ GOTO vampires
+IF ~~ THEN REPLY @1216 DO ~SetGlobal("E3DIDVAMPIRETALK","LOCALS",1)~ GOTO back
+IF ~~ THEN REPLY @1217 DO ~SetGlobal("E3DIDVAMPIRETALK","LOCALS",1)~ GOTO stride
+END
+
+IF ~~ THEN BEGIN vampires
+SAY @1218
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN back
+SAY @1219
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN stride
+SAY @1220
+IF ~~ THEN EXIT
+END
+END
+
+APPEND C6BODHI
+IF ~~ THEN BEGIN fade
+SAY @1221 
+IF ~~ THEN REPLY @1222 GOTO kill
+IF ~~ THEN REPLY @1223 GOTO getup
+IF ~~ THEN REPLY @1224 GOTO please
+END
+
+IF ~~ THEN BEGIN kill
+SAY @1225
+IF ~~ THEN REPLY @1226 GOTO fear
+IF ~~ THEN REPLY @1227 GOTO use
+IF ~~ THEN REPLY @1228 GOTO done
+END
+
+IF ~~ THEN BEGIN getup
+SAY @1229
+IF ~~ THEN REPLY @1226 GOTO fear
+IF ~~ THEN REPLY @1227 GOTO use
+IF ~~ THEN REPLY @1228 GOTO done
+END
+
+IF ~~ THEN BEGIN please
+SAY @1230
+IF ~~ THEN REPLY @1226 GOTO fear
+IF ~~ THEN REPLY @1227 GOTO use
+IF ~~ THEN REPLY @1228 GOTO done
+END
+
+IF ~~ THEN BEGIN fear
+SAY @1231
+IF ~~ THEN REPLY @1232 GOTO choice
+IF ~~ THEN REPLY @1233 GOTO promise
+END
+
+IF ~~ THEN BEGIN use
+SAY @1234
+IF ~~ THEN REPLY @1232 GOTO choice
+IF ~~ THEN REPLY @1233 GOTO promise
+END
+
+IF ~~ THEN BEGIN done
+SAY @1235
+IF ~~ THEN REPLY @1232 GOTO choice
+IF ~~ THEN REPLY @1233 GOTO promise
+END
+
+IF ~~ THEN BEGIN choice
+SAY @1236
+IF ~~ THEN UNSOLVED_JOURNAL @1237
+DO ~SetGlobal("C6BodhiFight","AR0809",1)
+OpenDoor("DOOR01")
+OpenDoor("DOOR02")
+CreateCreature("BODFGT01",[1107.281],0)
+CreateCreature("BODFGT01",[1667.220],2)
+Enemy()~ EXIT
+END
+
+IF ~~ THEN BEGIN promise
+SAY @1238
+IF ~~ THEN UNSOLVED_JOURNAL @1237
+DO ~SetGlobal("C6BodhiFight","AR0809",1)
+OpenDoor("DOOR01")
+OpenDoor("DOOR02")
+CreateCreature("BODFGT01",[1107.281],0)
+CreateCreature("BODFGT01",[1667.220],2)
+Enemy()~ EXIT
+END
+END
+
+APPEND IMOEN2J
+IF ~~ THEN BEGIN fadevampire
+SAY @1239
+COPY_TRANS IMOEN2J 16
+END
+END
+
+BEGIN E3DEMON
+
+IF ~Global("E3FADEVAMPIRE","GLOBAL",3)
+Global("E3TRANSFORM","GLOBAL",0)~ THEN BEGIN demon_start
+SAY @1240
+IF ~~ THEN DO ~ClearAllActions()
+StartCutSceneMode()
+StartCutScene("E3cut005")~ EXIT
+END
+
+IF ~Global("E3TRANSFORM","GLOBAL",1)~ THEN BEGIN demon_start2
+SAY @1241
+IF ~~ THEN REPLY @1242 GOTO demon_happened
+IF ~~ THEN REPLY @1243 GOTO demon_something
+END
+
+IF ~~ THEN BEGIN demon_happened
+SAY @1244
+IF ~~ THEN REPLY @1245 GOTO demon_slay
+IF ~~ THEN REPLY @1246 GOTO demon_love
+IF ~~ THEN REPLY @1247 GOTO demon_beat
+END
+
+IF ~~ THEN BEGIN demon_something
+SAY @1248 = @1249
+IF ~~ THEN REPLY @1245 GOTO demon_slay
+IF ~~ THEN REPLY @1246 GOTO demon_love
+IF ~~ THEN REPLY @1247 GOTO demon_beat
+END
+
+IF ~~ THEN BEGIN demon_slay
+SAY @1250
+IF ~~ THEN REPLY @1251 GOTO demon_bring
+IF ~~ THEN REPLY @1252 GOTO demon_saying
+END
+
+IF ~~ THEN BEGIN demon_love
+SAY @1253
+IF ~~ THEN REPLY @1254 GOTO demon_slay
+IF ~~ THEN REPLY @1255 GOTO demon_beat
+END
+
+IF ~~ THEN BEGIN demon_beat
+SAY @1256
+IF ~~ THEN REPLY @1251 GOTO demon_bring
+IF ~~ THEN REPLY @1252 GOTO demon_saying
+END
+
+IF ~~ THEN BEGIN demon_bring
+SAY @1257
+IF ~~ THEN DO ~Enemy()~ EXIT
+END
+
+IF ~~ THEN BEGIN demon_saying
+SAY @1258
+IF ~~ THEN DO ~Enemy()~ EXIT
+END
+
+BEGIN E3FADE2
+
+IF ~Global("E3TRANSFORM","GLOBAL",1)~ THEN BEGIN fade2_start
+SAY @1259
+IF ~~ THEN UNSOLVED_JOURNAL @1260
+DO ~SetGlobal("E3TRANSFORM","GLOBAL",2)
+DropInventory()
+DestroySelf()~ EXIT
+END
+
+IF ~Global("E3TRANSFORM","GLOBAL",2)~ THEN BEGIN fade2_start2
+SAY @1261
+IF ~~ THEN EXIT
+END
+
+APPEND OGHMONK1
+IF WEIGHT #-1
+~Global("RevealUmar","GLOBAL",1)
+PartyHasItem("E3FADBD1")~ THEN BEGIN monk_stage1
+SAY #57510
+IF ~~ THEN REPLY #57511 GOTO 5
+IF ~~ THEN REPLY #57512 GOTO 6
+END
+
+IF WEIGHT #-1
+~Global("E3TRANSFORM","GLOBAL",3)
+Global("E3FADEISREALLYDEAD","GLOBAL",0)~ THEN BEGIN monk_fadedead
+SAY @1262
+IF ~~ THEN REPLY @1263 DO ~SetGlobal("E3FADEISREALLYDEAD","GLOBAL",1)~ GOTO monk_go
+IF ~~ THEN REPLY @1264 DO ~SetGlobal("E3FADEISREALLYDEAD","GLOBAL",1)~ GOTO monk_now
+END
+
+IF WEIGHT #-1
+~Global("E3WILLFIGHTDEMON","GLOBAL",1)~ THEN BEGIN monk_speak
+SAY @1265
+IF ~~ THEN REPLY @1046 DO ~SetGlobal("E3WILLFIGHTDEMON","GLOBAL",0)
+SetGlobal("E3LOOKINGFORTOOTH","GLOBAL",0)
+StartCutSceneMode()
+StartCutScene("E3cut007")~ EXIT
+IF ~~ THEN REPLY @1266 DO ~SetGlobal("E3WILLFIGHTDEMON","GLOBAL",0)~ GOTO monk_survive
+END
+
+IF WEIGHT #-1
+~Global("E3LOOKINGFORTOOTH","GLOBAL",1)~ THEN BEGIN monk_have
+SAY @1267
+IF ~PartyHasItem("E3TOOTH")~ THEN REPLY @1268 DO ~SetGlobal("E3WILLFIGHTDEMON","GLOBAL",0)~ GOTO monk_tooth
+IF ~!PartyHasItem("E3TOOTH")~ THEN REPLY @1269 EXIT
+IF ~~ THEN REPLY @1266 DO ~SetGlobal("E3WILLFIGHTDEMON","GLOBAL",0)~ GOTO monk_survive
+END
+
+IF ~PartyHasItem("E3FADBD2")
+Global("E3ASKEDADVICE","LOCALS",1)~ THEN BEGIN monk_start2
+SAY @1270
+IF ~~ THEN REPLY @1271 GOTO monk_do
+IF ~~ THEN REPLY @1272 GOTO monk_rid
+IF ~~ THEN REPLY @1273 GOTO monk_send
+END
+
+IF ~PartyHasItem("E3FADBD2")
+Global("E3ASKEDADVICE","LOCALS",0)~ THEN BEGIN monk_start3
+SAY @1274
+IF ~~ THEN REPLY @1275 GOTO monk_do
+IF ~~ THEN REPLY @1276 GOTO monk_rid
+IF ~~ THEN REPLY @1277 GOTO monk_send
+END
+
+IF ~~ THEN BEGIN monk_do
+SAY @1278 
+IF ~~ THEN DO ~TakePartyItem("E3FADBD2")
+DestroyItem("E3FADBD2")
+CreateCreature("E3Fade2",[619.280],0)~ GOTO monk_main
+END
+
+IF ~~ THEN BEGIN monk_rid
+SAY @1279
+IF ~~ THEN DO ~TakePartyItem("E3FADBD2")
+DestroyItem("E3FADBD2")
+CreateCreature("E3Fade2",[619.280],0)~ GOTO monk_main
+END
+
+IF ~~ THEN BEGIN monk_send
+SAY @1280
+IF ~~ THEN DO ~TakePartyItem("E3FADBD2")
+DestroyItem("E3FADBD2")
+CreateCreature("E3Fade2",[619.280],0)~ GOTO monk_main
+END
+
+IF ~~ THEN BEGIN monk_main
+SAY @1281 = @1282
+IF ~~ THEN REPLY @1283 GOTO monk_banish
+IF ~~ THEN REPLY @1284 GOTO monk_here
+IF ~~ THEN REPLY @1285 GOTO monk_risk
+IF ~~ THEN REPLY @1286 GOTO monk_kill
+IF ~~ THEN REPLY @1287 GOTO monk_demon
+END
+
+IF ~~ THEN BEGIN monk_banish
+SAY @1288
+IF ~~ THEN REPLY @1289 GOTO monk_survive
+IF ~~ THEN REPLY @1290 GOTO monk_kill
+IF ~~ THEN REPLY @1287 GOTO monk_demon
+END
+
+IF ~~ THEN BEGIN monk_here
+SAY @1291 = @1292
+IF ~PartyHasItem("E3TOOTH")~ THEN REPLY @1268 GOTO monk_tooth
+IF ~!PartyHasItem("E3TOOTH")~ THEN REPLY @1293 GOTO monk_absence
+IF ~~ THEN REPLY @1294 GOTO monk_survive
+END
+
+IF ~~ THEN BEGIN monk_risk
+SAY @1295
+IF ~~ THEN REPLY @1296 GOTO monk_kill
+IF ~~ THEN REPLY @1294 GOTO monk_survive
+END
+
+IF ~~ THEN BEGIN monk_kill
+SAY @1297 = @1292
+IF ~PartyHasItem("E3TOOTH")~ THEN REPLY @1268 GOTO monk_tooth
+IF ~!PartyHasItem("E3TOOTH")~ THEN REPLY @1293 GOTO monk_absence
+IF ~~ THEN REPLY @1294 GOTO monk_survive
+END
+
+IF ~~ THEN BEGIN monk_demon
+SAY @1298 = @1299
+IF ~~ THEN REPLY @1296 GOTO monk_kill
+IF ~~ THEN REPLY @1294 GOTO monk_survive
+IF ~~ THEN REPLY @1284 GOTO monk_here
+END
+
+IF ~~ THEN BEGIN monk_survive
+SAY @1300
+IF ~~ THEN DO ~SetGlobal("E3LOOKINGFORTOOTH","GLOBAL",0)
+SetGlobal("E3WILLFIGHTDEMON","GLOBAL",0)
+ClearAllActions()
+StartCutSceneMode()
+StartCutScene("E3cut006")~ EXIT
+END
+
+IF ~~ THEN BEGIN monk_tooth
+SAY @1301 = @1302
+IF ~~ THEN REPLY @1046 DO ~
+SetGlobal("E3WILLFIGHTDEMON","GLOBAL",0)
+SetGlobal("E3LOOKINGFORTOOTH","GLOBAL",0)
+StartCutSceneMode()
+StartCutScene("E3cut007")~ EXIT
+IF ~~ THEN REPLY @1303 DO ~SetGlobal("E3WILLFIGHTDEMON","GLOBAL",1)~ GOTO monk_prepare
+END
+
+IF ~~ THEN BEGIN monk_absence
+SAY @1304
+IF ~~ THEN UNSOLVED_JOURNAL @1305
+DO ~SetGlobal("E3LOOKINGFORTOOTH","GLOBAL",1)
+RevealAreaOnMap("AR1200")~ EXIT
+END
+
+IF ~~ THEN BEGIN monk_go
+SAY @1306
+IF ~Global("E3DeleteManyJournals","GLOBAL",0)~ THEN SOLVED_JOURNAL @1307
+DO ~SetGlobal("E3DeleteManyJournals","GLOBAL",1)~ EXIT
+END
+
+IF ~~ THEN BEGIN monk_now
+SAY @1308
+IF ~Global("E3DeleteManyJournals","GLOBAL",0)~ THEN SOLVED_JOURNAL @1307
+DO ~SetGlobal("E3DeleteManyJournals","GLOBAL",1)~ EXIT
+END
+
+IF ~~ THEN BEGIN monk_prepare
+SAY @1309
+IF ~~ THEN EXIT
+END
+
+IF ~Global("RevealUmar","GLOBAL",1)
+PartyHasItem("E3FADBD1")~ THEN BEGIN monk_start1
+SAY #57510 
+IF ~~ THEN REPLY #57511 GOTO 5
+IF ~~ THEN REPLY #57512 DO ~SetGlobal("E3ASKEDADVICE","LOCALS",1)~ GOTO 6
+END
+END
+
+BEGIN E3DEMON2
+
+CHAIN
+IF ~HPLT(Myself,10)
+Global("E3DEATH","LOCALS",0)
+Global("E3DeleteManyJournals","GLOBAL",0)~ THEN E3DEMON2 demon_die
+@1310 == OGHMONK1 @1311 == E3DEMON2 @1312
+DO ~SetGlobal("E3DeleteManyJournals","GLOBAL",1)
+SetGlobal("E3DEATH","LOCALS",1)
+ClearAllActions()
+StartCutSceneMode()
+StartCutScene("E3cut008")~ EXIT
+
+INTERJECT_COPY_TRANS NALIAJ 29 e3fadedaleson
+== E3FADEJ IF ~InParty("E3Fade")
+See("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)~ THEN @1313
+== NALIAJ IF ~InParty("E3Fade")
+See("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)~ THEN @1314
+== E3FADEJ IF ~InParty("E3Fade")
+See("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)~ THEN @1315
+== NALIAJ IF ~InParty("E3Fade")
+See("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)~ THEN @1316
+END
+
+ADD_TRANS_TRIGGER DELCIA 20 ~OR(2)
+!InParty("E3Fade")
+!See("E3Fade")~
+
+ADD_TRANS_TRIGGER DELCIA 0 ~OR(2)
+!InParty("E3Fade")
+!See("E3Fade")~
+
+EXTEND_BOTTOM DELCIA 20
+IF ~InParty("E3Fade")
+See("E3Fade")~ THEN EXTERN E3FADEJ fadedelcia_start
+END
+
+EXTEND_BOTTOM DELCIA 0
+IF ~InParty("E3Fade")
+See("E3Fade")~ THEN EXTERN E3FADEJ fadedelcia2_start
+END
+
+APPEND E3FADEJ
+IF ~~ THEN BEGIN fadedelcia_start
+SAY @1317
+IF ~~ THEN REPLY @1318 EXTERN DELCIA fadedelcia_saying
+IF ~~ THEN REPLY @1319 EXTERN DELCIA fadedelcia_helpful
+IF ~~ THEN REPLY @1320 GOTO fadedelcia_overwrought
+END
+
+IF ~~ THEN BEGIN fadedelcia2_start
+SAY @1321
+IF ~~ THEN REPLY @1318 EXTERN DELCIA fadedelcia2_saying
+IF ~~ THEN REPLY @1319 EXTERN DELCIA fadedelcia2_helpful
+IF ~~ THEN REPLY @1320 GOTO fadedelcia2_overwrought
+END
+
+IF ~~ THEN BEGIN fadedelcia_yours
+SAY @1322
+IF ~~ THEN DO ~ClearAllActions()
+StartCutSceneMode()
+StartCutScene("E3cut009")~ EXIT
+END
+
+IF ~AreaCheck("AR1303")
+Global("E3DELCIAKNOCKOUT","GLOBAL",1)~ THEN BEGIN fadedelcia_knockout
+SAY @1323
+IF ~InParty("Nalia")
+See("Nalia")
+!StateCheck("Nalia",STATE_SLEEPING)~ THEN EXTERN NALIAJ fadedelcia_knockout
+IF ~OR(3)
+!InParty("Nalia")
+!See("Nalia")
+StateCheck("Nalia",STATE_SLEEPING)~ THEN REPLY @1324 GOTO fadedelcia_punch
+IF ~OR(3)
+!InParty("Nalia")
+!See("Nalia")
+StateCheck("Nalia",STATE_SLEEPING)~ THEN REPLY @1325 GOTO fadedelcia_reason
+IF ~OR(3)
+!InParty("Nalia")
+!See("Nalia")
+StateCheck("Nalia",STATE_SLEEPING)~ THEN REPLY @1326 GOTO fadedelcia_throw
+END
+
+IF ~~ THEN BEGIN fadedelcia_knockout2
+SAY @1327
+IF ~~ THEN REPLY @1324 GOTO fadedelcia_punch
+IF ~~ THEN REPLY @1325 GOTO fadedelcia_reason
+IF ~~ THEN REPLY @1326 GOTO fadedelcia_throw
+END
+
+IF ~~ THEN BEGIN fadedelcia_punch
+SAY @1328 
+IF ~~ THEN DO ~SetGlobal("E3DELCIAKNOCKOUT","GLOBAL",2)~ EXIT
+END
+
+IF ~~ THEN BEGIN fadedelcia_reason
+SAY @1329
+IF ~~ THEN DO ~SetGlobal("E3DELCIAKNOCKOUT","GLOBAL",2)~ EXIT
+END
+
+IF ~~ THEN BEGIN fadedelcia_throw
+SAY @1330
+IF ~~ THEN DO ~SetGlobal("E3DELCIAKNOCKOUT","GLOBAL",2)~ EXIT
+END
+END
+
+CHAIN
+IF ~~ THEN E3FADEJ fadedelcia_overwrought
+@1331 == DELCIA @1332 = @1333
+END
+IF ~~ THEN REPLY @1334 EXTERN NALIAJ 24
+IF ~~ THEN REPLY @1335 EXTERN DELCIA fadedelcia_respect
+IF ~~ THEN REPLY @1336 GOTO fadedelcia_yours
+
+CHAIN
+IF ~~ THEN E3FADEJ fadedelcia2_overwrought
+@1331 == DELCIA @1332 = @1337
+END
+IF ~~ THEN REPLY @1338 EXTERN DELCIA 38
+IF ~~ THEN REPLY @1335 EXTERN DELCIA fadedelcia2_respect
+IF ~~ THEN REPLY @1336 GOTO fadedelcia_yours
+
+APPEND DELCIA
+IF ~~ THEN BEGIN fadedelcia_saying
+SAY @1339 = @1333
+IF ~~ THEN REPLY @1334 EXTERN NALIAJ 24
+IF ~~ THEN REPLY @1335 GOTO fadedelcia_respect
+IF ~~ THEN REPLY @1336 EXTERN E3FADEJ fadedelcia_yours
+END
+
+IF ~~ THEN BEGIN fadedelcia2_saying
+SAY @1339 = @1337
+IF ~~ THEN REPLY @1338 GOTO 38
+IF ~~ THEN REPLY @1335 GOTO fadedelcia2_respect
+IF ~~ THEN REPLY @1336 EXTERN E3FADEJ fadedelcia_yours
+END
+
+IF ~~ THEN BEGIN fadedelcia_helpful
+SAY @1340 = @1333
+IF ~~ THEN REPLY @1334 EXTERN NALIAJ 24
+IF ~~ THEN REPLY @1335 GOTO fadedelcia_respect
+IF ~~ THEN REPLY @1336 EXTERN E3FADEJ fadedelcia_yours
+END
+
+IF ~~ THEN BEGIN fadedelcia2_helpful
+SAY @1340 = @1337
+IF ~~ THEN REPLY @1338 GOTO 38
+IF ~~ THEN REPLY @1335 GOTO fadedelcia2_respect
+IF ~~ THEN REPLY @1336 EXTERN E3FADEJ fadedelcia_yours
+END
+
+IF ~~ THEN BEGIN fadedelcia_respect
+SAY @1341 = #41497
+IF ~~ THEN REPLY #24637 EXTERN NALIAJ 23
+IF ~~ THEN REPLY #24638 EXTERN NALIAJ 24
+IF ~~ THEN REPLY #24639 EXTERN NALIAJ 22
+END
+
+IF ~~ THEN BEGIN fadedelcia2_respect
+SAY @1341
+IF ~~ THEN GOTO 37
+END
+END
+
+APPEND NALIAJ
+IF ~~ THEN BEGIN fadedelcia_knockout
+SAY @1342
+IF ~~ THEN EXTERN E3FADEJ fadedelcia_knockout2
+END
+END
+
+ADD_TRANS_TRIGGER ANNO1 2 ~!InParty("E3Fade")~
+
+EXTEND_BOTTOM ANNO1 2
+IF ~InParty("E3Fade")~ THEN EXTERN E3FADEJ fadegladiator
+END
+
+ADD_TRANS_TRIGGER HENDAK 1 ~!InParty("E3Fade")~
+
+EXTEND_BOTTOM HENDAK 1
+IF ~InParty("E3Fade")~ THEN EXTERN E3FADEJ fadehendak
+END
+
+INTERJECT_COPY_TRANS KELDORJ 57 e3fadekeldornslaves
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1343
+== KELDORJ IF ~InParty("E3Fade")~ THEN @1344
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1345
+END
+
+INTERJECT_COPY_TRANS HENDAK 18 e3fadehendakhelp
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1346
+END
+
+INTERJECT_COPY_TRANS HENDAK 23 e3fadehendakrefuse
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1347
+END
+
+INTERJECT_COPY_TRANS HENDAK 31 e3fadehendakquestdone
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1348
+END
+
+ADD_TRANS_TRIGGER HAEGAN 1 ~!InParty("E3Fade")~
+
+EXTEND_BOTTOM HAEGAN 1
+IF ~InParty("E3Fade")~ THEN DO ~Enemy()~ EXTERN E3FADEJ fadehaegan
+END
+
+ADD_TRANS_TRIGGER HAEGAN 2 ~!InParty("E3Fade")~
+
+EXTEND_BOTTOM HAEGAN 2
+IF ~InParty("E3Fade")~ THEN DO ~Enemy()~ EXTERN E3FADEJ fadehaegan
+END
+
+ADD_TRANS_TRIGGER HAEGAN 3 ~!InParty("E3Fade")~
+
+EXTEND_BOTTOM HAEGAN 3
+IF ~InParty("E3Fade")~ THEN DO ~Enemy()~ EXTERN E3FADEJ fadehaegan
+END
+
+INTERJECT GIRL1 0 e3fadeslavegirl1
+==E3FADEJ IF ~InParty("E3Fade")~ THEN @1349
+END GIRL1 1
+
+INTERJECT_COPY_TRANS GIRL2 2 e3fadeslavegirl2
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1350
+END
+
+INTERJECT_COPY_TRANS AERIEJ 53 e3fadeaerieslaves
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1351
+END
+
+INTERJECT_COPY_TRANS JAHEIRAJ 349 e3fadejaheiraslaves
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1352
+END
+
+INTERJECT_COPY_TRANS2 GIRL2 5 e3fadeslavegirl2gold
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1353
+END
+
+APPEND E3FADEJ
+IF ~~ THEN BEGIN fadehaegan
+SAY @1354
+IF ~~ THEN EXIT
+END
+END
+
+CHAIN
+IF WEIGHT #-1
+~!InPartySlot(LastTalkedToBy,0)
+IsGabber("E3Fade")
+Global("E3FADESALVANAS","LOCALS",0)~ THEN SALVANAS fadesalvanas
+@1355 DO ~SetGlobal("E3FADESALVANAS","LOCALS",1)~
+== E3FADEJ @1356 == SALVANAS @1357 == E3FADEJ @1358 == SALVANAS @1359 == E3FADEJ @1360 == SALVANAS @1361 == E3FADEJ @1362 == SALVANAS @1363 == E3FADEJ @1364 == SALVANAS @1365 == E3FADEJ @1366 == SALVANAS @1367 == E3FADEJ @1368 == SALVANAS @1369
+EXIT
+
+CHAIN
+IF WEIGHT #-1
+~!InPartySlot(LastTalkedToBy,0)
+IsGabber("E3Fade")
+Global("E3FADESALVANAS","LOCALS",1)
+Global("E3FADEROMANCEACTIVE","GLOBAL",2)~ THEN SALVANAS fadesalvanas2
+@1370 DO ~SetGlobal("E3FADESALVANAS","LOCALS",2)~
+== E3FADEJ @1371 == SALVANAS @1372
+END
+IF ~~ THEN REPLY @1373 GOTO fadesalvanas_clear
+IF ~~ THEN REPLY @1374 GOTO fadesalvanas_bits
+IF ~~ THEN REPLY @1375 GOTO fadesalvanas_rip
+
+CHAIN
+IF ~~ THEN SALVANAS fadesalvanas_bits
+@1376 == E3FADEJ @1377 == SALVANAS @1378
+EXIT
+
+APPEND SALVANAS
+IF ~~ THEN BEGIN fadesalvanas_clear
+SAY @1379
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN fadesalvanas_rip
+SAY @1380
+IF ~~ THEN EXIT
+END
+END
+
+ADD_TRANS_TRIGGER ARNMAN03 0 ~!InParty("E3Fade")~
+
+EXTEND_BOTTOM ARNMAN03 0
+IF ~InParty("E3Fade")~ THEN EXTERN E3FADEJ fadecuchul
+END
+
+CHAIN
+IF WEIGHT #-1
+~InParty("E3Fade")
+See("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)
+Global("E3FADEPELANNA","GLOBAL",0)
+Global("arntra03Move","AR0307",4)
+Global("TalkedToPelanna","GLOBAL",1)~ THEN PELANNA fadepelanna
+@1381 DO ~SetGlobal("E3FADEPELANNA","GLOBAL",1)~
+== E3FADEJ @1382 == PELANNA @1383 == E3FADEJ @1384 == PELANNA @1385 == E3FADEJ @1386 == PELANNA @1387 == E3FADEJ @1388
+END
+IF ~~ THEN DO ~ClearAllActions()
+StartCutSceneMode()
+StartCutScene("E3cut010")~ EXIT
+
+CHAIN 
+IF ~~ THEN E3FADEJ fadecuchul
+@1389 == ARNMAN03 @1390
+EXIT
+
+APPEND PELANNA
+IF ~~ THEN BEGIN fadepelanna2
+SAY @1391
+IF ~~ THEN DO ~SetGlobal("E3FADEPELANNA","GLOBAL",3)~ EXIT
+END
+END
+
+APPEND E3FADEJ
+IF ~AreaCheck("AR0307")
+Global("E3FADEPELANNA","GLOBAL",2)~ THEN BEGIN fadepelanna2
+SAY @1392
+IF ~~ THEN EXTERN PELANNA fadepelanna2
+END
+
+IF ~~ THEN BEGIN fadegladiator
+SAY @1393
+IF ~~ THEN DO ~StartCutSceneMode()
+StartCutScene("Cut02c")~ EXIT
+END
+
+IF ~~ THEN BEGIN fadehendak
+SAY @1394
+IF ~!PartyHasItem("MISC4Z")~ THEN EXTERN HENDAK 4
+IF ~PartyHasItem("MISC4Z")~ THEN EXTERN HENDAK 38
+END
+
+IF ~~ THEN BEGIN fadesaemon
+SAY @1395
+IF ~~ THEN REPLY @1396 GOTO fadesaemon2
+END
+
+IF ~~ THEN BEGIN fadesaemon2
+SAY @1397
+COPY_TRANS PPSAEM2 19
+END
+END
+
+CHAIN
+IF WEIGHT #-1
+~InParty("E3Fade")
+See("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)
+Global("E3FADERIBALD","LOCALS",0)~ THEN RIBALD faderibald
+#38861 DO ~SetGlobal("E3FADERIBALD","LOCALS",1)~
+= @1398 == E3FADEJ @1399 == RIBALD @1400 == E3FADEJ @1401
+END
+IF ~~ THEN GOTO 0
+
+CHAIN
+IF WEIGHT #-1
+~InParty("E3Fade")
+See("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)
+Global("E3FADETHUMB","LOCALS",0)~ THEN THUMB fadethumb
+#23429 DO ~SetGlobal("E3FADETHUMB","LOCALS",1)~
+= @1402 == E3FADEJ @1403 == THUMB @1404 == E3FADEJ @1405
+EXIT
+
+ADD_TRANS_TRIGGER PPSAEM2 19 ~OR(3)
+!InParty("E3Fade")
+!See("E3Fade")
+StateCheck("E3Fade",STATE_SLEEPING)~
+
+EXTEND_BOTTOM PPSAEM2 19
+IF ~InParty("E3Fade")
+See("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)~ THEN EXTERN E3FADEJ fadesaemon
+END
+
+INTERJECT_COPY_TRANS ANOMENJ 150 e3fadeanomenssister
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1406
+END
+
+INTERJECT_COPY_TRANS UHKID01 3 e3fadedirbert
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1407
+END
+
+INTERJECT_COPY_TRANS FIRKRA02 4 e3fadefirkraag
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1408
+== ANOMENJ IF ~InParty("E3Fade")
+InParty("Anomen")~ THEN @1409
+== E3FADEJ IF ~InParty("E3Fade")
+InParty("Anomen")~ THEN @1410
+END
+
+INTERJECT_COPY_TRANS BANOMEN 12 e3fadeanomenarrogance
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1411
+== ANOMENJ IF ~InParty("E3Fade")~ THEN @1412
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1413
+== ANOMENJ IF ~InParty("E3Fade")~ THEN @1414
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1415
+== ANOMENJ IF ~InParty("E3Fade")~ THEN @1046
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1416
+== ANOMENJ IF ~InParty("E3Fade")~ THEN @1417
+END
+
+CHAIN
+IF WEIGHT #-1 ~InParty("E3Fade")
+See("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)
+RandomNum(2,1)
+Global("E3FADECELVAN","AR0300",0)~ THEN CELVAN fadecelvan
+@1418 DO ~SetGlobal("E3FADECELVAN","AR0300",1)~
+== E3FADEJ @1419
+END
+IF ~~ THEN GOTO 1
+
+INTERJECT_COPY_TRANS GAAL 8 e3fadegaal
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1420
+END
+
+CHAIN
+IF WEIGHT #-1 ~InParty("E3Fade")
+See("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)
+Global("E3FADEWAYLANE","LOCALS",0)~ THEN WAYLANE fadewaylane
+@1421 DO ~SetGlobal("E3FADEWAYLANE","LOCALS",1)~
+== E3FADEJ @1422
+== WAYLANE @1423
+== E3FADEJ @1424
+EXIT
+
+INTERJECT_COPY_TRANS PPDRADEE 4 e3fadedradeel
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1425
+== JAHEIRAJ IF ~InParty("E3Fade")
+InParty("Jaheira")~ THEN @1426
+END
+
+EXTEND_BOTTOM TRGYP02 2
+IF ~!InPartySlot(LastTalkedToBy,0)
+Name("E3Fade",LastTalkedToBy)~ THEN EXTERN TRGYP02 fadefortune
+END
+
+CHAIN
+IF ~~ THEN TRGYP02 fadefortune
+@1427
+= IF ~OR(2)
+Global("E3FADEROMANCEACTIVE","GLOBAL",1)
+Global("E3FADEROMANCEACTIVE","GLOBAL",2)~ THEN @1428
+== TRGYP02 IF ~OR(2)
+Global("E3FADEROMANCEACTIVE","GLOBAL",0)
+Global("E3FADEROMANCEACTIVE","GLOBAL",3)~ THEN @1429
+== E3FADEJ IF ~OR(2)
+Global("E3FADEROMANCEACTIVE","GLOBAL",1)
+Global("E3FADEROMANCEACTIVE","GLOBAL",2)~ THEN @1430
+== E3FADEJ IF ~OR(2)
+Global("E3FADEROMANCEACTIVE","GLOBAL",0)
+Global("E3FADEROMANCEACTIVE","GLOBAL",3)~ THEN @1431
+EXIT
+
+BEGIN E3MSNGR
+IF ~NumTimesTalkedTo(0)~ THEN BEGIN message_start
+SAY @1432
+IF ~~ THEN DO ~SetGlobal("E3FINALQUEST","GLOBAL",1)~ EXTERN E3FADEJ message_start
+END
+
+APPEND E3FADEJ
+IF ~~ THEN BEGIN message_start
+SAY @1433
+IF ~~ THEN REPLY @1434 GOTO message_immediately
+IF ~~ THEN REPLY @1435 GOTO message_wait
+IF ~~ THEN REPLY @1436 GOTO message_wrong
+END
+
+IF ~~ THEN BEGIN message_immediately
+SAY @1437
+IF ~~ THEN DO ~SetGlobalTimer("E3FADEREMINDSARAN","GLOBAL",THREE_DAYS)~ EXIT
+END
+
+IF ~~ THEN BEGIN message_wait
+SAY @1438
+IF ~~ THEN REPLY @1439 GOTO message_immediately
+IF ~~ THEN REPLY @1440 GOTO message_leave
+END
+
+IF ~~ THEN BEGIN message_wrong
+SAY @1441
+IF ~~ THEN REPLY @1439 GOTO message_immediately
+IF ~~ THEN REPLY @1440 GOTO message_leave
+END
+
+IF ~~ THEN BEGIN message_leave
+SAY @1442
+IF ~~ THEN DO ~SetGlobal("E3FADEARANONOWN","GLOBAL",1)
+SetGlobal("E3FADEJOINED","LOCALS",0)
+ChangeAIScript("",DEFAULT)
+SetLeavePartyDialogFile()
+LeaveParty()
+EscapeAreaMove("AR0307",4668,2017,6)~ EXIT
+END
+END
+
+CHAIN IF WEIGHT #-1 ~InParty("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)
+Global("E3FINALQUEST","GLOBAL",1)
+Global("E3FADEREMINDER","GLOBAL",0)~ THEN ARAN finalquest2_start
+@1443
+== E3FADEJ @1444
+== ARAN @1445
+END
+IF ~~ THEN REPLY @1446 GOTO finalquest2_do
+IF ~~ THEN REPLY @1447 GOTO finalquest2_involve
+IF ~~ THEN REPLY @1448 EXTERN E3FADEJ finalquest2_idea
+IF ~~ THEN REPLY @1449 EXTERN E3FADEJ finalquest2_better
+
+CHAIN IF WEIGHT #-1 ~InParty("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)
+Global("E3FINALQUEST","GLOBAL",1)
+Global("E3FADEREMINDER","GLOBAL",1)~ THEN ARAN finalquest2_start2
+@1450 
+== E3FADEJ @1451
+== ARAN @1452
+END
+IF ~~ THEN REPLY @1446 GOTO finalquest2_do
+IF ~~ THEN REPLY @1447 GOTO finalquest2_involve
+IF ~~ THEN REPLY @1448 EXTERN E3FADEJ finalquest2_idea
+IF ~~ THEN REPLY @1449 EXTERN E3FADEJ finalquest2_better
+
+CHAIN IF WEIGHT #-1 ~!InParty("E3Fade")
+Global("E3FINALQUEST","GLOBAL",1)
+Global("E3FADEARANONOWN","GLOBAL",1)~ THEN ARAN finalquest2_start3
+@1453 DO ~SetGlobal("E3FADEARANONOWN","GLOBAL",2)~
+== E3FADEP @1454
+= @1455
+== ARAN @1456
+END
+IF ~~ THEN REPLY @1446 GOTO finalquest2_do
+IF ~~ THEN REPLY @1447 GOTO finalquest2_involve
+IF ~~ THEN REPLY @1448 EXTERN E3FADEP finalquest2_idea
+IF ~~ THEN REPLY @1449 EXTERN E3FADEP finalquest2_better
+
+APPEND ARAN
+IF ~~ THEN BEGIN finalquest2_do
+SAY @1457
+IF ~~ THEN DO ~SetGlobal("E3FINALQUEST","GLOBAL",2)~ EXIT
+END
+
+IF ~~ THEN BEGIN finalquest2_involve
+SAY @1458
+IF ~~ THEN DO ~SetGlobal("E3FINALQUEST","GLOBAL",2)~ EXIT
+END
+END
+
+APPEND E3FADEJ
+IF ~~ THEN BEGIN finalquest2_idea
+SAY @1459
+IF ~~ THEN REPLY @1460 EXTERN ARAN finalquest2_do
+IF ~~ THEN REPLY @1461 GOTO finalquest2_better
+END
+
+IF ~~ THEN BEGIN finalquest2_better
+SAY @1462
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)
+EscapeArea()~ EXIT
+END
+END
+
+APPEND E3FADEP
+IF ~~ THEN BEGIN finalquest2_idea
+SAY @1459
+IF ~~ THEN REPLY @1460 EXTERN ARAN finalquest2_do
+IF ~~ THEN REPLY @1461 GOTO finalquest2_better
+END
+
+IF ~~ THEN BEGIN finalquest2_better
+SAY @1462
+IF ~~ THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)
+EscapeArea()~ EXIT
+END
+END
+
+BEGIN E3ELLA
+IF ~True()~ THEN BEGIN start
+SAY @1463
+IF ~~ THEN EXIT
+END
+
+BEGIN E3DARLA
+IF ~OR(3)
+!InParty("E3Fade")
+!See("E3Fade")
+StateCheck("E3Fade",STATE_SLEEPING)~ THEN BEGIN goaway
+SAY @1464
+IF ~~ THEN EXIT
+END
+
+IF ~Global("E3FINALQUEST","GLOBAL",3)~ THEN BEGIN shoo
+SAY @1465
+IF ~~ THEN EXIT
+END
+
+IF ~GlobalGT("E3FINALQUEST","GLOBAL",4)~ THEN BEGIN leave
+SAY @1466
+IF ~~ THEN DO ~ActionOverride("E3Ella",EscapeArea())
+EscapeArea()~ EXIT
+END
+
+CHAIN IF ~InParty("E3Fade")
+See("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)
+Global("E3FINALQUEST","GLOBAL",2)~ THEN E3DARLA finalquest3_start
+@1467 DO ~SetGlobal("E3FINALQUEST","GLOBAL",3)~
+= @1468
+== E3FADEJ @1469
+== E3DARLA @1470
+== E3FADEJ @1471
+== E3DARLA @1472
+== E3FADEJ @1473
+== E3DARLA @1474
+== E3FADEJ @1475
+== E3DARLA @1476
+== E3FADEJ @1477
+== E3DARLA @1478
+== E3FADEJ @1479
+== E3DARLA @1480
+== E3FADEJ @1481
+== E3ELLA @1482
+== E3DARLA @1483
+== E3ELLA @1005
+EXIT
+
+CHAIN IF ~InParty("E3Fade")
+See("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)
+PartyHasItem("E3XLETTE")
+Global("E3FINALQUEST","GLOBAL",4)~ THEN E3DARLA finalquest4_start
+@1484 DO ~SetGlobal("E3FINALQUEST","GLOBAL",5)~
+== E3FADEJ @1485
+== E3DARLA @1486
+== E3FADEJ @1487
+== E3DARLA @1488
+== E3ELLA @1489
+== E3DARLA @1490
+EXIT
+
+BEGIN E3XEKRA
+IF ~OR(3)
+!InParty("E3Fade")
+!See("E3Fade")
+StateCheck("E3Fade",STATE_SLEEPING)~ THEN BEGIN goaway
+SAY @1491
+IF ~~ THEN EXIT
+END
+
+CHAIN
+IF ~InParty("E3Fade")
+See("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)
+Global("E3FINALQUEST","GLOBAL",3)~ THEN E3XEKRA finalquest4_start
+@1492
+== E3FADEJ @1493
+== E3XEKRA @1494
+= @1495
+== E3FADEJ @1496
+== E3XEKRA @1497
+= @1498
+== E3FADEJ @1499
+== E3XEKRA @1500 DO ~SetGlobal("E3FINALQUEST","GLOBAL",4)
+Enemy()~ EXIT
+               
+INTERJECT ROGER 0 e3faderoger
+== E3FADEJ IF ~InParty("E3Fade")
+GlobalGT("E3FINALQUEST","GLOBAL",3)
+GlobalLT("E3FINALQUEST","GLOBAL",7)~ THEN @1501
+== ROGER IF ~InParty("E3Fade")
+GlobalGT("E3FINALQUEST","GLOBAL",3)
+GlobalLT("E3FINALQUEST","GLOBAL",7)~ THEN @1502
+== E3FADEJ IF ~InParty("E3Fade")
+GlobalGT("E3FINALQUEST","GLOBAL",3)
+GlobalLT("E3FINALQUEST","GLOBAL",7)~ THEN @1503
+== ROGER IF ~InParty("E3Fade")
+GlobalGT("E3FINALQUEST","GLOBAL",3)
+GlobalLT("E3FINALQUEST","GLOBAL",7)~ THEN @1504
+== E3FADEJ IF ~InParty("E3Fade")
+GlobalGT("E3FINALQUEST","GLOBAL",3)
+GlobalLT("E3FINALQUEST","GLOBAL",7)~ THEN @1505 DO ~SetGlobal("E3FINALQUEST","GLOBAL",6)~
+EXIT
+
+INTERJECT ROGER 21 e3faderoger
+== E3FADEJ IF ~InParty("E3Fade")
+GlobalGT("E3FINALQUEST","GLOBAL",3)
+GlobalLT("E3FINALQUEST","GLOBAL",7)~ THEN @1501
+== ROGER IF ~InParty("E3Fade")
+GlobalGT("E3FINALQUEST","GLOBAL",3)
+GlobalLT("E3FINALQUEST","GLOBAL",7)~ THEN @1502
+== E3FADEJ IF ~InParty("E3Fade")
+GlobalGT("E3FINALQUEST","GLOBAL",3)
+GlobalLT("E3FINALQUEST","GLOBAL",7)~ THEN @1503
+== ROGER IF ~InParty("E3Fade")
+GlobalGT("E3FINALQUEST","GLOBAL",3)
+GlobalLT("E3FINALQUEST","GLOBAL",7)~ THEN @1504
+== E3FADEJ IF ~InParty("E3Fade")
+GlobalGT("E3FINALQUEST","GLOBAL",3)
+GlobalLT("E3FINALQUEST","GLOBAL",7)~ THEN @1505 DO ~SetGlobal("E3FINALQUEST","GLOBAL",6)~
+EXIT
+
+INTERJECT ROGER 24 e3faderoger
+== E3FADEJ IF ~InParty("E3Fade")
+GlobalGT("E3FINALQUEST","GLOBAL",3)
+GlobalLT("E3FINALQUEST","GLOBAL",7)~ THEN @1501
+== ROGER IF ~InParty("E3Fade")
+GlobalGT("E3FINALQUEST","GLOBAL",3)
+GlobalLT("E3FINALQUEST","GLOBAL",7)~ THEN @1502
+== E3FADEJ IF ~InParty("E3Fade")
+GlobalGT("E3FINALQUEST","GLOBAL",3)
+GlobalLT("E3FINALQUEST","GLOBAL",7)~ THEN @1503
+== ROGER IF ~InParty("E3Fade")
+GlobalGT("E3FINALQUEST","GLOBAL",3)
+GlobalLT("E3FINALQUEST","GLOBAL",7)~ THEN @1504
+== E3FADEJ IF ~InParty("E3Fade")
+GlobalGT("E3FINALQUEST","GLOBAL",3)
+GlobalLT("E3FINALQUEST","GLOBAL",7)~ THEN @1505 DO ~SetGlobal("E3FINALQUEST","GLOBAL",6)~
+EXIT
+
+INTERJECT ROGER 27 e3faderoger
+== E3FADEJ IF ~InParty("E3Fade")
+GlobalGT("E3FINALQUEST","GLOBAL",3)
+GlobalLT("E3FINALQUEST","GLOBAL",7)~ THEN @1501
+== ROGER IF ~InParty("E3Fade")
+GlobalGT("E3FINALQUEST","GLOBAL",3)
+GlobalLT("E3FINALQUEST","GLOBAL",7)~ THEN @1502
+== E3FADEJ IF ~InParty("E3Fade")
+GlobalGT("E3FINALQUEST","GLOBAL",3)
+GlobalLT("E3FINALQUEST","GLOBAL",7)~ THEN @1503
+== ROGER IF ~InParty("E3Fade")
+GlobalGT("E3FINALQUEST","GLOBAL",3)
+GlobalLT("E3FINALQUEST","GLOBAL",7)~ THEN @1504
+== E3FADEJ IF ~InParty("E3Fade")
+GlobalGT("E3FINALQUEST","GLOBAL",3)
+GlobalLT("E3FINALQUEST","GLOBAL",7)~ THEN @1505 DO ~SetGlobal("E3FINALQUEST","GLOBAL",6)~
+EXIT
+
+EXTEND_BOTTOM SASSAR 0
+IF ~GlobalGT("E3FINALQUEST","GLOBAL",3)
+GlobalLT("E3FINALQUEST","GLOBAL",7)
+Global("E3ASKEDSASSAR","LOCALS",0)~ THEN REPLY @1506 DO ~SetGlobal("E3FINALQUEST","GLOBAL",6)
+SetGlobal("E3ASKEDSASSAR","LOCALS",1)~ GOTO finalquest_ask1
+END
+
+EXTEND_BOTTOM SASSAR 21
+IF ~GlobalGT("E3FINALQUEST","GLOBAL",3)
+GlobalLT("E3FINALQUEST","GLOBAL",7)
+Global("E3ASKEDSASSAR","LOCALS",0)~ THEN REPLY @1506 DO ~SetGlobal("E3FINALQUEST","GLOBAL",6)
+SetGlobal("E3ASKEDSASSAR","LOCALS",1)~ GOTO finalquest_ask2
+END
+
+APPEND SASSAR
+IF ~~ THEN BEGIN finalquest_ask1
+SAY @1507
+IF ~InParty("E3Fade")~ THEN EXTERN E3FADEJ finalquest_sassar1
+IF ~!InParty("E3Fade")~ THEN GOTO finalquest_ask1_1
+END
+
+IF ~~ THEN BEGIN finalquest_ask1_1
+SAY @1508
+COPY_TRANS SASSAR 0
+END
+
+IF ~~ THEN BEGIN finalquest_ask2
+SAY @1507
+IF ~InParty("E3Fade")~ THEN EXTERN E3FADEJ finalquest_sassar2
+IF ~!InParty("E3Fade")~ THEN GOTO finalquest_ask2_1
+END
+
+IF ~~ THEN BEGIN finalquest_ask2_1
+SAY @1508
+COPY_TRANS SASSAR 21
+END
+END
+
+APPEND E3FADEJ
+IF ~~ THEN BEGIN finalquest_sassar1
+SAY @1509
+IF ~~ THEN EXTERN SASSAR finalquest_ask1_1
+END
+
+IF ~~ THEN BEGIN finalquest_sassar2
+SAY @1509
+IF ~~ THEN EXTERN SASSAR finalquest_ask2_1
+END
+END
+
+BEGIN E3CIRION
+IF ~OR(3)
+!InParty("E3Fade")
+!See("E3Fade")
+StateCheck("E3Fade",STATE_SLEEPING)~ THEN BEGIN goaway
+SAY @1510
+IF ~~ THEN EXIT
+END
+
+CHAIN IF ~InParty("E3Fade")
+See("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)~ THEN E3CIRION fadecirion
+@1511 DO ~SetGlobal("E3CIRIONTALKS","LOCALS",1)
+SetGlobal("E3FINALQUEST","GLOBAL",7)~ 
+== E3FADEJ @1512
+== E3CIRION @1513
+== E3FADEJ @1514
+== E3CIRION @1515
+= @1516
+== E3FADEJ @1517
+== E3CIRION @1518
+== E3FADEJ @1519
+== E3CIRION @1520
+== E3FADEJ IF ~Global("RiftGo","GLOBAL",1)~ THEN @1521
+== E3CIRION IF ~Global("RiftGo","GLOBAL",1)~ THEN @1522
+== E3FADEJ IF ~Global("RiftGo","GLOBAL",1)~ THEN @1523
+== E3CIRION IF ~Global("RiftGo","GLOBAL",1)~ THEN @1524 DO ~ActionOverride("E3Savanya",Enemy()) 
+ActionOverride("E3Jekhril",Enemy())
+ActionOverride("E3Sume",Enemy())
+ActionOverride("E3Taeghen",Enemy())
+ActionOverride("E3Eriale",Enemy())
+Enemy()~ 
+== E3FADEJ IF ~!Global("RiftGo","GLOBAL",1)~ THEN @1525
+== E3CIRION IF ~!Global("RiftGo","GLOBAL",1)~ THEN @1526
+== E3FADEJ IF ~!Global("RiftGo","GLOBAL",1)~ THEN @1527
+== E3CIRION IF ~!Global("RiftGo","GLOBAL",1)~ THEN @1257 DO ~ActionOverride("E3Savanya",Enemy()) 
+ActionOverride("E3Jekhril",Enemy())
+ActionOverride("E3Sume",Enemy())
+ActionOverride("E3Taeghen",Enemy())
+ActionOverride("E3Eriale",Enemy())
+Enemy()~
+EXIT
+
+CHAIN IF WEIGHT #-1 ~InParty("E3Fade")
+See("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)
+Global("E3FINALQUEST","GLOBAL",8)~ THEN ARAN finalquest8_start
+@1528 DO ~SetGlobal("E3FINALQUEST","GLOBAL",9)~
+== E3FADEJ @1529
+== ARAN @1530
+== E3FADEJ @1531
+== ARAN @1532
+== E3FADEJ @1533
+== ARAN @1534
+== E3FADEJ @1535
+== ARAN @1536
+END
+IF ~~ THEN REPLY @1537 GOTO finalquest8_go
+IF ~~ THEN REPLY @1538 EXTERN E3FADEJ finalquest8_leave
+
+CHAIN IF ~~ THEN E3FADEJ finalquest8_leave
+@1539
+== ARAN @1540
+== E3FADEJ @1541 DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~
+EXIT
+
+CHAIN IF ~~ THEN ARAN finalquest8_kill
+@1542
+== E3FADEJ @1543
+== ARAN @1544
+== E3FADEJ @1545
+== ARAN @1546
+== E3FADEJ @1547
+== ARAN @1548
+== E3FADEJ @1549
+== ARAN @1550
+== E3FADEJ @1551
+EXIT
+
+CHAIN IF ~~ THEN ARAN finalquest8_happy
+@1552
+== E3FADEJ @1545
+== ARAN @1546
+== E3FADEJ @1547
+== ARAN @1548
+== E3FADEJ @1549
+== ARAN @1550
+== E3FADEJ @1551
+EXIT
+
+APPEND ARAN
+IF ~~ THEN BEGIN finalquest8_go
+SAY @1553
+IF ~~ THEN REPLY @1554 GOTO finalquest8_kill
+IF ~~ THEN REPLY @1555 GOTO finalquest8_happy
+IF ~~ THEN REPLY @1538 EXTERN E3FADEJ finalquest8_leave
+END
+END
+
+EXTEND_BOTTOM PLAYER1 33
+IF ~InParty("E3Fade")
+Global("E3FADEROMANCEACTIVE","GLOBAL",2)
+Global("E3DIDTREEOFLIFETALK","GLOBAL",0)~ THEN DO 
+~SetGlobal("E3DIDTREEOFLIFETALK","GLOBAL",1)~ GOTO tree2_fade
+IF ~InParty("E3Fade")
+!Global("E3FADEROMANCEACTIVE","GLOBAL",2)
+Global("E3DIDTREEOFLIFETALK","GLOBAL",0)~ THEN DO
+~SetGlobal("E3DIDTREEOFLIFETALK","GLOBAL",1)~ GOTO tree1_fade
+END
+
+APPEND PLAYER1
+IF ~~ THEN BEGIN tree2_fade
+SAY @1556
+IF ~~ THEN EXTERN E3FADEJ tree2_fade
+END
+
+IF ~~ THEN BEGIN tree1_fade
+SAY @1557
+IF ~~ THEN REPLY @1558 EXTERN E3FADEJ tree1_want
+IF ~~ THEN REPLY @1559 EXTERN E3FADEJ tree1_through
+IF ~~ THEN REPLY @1560 EXTERN E3FADEJ tree1_return
+END
+END
+
+APPEND E3FADEJ
+IF ~~ THEN BEGIN tree2_fade
+SAY @1561 = @1562
+COPY_TRANS PLAYER1 33
+END
+
+IF ~~ THEN BEGIN tree1_want
+SAY @1563
+COPY_TRANS PLAYER1 33
+END
+
+IF ~~ THEN BEGIN tree1_through
+SAY @1564
+COPY_TRANS PLAYER1 33
+END
+
+IF ~~ THEN BEGIN tree1_return
+SAY @1565
+COPY_TRANS PLAYER1 33
+END
+END
+
+EXTEND_BOTTOM PLAYER1 25
+IF ~InParty("E3Fade")
+!Global("E3FADEROMANCEACTIVE","GLOBAL",2)
+Global("E3DIDHELLARRIVALTALK","GLOBAL",0)~ THEN DO 
+~SetGlobal("E3DIDHELLARRIVALTALK","GLOBAL",1)~ EXTERN E3FADEJ hell1_fade
+IF ~InParty("E3Fade")
+Global("E3FADEROMANCEACTIVE","GLOBAL",2)
+Global("E3DIDHELLARRIVALTALK","GLOBAL",0)~ THEN DO
+~SetGlobal("E3DIDHELLARRIVALTALK","GLOBAL",1)~ EXTERN E3FADEJ hell2_fade
+END
+
+APPEND E3FADEJ
+IF ~~ THEN BEGIN hell1_fade
+SAY @1566
+COPY_TRANS PLAYER1 25
+END
+
+IF ~~ THEN BEGIN hell2_fade
+SAY @1567
+COPY_TRANS PLAYER1 25
+END
+END
+
+INTERJECT_COPY_TRANS HELLJON 7 e3didhelljontalk
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1568
+END
+
+INTERJECT_COPY_TRANS HELLJON 8 e3didhelljontalk
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1568
+END
+
+INTERJECT_COPY_TRANS HELLJON 9 e3didhelljontalk
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1568
+END
+
+INTERJECT_COPY_TRANS HELLJON 10 e3didhelljontalk
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1568
+END
+
+INTERJECT_COPY_TRANS BODHI2 1 e3fadebodhi2
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1569
+== BODHI2 IF ~InParty("E3Fade")~ THEN @1570
+END
+
+INTERJECT_COPY_TRANS BODHI2 2 e3fadebodhi2
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1571
+== BODHI2 IF ~InParty("E3Fade")~ THEN @1570
+END
+
+INTERJECT_COPY_TRANS BODHI2 3 e3fadebodhi2
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1572
+== BODHI2 IF ~InParty("E3Fade")~ THEN @1570
+END
+
+INTERJECT PIRMUR07 0 e3fadegalvena
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1573
+== PIRMUR01 IF ~InParty("E3Fade")~ THEN @1574
+COPY_TRANS PIRMUR01 2
+
+EXTEND_BOTTOM DOGHMA 0
+IF ~PartyHasItem("E3FADBD1")
+Global("RevealUmar","GLOBAL",1)~ THEN REPLY #57916 GOTO 10
+END
+
+EXTEND_BOTTOM DOGHMA 0
+IF ~PartyHasItem("E3FADBD2")~ THEN REPLY #57916 EXTERN DOGHMA fadedemon
+END
+
+APPEND DOGHMA
+IF ~~ THEN BEGIN fadedemon
+SAY @1575
+IF ~~ THEN EXIT
+END
+END
+
+INTERJECT_COPY_TRANS PPLDR01 0 e3fadepirate
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1576
+END
+
+INTERJECT PPDOOR 0 e3fadedoorguard
+== E3FADEJ IF ~InParty("E3Fade")
+Global("E3FADEROMANCEACTIVE","GLOBAL",1)~ THEN @1577
+== PPDOOR IF ~InParty("E3Fade")
+Global("E3FADEROMANCEACTIVE","GLOBAL",1)~ THEN @1578
+== E3FADEJ IF ~InParty("E3Fade")
+Global("E3FADEROMANCEACTIVE","GLOBAL",1)~ THEN @1579
+END
+IF ~~ THEN REPLY @1580 EXTERN E3FADEJ doorguard_ways
+IF ~~ THEN REPLY @1581 EXTERN E3FADEJ doorguard_long
+
+APPEND E3FADEJ
+IF ~~ THEN BEGIN doorguard_ways
+SAY @1582
+IF ~~ THEN REPLY @1583 GOTO doorguard_goals
+IF ~~ THEN REPLY @1584 GOTO doorguard_prostitute
+IF ~~ THEN REPLY @1585 GOTO doorguard_difference
+END
+
+IF ~~ THEN BEGIN doorguard_long
+SAY @1586
+IF ~~ THEN EXTERN PPDOOR doorguard_long
+END
+
+IF ~~ THEN BEGIN doorguard_goals
+SAY @1587
+IF ~~ THEN EXTERN PPDOOR doorguard_long
+END
+
+IF ~~ THEN BEGIN doorguard_prostitute
+SAY @1588
+IF ~~ THEN EXTERN PPDOOR doorguard_long
+END
+
+IF ~~ THEN BEGIN doorguard_difference
+SAY @1589
+IF ~~ THEN EXTERN PPDOOR doorguard_long
+END
+END
+
+APPEND PPDOOR
+IF ~~ THEN BEGIN doorguard_long
+SAY @1590
+COPY_TRANS PPDOOR 0
+END
+END
+
+EXTEND_BOTTOM C6ELHAN2 70
+IF ~OR(2)
+PartyHasItem("E3FADBD1")
+PartyHasItem("E3FADBD2")~ THEN REPLY @1591 GOTO 76
+END
+
+ADD_TRANS_TRIGGER RAELIS 38 ~!InParty("E3Fade")~
+
+EXTEND_BOTTOM RAELIS 38
+IF ~InParty("E3Fade")~ THEN REPLY #29963 GOTO 41
+IF ~InParty("E3Fade")~ THEN REPLY #29964 GOTO 41
+IF ~InParty("E3Fade")~ THEN REPLY #29965 EXTERN RAELIS faderaelis
+END
+
+ADD_TRANS_TRIGGER RAELIS 39 ~!InParty("E3Fade")~
+
+EXTEND_BOTTOM RAELIS 39
+IF ~InParty("E3Fade")~ THEN REPLY #29963 GOTO 41
+IF ~InParty("E3Fade")~ THEN REPLY #29964 GOTO 41
+IF ~InParty("E3Fade")~ THEN REPLY #29965 EXTERN RAELIS faderaelis
+END
+
+APPEND RAELIS
+IF ~~ THEN BEGIN faderaelis
+SAY @1592 = @1593
+COPY_TRANS RAELIS 44
+END
+END
+
+INTERJECT_COPY_TRANS GARREN 1 e3fadegarren
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1594
+END
+
+INTERJECT_COPY_TRANS GARREN 2 e3fadegarren
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1594
+END
+
+INTERJECT_COPY_TRANS ARNGRL01 16 e3fademissy
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1595
+END
+
+INTERJECT_COPY_TRANS ARNTRA05 0 e3fadetrapmaster
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1596
+== ARNTRA05 IF ~InParty("E3Fade")~ THEN @1597
+END
+
+APPEND ARAN
+IF ~GlobalLT("E3FINALQUEST","GLOBAL",8)~ THEN BEGIN finalquest_filler
+SAY @1598
+IF ~~ THEN REPLY @1599 EXIT
+IF ~Global("Chapter","GLOBAL",6)
+Global("ShadowFightBodhi","GLOBAL",0)
+!Dead("c6bodhi")~ THEN REPLY @1600 GOTO finalquest_filler_1
+IF ~Global("Chapter","GLOBAL",6)
+Global("ShadowFightBodhi","GLOBAL",1)
+!Dead("c6bodhi")~ THEN REPLY @1600 GOTO finalquest_filler_2
+IF ~Global("Chapter","GLOBAL",6)
+Global("ShadowFightBodhi","GLOBAL",2)
+!Dead("c6bodhi")~ THEN REPLY @1600 GOTO finalquest_filler_3
+IF ~GlobalGT("Chapter","GLOBAL",5)
+Dead("c6bodhi")~ THEN REPLY @1600 GOTO finalquest_filler_4
+END
+
+IF ~~ THEN BEGIN finalquest_filler_1
+SAY @1601
+COPY_TRANS ARAN 76
+END
+
+IF ~~ THEN BEGIN finalquest_filler_2
+SAY @1602
+COPY_TRANS ARAN 106
+END
+
+IF ~~ THEN BEGIN finalquest_filler_3
+SAY @1603
+COPY_TRANS ARAN 107
+END
+
+IF ~~ THEN BEGIN finalquest_filler_4
+SAY @1604
+COPY_TRANS ARAN 108
+END
+END
+
+ADD_TRANS_ACTION BODHI2 BEGIN 24 END BEGIN END ~SetGlobal("E3BODHILEAVE","GLOBAL",1)~
+
+INTERJECT_COPY_TRANS ANOMENJ 101 e3fadeanomenfailtest
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1605
+== ANOMENJ IF ~InParty("E3Fade")~ THEN @1606
+END
+
+INTERJECT_COPY_TRANS ANOMENJ 111 e3fadeanomenpasstest
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1607
+== ANOMENJ IF ~InParty("E3Fade")~ THEN @1608
+== KORGANJ IF ~InParty("E3Fade")
+InParty("Korgan")~ THEN @1609
+== E3FADEJ IF ~InParty("E3Fade")
+InParty("Korgan")~ THEN @1610
+== MINSCJ IF ~InParty("E3Fade")
+!InParty("Korgan")
+InParty("Minsc")~ THEN @1611
+== ANOMENJ IF ~InParty("E3Fade")
+!InParty("Korgan")
+InParty("Minsc")~ THEN @1612
+== MINSCJ IF ~InParty("E3Fade")
+!InParty("Korgan")
+InParty("Minsc")~ THEN @1613
+== E3FADEJ IF ~InParty("E3Fade")
+!InParty("Korgan")
+InParty("Minsc")~ THEN @1614
+== E3FADEJ IF ~InParty("E3Fade")
+!InParty("Korgan")
+!InParty("Minsc")~ THEN @1615
+END
+
+INTERJECT ARNBOY01 3 e3fadedouglas1
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1616
+== ANOMENJ IF ~InParty("E3Fade")
+InParty("Anomen")~ THEN @1617
+EXIT
+
+INTERJECT_COPY_TRANS VALYGARJ 56 e3fadedouglas2
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1618
+END
+
+INTERJECT ARNMAN03 1 e3fadecuchul
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1619
+== ARNMAN03 IF ~InParty("E3Fade")~ THEN @1620
+EXIT
+
+INTERJECT_COPY_TRANS ARNMAN04 6 e3fademitsu
+== E3FADEJ IF ~InParty("E3Fade")
+!IfValidForPartyDialogue("KELDORN")
+!IfValidForPartyDialogue("ANOMEN")~ THEN @1621
+== ARNMAN04 IF ~InParty("E3Fade")
+!IfValidForPartyDialogue("KELDORN")
+!IfValidForPartyDialogue("ANOMEN")~ THEN @1622
+== ARNMAN04 IF ~InParty("E3Fade")
+!IfValidForPartyDialogue("KELDORN")
+!IfValidForPartyDialogue("ANOMEN")~ THEN @1623
+== E3FADEJ IF ~InParty("E3Fade")
+!IfValidForPartyDialogue("KELDORN")
+!IfValidForPartyDialogue("ANOMEN")~ THEN @1624
+END
+
+INTERJECT_COPY_TRANS KELDORJ 116 e3fademitsukeldorn
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1625
+END
+
+INTERJECT_COPY_TRANS ANOMENJ 189 e3fademitsuanomen
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1626
+END
+
+INTERJECT ARNMAN09 2 e3fadesttraitor
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1627
+== ARNMAN09 IF ~InParty("E3Fade")~ THEN @1628
+END ARNMAN08 0
+
+INTERJECT_COPY_TRANS BOOTER 6 e3fadebootercleaning
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1629
+== BOOTER IF ~InParty("E3Fade")~ THEN @1630
+END
+
+INTERJECT_COPY_TRANS BAERIE 91 e3fadeaerierest
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1631
+== BAERIE IF ~InParty("E3Fade")~ THEN @1632
+END
+
+INTERJECT_COPY_TRANS2 BARONP 48 e3fadeployer
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1633
+END
+
+INTERJECT_COPY_TRANS2 BARONP 49 e3fadeployer
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1633
+END
+
+INTERJECT_COPY_TRANS2 BARONP 50 e3fadeployer
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1633
+END
+
+INTERJECT_COPY_TRANS2 BARONP 51 e3fadeployer
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1633
+END
+
+INTERJECT_COPY_TRANS2 BARONP 53 e3fadeployer
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1633
+END
+
+INTERJECT_COPY_TRANS2 BARONP 55 e3fadeployer
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1633
+END
+
+INTERJECT_COPY_TRANS YOSHJ 16 e3fadebridgeyoshimo
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1634
+END
+
+INTERJECT_COPY_TRANS BPROST1 1 e3fadebridgeprost
+== E3FADEJ IF ~InParty("E3Fade")
+OR(2)
+Global("E3FADEROMANCEACTIVE","GLOBAL",1)
+Global("E3FADEROMANCEACTIVE","GLOBAL",2)~ THEN @1635
+END
+
+INTERJECT_COPY_TRANS BRELM 7 e3fadebrelm
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1013
+== BRELM IF ~InParty("E3Fade")~ THEN @1636
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1637
+== BRELM IF ~InParty("E3Fade")~ THEN @1638
+END
+
+ADD_TRANS_TRIGGER CLMOM 7 ~!InParty("E3Fade")~
+
+EXTEND_BOTTOM CLMOM 7
+IF ~InParty("E3Fade")~ THEN REPLY #27790 GOTO 8
+IF ~InParty("E3Fade")~ THEN REPLY #27791 GOTO 9
+IF ~InParty("E3Fade")~ THEN REPLY #27792 EXTERN E3FADEJ fademiranda
+END
+
+APPEND E3FADEJ
+IF ~~ THEN BEGIN fademiranda
+SAY @1639
+IF ~~ THEN EXTERN CLMOM fademiranda
+END
+END
+
+APPEND CLMOM
+IF ~~ THEN BEGIN fademiranda
+SAY @1640
+COPY_TRANS CLMOM 10
+END
+END
+
+INTERJECT_COPY_TRANS KORGANJ 43 e3fadekorgandelon
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1641
+== KORGANJ IF ~InParty("E3Fade")~ THEN @1642
+END
+
+INTERJECT_COPY_TRANS DELON 15 e3fadedelon
+== E3FADEJ IF ~InParty("E3Fade")
+!InParty("Korgan")~ THEN @1643
+END
+
+INTERJECT_COPY_TRANS EDWIN 2 e3fademeetedwin
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1644
+END
+
+ADD_TRANS_TRIGGER EMBARL 0 ~!InParty("E3Fade")~
+
+EXTEND_BOTTOM EMBARL 0
+IF ~InParty("E3Fade")~ THEN REPLY #22207 EXTERN E3FADEJ fadeembarl1
+IF ~InParty("E3Fade")~ THEN REPLY #22271 GOTO 2
+END
+
+CHAIN IF ~~ THEN E3FADEJ fadeembarl1
+@1645 == EMBARL @1646 == E3FADEJ @1647
+END
+IF ~~ THEN REPLY @1648 EXTERN EMBARL 1
+IF ~~ THEN REPLY @1649 EXTERN EMBARL 2
+
+INTERJECT_COPY_TRANS EMBARL 2 e3fadeembarl2
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1650
+== EMBARL IF ~InParty("E3Fade")~ THEN @1651
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1652
+== EMBARL IF ~InParty("E3Fade")~ THEN @1653
+END
+
+INTERJECT_COPY_TRANS ANOMENJ 209 e3fadeanomenembarl
+== E3FADEJ IF ~InParty("E3Fade")~ THEN @1654
+END
+
+INTERJECT_COPY_TRANS EMBARL 6 e3fadeembarl3
+== E3FADEJ IF ~InParty("E3Fade") !InParty("Anomen")~ THEN @1655
+== EMBARL IF ~InParty("E3Fade") !InParty("Anomen")~ THEN @79
+END
+
+ADD_TRANS_TRIGGER DHARLOT2 0 ~!InParty("E3Fade")~
+
+EXTEND_BOTTOM DHARLOT2 0
+IF ~InParty("E3Fade")
+!Global("E3FADEROMANCEACTIVE","GLOBAL",2)~ THEN REPLY #22667 EXTERN E3FADEJ fadealtheia1
+IF ~InParty("E3Fade")
+Global("E3FADEROMANCEACTIVE","GLOBAL",2)~ THEN REPLY #22667 EXTERN E3FADEJ fadealtheia2
+IF ~InParty("E3Fade")~ THEN REPLY #22668 GOTO 3
+IF ~InParty("E3Fade")~ THEN REPLY #22669 GOTO 4
+END
+
+APPEND E3FADEJ
+IF ~~ THEN BEGIN fadealtheia1
+SAY @1656
+IF ~~ THEN EXTERN DHARLOT2 2
+END
+
+IF ~~ THEN BEGIN fadealtheia2
+SAY @1657
+IF ~~ THEN EXTERN DHARLOT2 2
+END
+END
+
+ADD_TRANS_TRIGGER GARKID01 13 ~OR(2)
+!InParty("E3Fade")
+!Global("E3FADEROMANCEACTIVE","GLOBAL",2)~
+
+EXTEND_BOTTOM GARKID01 13
+IF ~InParty("E3Fade")
+Global("E3FADEROMANCEACTIVE","GLOBAL",2)~ THEN EXTERN E3FADEJ fadeiltha1
+END
+
+CHAIN IF ~~ THEN E3FADEJ fadeiltha1
+@1658 
+== GARKID01 @1659
+== E3FADEJ @1660
+END
+IF ~~ THEN REPLY @1661 GOTO fadeiltha1_calm
+IF ~~ THEN REPLY @1662 EXTERN GARKID01 fadeiltha1_love
+IF ~~ THEN REPLY @1663 EXTERN GARKID01 fadeiltha1_scare
+IF ~InParty("Keldorn")~ THEN REPLY @1664 EXTERN KELDORJ fadeiltha1_pretty1
+IF ~!InParty("Keldorn")
+Global("E3FADENOOKIE","GLOBAL",1)~ THEN REPLY @1664 GOTO fadeiltha1_pretty2
+IF ~!InParty("Keldorn")
+!Global("E3FADENOOKIE","GLOBAL",1)~ THEN REPLY @1664 GOTO fadeiltha1_pretty3
+
+APPEND E3FADEJ
+IF ~~ THEN BEGIN fadeiltha1_calm
+SAY @1665
+= @1666
+IF ~~ THEN REPLY @1667 EXTERN GARKID01 fadeiltha1_love
+IF ~~ THEN REPLY @1668 EXTERN GARKID01 fadeiltha1_scare
+IF ~InParty("Keldorn")~ THEN REPLY @1664 EXTERN KELDORJ fadeiltha1_pretty1
+IF ~!InParty("Keldorn")
+Global("E3FADENOOKIE","GLOBAL",1)~ THEN REPLY @1664 GOTO fadeiltha1_pretty2
+IF ~!InParty("Keldorn")
+!Global("E3FADENOOKIE","GLOBAL",1)~ THEN REPLY @1664 GOTO fadeiltha1_pretty3
+END
+END
+
+APPEND GARKID01
+IF ~~ THEN BEGIN fadeiltha1_love
+SAY @1669
+IF ~~ THEN GOTO 17
+END
+
+IF ~~ THEN BEGIN fadeiltha1_scare
+SAY @1670
+IF ~~ THEN GOTO 17
+END
+END
+
+CHAIN IF ~~ THEN KELDORJ fadeiltha1_pretty1
+@1671
+== E3FADEJ @1672
+== KELDORJ @1673
+== GARKID01 @1674
+END
+IF ~~ THEN EXTERN GARKID01 17
+
+CHAIN IF ~~ THEN E3FADEJ fadeiltha1_pretty2
+@1675
+== KORGANJ IF ~InParty("Korgan")~ THEN @1676
+== E3FADEJ IF ~InParty("Korgan")~ THEN @1677
+== GARKID01 @1678
+END
+IF ~~ THEN EXTERN GARKID01 17
+
+CHAIN IF ~~ THEN E3FADEJ fadeiltha1_pretty3
+@1679
+== GARKID01 @1680
+END
+IF ~~ THEN EXTERN GARKID01 17
+
+EXTEND_BOTTOM GARKID01 14
+IF ~InParty("E3Fade")
+Global("E3FADEROMANCEACTIVE","GLOBAL",1)~ EXTERN E3FADEJ fadeiltha2
+END
+
+APPEND E3FADEJ
+IF ~~ THEN BEGIN fadeiltha2
+SAY @1681
+IF ~~ THEN REPLY @1682 GOTO fadeiltha2_what
+END
+
+IF ~~ THEN BEGIN fadeiltha2_what
+SAY @1683
+IF ~~ THEN REPLY @1684 EXTERN GARKID01 18
+IF ~~ THEN REPLY @1685 EXTERN GARKID01 fadeiltha2_understand
+END
+END
+
+APPEND GARKID01 
+IF ~~ THEN BEGIN fadeiltha2_understand
+SAY @1686
+COPY_TRANS GARKID01 18
+END
+END
+
+ADD_TRANS_TRIGGER C6ELHAN2 8 ~OR(2)
+!InParty("E3Fade")
+Dead("E3Fade")~
+
+EXTEND_BOTTOM C6ELHAN2 8
+IF ~InParty("E3Fade")
+!Dead("E3Fade")
+OR(2)
+!InParty("Viconia")
+!Dead("Viconia")~ THEN EXTERN C6ELHAN2 elhanfade_1
+IF ~InParty("E3Fade")
+!Dead("E3Fade")
+InParty("Viconia")
+!Dead("Viconia")~ THEN EXTERN C6ELHAN2 elhanfade_2
+END
+
+APPEND C6ELHAN2
+IF ~~ THEN BEGIN elhanfade_1
+SAY @1687
+IF ~~ THEN REPLY #58934 EXTERN C6WARSA1 0
+IF ~~ THEN REPLY #58935 EXTERN C6WARSA1 1
+IF ~~ THEN REPLY #58936 EXTERN C6WARSA1 0
+IF ~~ THEN REPLY #58937 EXTERN C6WARSA1 0
+IF ~InParty("E3Fade")
+!Dead("E3Fade")~ THEN REPLY @1688 EXTERN C6WARSA1 elhanfade_1_2
+END
+
+IF ~~ THEN BEGIN elhanfade_1_4
+SAY @1689
+IF ~~ THEN GOTO 13
+END
+
+IF ~~ THEN BEGIN elhanfade_1_5
+SAY @1690
+IF ~~ THEN EXTERN E3FADEJ elhanfade_1_6
+END
+
+IF ~~ THEN BEGIN elhanfade_1_9
+SAY @1691
+IF ~OR(2)
+!InParty("Viconia")
+Dead("Viconia")~ THEN GOTO 54
+IF ~InParty("Viconia")
+!Dead("Viconia")~ THEN EXTERN C6ELHAN2 elhanfade_2_2
+END
+
+IF ~~ THEN BEGIN elhanfade_1_10
+SAY @1692
+IF ~~ THEN GOTO 26
+END
+
+IF ~~ THEN BEGIN elhanfade_2
+SAY @1693 
+= #58933
+IF ~~ THEN REPLY #58934 EXTERN C6WARSA1 0
+IF ~~ THEN REPLY #58935 EXTERN C6WARSA1 1
+IF ~~ THEN REPLY #58936 EXTERN C6WARSA1 0
+IF ~~ THEN REPLY #58937 EXTERN C6WARSA1 0
+IF ~InParty("E3Fade")
+!Dead("E3Fade")
+InParty("Viconia")
+!Dead("Viconia")~ THEN REPLY @1694 EXTERN C6WARSA1 1
+END
+
+IF ~~ THEN BEGIN elhanfade_2_1
+SAY @1695
+IF ~~ THEN EXTERN E3FADEJ elhanfade_1_6
+END
+
+IF ~~ THEN BEGIN elhanfade_2_2
+SAY @1696
+IF ~~ THEN REPLY #59139 EXTERN VICONIJ 119
+IF ~~ THEN REPLY #59140 GOTO 59
+END
+
+IF ~~ THEN BEGIN elhanfade_2_3
+SAY @1697 
+IF ~~ THEN GOTO 26
+END
+END
+
+APPEND C6WARSA1
+IF ~~ THEN BEGIN elhanfade_1_2
+SAY #58940
+IF ~~ THEN EXTERN C6WARSA2 elhanfade_1_3
+END
+
+IF ~~ THEN BEGIN elhanfade_1_7
+SAY @1698
+IF ~~ THEN EXTERN C6WARSA2 elhanfade_1_8
+END
+END
+
+APPEND C6WARSA2
+IF ~~ THEN BEGIN elhanfade_1_3
+SAY #58941
+IF ~~ THEN EXTERN C6ELHAN2 elhanfade_1_4
+END
+
+IF ~~ THEN BEGIN elhanfade_1_8
+SAY @1699
+IF ~~ THEN EXTERN C6ELHAN2 elhanfade_1_9
+END
+END
+
+ADD_TRANS_TRIGGER C6ELHAN2 53 ~OR(2)
+!InParty("E3Fade")
+Dead("E3Fade")~
+
+EXTEND_BOTTOM C6ELHAN2 53
+IF ~InParty("E3Fade")
+!Dead("E3Fade")
+OR(2)
+!InParty("Viconia")
+!Dead("Viconia")~ THEN EXTERN C6ELHAN2 elhanfade_1_5
+IF ~InParty("E3Fade")
+!Dead("E3Fade")
+InParty("Viconia")
+!Dead("Viconia")~ THEN EXTERN C6ELHAN2 elhanfade_2_1
+END
+
+APPEND E3FADEJ 
+IF ~~ THEN BEGIN elhanfade_1_6
+SAY @1700
+IF ~~ THEN EXTERN C6WARSA1 elhanfade_1_7
+END
+END
+
+ADD_TRANS_TRIGGER C6ELHAN2 24 ~OR(2)
+!InParty("E3Fade")
+Dead("E3Fade")~
+
+EXTEND_BOTTOM C6ELHAN2 24
+IF ~InParty("E3Fade")
+!Dead("E3Fade")
+OR(2)
+!InParty("Viconia")
+!Dead("Viconia")~ THEN EXTERN C6ELHAN2 elhanfade_1_10
+IF ~InParty("E3Fade")
+!Dead("E3Fade")
+InParty("Viconia")
+!Dead("Viconia")~ THEN EXTERN C6ELHAN2 elhanfade_2_3
+END
+
+EXTEND_BOTTOM RIBALD 47
+IF ~Global("E3FADEROMANCEACTIVE","GLOBAL",2)
+Global("E3FADENOOKIE","GLOBAL",1)
+!Global("E3BOUGHTBIKINI","GLOBAL",1)
+!Global("E3KNOWSABOUTBIKINI","GLOBAL",1)~ THEN EXTERN RIBALD ribaldbikini_start
+IF ~!Global("E3BOUGHTBIKINI","GLOBAL",1)
+Global("E3KNOWSABOUTBIKINI","GLOBAL",1)~ THEN REPLY @1701 GOTO ribaldbikini_start_2
+END
+
+APPEND RIBALD
+IF ~~ THEN BEGIN ribaldbikini_start
+SAY @1702
+IF ~PartyGoldGT(99)~ THEN REPLY @1703 DO ~TakePartyGold(100)~ GOTO ribaldbikini_bikini
+IF ~PartyGoldGT(49)~ THEN REPLY @1704 DO ~TakePartyGold(50)~ GOTO 48
+IF ~~ THEN REPLY #57317 GOTO 49
+IF ~~ THEN REPLY @1705 GOTO ribaldbikini_about
+END
+
+IF ~~ THEN BEGIN ribaldbikini_bikini
+SAY @1706
+= @1707
+IF ~~ THEN REPLY @1708 GOTO ribaldbikini_joke
+IF ~~ THEN REPLY @1709 GOTO ribaldbikini_kill
+IF ~~ THEN REPLY @1710 GOTO ribaldbikini_gulp
+IF ~~ THEN REPLY @1711 GOTO ribaldbikini_warrior
+END
+
+IF ~~ THEN BEGIN ribaldbikini_about
+SAY @1712
+IF ~PartyGoldGT(99)~ THEN REPLY @1713 DO ~TakePartyGold(100)~ GOTO ribaldbikini_bikini
+IF ~PartyGoldGT(49)~ THEN REPLY @1704 DO ~TakePartyGold(50)~ GOTO 48
+IF ~~ THEN REPLY #57317 GOTO 49
+END
+
+IF ~~ THEN BEGIN ribaldbikini_joke
+SAY @1714
+= @1715
+IF ~~ THEN REPLY @1716 GOTO ribaldbikini_fee
+IF ~PartyGoldGT(1499)~ THEN REPLY @1717 DO ~TakePartyGold(1500)~ GOTO ribaldbikini_business
+IF ~~ THEN REPLY @1718 GOTO ribaldbikini_received
+IF ~PartyGoldGT(1499)~ THEN REPLY @1719 DO ~TakePartyGold(1500)~ GOTO ribaldbikini_buying
+END
+
+IF ~~ THEN BEGIN ribaldbikini_kill
+SAY @1720
+IF ~~ THEN REPLY @1721 GOTO ribaldbikini_received
+IF ~~ THEN REPLY @1722 GOTO ribaldbikini_gold
+END
+
+IF ~~ THEN BEGIN ribaldbikini_gulp
+SAY @1723
+= @1715
+IF ~~ THEN REPLY @1716 GOTO ribaldbikini_fee
+IF ~PartyGoldGT(1499)~ THEN REPLY @1717 DO ~TakePartyGold(1500)~ GOTO ribaldbikini_business
+IF ~~ THEN REPLY @1718 GOTO ribaldbikini_received
+IF ~PartyGoldGT(1499)~ THEN REPLY @1719 DO ~TakePartyGold(1500)~ GOTO ribaldbikini_buying
+END
+
+IF ~~ THEN BEGIN ribaldbikini_warrior
+SAY @1724
+IF ~~ THEN REPLY @1716 GOTO ribaldbikini_fee
+IF ~PartyGoldGT(1499)~ THEN REPLY @1717 DO ~TakePartyGold(1500)~ GOTO ribaldbikini_business
+IF ~~ THEN REPLY @1718 GOTO ribaldbikini_received
+IF ~PartyGoldGT(1499)~ THEN REPLY @1719 DO ~TakePartyGold(1500)~ GOTO ribaldbikini_buying
+END
+
+IF ~~ THEN BEGIN ribaldbikini_fee
+SAY @1725
+IF ~~ THEN REPLY @1726 GOTO ribaldbikini_robbery
+IF ~PartyGoldGT(1499)~ THEN REPLY @1727 DO ~TakePartyGold(1500)~ GOTO ribaldbikini_business
+END
+
+IF ~~ THEN BEGIN ribaldbikini_business
+SAY @1728
+IF ~~ THEN DO ~GiveItemCreate("E3BIKINI",Player1,1,0,0)
+SetGlobal("E3BOUGHTBIKINI","GLOBAL",1)~ EXIT
+END
+
+IF ~~ THEN BEGIN ribaldbikini_received
+SAY @1729
+IF ~~ THEN DO ~SetGlobal("E3KNOWSABOUTBIKINI","GLOBAL",1)~ EXIT
+END
+
+IF ~~ THEN BEGIN ribaldbikini_buying
+SAY @1730
+IF ~~ THEN DO ~GiveItemCreate("E3BIKINI",Player1,1,0,0)
+SetGlobal("E3BOUGHTBIKINI","GLOBAL",1)~ EXIT
+END
+
+IF ~~ THEN BEGIN ribaldbikini_gold
+SAY @1731
+IF ~~ THEN REPLY @1716 GOTO ribaldbikini_fee
+IF ~PartyGoldGT(1499)~ THEN REPLY @1717 DO ~TakePartyGold(1500)~ GOTO ribaldbikini_business
+END
+
+IF ~~ THEN BEGIN ribaldbikini_robbery
+SAY @1732
+IF ~~ THEN DO ~SetGlobal("E3KNOWSABOUTBIKINI","GLOBAL",1)~ EXIT
+END
+
+IF ~~ THEN BEGIN ribaldbikini_start_2
+SAY @1733
+IF ~~ THEN REPLY @1734 GOTO ribaldbikini_enquiring
+IF ~PartyGoldGT(1499)~ THEN REPLY @1717 DO ~TakePartyGold(1500)~ GOTO ribaldbikini_business
+IF ~PartyGoldGT(1499)~ THEN REPLY @1719 DO ~TakePartyGold(1500)~ GOTO ribaldbikini_buying
+END
+
+IF ~~ THEN BEGIN ribaldbikini_enquiring
+SAY @1735
+IF ~~ THEN EXIT
+END
+END
+
+INTERJECT BANOMEN 185 e3fadeobjectsanomen
+== E3FADEJ IF ~InParty("E3Fade")
+See("E3Fade")
+!StateCheck("E3Fade",STATE_SLEEPING)~ THEN @1736
+END
+IF ~~ THEN REPLY @1737 EXTERN E3FADEJ fadeobjectsano_aimed
+IF ~~ THEN REPLY @1738 EXTERN E3FADEJ fadeobjectsano_sorry
+IF ~~ THEN REPLY @1739 EXTERN E3FADEJ fadeobjectsano_clear
+
+APPEND E3FADEJ
+IF ~~ THEN BEGIN fadeobjectsano_aimed
+SAY @1740
+IF ~~ THEN REPLY @1741 GOTO fadeobjectsano_disapproval
+IF ~~ THEN REPLY @1742 GOTO fadeobjectsano_respect
+IF ~~ THEN REPLY @1743 GOTO fadeobjectsano_do
+END
+
+IF ~~ THEN BEGIN fadeobjectsano_sorry
+SAY @1744
+IF ~~ THEN REPLY @1741 GOTO fadeobjectsano_disapproval
+IF ~~ THEN REPLY @1742 GOTO fadeobjectsano_respect
+IF ~~ THEN REPLY @1743 GOTO fadeobjectsano_do
+END
+
+IF ~~ THEN BEGIN fadeobjectsano_clear
+SAY @1745
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN fadeobjectsano_disapproval
+SAY @1746
+= @1747
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN fadeobjectsano_respect
+SAY @1748
+= @1747
+IF ~~ THEN EXIT
+END
+
+IF ~~ THEN BEGIN fadeobjectsano_do
+SAY @1749
+IF ~~ THEN EXIT
+END
+END
+
+
+
+
+
+
+
+
+

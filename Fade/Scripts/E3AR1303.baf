@@ -1,0 +1,9 @@
+IF
+   Global("E3DELCIAKNOCKOUT","GLOBAL",2)
+THEN
+   RESPONSE #100
+      Wait(7)
+      SetGlobal("DelceaMove","GLOBAL",1)
+      ActionOverride("kpsold01",EscapeArea())
+      ActionOverride("Delcia",EscapeAreaMove("AR1300",768,3310,8))
+END

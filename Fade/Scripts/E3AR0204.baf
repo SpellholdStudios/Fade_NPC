@@ -1,0 +1,14 @@
+IF
+   GlobalGT("E3FINALQUEST","GLOBAL",3)
+   GlobalLT("E3FINALQUEST","GLOBAL",7)
+   Global("E3CIRIONSPAWN","GLOBAL",0)
+THEN
+   RESPONSE #100
+      SetGlobal("E3CIRIONSPAWN","GLOBAL",1)
+      CreateCreature("E3CIRION",[1019.3077],2)
+      CreateCreature("E3SAVANY",[1066.3091],2)
+      CreateCreature("E3JEKHRI",[1051.3048],2)
+      CreateCreature("E3SUME",[974.3066],2)
+      CreateCreature("E3TAEGHE",[1045.3015],2)
+      CreateCreature("E3ERIALE",[950.3028],2)
+END

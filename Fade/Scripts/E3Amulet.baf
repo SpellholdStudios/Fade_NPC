@@ -1,0 +1,39 @@
+IF
+   Delay(6)
+   OR(6)
+      HasItemEquiped("E3AMUL01",Player1)
+      HasItemEquiped("E3AMUL01",Player2)
+      HasItemEquiped("E3AMUL01",Player3)
+      HasItemEquiped("E3AMUL01",Player4)
+      HasItemEquiped("E3AMUL01",Player5)
+      HasItemEquiped("E3AMUL01",Player6)
+   !HasItemEquiped("E3AMUL01","E3Fade")
+THEN
+   RESPONSE #100
+      DisplayStringHeadOwner("E3AMUL01",@7052)
+      ActionOverride(Player1,DropItem("E3AMUL01",[-1.-1]))
+      ActionOverride(Player2,DropItem("E3AMUL01",[-1.-1]))
+      ActionOverride(Player3,DropItem("E3AMUL01",[-1.-1]))
+      ActionOverride(Player4,DropItem("E3AMUL01",[-1.-1]))
+      ActionOverride(Player5,DropItem("E3AMUL01",[-1.-1]))
+      ActionOverride(Player6,DropItem("E3AMUL01",[-1.-1]))
+END
+
+IF
+   Delay(6)
+   OR(5)
+      HasItemEquiped("E3AMUL02",Player2)
+      HasItemEquiped("E3AMUL02",Player3)
+      HasItemEquiped("E3AMUL02",Player4)
+      HasItemEquiped("E3AMUL02",Player5)
+      HasItemEquiped("E3AMUL02",Player6)
+   !HasItemEquiped("E3AMUL02","E3Fade")
+THEN
+   RESPONSE #100
+      DisplayStringHeadOwner("E3AMUL02",@7053)
+      ActionOverride(Player2,DropItem("E3AMUL02",[-1.-1]))
+      ActionOverride(Player3,DropItem("E3AMUL02",[-1.-1]))
+      ActionOverride(Player4,DropItem("E3AMUL02",[-1.-1]))
+      ActionOverride(Player5,DropItem("E3AMUL02",[-1.-1]))
+      ActionOverride(Player6,DropItem("E3AMUL02",[-1.-1]))
+END

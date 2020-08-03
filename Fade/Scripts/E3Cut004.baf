@@ -1,0 +1,32 @@
+IF
+   True()
+THEN
+   RESPONSE #100
+      CutSceneId("E3Fade")
+      CreateCreatureObject("VAMPAMB","E3Fade",0,0,0)
+      SetGlobal("E3FADEVAMPIRE","GLOBAL",1)
+      Wait(1)
+      CreateVisualEffectObject("SPDISPMA",Myself)
+      DropInventory()
+      SetLeavePartyDialogFile()
+      LeaveParty()
+      CreateVisualEffectObject("SPDIMNDR",Myself)
+      Wait(2)
+      MoveGlobal("AR1604","E3Fade",[203.108])
+      EndCutSceneMode()
+END
+
+IF 
+   True()
+THEN 
+   RESPONSE #100
+      CutSceneId("bodhiamb")
+      DialogInterrupt(FALSE)
+      CreateCreatureObject("VAMPIM01",Myself,0,0,0)
+      CreateCreatureObject("VAMPIM01",Myself,0,0,0)
+      CreateCreatureObject("VAMPIM01",Myself,0,0,0)
+      CreateCreatureObject("VAMPIM01",Myself,0,0,0) 
+      ReallyForceSpell(Myself,DRYAD_TELEPORT)
+END
+
+

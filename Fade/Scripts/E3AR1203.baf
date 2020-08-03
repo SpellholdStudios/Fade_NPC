@@ -1,0 +1,7 @@
+IF
+   Global("E3FIRKRAAG","GLOBAL",0)
+THEN
+   RESPONSE #100
+      GiveItemCreate("E3TOOTH","FIRKRA02",1,0,0)
+      SetGlobal("E3FIRKRAAG","GLOBAL",1)
+END

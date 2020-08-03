@@ -1,0 +1,31 @@
+IF
+   True()
+THEN
+   RESPONSE #100
+      CutSceneId("E3Fade")
+      SetName(~Fade~) 
+      SetPlayerSound(Myself,@2,MORALE)
+      SetPlayerSound(Myself,@6,LEADER)
+      SetPlayerSound(Myself,@7,TIRED)
+      SetPlayerSound(Myself,@8,BORED)
+      SetPlayerSound(Myself,@9,BATTLE_CRY1)
+      SetPlayerSound(Myself,@10,BATTLE_CRY2)
+      SetPlayerSound(Myself,@11,BATTLE_CRY3)
+      SetPlayerSound(Myself,@12,BATTLE_CRY4)
+      SetPlayerSound(Myself,@14,DAMAGE)
+      SetPlayerSound(Myself,@15,DYING)
+      SetPlayerSound(Myself,@16,HURT)
+      SetPlayerSound(Myself,@18,SELECT_COMMON1)
+      SetPlayerSound(Myself,@22,SELECT_ACTION1)
+      SetPlayerSound(Myself,@23,SELECT_ACTION2)
+      SetPlayerSound(Myself,@31,CRITICAL_HIT)
+      SetPlayerSound(Myself,@32,CRITICAL_MISS)
+      SetPlayerSound(Myself,@33,TARGET_IMMUNE)
+      SetPlayerSound(Myself,@35,INVENTORY_FULL)
+      SetPlayerSound(Myself,@6,EXISTANCE5)
+      SetPlayerSound(Myself,@36,SPELL_DISRUPTED)
+      EndCutSceneMode()
+END
+
+
+

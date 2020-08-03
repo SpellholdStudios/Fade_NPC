@@ -1,0 +1,14 @@
+IF
+   True()
+THEN
+   RESPONSE #100
+      CutSceneId("E3Fade")
+      MoveToObject("Delcia")
+      FaceObject("Delcia")
+      SwingOnce()
+      Wait(1)
+      ActionOverride("Delcia",PlayDead(100))
+      SetGlobal("E3DELCIAKNOCKOUT","GLOBAL",1)
+      Wait(1)
+      StartDialogueNoSet([PC])
+END

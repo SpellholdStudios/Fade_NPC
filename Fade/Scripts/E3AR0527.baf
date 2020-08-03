@@ -1,0 +1,8 @@
+IF
+   Global("E3ARANSMUMEXISTS","GLOBAL",0)
+   Global("E3ARANSMUM","GLOBAL",2)
+THEN
+   RESPONSE #100
+      SetGlobal("E3ARANSMUMEXISTS","GLOBAL",1)
+      CreateCreature("E3ARANSM",[374.353],14)
+END

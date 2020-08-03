@@ -1,0 +1,26 @@
+IF
+   !Detect("E3Fade")
+   InParty("E3Fade")
+THEN
+   RESPONSE #100
+      MoveToObject("E3Fade")
+END
+
+IF
+   Detect("E3Fade")
+   InParty("E3Fade")
+   !StateCheck("E3Fade",STATE_SLEEPING)
+   Global("E3MESSENGERTALKS","LOCALS",0)
+THEN
+   RESPONSE #100
+      SetGlobal("E3MESSENGERTALKS","LOCALS",1)
+      Dialogue("E3Fade")
+END
+
+IF
+   GlobalGT("E3FINALQUEST","GLOBAL",0)
+THEN
+   RESPONSE #100
+      EscapeArea()
+END
+

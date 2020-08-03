@@ -1,0 +1,13 @@
+IF
+   InParty("E3Fade")
+   See("E3Fade")
+   !StateCheck("E3Fade",STATE_SLEEPING)
+   Range([PC],10)
+   Global("E3CIRIONTALKS","LOCALS",0)
+   GlobalGT("E3FINALQUEST","GLOBAL",3)
+   GlobalLT("E3FINALQUEST","GLOBAL",7)
+THEN
+   RESPONSE #100
+      StartDialogueNoSet(Player1)
+END
+

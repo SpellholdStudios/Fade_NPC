@@ -1,0 +1,72 @@
+IF
+   See(NearestEnemyOfType([PC]))
+   Global("Prep","LOCALS",0)
+THEN
+   RESPONSE #100
+      SetGlobalTimer("Cast","LOCALS",0)
+      SetGlobalTimer("CastKill","LOCALS",0)
+      SetGlobalTimer("CastAvoid","LOCALS",0)
+      SetGlobal("Kill","LOCALS",2)
+      SetGlobal("Avoid","LOCALS",2)
+      SetGlobal("Prep","LOCALS",1)
+END
+
+IF
+   GlobalTimerExpired("Cast","LOCALS")
+   HasItem("potn55",Myself)
+   HPPercentLT(Myself,50)
+THEN
+   RESPONSE #100
+      SetGlobalTimer("Cast","LOCALS",6)
+      UseItem("potn55",Myself)
+END
+
+IF
+   GlobalTimerExpired("Cast","LOCALS")
+   HasItem("potn10",Myself)
+   See(NearestEnemyOf(Myself))
+   OR(2)
+      !StateCheck(Myself,STATE_INVISIBLE)
+      !StateCheck(Myself,STATE_IMPROVEDINVISIBILITY)
+THEN
+   RESPONSE #100
+      SetGlobalTimer("Cast","LOCALS",6)
+      UseItem("potn10",Myself)
+END
+
+IF
+   GlobalTimerExpired("Cast","LOCALS")
+   GlobalTimerExpired("CastAvoid","LOCALS")
+   GlobalGT("Avoid","LOCALS",0)
+   See(NearestEnemyOf(Myself))
+THEN
+   RESPONSE #100
+      IncrementGlobal("Avoid","LOCALS",-1)
+      SetGlobalTimer("Cast","LOCALS",6)
+      SetGlobalTimer("CastAvoid","LOCALS",30)
+      SpellNoDec(Myself,ROGUE_AVOID_DEATH)
+END
+
+IF
+   GlobalTimerExpired("Cast","LOCALS")
+   GlobalTimerExpired("CastKill","LOCALS")
+   GlobalGT("Kill","LOCALS",0)
+   See(NearestEnemyOf(Myself))
+THEN
+   RESPONSE #100
+      IncrementGlobal("Kill","LOCALS",-1)
+      SetGlobalTimer("Cast","LOCALS",6)
+      SetGlobalTimer("CastKill","LOCALS",6)
+      SpellNoDec(Myself,ROGUE_ASSASINATION)
+END
+
+IF
+   See(NearestEnemyOf(Myself))
+   !Allegiance(LastSeenBy(Myself),ENEMY)
+THEN
+   RESPONSE #100
+      AttackReevaluate(LastSeenBy(Myself),12)
+END
+
+
+

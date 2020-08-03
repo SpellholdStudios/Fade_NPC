@@ -1,0 +1,7 @@
+IF
+   Global("E3DADROWMOVE","GLOBAL",2)
+THEN
+   RESPONSE #100
+      SetGlobal("E3DADROWMOVE","GLOBAL",3)
+      ActionOverride("dadrow22",JumpToPoint([399.853]))
+END

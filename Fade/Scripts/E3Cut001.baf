@@ -1,0 +1,26 @@
+IF
+  True()
+THEN
+    RESPONSE #100
+        CutSceneId("E3Mallon")
+        ActionOverride("E3Fade",SetLeavePartyDialogFile())
+	ActionOverride("E3Fade",ChangeAIScript("",DEFAULT)
+	ActionOverride("E3Fade",DropInventory())
+	ActionOverride("E3Fade",LeaveParty())
+	ForceSpell("E3Fade",DRYAD_TELEPORT)
+	ForceSpell("E3HoodL",DRYAD_TELEPORT)
+	ForceSpell("E3HoodG1",DRYAD_TELEPORT)
+	ForceSpell("E3Mallon",DRYAD_TELEPORT)
+	Wait(3)
+END
+
+IF
+  True()
+THEN 
+     RESPONSE #100
+        CutSceneId(Player1)
+        DisplayStringHead(Player1,@7054)
+        GiveItemCreate("E3Letter",Player1,1,0,0)
+	Wait(2)
+	EndCutSceneMode()
+END

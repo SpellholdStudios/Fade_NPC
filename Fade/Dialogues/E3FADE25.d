@@ -1,0 +1,122 @@
+
+EXTEND_BOTTOM FATESP 6 #4
+IF ~ !Dead("E3FADE") !InMyArea("E3FADE") Global("E3FADESummonedToB","GLOBAL",0)~ 
+THEN REPLY @4804 DO ~CreateVisualEffect("SPPORTAL",[1909.1228])
+Wait(2) 
+CreateCreature("e3fade25",[1909.1228],0) 
+SetGlobal("E3FADESummonedToB","GLOBAL",1)~ GOTO 8
+END
+
+EXTEND_BOTTOM FATESP 6 #4
++ ~!Dead("E3Fade")
+   !InMyArea("E3Fade")
+   Global("E3FadeSummonedToB","GLOBAL",0) 
+   Global("E3FADEROMANCEACTIVE","GLOBAL",0)
+   Gender(Player1,MALE)~ 
++ @4805  
+   DO ~CreateVisualEffect("SPPORTAL",[1909.1228])
+Wait(2) 
+CreateCreature("e3fade25",[1909.1228],0) 
+SetGlobal("E3FADESummonedToB","GLOBAL",1)
+SetGlobal("E3FADEMATCH","GLOBAL",1)
+SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",2)~ GOTO 8
+END
+
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+
+BEGIN E3FADE25
+
+IF~Global("E3FadeJoinToB","GLOBAL",0) !Global("E3FADEROMANCEACTIVE","GLOBAL",2)~THEN BEGIN FadeToB000
+SAY @4806
+= @4807
+= @4808
+IF~~THEN REPLY @4809 GOTO FadeToB001
+IF~~THEN REPLY @4810 GOTO FadeToB002
+END
+
+IF~~THEN BEGIN FadeToB001
+SAY @4811
+IF~~THEN REPLY @4812 GOTO FadeToB003
+IF~~THEN REPLY @4813 GOTO FadeToB002
+END
+
+IF~~THEN BEGIN FadeToB003
+SAY @4814
+IF~~THEN DO ~SetGlobal("E3FadeJoinToB","GLOBAL",1) JoinParty()~ EXIT
+END
+
+IF~~THEN BEGIN FadeToB002
+SAY @4815
+IF~~THEN DO ~~ EXIT
+END
+
+///////////////////////////////////////////////////////
+
+IF~Global("E3FadeJoinToB","GLOBAL",0) Global("E3FADEROMANCEACTIVE","GLOBAL",2)~THEN BEGIN FadeToB004
+SAY @4806
+= @4816
+= @4817
+IF~~THEN REPLY @4818 GOTO FadeToB005
+IF~~THEN REPLY @4819 GOTO FadeToB006x
+END
+
+IF~~THEN BEGIN FadeToB005
+SAY @4820
+IF~~THEN REPLY @4821 GOTO FadeToB007x
+IF~~THEN REPLY @4822 GOTO FadeToB006x
+END
+
+IF~~THEN BEGIN FadeToB007x
+SAY @4823
+IF~~THEN DO ~SetGlobal("E3FadeJoinToB","GLOBAL",1) JoinParty()~ EXIT
+END
+
+IF~~THEN BEGIN FadeToB006x
+SAY @4824
+IF~~THEN DO ~SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
+END
+
+/////////////////////////////////////////////////////
+
+IF~Global("E3FadeJoinToB","GLOBAL",0)~THEN BEGIN FadeToB007
+SAY @4825
+IF~~THEN REPLY @4812 GOTO FadeToB003x
+IF~~THEN REPLY @4826 GOTO FadeToB02x
+END
+
+IF~~THEN BEGIN FadeToB003x
+SAY @4814
+IF~~THEN DO ~SetGlobal("E3FadeJoinToB","GLOBAL",1) JoinParty()~ EXIT
+END
+
+IF~~THEN BEGIN FadeToB02x
+SAY @4824
+IF~~THEN DO ~~ EXIT
+END
+
+//////////////////////////////////////////////////////
+
+BEGIN ~E3Fad25P~
+
+IF ~Global("E3FadeJoinToB","GLOBAL",1)~ THEN BEGIN FadeToB011
+SAY @4827
+IF~~THEN REPLY @4828 DO ~JoinParty()~ EXIT
+IF~~THEN REPLY @4829 GOTO FadeToB012 
+END
+
+IF~~THEN BEGIN FadeToB012
+SAY @4830
+IF~~THEN DO ~SetGlobal("E3FadeJoinToB","GLOBAL",0)~ EXIT
+END
+
+IF ~Global("E3FadeJoinToB","GLOBAL",1) Global("E3FADEROMANCEACTIVE","GLOBAL",2)~ THEN BEGIN FadeToB013
+SAY @4831
+IF~~THEN REPLY @4832 DO ~JoinParty()~ EXIT
+IF~~THEN REPLY @4833 GOTO FadeToB014  
+END
+
+IF~~THEN BEGIN FadeToB014
+SAY @4834
+IF~~THEN DO ~SetGlobal("E3FadeKickedOut","LOCALS",1) SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",3)~ EXIT
+END

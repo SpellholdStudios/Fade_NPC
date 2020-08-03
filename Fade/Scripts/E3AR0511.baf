@@ -1,0 +1,10 @@
+IF
+   Global("E3FINALQUEST","GLOBAL",2)
+   Global("E3DARLAELLASPAWN","GLOBAL",0)
+THEN
+   RESPONSE #100
+      SetGlobal("E3DARLAELLASPAWN","GLOBAL",1)
+      CreateCreature("E3DARLA",[834.654],3)
+      CreateCreature("E3ELLA",[877.684],5)
+END
+

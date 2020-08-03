@@ -1,0 +1,16 @@
+IF
+   HasItem("potn55",Myself)
+   HPPercentLT(Myself,50)
+THEN
+   RESPONSE #100
+      UseItem("potn55",Myself)
+END
+
+IF
+   See(NearestEnemyOf(Myself))
+   !Allegiance(LastSeenBy(Myself),ENEMY)
+THEN
+   RESPONSE #100
+      EquipMostDamagingMelee()
+      AttackReevaluate(LastSeenBy(Myself),12)
+END

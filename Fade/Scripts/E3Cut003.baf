@@ -1,0 +1,24 @@
+IF
+   True()
+THEN 
+   RESPONSE #100
+      CutSceneId(Player1)
+      FadeToColor([20.0],0)
+      Wait(1)
+      LeaveAreaLUAPanic("AR2203","",[411.910],6)
+      LeaveAreaLUA("AR2203","",[411.910],6)
+      ActionOverride(Player2,LeaveAreaLUA("AR2203","",[568.1063],8)
+      ActionOverride(Player3,LeaveAreaLUA("AR2203","",[632.1098],8)
+      ActionOverride(Player4,LeaveAreaLUA("AR2203","",[702.1099],7)
+      ActionOverride(Player5,LeaveAreaLUA("AR2203","",[708.1038],6)
+      ActionOverride(Player6,LeaveAreaLUA("AR2203","",[714.971],5)
+      ActionOverride("E3Fade",LeaveAreaLUA("AR2203","",[351.851],14)
+      ActionOverride("dadrow22",JumpToPoint([755.832]))
+      SetGlobal("E3DADROWMOVE","GLOBAL",1)
+      Wait(1)
+      FadeFromColor([20.0],0)
+      Wait(1)
+      ActionOverride("E3Fade",Interact(Player1))
+      EndCutSceneMode()
+END
+

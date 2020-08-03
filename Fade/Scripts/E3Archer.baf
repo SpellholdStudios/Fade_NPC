@@ -1,0 +1,51 @@
+IF
+   See(NearestEnemyOfType([PC]))
+   Global("Prep","LOCALS",0)
+THEN
+   RESPONSE #100
+      SetGlobalTimer("Cast","LOCALS",0)
+      EquipRanged()
+      SetGlobal("Shot","LOCALS",3)
+      SetGlobal("Prep","LOCALS",1)
+END
+
+IF
+   GlobalTimerExpired("Cast","LOCALS")
+   HPPercentLT(Myself,50)
+   HasItem("potn55",Myself)
+THEN
+   RESPONSE #100
+      SetGlobalTimer("Cast","LOCALS",6)
+      UseItem("potn55",Myself)
+END
+
+IF
+   GlobalTimerExpired("Cast","LOCALS")
+   See(NearestEnemyOf(Myself))
+   GlobalGT("Shot","LOCALS",0)
+   !Range(NearestEnemyOf(Myself),5)
+THEN
+   RESPONSE #100
+      IncrementGlobal("Shot","LOCALS",-1)
+      SetGlobalTimer("Cast","LOCALS",6)
+      SpellNoDec(Myself,ARCHER_CALL_SHOT)
+      AttackReevaluate(NearestEnemyOf(Myself),15)
+END
+
+IF
+   See(NearestEnemyOf(Myself))
+   !Range(NearestEnemyOf(Myself),7)
+THEN
+   RESPONSE #100
+      EquipRanged()
+      AttackReevaluate(NearestEnemyOf(Myself),45)
+END
+
+IF
+   See(NearestEnemyOf(Myself))
+   Range(NearestEnemyOf(Myself),7)
+THEN
+   RESPONSE #100
+      RunAwayFrom(NearestEnemyOf(Myself),30)
+END
+

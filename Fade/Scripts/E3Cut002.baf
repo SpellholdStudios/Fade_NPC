@@ -1,0 +1,16 @@
+IF
+  True()
+THEN
+    RESPONSE #100
+        CutSceneId("E3Mallon")
+        ForceSpell(Myself,DRYAD_TELEPORT)
+END
+
+IF
+  True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player1)
+        Wait(4)
+        EndCutSceneMode()
+END

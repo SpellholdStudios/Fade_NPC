@@ -1,0 +1,6 @@
+IF
+   Global("E3TRANSFORM","GLOBAL",1)
+THEN
+   RESPONSE #100
+      StartDialogueNoSet([PC])
+END

@@ -1,0 +1,68 @@
+IF
+   Global("StartEndBios","AR6200",1)
+   InParty("E3Fade")
+   Global("E3FADEBIO","GLOBAL",0)
+   Global("E3FADEROMANCEACTIVE","GLOBAL",2)
+   Global("PlayerChoseEssence","GLOBAL",0)
+   !Global("E3FADENOTPREGNANT","GLOBAL",1)
+   Global("E3FADEISPREGNANT","GLOBAL",1)
+THEN
+   RESPONSE #100
+      SetGlobal("E3FADEBIO","GLOBAL",1)
+      TextScreen("E3FADE05")
+END
+
+IF
+   Global("StartEndBios","AR6200",1)
+   InParty("E3Fade")
+   Global("E3FADEBIO","GLOBAL",0)
+   Global("E3FADEROMANCEACTIVE","GLOBAL",2)
+   Global("PlayerChoseEssence","GLOBAL",0)
+   OR(2)
+      Global("E3FADENOTPREGNANT","GLOBAL",1)
+      !Global("E3FADEISPREGNANT","GLOBAL",1)
+THEN
+   RESPONSE #100
+      SetGlobal("E3FADEBIO","GLOBAL",1)
+      TextScreen("E3FADE04")
+END
+
+IF
+   Global("StartEndBios","AR6200",1)
+   InParty("E3Fade")
+   Global("E3FADEBIO","GLOBAL",0)
+   Global("E3FADEROMANCEACTIVE","GLOBAL",2)
+   Global("PlayerChoseEssence","GLOBAL",1)
+   !Global("E3FADENOTPREGNANT","GLOBAL",1)
+   Global("E3FADEISPREGNANT","GLOBAL",1)
+THEN
+   RESPONSE #100
+      SetGlobal("E3FADEBIO","GLOBAL",1)
+      TextScreen("E3FADE03")
+END
+
+IF
+   Global("StartEndBios","AR6200",1)
+   InParty("E3Fade")
+   Global("E3FADEBIO","GLOBAL",0)
+   Global("E3FADEROMANCEACTIVE","GLOBAL",2)
+   Global("PlayerChoseEssence","GLOBAL",1)
+   OR(2)
+      Global("E3FADENOTPREGNANT","GLOBAL",1)
+      !Global("E3FADEISPREGNANT","GLOBAL",1)
+THEN
+   RESPONSE #100
+      SetGlobal("E3FADEBIO","GLOBAL",1)
+      TextScreen("E3FADE02")
+END
+
+IF
+   Global("StartEndBios","AR6200",1)
+   InParty("E3Fade")
+   Global("E3FADEBIO","GLOBAL",0)
+   !Global("E3FADEROMANCEACTIVE","GLOBAL",2)
+THEN
+   RESPONSE #100
+      SetGlobal("E3FADEBIO","GLOBAL",1)
+      TextScreen("E3FADE01")
+END

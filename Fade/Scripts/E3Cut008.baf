@@ -1,0 +1,16 @@
+IF
+   True()
+THEN
+   RESPONSE #100
+      CutSceneId(Player1)
+      ActionOverride("E3Demon2",TakePartyItem("E3TOOTH"))
+      ActionOverride("E3Demon2",DestroyItem("E3TOOTH"))
+      ActionOverride("E3Demon2",ForceSpell(Myself,SAREVOK_FLASHY1))
+      Wait(1)
+      ActionOverride("E3Demon2",ForceSpellPoint([619.280],SAREVOK_FLASHY1))
+      Wait(1)
+      ActionOverride("E3Demon2",DestroySelf())
+      MoveGlobal("AR0319","E3Fade",[619.280])
+      Wait(1)
+      EndCutSceneMode()
+END

@@ -1,0 +1,27 @@
+IF
+  Global("E3FADEROMANCEACTIVE","GLOBAL",2)
+  See(Player1)
+  CombatCounter(0)
+  Global("E3EXPLOVETALK","GLOBAL",8)
+THEN
+    RESPONSE #100
+        PlaySong(0)
+        PlaySound("E3THEME")
+        Interact(Player1)
+END
+
+
+
+IF
+   Global("E3BABYTAKECARE","LOCALS",1)
+   Global("E3BABYANNOUNCE","LOCALS",0)
+   NumInPartyGT(2)
+   See(Player1)
+   CombatCounter(0)
+THEN
+   RESPONSE #100
+      SetGlobal("E3BABYANNOUNCE","LOCALS",1)
+      StartDialogueNoSet(Player1)
+END
+
+

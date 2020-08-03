@@ -1,0 +1,50 @@
+IF
+  Global("E3SLAVERKIDNAP","GLOBAL",1)
+  Global("E3SPAWNMALLON","GLOBAL",0)
+THEN
+    RESPONSE #100
+        SetGlobal("E3SPAWNMALLON","GLOBAL",1)
+        CreateCreature("E3MALLON",[1930.1091],3)
+END
+
+IF 
+   Exists("E3Fade")
+   Global("E3FADEDAMAGE","AR0907",0)
+   HPPercentLT("E3Fade",26)
+THEN 
+     RESPONSE #100
+        SetGlobal("E3FADEDAMAGE","AR0907",1)
+END
+
+IF
+  Exists("E3Fade")
+  Global("E3FADEDAMAGE","AR0907",0)
+  HPPercentGT("E3Fade",25)
+  HPPercentLT("E3Fade",51)
+THEN
+    RESPONSE #100
+        SetGlobal("E3FADEDAMAGE","AR0907",1)
+        ApplyDamagePercent("E3Fade",20,MAGIC)
+END
+
+IF
+  Exists("E3Fade")
+  Global("E3FADEDAMAGE","AR0907",0)
+  HPPercentGT("E3Fade",50)
+  HPPercentLT("E3Fade",76)
+THEN
+    RESPONSE #100
+        SetGlobal("E3FADEDAMAGE","AR0907",1)
+        ApplyDamagePercent("E3Fade",40,MAGIC)
+END
+
+IF
+  Exists("E3Fade")
+  Global("E3FADEDAMAGE","AR0907",0)
+  HPPercentGT("E3Fade",75)
+THEN
+    RESPONSE #100
+        SetGlobal("E3FADEDAMAGE","AR0907",1)
+        ApplyDamagePercent("E3Fade",60,MAGIC)
+END
+

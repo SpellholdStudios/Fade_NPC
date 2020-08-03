@@ -1,0 +1,13 @@
+IF
+   True()
+THEN 
+   RESPONSE #100
+      CutSceneId("E3Demon")
+      ForceSpell(Myself,LONG_RED_MIGHT)
+      SetGlobal("E3TRANSFORM","GLOBAL",1)
+      Wait(1)
+      Polymorph(TANARRI)
+      Wait(2)
+      StartDialogueNoSet(Player1)
+      EndCutSceneMode()
+END

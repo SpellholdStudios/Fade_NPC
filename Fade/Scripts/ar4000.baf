@@ -1,0 +1,11 @@
+/* Fade was in party upon transition: switch her script to ToB one and disable fate spirit summoning */
+
+IF
+	InPartyAllowDead("E3Fade")
+	Global("E3FADESummonedToB","GLOBAL",0)
+THEN
+	RESPONSE #100
+		ActionOverride("E3Fade",ChangeAIScript("E3Fade25",OVERRIDE))
+		SetGlobal("E3FADESummonedToB","GLOBAL",1)
+		Continue()
+END

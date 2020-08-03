@@ -1,4 +1,4 @@
-
+/*
 EXTEND_BOTTOM FATESP 6 #4
 IF ~ !Dead("E3FADE") !InMyArea("E3FADE") Global("E3FADESummonedToB","GLOBAL",0)~ 
 THEN REPLY @4804 DO ~CreateVisualEffect("SPPORTAL",[1909.1228])
@@ -21,6 +21,7 @@ SetGlobal("E3FADESummonedToB","GLOBAL",1)
 SetGlobal("E3FADEMATCH","GLOBAL",1)
 SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",2)~ GOTO 8
 END
+*/
 
 //////////////////////////////////////////////////////
 //////////////////////////////////////////////////////

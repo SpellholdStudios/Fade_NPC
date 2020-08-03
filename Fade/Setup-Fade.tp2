@@ -1,6 +1,6 @@
 BACKUP ~Fade/Backup~
 AUTHOR ~Mistress Elysia, Silmarien, Lava Del'Vortel, Kai of Candlekeep~
-VERSION ~5.0~
+VERSION ~5.1~
 
 README ~Fade/Fade_readme.html~
 
@@ -401,6 +401,15 @@ USING ~fade\tra\autotra/%s\fade.tra~
 COMPILE ~Fade/Dialogues/E3Fade25.d~ EVALUATE_BUFFER
 USING ~fade\tra\autotra/%s\fade.tra~
 
+/* fate spirit summoning: make EET consistent */
+ACTION_IF GAME_IS ~eet~ BEGIN
+  COMPILE ~Fade/Dialogues/Fade_Fatesp_eet.d~ EVALUATE_BUFFER
+USING ~fade\tra\autotra/%s\fade.tra~
+END ELSE BEGIN
+    COMPILE ~Fade/Dialogues/Fade_Fatesp_bg2.d~ EVALUATE_BUFFER
+USING ~fade\tra\autotra/%s\fade.tra~
+END
+
 // 2da appending
 APPEND ~pdialog.2da~
 ~E3Fade      E3FadeP      E3FadeJ      E3FadeD~
@@ -465,6 +474,11 @@ EXTEND_BOTTOM ~pries10a.bcs~ ~Fade/Scripts/E3Pries10A.baf~ EVALUATE_BUFFER
 EXTEND_TOP ~ar6200.bcs~ ~Fade/Scripts/E3AR6200.baf~ EVALUATE_BUFFER
 EXTEND_BOTTOM ~ar0900.bcs~ ~Fade/Scripts/E3AR0900.baf~ EVALUATE_BUFFER
 EXTEND_TOP ~ar5000.bcs~ ~Fade/Scripts/AR5000.baf~ EVALUATE_BUFFER
+
+/* eet: switch to ToB script if Fade is in party */
+ACTION_IF GAME_IS ~eet~ BEGIN
+  EXTEND_BOTTOM ~ar4000.bcs~ ~Fade/Scripts/ar4000.baf~ EVALUATE_BUFFER
+END
 
 COPY_EXISTING ~ar0527.are~ ~override/ar0527.are~
 WRITE_ASCII ~0x94~ ~AR0527~

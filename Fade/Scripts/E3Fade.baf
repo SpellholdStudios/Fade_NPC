@@ -856,6 +856,7 @@ IF
 THEN
    RESPONSE #100
       SetGlobal("E3CHECKFADEFRIEND","GLOBAL",1)
+        SetGlobal("E3FRIENDTALK","GLOBAL",1)
       RealSetGlobalTimer("E3FADEFRIEND","GLOBAL",2600)
       SetGlobal("E3FADEFRIENDSHIP","GLOBAL",1)
 END
@@ -875,7 +876,12 @@ IF
    !StateCheck(Myself,CD_STATE_NOTVALID)
    !StateCheck(Player1,CD_STATE_NOTVALID)
    Global("E3FADEFRIENDSHIP","GLOBAL",1)
-   GlobalLT("E3FRIENDTALK","GLOBAL",9)
+//   GlobalLT("E3FRIENDTALK","GLOBAL",9)
+   OR(4)
+     Global("E3FRIENDTALK","GLOBAL",1)
+     Global("E3FRIENDTALK","GLOBAL",3)
+     Global("E3FRIENDTALK","GLOBAL",5)
+     Global("E3FRIENDTALK","GLOBAL",7)
    RealGlobalTimerExpired("E3FADEFRIEND","GLOBAL")
 THEN 
    RESPONSE #100
@@ -887,11 +893,14 @@ IF
    See(Player1)
    !StateCheck(Myself,CD_STATE_NOTVALID)
    !StateCheck(Player1,CD_STATE_NOTVALID)
-   Global("E3FADEFRIENDSHIP","GLOBAL",1)
-   GlobalLT("E3FRIENDTALK","GLOBAL",10)
-   RealGlobalTimerExpired("E3FADEFRIEND","GLOBAL")
+   OR(4)
+     Global("E3FRIENDTALK","GLOBAL",2)
+     Global("E3FRIENDTALK","GLOBAL",4)
+     Global("E3FRIENDTALK","GLOBAL",6)
+     Global("E3FRIENDTALK","GLOBAL",8)
 THEN 
    RESPONSE #100
+      RealSetGlobalTimer("E3FADEFRIEND","GLOBAL",3800)
       StartDialogueNoSet(Player1)
 END
 

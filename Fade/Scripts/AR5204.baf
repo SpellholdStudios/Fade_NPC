@@ -1,0 +1,7 @@
+IF
+	Global("E3C#_InsertSoulfireGem","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Bed",CreateItem("E3Gem",1,0,0))
+		SetGlobal("E3C#_InsertSoulfireGem","MYAREA",1)
+END

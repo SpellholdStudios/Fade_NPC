@@ -1,6 +1,6 @@
 BACKUP ~Fade/Backup~
 AUTHOR ~Mistress Elysia, Silmarien, Lava Del'Vortel, Kai of Candlekeep~
-VERSION ~5.3~ 
+VERSION ~5.4~ 
 
 README ~Fade/Fade_readme.html~
 
@@ -561,6 +561,7 @@ EXTEND_BOTTOM ~pries10a.bcs~ ~Fade/Scripts/E3Pries10A.baf~ EVALUATE_BUFFER
 EXTEND_TOP ~ar6200.bcs~ ~Fade/Scripts/E3AR6200.baf~ EVALUATE_BUFFER
 EXTEND_BOTTOM ~ar0900.bcs~ ~Fade/Scripts/E3AR0900.baf~ EVALUATE_BUFFER
 EXTEND_TOP ~ar5000.bcs~ ~Fade/Scripts/AR5000.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~ar5204.bcs~ ~Fade/Scripts/AR5204.baf~ EVALUATE_BUFFER
 
 /*
 /* eet: switch to ToB script if Fade is in party */

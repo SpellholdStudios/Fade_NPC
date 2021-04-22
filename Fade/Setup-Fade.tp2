@@ -60,7 +60,7 @@ ALWAYS ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
    * Copies UTF8-encoded tra files over the normal ones, for use with AUTO_TRA
    */
   DEFINE_ACTION_FUNCTION autotra_workaround BEGIN
-    COPY ~Fade/tra/classic/%LANGUAGE%~  ~fade/tra/autotra/%LANGUAGE%~
+    COPY ~Fade/tra/classic/%LANGUAGE%~  ~Fade/tra/autotra/%LANGUAGE%~
   END
 
   LAF autotra_workaround END
@@ -363,11 +363,11 @@ BUT_ONLY_IF_IT_CHANGES
 
 //Scripts
 COMPILE ~Fade/Scripts/E3Fade.baf~ EVALUATE_BUFFER
-USING ~fade\tra\%s\fade.tra~ 
+USING ~Fade\tra\%s\fade.tra~ 
 COMPILE ~Fade/Scripts/E3FadeD.baf~ EVALUATE_BUFFER
 COMPILE ~Fade/Scripts/E3Mallon.baf~ EVALUATE_BUFFER
 COMPILE ~Fade/Scripts/E3Cut001.baf~ EVALUATE_BUFFER
-USING ~fade\tra\%s\fade.tra~  
+USING ~Fade\tra\%s\fade.tra~  
 COMPILE ~Fade/Scripts/E3Cut002.baf~ EVALUATE_BUFFER
 COMPILE ~Fade/Scripts/E3Cut003.baf~ EVALUATE_BUFFER
 COMPILE ~Fade/Scripts/E3Cut004.baf~ EVALUATE_BUFFER
@@ -381,7 +381,7 @@ COMPILE ~Fade/Scripts/E3Demon2.baf~ EVALUATE_BUFFER
 COMPILE ~Fade/Scripts/E3Cut009.baf~ EVALUATE_BUFFER
 COMPILE ~Fade/Scripts/E3Cut010.baf~ EVALUATE_BUFFER
 COMPILE ~Fade/Scripts/fadefix.baf~ EVALUATE_BUFFER
-USING ~fade\tra\%s\setup-fade.tra~ //here the lines are in the setup-fade.tra!
+USING ~Fade\tra\%s\setup-fade.tra~ //here the lines are in the setup-fade.tra!
 COMPILE ~Fade/Scripts/E3Cleric.baf~ EVALUATE_BUFFER
 COMPILE ~Fade/Scripts/E3Mage.baf~ EVALUATE_BUFFER
 COMPILE ~Fade/Scripts/E3Fight.baf~ EVALUATE_BUFFER
@@ -398,34 +398,34 @@ COMPILE ~Fade/Scripts/E3Cut012.baf~ EVALUATE_BUFFER
 COMPILE ~Fade/Dialogues/Fade.d~ EVALUATE_BUFFER //(no "USING" needed here, since the tra is called "fade.tra")
 
 COMPILE ~Fade/Dialogues/BE3Fade.d~ EVALUATE_BUFFER
-USING ~fade\tra\%s\fade.tra~
+USING ~Fade\tra\%s\fade.tra~
 
 COMPILE ~Fade/Dialogues/Misc.d~ EVALUATE_BUFFER
-USING ~fade\tra\%s\fade.tra~
+USING ~Fade\tra\%s\fade.tra~
 
 COMPILE ~Fade/Dialogues/Fadeflirt.d~ EVALUATE_BUFFER
-USING ~fade\tra\%s\fade.tra~
+USING ~Fade\tra\%s\fade.tra~
 
 COMPILE ~Fade/Dialogues/BE3Fad25.d~ EVALUATE_BUFFER
-USING ~fade\tra\%s\fade.tra~
+USING ~Fade\tra\%s\fade.tra~
 
 COMPILE ~Fade/Dialogues/E3Fad25J.d~ EVALUATE_BUFFER
-USING ~fade\tra\%s\fade.tra~
+USING ~Fade\tra\%s\fade.tra~
 
 COMPILE ~Fade/Dialogues/E3Fad25M.d~ EVALUATE_BUFFER
-USING ~fade\tra\%s\fade.tra~
+USING ~Fade\tra\%s\fade.tra~
 
 COMPILE ~Fade/Dialogues/E3Fade25.d~ EVALUATE_BUFFER
-USING ~fade\tra\%s\fade.tra~
+USING ~Fade\tra\%s\fade.tra~
 
 /*
 /* fate spirit summoning: make EET consistent */
 ACTION_IF GAME_IS ~eet~ BEGIN
   COMPILE ~Fade/Dialogues/Fade_Fatesp_eet.d~ EVALUATE_BUFFER
-USING ~fade\tra\%s\fade.tra~
+USING ~Fade\tra\%s\fade.tra~
 END ELSE BEGIN
     COMPILE ~Fade/Dialogues/Fade_Fatesp_bg2.d~ EVALUATE_BUFFER
-USING ~fade\tra\%s\fade.tra~
+USING ~Fade\tra\%s\fade.tra~
 END
 */
 
@@ -448,7 +448,7 @@ INCLUDE ~EET/other/EET_functions.tph~
       override_ToB = "E3Fade25"
       dialog_ToB = "BE3Fad25"
       cre_ToB = "e3fade25"
-      traFile = EVAL "fade\tra\%s\fade.tra"
+      traFile = EVAL "Fade\tra\%s\fade.tra"
       string = "@4805"
       stringPosDV = "Eldoth"
       SummonedVar = "E3FadeSummonedToB_c#temp"
@@ -466,7 +466,7 @@ INCLUDE ~EET/other/EET_functions.tph~
       override_ToB = "E3Fade25"
       dialog_ToB = "BE3Fad25"
       cre_ToB = "e3fade25"
-      traFile = EVAL "fade\tra\%s\fade.tra"
+      traFile = EVAL "Fade\tra\%s\fade.tra"
       string = "@4804"
       stringPosDV = "Eldoth"
       SummonedVar = "E3FadeSummonedToB"
@@ -504,7 +504,7 @@ SetGlobal("E3FADEROMANCEACTIVE","GLOBAL",2)~
 
 END ELSE BEGIN
 COMPILE ~Fade/Dialogues/Fade_Fatesp_bg2.d~ EVALUATE_BUFFER
-USING ~fade\tra\%s\fade.tra~
+USING ~Fade\tra\%s\fade.tra~
 END
 
 
@@ -548,7 +548,7 @@ REPLACE ~99999~ @90
 
 //Script EXTEND-ing
 EXTEND_BOTTOM ~baldur.bcs~ ~Fade/Scripts/baldur.baf~  EVALUATE_BUFFER
-USING ~fade\tra\%s\fade.tra~
+USING ~Fade\tra\%s\fade.tra~
 
 EXTEND_TOP ~aerie.bcs~ ~Fade/Scripts/E3Aerie.baf~  EVALUATE_BUFFER
 EXTEND_TOP ~jaheira.bcs~ ~Fade/Scripts/E3Jaheira.baf~ EVALUATE_BUFFER
@@ -559,13 +559,13 @@ EXTEND_BOTTOM ~ar0500.bcs~ ~Fade/Scripts/E3AR0500.baf~ EVALUATE_BUFFER
 USING ~Fade/English/Misc.tra~
 EXTEND_BOTTOM ~ar2203.bcs~ ~Fade/Scripts/E3AR2203.baf~ EVALUATE_BUFFER
 EXTEND_BOTTOM ~ar0809.bcs~ ~Fade/Scripts/E3AR0809.baf~ EVALUATE_BUFFER
-USING ~fade\tra\%s\fade.tra~
+USING ~Fade\tra\%s\fade.tra~
 EXTEND_BOTTOM ~cleanse.bcs~ ~Fade/Scripts/E3Cleanse.baf~ EVALUATE_BUFFER
 EXTEND_TOP ~ar1203.bcs~ ~Fade/Scripts/E3AR1203.baf~ EVALUATE_BUFFER
 EXTEND_BOTTOM ~ar1303.bcs~ ~Fade/Scripts/E3AR1303.baf~ EVALUATE_BUFFER
 EXTEND_BOTTOM ~ar2202.bcs~ ~Fade/Scripts/E3AR2202.baf~ EVALUATE_BUFFER
 EXTEND_TOP ~baldur.bcs~ ~Fade/Scripts/E3Amulet.baf~ EVALUATE_BUFFER
-USING ~fade\tra\%s\fade.tra~
+USING ~Fade\tra\%s\fade.tra~
 EXTEND_BOTTOM ~ar0511.bcs~ ~Fade/Scripts/E3AR0511.baf~ EVALUATE_BUFFER
 EXTEND_TOP ~ar0318.bcs~ ~Fade/Scripts/E3AR0318.baf~ EVALUATE_BUFFER
 EXTEND_BOTTOM ~ar0204.bcs~ ~Fade/Scripts/E3AR0204.baf~ EVALUATE_BUFFER
@@ -607,9 +607,9 @@ AT_INTERACTIVE_UNINSTALL ~Fade/fadeaudiouninstall.bat~
 //////////////////////////////////////////////////
 
 ACTION_IF FILE_EXISTS_IN_GAME ~neera.dlg~ THEN BEGIN
-  COMPILE EVALUATE_BUFFER ~fade/dialogues/ee.d~ EVALUATE_BUFFER
-USING ~fade\tra\%s\fade.tra~
-  EXTEND_TOP ~e3fade.bcs~ ~fade/scripts/ee.baf~ EVALUATE_BUFFER
+  COMPILE EVALUATE_BUFFER ~Fade/dialogues/ee.d~ EVALUATE_BUFFER
+USING ~Fade\tra\%s\fade.tra~
+  EXTEND_TOP ~e3fade.bcs~ ~Fade/scripts/ee.baf~ EVALUATE_BUFFER
 END
 
 //JOURNAL EE
@@ -634,9 +634,9 @@ ADD_JOURNAL EXISTING TITLE (#74337) @38 @1213 @1237 @1260 @1305 @1307 USING ~Fad
 BEGIN @91
 REQUIRE_COMPONENT ~Fade/Setup-Fade.tp2~ ~0~ @92
 
-  COMPILE EVALUATE_BUFFER ~fade/dialogues/re.d~ EVALUATE_BUFFER
-USING ~fade\tra\%s\fade.tra~
-  EXTEND_TOP ~e3fade.bcs~ ~fade/scripts/re.baf~ EVALUATE_BUFFER
+  COMPILE EVALUATE_BUFFER ~Fade/dialogues/re.d~ EVALUATE_BUFFER
+USING ~Fade\tra\%s\fade.tra~
+  EXTEND_TOP ~e3fade.bcs~ ~Fade/scripts/re.baf~ EVALUATE_BUFFER
   
   
 //////////////////////////////////////////////////
